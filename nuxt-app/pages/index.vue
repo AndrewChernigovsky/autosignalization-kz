@@ -1,5 +1,8 @@
 <template>
-  <h2>
-    BUY
-  </h2>
+  <h2>Index</h2>
 </template>
+<script lang="ts" setup>
+</script>
+<style lang="scss">
+  
+</style>
