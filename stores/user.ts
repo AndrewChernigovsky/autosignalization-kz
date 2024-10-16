@@ -1,6 +1,5 @@
 // stores/userStore.ts
 import { defineStore } from 'pinia';
-import User from "~/server/models/User.model";
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -10,19 +9,16 @@ export const useUserStore = defineStore('user', {
   actions: {
     async fetchUsers() {
       try {
-        const users = await User.findAll();
-        this.users = users.map(user => user.get({ plain: true }));
+        const response = await fetch('http://localhost:3000/api/users');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const users = await response.json();
+        this.users = users; // Update state with fetched users
+        console.log(this.users, 'users');
       } catch (error) {
         console.error('Ошибка при получении пользователей:', error);
       }
-    },    
-    async createUser(firstName: string, lastName: string) {
-      try {
-        const newUser = await User.create({ firstName, lastName });
-        this.users.push(newUser.get({ plain: true })); // Добавляем нового пользователя в состояние
-      } catch (error) {
-        console.error('Ошибка при создании пользователя:', error);
-      }
-    },
+    }
   },
 });
