@@ -5,5 +5,8 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt'],
   pinia: {
     storesDirs: ['./stores/**'],
+  },  
+  runtimeConfig: {
+    DB_NAME: process.env.DB_NAME,
   },
 })
