@@ -1,12 +1,10 @@
 #!/usr/bin/env sh
-. "$(dirname "$0")/_/husky.sh"
+. "$(dirname "\$0")/_/husky.sh"
+
+set -e
 
 # Run ESLint and TypeScript checks on staged files
-npx eslint --fix .
+npx eslint --fix $(git diff --cached --name-only --diff-filter=ACM | grep '\.js$\|\.ts$\|\.vue$')
 npx tsc --noEmit
 
-# Check if ESLint or TypeScript failed
-if [ $? -ne 0 ]; then
-  echo "Linting or TypeScript check failed. Commit aborted."
-  exit 1
-fi
+echo "Linting and TypeScript checks passed. Proceeding with commit."
