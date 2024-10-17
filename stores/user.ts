@@ -1,24 +1,24 @@
-// stores/userStore.ts
 import { defineStore } from 'pinia';
+import { ref } from 'vue';
+import type { UserType } from '@/types/UserType';
 
-export const useUserStore = defineStore('user', {
-  state: () => ({
-    users: [] as Array<{ id: number; firstName: string; lastName: string }>,
-  }),
-  
-  actions: {
-    async fetchUsers() {
-      try {
-        const response = await fetch('http://localhost:3000/api/users');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const users = await response.json();
-        this.users = users; // Update state with fetched users
-        console.log(this.users, 'users');
-      } catch (error) {
-        console.error('Ошибка при получении пользователей:', error);
+export const useUserStore = defineStore('user', () => {
+  const users = ref<UserType[]>([]);
+
+  async function fetchUsers() {
+    try {
+      const response = await fetch('http://localhost:3000/api/users');
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
       }
+      users.value = await response.json();
+    } catch (error) {
+      console.error('Ошибка при получении пользователей:', error);
     }
-  },
+  };
+
+  return {
+    users,
+    fetchUsers,
+  };
 });

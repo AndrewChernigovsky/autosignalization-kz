@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <ClientOnly>
   <h2>Index</h2>
     <h1>Пользователи</h1>
     <ul>
@@ -8,24 +8,22 @@
       </li>
     </ul>
     <button @click="fetchUsers">Загрузить пользователей</button>
-  </div>
+    <YButton :islink="true" test="HUY" class="sdgsdsg">HELLO</YButton>
+  </ClientOnly>
 </template>
 <script lang="ts" setup>
 import { onMounted } from "vue";
-
 import { useUserStore } from "@/stores/user";
-
 const userStore = useUserStore();
 
 const fetchUsers = () => {
   userStore.fetchUsers();
-  console.log(userStore.users, 'users');
 };
 
 onMounted(async () => {
   fetchUsers();
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 
 </style>
