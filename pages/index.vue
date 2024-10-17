@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-  <h2>Index</h2>
+    <h2>Index</h2>
     <h1>Пользователи</h1>
     <ul>
       <li v-for="user in userStore.users" :key="user.id">
@@ -8,22 +8,23 @@
       </li>
     </ul>
     <button @click="fetchUsers">Загрузить пользователей</button>
-    <YButton :islink="true" test="HUY" class="sdgsdsg">HELLO</YButton>
+    <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
+    <Search test="TEST" />
   </ClientOnly>
 </template>
 <script lang="ts" setup>
-import { onMounted } from "vue";
-import { useUserStore } from "@/stores/user";
-const userStore = useUserStore();
+import { onMounted } from 'vue'
+import { useUserStore } from '@/stores/user'
+import { ButtonsEnum } from '~/enums/ButtonsEnum'
+
+const userStore = useUserStore()
 
 const fetchUsers = () => {
-  userStore.fetchUsers();
-};
+  userStore.fetchUsers()
+}
 
 onMounted(async () => {
-  fetchUsers();
+  fetchUsers()
 })
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
