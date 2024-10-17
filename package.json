@@ -8,14 +8,27 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "prettier --check .",
-    "eslint": "eslint . --ext .js,.ts,.vue",
+    "lint": "eslint . --ext .js,.ts,.vue",
     "format": "prettier --write ."
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./husky-pre-commit.sh"
+      "pre-commit": "npx lint-staged"
     }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.5",
