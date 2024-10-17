@@ -5,7 +5,7 @@ import { ref } from 'vue'
 export const useProductStore = defineStore('product', () => {
   const products = ref<ProductType[]>([])
 
-  function setProducts(newProducts: Product22w2w21Type[]) {
+  function setProducts(newProducts: Product22w22w21Type[]) {
     products.value = newProducts
   }
 
