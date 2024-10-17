@@ -14,11 +14,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier --write && npm run eslint"
+      "pre-commit": "./husky-pre-commit.sh"
     }
-  },
-  "lint-staged": {
-    "*": "prettier --write && npm run eslint"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.5",
