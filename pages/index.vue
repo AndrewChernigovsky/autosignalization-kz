@@ -8,7 +8,7 @@
       </li>
     </ul>
     <button @click="fetchUsers">Загрузить пользователей</button>
-    <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
+    <YButton disabled :ytype="ButtonsEnum.primary">Подробнее</YButton>
     <Search test="TEST" />
   </ClientOnly>
 </template>
