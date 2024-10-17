@@ -9,12 +9,16 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "prettier --check .",
+    "eslint": "eslint . --ext .js,.ts,.vue",
     "format": "prettier --write ."
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier --write . && git add -A ."
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "*": "prettier --write && npm run eslint"
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.5",
