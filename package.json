@@ -12,11 +12,6 @@
     "format": "prettier --write .",
     "prepare": "husky"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "./husky/pre-commit.sh"
-    }
-  },
   "lint-staged": {
     "*.ts": [
       "eslint --fix",
