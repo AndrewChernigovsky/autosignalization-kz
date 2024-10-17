@@ -10,6 +10,11 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint . --ext .js,.ts"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "echo \"[Husky] pre-commit\""
+    }
+  },
   "dependencies": {
     "@pinia/nuxt": "^0.5.5",
     "nuxt": "^3.13.0",
