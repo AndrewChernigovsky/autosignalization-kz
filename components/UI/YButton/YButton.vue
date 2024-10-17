@@ -4,6 +4,7 @@
     :type="typeButton ? typeButton : 'button'"
     v-if="btn"
     :ytype="ytype"
+    :disabled="states.disabled"
   >
     <slot />
   </button>
@@ -39,15 +40,35 @@ const props = defineProps({
     type: String,
     validator: (value) => isButtonsEnum(value),
   },
+  disabled: {
+    type: Boolean,
+  },
 })
 
 const buttonClass = computed(() => {
-  return `button ${props.ytype || ''}`
+  return [
+    'base',
+    props.ytype || '',
+    { disabled: props.disabled }
+})
+
+const states = computed(() => {
+  return {
+    disabled: props.disabled ? true : false,
+  }
 })
 </script>
 <style lang="scss" scoped>
 // ТЫ РАБОТАЕШЬ ТУТ
-.base {
-  background-color: red;
+.primary {
+  background-color: $red;
+}
+
+.secondary {
+  background-color: $gray;
+}
+
+.disabled {
+  opacity: 0.5;
 }
 </style>

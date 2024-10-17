@@ -15,4 +15,13 @@ export default defineNuxtConfig({
     global: true,
     dirs: ['~/components/UI'],
   },
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "@/assets/styles/styles.scss";', // Автоматически импортировать переменные в каждый компонент
+        },
+      },
+    },
+  },
 })
