@@ -1,5 +1,5 @@
-import YButton from './YButton/YButton.vue'
-import Search from './Search/Search.vue'
+import YButton from '@/components/UI/YButton/YButton.vue'
+import Search from '@/components/UI/Search/Search.vue'
 
 export default {
   YButton,

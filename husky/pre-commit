@@ -1,0 +1,9 @@
+; # .husky/pre-commit
+; # Форматирование файлов с помощью Prettier
+; prettier $(git diff --cached --name-only --diff-filter=ACMR | sed 's| |\\ |g') --write --ignore-unknown
+
+; # Проверка типов с помощью TypeScript
+; tsc --noEmit --skipLibCheck
+
+; # Обновление индекса git
+; git update-index --again
