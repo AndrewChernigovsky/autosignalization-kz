@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import svgomgConfig from "./svgomg.config"
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   ssr: false,
@@ -10,7 +12,8 @@ export default defineNuxtConfig({
   svgSprite: {
     input: '~/assets/images/sprites',
     output: '~/assets/images/sprite',
-    defaultSprite: 'sprite'
+    defaultSprite: 'sprite',
+    svgo: svgomgConfig,
   },
   runtimeConfig: {
     DB_NAME: process.env.DB_NAME,
