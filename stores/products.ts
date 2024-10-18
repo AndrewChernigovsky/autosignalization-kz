@@ -12,23 +12,24 @@ export const useProductStore = defineStore('product', () => {
       totalInCart: 0,
       productType: 'Автосигнализации',
       productDescription: 'Описание товара - Надежный автомобильный охранно-телематический',
-      imagesUrl: '#',
+      imagesUrl: [{url:'#', description: "STARLINE E96 V2 BT ECO 2CAN+4LIN"}],
       autoType: ['Для внедорожника', 'Для легкового авто'],
+      inStock: true,
       descriptions: [
         {
           title: 'ДИАЛОГОВАЯ ЗАЩИТА',
           description: 'Диалоговый код управления StarLine',
-          imgaesUrl: '#'
+          imageUrl: [{url:'#'}]
         },
         {
           title: 'ДИАЛОГОВАЯ ЗАЩИТА',
           description: 'Диалоговый код управления StarLine',
-          imgaesUrl: '#'
+          imageUrl: [{url:'#'}]
         },
         {
           title: 'ДИАЛОГОВАЯ ЗАЩИТА',
           description: 'Диалоговый код управления StarLine',
-          imgaesUrl: '#'
+          imageUrl: [{url:'#'}]
         }
       ],
       features: [
@@ -42,7 +43,8 @@ export const useProductStore = defineStore('product', () => {
       totalInCart: 0,
       productType: 'Парковочные системы',
       productDescription: 'Камера заднего вида с инфракрасной подсветкой',
-      imagesUrl: '#',
+      inStock: true,
+      imagesUrl: [{url:'#', description: "STARLINE E96 V2 BT ECO 2CAN+4LIN"}],
       features: [
         'Матрица Color CCD PC3030', 'Разрешение: 628x586 пикселей', 'Материал корпуса: пластик']
     }

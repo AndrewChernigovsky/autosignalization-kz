@@ -1,7 +1,9 @@
+import type { ImagesType } from "@/types/ImagesType";
+
 type DescriptionType = {
   title: string,
   description?: string,
-  imgaesUrl?: string, 
+  imageUrl?: ImagesType[], 
 }
 
 type ProductType = {
@@ -10,7 +12,8 @@ type ProductType = {
   price: number;
   totalInCart: number,
   productType: string,
-  imagesUrl?: string[] | string,
+  inStock: boolean,
+  imagesUrl?: ImagesType[] | string,
   productDescription?: string,
   autoType?: string[] | string, 
   features?: string[],
