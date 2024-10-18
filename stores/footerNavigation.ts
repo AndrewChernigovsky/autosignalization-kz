@@ -1,23 +1,41 @@
 // stores/footerNavigation.ts
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import type { LinksType } from '@/types/FooterLinksType'
+import type { FooterLinksType } from '@/types/FooterLinksType'
 
 export const useFooterNavigationStore = defineStore('footerNavigation', () => {
-    const footerLinks = ref<LinksType[]>([
+    const footerLinks = ref<FooterLinksType[]>([
         {
             title: 'Автосигнализации',
             path: '#',
             subLinks: [
                 {
                 title: 'Автосигнализации с автозапуском',
-                path: '#'
+                path: '#',
                 },
                 {
                 title: 'Автосигнализации с GSM',
-                path: '#'
+                path: '#',
+                subLinks: [
+                    {
+                        title: 'Name',
+                        path: '#'
+                    }
+                ]
                 }
         ]
+        },
+        {
+            title: 'Парковочные системы',
+            path: '#',
+            subLinks: [{
+                title: 'name',
+                path: '#',
+                subLinks: [{
+                    title: 'pizda',
+                    path: 'ss'
+                }]
+            }]
         }
 ])
 

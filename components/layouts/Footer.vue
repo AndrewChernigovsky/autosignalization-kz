@@ -8,12 +8,22 @@
         </ul>
       </nav>
     </div>
+    <div>
+      <ul>
+        <FooterLink 
+        v-for="link in navLinks"
+        :key="link.path"
+        :link="link"
+        />
+      </ul>
+    </div>
   </footer>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import type { LinksType } from '@/types/FooterLinksType';
 import { useFooterNavigationStore } from '@/stores/footerNavigation'
+import FooterLink  from '@/components/FooterLink.vue'
 
 
 const navLinks = ref<LinksType[]>([])
@@ -23,9 +33,8 @@ const getNavLinks = () => {
   return navigationStore.getLinks()
 }
 onMounted(async () => {
-  console.log(getNavLinks())
   navLinks.value = getNavLinks()
-  console.log(navLinks.value)
+  console.log(navLinks.value, 'navlinks')
 })
 
 </script>
