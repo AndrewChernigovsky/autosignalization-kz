@@ -7,7 +7,24 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "npx eslint ./",
+    "format": "prettier --write .",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@pinia/nuxt": "^0.5.5",
@@ -19,6 +36,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@eslint/js": "^9.12.0",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.5",
     "@types/sequelize": "^4.28.20",
@@ -26,9 +44,13 @@
     "@typescript-eslint/parser": "^8.10.0",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.1.0",
     "eslint-plugin-vue": "^9.29.0",
     "express": "^4.21.1",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "sass-embedded": "^1.79.5"
+    "sass-embedded": "^1.79.5",
+    "typescript": "^5.6.3"
   }
 }

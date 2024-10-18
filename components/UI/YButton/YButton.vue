@@ -46,10 +46,7 @@ const props = defineProps({
 })
 
 const buttonClass = computed(() => {
-  return [
-    'base',
-    props.ytype || '',
-    { disabled: props.disabled }
+  return ['base', props.ytype || '', { disabled: props.disabled }]
 })
 
 const states = computed(() => {
