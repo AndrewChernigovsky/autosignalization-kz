@@ -1,13 +1,6 @@
 import { defineConfig } from 'eslint-define-config';
 
 export default defineConfig({
-  languageOptions: {
-    globals: {
-      // Здесь можно определить глобальные переменные, например:
-      // process: 'readonly',
-      // __dirname: 'readonly',
-    },
-  },
   extends: [
     'plugin:vue/essential',
     'plugin:@typescript-eslint/recommended',
