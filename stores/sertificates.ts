@@ -1,4 +1,4 @@
-// stores/products.ts
+// stores/sertificates.ts
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import type { ImagesType } from '@/types/ImagesType'
