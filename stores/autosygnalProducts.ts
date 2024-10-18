@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 // stores/products.ts
 import { defineStore } from 'pinia';
 import type { ProductType } from '@/types/ProductType';
 import { ref } from 'vue';
 
-export const useProductStore = defineStore('product', () => {
+export const useAutosygnalStore = defineStore('autosygnal', () => {
   const products = ref<ProductType[]>([
     {
       id: 1, 
@@ -40,15 +39,34 @@ export const useProductStore = defineStore('product', () => {
     {
       id: 2, 
       name: "STARLINE E96 V2 BT ECO 2CAN+4LIN", 
-      price: 5600,
+      price: 3600,
       totalInCart: 0,
-      productType: 'Парковочные системы',
-      productDescription: 'Камера заднего вида с инфракрасной подсветкой',
-      inStock: true,
+      productType: 'Автосигнализации',
+      productDescription: 'Описание товара - Надежный автомобильный охранно-телематический',
       imagesUrl: [{url:'#', description: "STARLINE E96 V2 BT ECO 2CAN+4LIN"}],
+      autoType: ['Для внедорожника', 'Для легкового авто'],
+      inStock: false,
+      descriptions: [
+        {
+          title: 'ДИАЛОГОВАЯ ЗАЩИТА',
+          description: 'Диалоговый код управления StarLine',
+          imageUrl: [{url:'#'}]
+        },
+        {
+          title: 'ДИАЛОГОВАЯ ЗАЩИТА',
+          description: 'Диалоговый код управления StarLine',
+          imageUrl: [{url:'#'}]
+        },
+        {
+          title: 'ДИАЛОГОВАЯ ЗАЩИТА',
+          description: 'Диалоговый код управления StarLine',
+          imageUrl: [{url:'#'}]
+        }
+      ],
       features: [
-        'Матрица Color CCD PC3030', 'Разрешение: 628x586 пикселей', 'Материал корпуса: пластик']
-    }
+        'Автозапуск', 'Управление предпусковым подогревом'
+      ]
+    },
   ]);
 
   function setNewProducts(newProducts: ProductType) {
@@ -61,26 +79,5 @@ export const useProductStore = defineStore('product', () => {
 
   return {
     products,  setNewProducts, getProducts
-=======
-import { defineStore } from 'pinia'
-import type { ProductType } from '@/types/ProductType'
-import { ref } from 'vue'
-
-export const useProductStore = defineStore('product', () => {
-  const products = ref<ProductType[]>([])
-
-  function setProducts(newProducts: ProductType[]) {
-    products.value = newProducts
   }
-
-  function getProducts() {
-    return products
-  }
-
-  return {
-    products,
-    setProducts,
-    getProducts,
->>>>>>> 2d17094a6a8a9d545f30e6995db4f9c6f3d4a40e
-  }
-})
+});

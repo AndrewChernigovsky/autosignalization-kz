@@ -7,7 +7,7 @@
         {{ user.firstName }} {{ user.lastName }}
       </li>
     </ul>
-    <!-- <button @click="fetchUsers">Загрузить пользователей</button> -->
+    <button @click="fetchUsers">Загрузить пользователей</button>
     <YButton :ytype="ButtonsEnum.secondary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.primary">sdfsdfsdf</YButton>
     <!-- <Search test="TEST" /> -->

@@ -1,29 +1,62 @@
 <template>
   <header class="header">
-    <nav class="nav">
+    <div class="container">
+      <Logo />
+      <nav class="nav">
+        <ul>
+          <li v-for="link in navLinks" :key="link.path">
+            <nuxt-link :to="link.path">{{ link.name }}</nuxt-link>
+          </li>
+        </ul>
+      </nav>
+      <Search />
+      <a href="https://maps.app.goo.gl/FwrjA4jjWrHHzazk8">
+        <img src="" alt="" />
+      </a>
+      <Geo />
+      <Cart />
+      <Phone />
       <ul>
-        <li v-for="link in navLinks" :key="link.path"><nuxt-link :to="link.path">{{ link.name }}</nuxt-link></li>
+        <li v-for="phone in phones" :key="phone">
+          <YButton :btn="false" :path="'tel:' + phone.replace(/\s+/g, '')">{{
+            phone
+          }}</YButton>
+        </li>
       </ul>
-    </nav>
+    </div>
   </header>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { useNavigationStore } from "@/stores/navigation";
-import type { NavigationLinksType } from "~/types/NavigationLinksType";
+import { onMounted, ref } from 'vue'
+import { useNavigationStore } from '@/stores/navigation'
+import { useContactsStore } from '@/stores/contacts'
+import type { NavigationLinksType } from '~/types/NavigationLinksType'
+import type { ContactsType } from '~/types/ContactsType'
+import Cart from '~/components/Cart/Cart'
 
-const navLinks = ref<NavigationLinksType[]>([]); 
-const navigationStore = useNavigationStore();
+const navLinks = ref<NavigationLinksType[]>([])
+const contacts = ref<ContactsType[]>([])
+const phones = ref<String[]>([])
+const navigationStore = useNavigationStore()
+const contactsStore = useContactsStore()
 
 const getNavLinks = () => {
-  return navigationStore.getNavigationLinks();
-};
+  return navigationStore.getNavigationLinks()
+}
+
+const getContacts = () => {
+  return contactsStore.getContacts()
+}
 
 onMounted(async () => {
-  console.log(getNavLinks());
-  navLinks.value = getNavLinks();
+  navLinks.value = getNavLinks()
+  contacts.value = getContacts()
+  phones.value = contacts.value.map((contact) => contact.tel).flat()
+  console.log(phones.value)
 })
 </script>
 <style lang="scss">
-  
+header {
+  background: linear-gradient(#010308, #000208);
+}
 </style>
