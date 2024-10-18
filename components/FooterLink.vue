@@ -1,5 +1,8 @@
 <template>
     <li>
+        <svg>
+            <use xlink:href="@/assets/images/sprite/sprite.svg#home-icon"></use>
+        </svg>
         <nuxt-link :to="links.path">{{links.title}}</nuxt-link>
         <ul v-if="links.subLinks && links.subLinks.length">
             <FooterLink 

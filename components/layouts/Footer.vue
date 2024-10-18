@@ -21,12 +21,12 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import type { LinksType } from '@/types/FooterLinksType';
+import type { FooterLinksType } from '@/types/FooterLinksType';
 import { useFooterNavigationStore } from '@/stores/footerNavigation'
 import FooterLink  from '@/components/FooterLink.vue'
 
 
-const navLinks = ref<LinksType[]>([])
+const navLinks = ref<FooterLinksType[]>([])
 const navigationStore = useFooterNavigationStore()
 
 const getNavLinks = () => {
