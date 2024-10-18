@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     DB_NAME: process.env.DB_NAME,
   },
-  plugins: ['~/plugins/global-components.ts'],
+  // plugins: ['~/plugins/global-components.ts'],
   components: {
     global: true,
     dirs: ['~/components/UI'],
