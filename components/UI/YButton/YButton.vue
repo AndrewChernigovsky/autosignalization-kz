@@ -63,10 +63,10 @@ const states = computed(() => {
   justify-content: center;
   max-width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgb(201, 201, 201);
+  border: 1px solid $white-grey;
   border-radius: 5px;
-  background: linear-gradient(180.00deg, $black-light,$red-light);
-  color: rgb(255, 255, 255);
+  background: linear-gradient(180.00deg, $black-btn-bg,$red-btn-bg);
+  color: $white;
   font-family: DIN Pro;
   font-size: 36px;
   font-weight: 700;
@@ -76,23 +76,23 @@ const states = computed(() => {
   padding: 18px 60px;
 
   &:hover {
-    background: linear-gradient(180.00deg, rgb(7, 1, 1) 5.644%,rgb(121, 5, 5) 98.575%);
-    border: 1px solid rgb(121, 5, 5) 98.575%;
+    background: linear-gradient(180.00deg, $black-btn-hover,$red-btn-hover);
+    border-color: none;
   }
 
   &:focus {
     box-sizing: border-box;
-    border: 1px solid rgb(201, 201, 201);
+    border-color: $white-grey;
     border-radius: 5px;
-    background: linear-gradient(180.00deg, rgb(7, 1, 1) 5.644%,rgb(121, 5, 5) 98.575%);
+    background: linear-gradient(180.00deg, $black-btn-hover,$red-btn-hover);
   }
 
   &:active {
-    background: linear-gradient(180.00deg, rgb(255, 9, 9) 5.644%,rgb(0, 0, 0) 98.575%);
+    background: linear-gradient(180.00deg, $red-btn-active,$black-btn-active);
   }
 
   &:disabled {
-    background: linear-gradient(180.00deg, rgba(255, 9, 9, 0) 5.644%,rgb(0, 0, 0) 98.575%);
+    background: linear-gradient(180.00deg, $gray-btn-disabled,$black-btn-disabled);
 }}
 
 .secondary {
@@ -101,9 +101,10 @@ const states = computed(() => {
   justify-content: center;
   background-color:$gray-light;
   max-width: 100%;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid $white;
   border-radius: 5px;
-  color: rgb(255, 255, 255);
+  color: $white;
+  background-color: $black-link-bg;
   font-family: DIN Pro;
   font-size: 36px;
   font-weight: 700;
@@ -115,19 +116,19 @@ const states = computed(() => {
   
   &:hover {
     border-radius: 5px;
-    background: linear-gradient(180.00deg, rgb(23, 15, 15) 5.644%,rgb(42, 36, 36) 100%);
+    background: linear-gradient(180.00deg, $black-link-hover-1,$black-link-hover-2);
   }
 
   &:focus {
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid $white;
     border-radius: 5px;
-    background: linear-gradient(180.00deg, rgb(23, 15, 15) 5.644%,rgb(42, 36, 36) 100%);
+    background: linear-gradient(180.00deg, $black-link-hover-1,$black-link-hover-2);
   }
 
   &:active {
-    border: 1px solid rgb(255, 255, 255);
+    border: 1px solid $white;
     border-radius: 5px;
-    background: linear-gradient(180.00deg, rgb(22, 19, 19) 5.644%,rgb(69, 64, 64) 100%);
+    background: linear-gradient(180.00deg,$black-link-active-1,$black-link-active-2);
   }
 }
 
