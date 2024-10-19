@@ -1,33 +1,28 @@
 <template>
-    <li>
-        <svg>
-            <use xlink:href="@/assets/images/sprite/sprite.svg#home-icon"></use>
-        </svg>
-        <nuxt-link :to="links.path">{{links.title}}</nuxt-link>
-        <ul v-if="links.subLinks && links.subLinks.length">
-            <FooterLink 
-            v-for="sublink in links.subLinks"
-            :key="sublink.path"
-            :link="sublink"
-            />
-        </ul>
-    </li>
+  <li>
+    <svg>
+      <use xlink:href="@/assets/sprite/sprite.svg#home-icon"></use>
+    </svg>
+    <nuxt-link :to="links.path">{{ links.title }}</nuxt-link>
+    <ul v-if="links.subLinks && links.subLinks.length">
+      <FooterLink
+        v-for="sublink in links.subLinks"
+        :key="sublink.path"
+        :link="sublink"
+      />
+    </ul>
+  </li>
 </template>
 <script setup>
-
 const link = defineProps({
-    link: {
-        type: Object,
-        required: true
-    }
+  link: {
+    type: Object,
+    required: true,
+  },
 })
 
-const links = link.link;
+const links = link.link
 
-console.log(links, 'link');
-
-
+console.log(links, 'link')
 </script>
-<style>
-    
-</style>
+<style></style>
