@@ -39,12 +39,17 @@ export const useFooterNavigationStore = defineStore('footerNavigation', () => {
         }
 ])
 
+    function setFooterLink(newLink:FooterLinksType) {
+        footerLinks.value.push(newLink);
+    }
+
     function getLinks() {
         return footerLinks.value
     }
 
     return {
         footerLinks,
-        getLinks
+        getLinks,
+        setFooterLink,
     }
 })

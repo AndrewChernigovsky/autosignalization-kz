@@ -7,22 +7,18 @@ type DescriptionType = {
 }
 
 type ProductType = {
-  id: number
-  name: string
-  price: number
-  totalInCart?: number
-  productType?: string
-  inStock?: boolean
-  imagesUrl?: ImagesType[] | string
-  productDescription?: string
-  autoType?: string[] | string
-  features?: string[]
-  descriptions?: DescriptionType[]
-  image?: {
-    src: string
-    alt: string
-  }
+  id:  number;
+  title: string;
+  price: number;
+  totalInCart: number,
+  productType: string,
+  inStock: boolean,
   quantity: number
+  imagesUrl?: ImagesType[] | string,
+  productDescription?: string,
+  autoType?: string[], 
+  features?: string[],
+  descriptions?: DescriptionType[],
 }
 
 export type { ProductType }
