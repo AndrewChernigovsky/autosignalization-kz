@@ -8,9 +8,9 @@
       </li>
     </ul>
     <button @click="fetchUsers">Загрузить пользователей</button>
-    <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.secondary">Подробнее</YButton>
-    <Search test="TEST" />
+    <YButton :ytype="ButtonsEnum.primary">sdfsdfsdf</YButton>
+    <!-- <Search test="TEST" /> -->
   </ClientOnly>
 </template>
 <script lang="ts" setup>

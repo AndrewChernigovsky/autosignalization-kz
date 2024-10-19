@@ -10,16 +10,6 @@
   </button>
   <a :href="path" v-if="btn === false"><slot /></a>
 </template>
-<script lang="ts">
-function isButtonsEnum(value: unknown): value is ButtonsEnum {
-  if (Object.values(ButtonsEnum).includes(value as ButtonsEnum)) {
-    return true
-  } else {
-    console.error('Error: значение не соответствует ButtonsEnum')
-    throw new Error('Error: значение не соответствует ButtonsEnum')
-  }
-}
-</script>
 <script setup lang="ts">
 import { computed } from 'vue'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
@@ -38,7 +28,7 @@ const props = defineProps({
   },
   ytype: {
     type: String,
-    validator: (value) => isButtonsEnum(value),
+    default: ButtonsEnum.primary,
   },
   disabled: {
     type: Boolean,
