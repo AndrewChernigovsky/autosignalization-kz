@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import Logo from '@/assets/icons/logo.png'
+import Logo from '@/assets/images/logo.png'
 </script>
 <style lang="scss" scoped>
 .logo {
