@@ -64,6 +64,7 @@ const states = computed(() => {
   letter-spacing: 0px;
   text-transform: uppercase;
   padding: 18px 60px;
+  cursor: pointer;
 
   &:hover {
     background: linear-gradient(180.00deg, $black-btn-hover,$red-btn-hover);
@@ -102,6 +103,7 @@ const states = computed(() => {
   letter-spacing: 0px;
   text-transform: uppercase;
   padding: 18px 60px;
+  cursor: pointer;
   
   
   &:hover {
