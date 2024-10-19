@@ -10,10 +10,10 @@ export default defineNuxtConfig({
     storesDirs: ['./stores/**'],
   },
   svgSprite: {
-    input: '~/assets/images/sprites',
-    output: '~/assets/images/sprite',
+    input: '~/assets/icons',
+    output: '~/assets/sprite',
     defaultSprite: 'sprite',
-    svgo: svgomgConfig,
+    // svgoConfig: svgomgConfig,
   },
   runtimeConfig: {
     DB_NAME: process.env.DB_NAME,

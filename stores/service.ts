@@ -20,8 +20,8 @@ export const useServiceStore = defineStore('service', () => {
     }
   ])
 
-  function setNewService(newImage: ServiceType) {
-    service.value.push(newImage)
+  function setNewService(newService: ServiceType) {
+    service.value.push(newService)
   }
 
   function getService() {

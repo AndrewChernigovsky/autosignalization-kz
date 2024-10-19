@@ -9,14 +9,14 @@ type DescriptionType = {
 type ProductType = {
 <<<<<<< HEAD
   id:  number;
-  name: string;
+  title: string;
   price: number;
   totalInCart: number,
   productType: string,
   inStock: boolean,
   imagesUrl?: ImagesType[] | string,
   productDescription?: string,
-  autoType?: string[] | string, 
+  autoType?: string[], 
   features?: string[],
   descriptions?: DescriptionType[],
 =======
