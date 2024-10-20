@@ -7,8 +7,8 @@
       height="84"
     />
     <div class="text">
-      <p>Auto</p>
-      <p>Security</p>
+      <p class="text-main">Auto</p>
+      <p class="text-secondary">Security</p>
     </div>
   </div>
 </template>
@@ -25,5 +25,13 @@ import Logo from '@/assets/images/logo.png'
 p {
   font-size: 20px;
   text-transform: uppercase;
+  font-weight: 700;
+}
+
+.text-main {
+  color: $white;
+}
+.text-secondary {
+  color: $red;
 }
 </style>

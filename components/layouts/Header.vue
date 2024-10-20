@@ -2,13 +2,7 @@
   <header class="header">
     <div class="container">
       <Logo />
-      <nav class="nav">
-        <ul>
-          <li v-for="link in navLinks" :key="link.path">
-            <nuxt-link :to="link.path">{{ link.name }}</nuxt-link>
-          </li>
-        </ul>
-      </nav>
+      <Menu />
       <Search />
       <a href="https://maps.app.goo.gl/FwrjA4jjWrHHzazk8">
         <img src="" alt="" />
@@ -32,27 +26,21 @@ import { useNavigationStore } from '@/stores/navigation'
 import { useContactsStore } from '@/stores/contacts'
 import type { NavigationLinksType } from '~/types/NavigationLinksType'
 import type { ContactsType } from '~/types/ContactsType'
-import Cart from '~/components/Cart/Cart'
+import Cart from '@/components/Cart/Cart.vue'
+import Menu from '@/components/Menu/Menu.vue'
 
-const navLinks = ref<NavigationLinksType[]>([])
 const contacts = ref<ContactsType[]>([])
 const phones = ref<String[]>([])
 const navigationStore = useNavigationStore()
 const contactsStore = useContactsStore()
-
-const getNavLinks = () => {
-  return navigationStore.getNavigationLinks()
-}
 
 const getContacts = () => {
   return contactsStore.getContacts()
 }
 
 onMounted(async () => {
-  navLinks.value = getNavLinks()
   contacts.value = getContacts()
   phones.value = contacts.value.map((contact) => contact.tel).flat()
-  console.log(phones.value)
 })
 </script>
 <style lang="scss">

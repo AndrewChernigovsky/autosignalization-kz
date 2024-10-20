@@ -16,6 +16,18 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     DB_NAME: process.env.DB_NAME,
+    nitroLoggingEnabled: false,
+  },
+  logLevel: 'silent',
+  nitro: {
+    esbuild: {
+      options: {
+        drop: ['console'], // This will remove console logs in production
+      },
+    },
+  },
+  features: {
+    devLogs: false, // Disable development logs
   },
   // plugins: ['~/plugins/global-components.ts'],
   components: {
@@ -27,6 +39,8 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
+          api: 'modern',
+          silenceDeprecations: ['import', 'global-builtin'],
           additionalData: '@use "@/assets/styles/_variables.scss" as *;',
         },
       },
