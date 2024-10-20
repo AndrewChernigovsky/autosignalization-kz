@@ -1,8 +1,14 @@
 <template>
   <nav class="nav">
-    <ul>
-      <li v-for="link in navLinks" :key="link.path">
-        <nuxt-link :to="link.path">{{ link.name }}</nuxt-link>
+    <ul class="nav-list">
+      <li class="nav-item" v-for="link in navLinks" :key="link.path">
+        <nuxt-link
+          class="nav-link"
+          :to="link.path"
+          active-class="active"
+          exact-active-class="exact-active"
+          >{{ link.name }}</nuxt-link
+        >
       </li>
     </ul>
   </nav>
@@ -23,4 +29,22 @@ onMounted(async () => {
   navLinks.value = getNavLinks()
 })
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.nav-list {
+  display: grid;
+  gap: 10px;
+  justify-content: flex-end;
+}
+.nav-link {
+  color: $white;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.active {
+  font-weight: bold;
+}
+.exact-active {
+  padding-bottom: 5px;
+  border-bottom: 1px solid $white;
+}
+</style>

@@ -1,4 +1,4 @@
-import { DataTypes, Model } from "sequelize";
+import { DataTypes, Model } from 'sequelize'
 
 export class UserModel extends Model {}
 
@@ -26,5 +26,5 @@ UserModel.init(
       },
     },
   },
-  { sequelize, tableName: "users" }
-);
+  { sequelize, tableName: 'users' },
+)

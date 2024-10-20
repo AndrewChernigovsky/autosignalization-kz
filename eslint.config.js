@@ -1,6 +1,8 @@
-import { defineConfig } from 'eslint-define-config';
-
-export default defineConfig({
+const config = {
+  root: true,
+  env: {
+    node: true,
+  },
   extends: [
     'plugin:vue/essential',
     'plugin:@typescript-eslint/recommended',
@@ -11,10 +13,7 @@ export default defineConfig({
   },
   overrides: [
     {
-      files: ['*.ts', '*.vue'],
-      rules: {
-        // Ваши специфические правила для .ts и .vue файлов
-      },
+      files: ['*.ts', '*.vue']
     },
   ],
   rules: {
@@ -28,4 +27,6 @@ export default defineConfig({
     ".output",
     ".nuxt"
   ],
-});
+};
+
+module.exports = config;
