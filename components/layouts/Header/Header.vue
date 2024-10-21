@@ -1,21 +1,14 @@
 <template>
   <header class="header">
     <div class="container">
-      <Logo />
-      <Menu />
-      <a href="https://maps.app.goo.gl/FwrjA4jjWrHHzazk8">
-        <img src="" alt="" />
-      </a>
-      <Geo />
-      <Cart />
-      <Phone />
-      <ul>
-        <li v-for="phone in phones" :key="phone">
-          <YButton :btn="false" :path="'tel:' + phone.replace(/\s+/g, '')">{{
-            phone
-          }}</YButton>
-        </li>
-      </ul>
+      <div class="header-head">
+        <Logo />
+        <div class="menu">
+          <Geo link :width="30" :height="30" v-if="!isVisibleRef" />
+          <Cart v-if="!isVisibleRef" />
+          <Menu @is-visible="(state) => isVisible(state)" />
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -25,13 +18,19 @@ import { useContactsStore } from '@/stores/contacts'
 import type { ContactsType } from '~/types/ContactsType'
 import Cart from '@/components/Cart/Cart.vue'
 import Menu from '@/components/Menu/Menu.vue'
+import Geo from '@/components/Geo/Geo.vue'
 
 const contacts = ref<ContactsType[]>([])
 const phones = ref<String[]>([])
+const isVisibleRef = ref<Boolean>(false)
 const contactsStore = useContactsStore()
 
 const getContacts = () => {
   return contactsStore.getContacts()
+}
+
+function isVisible(state: boolean) {
+  isVisibleRef.value = state
 }
 
 onMounted(async () => {
@@ -39,7 +38,24 @@ onMounted(async () => {
   phones.value = contacts.value.map((contact) => contact.tel).flat()
 })
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.header-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 header {
   background: linear-gradient(#010308, #000208);
 }

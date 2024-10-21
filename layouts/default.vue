@@ -8,6 +8,6 @@
   </div>
 </template>
 <script setup lang="ts">
-import Header from '@/components/layouts/Header/Header'
+import Header from '@/components/layouts/Header/Header.vue'
 // import Footer from '@/components/layouts/Footer/Footer';
 </script>

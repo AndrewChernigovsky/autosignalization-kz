@@ -33,4 +33,32 @@ onMounted(async () => {
   })
 })
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  li {
+    padding-bottom: 5px;
+    &:not(:first-of-type) {
+      padding-top: 5px;
+      border-top: 2px solid $white;
+    }
+  }
+  a {
+    color: $white;
+    text-decoration: none;
+  }
+}
+</style>

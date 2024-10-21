@@ -37,7 +37,6 @@ import Phone from '@/components/Phone/Phone.vue'
 
 const navLinks = ref<NavigationLinksType[]>([])
 const isVisible = ref<Boolean>(false)
-const emit = defineEmits(['isVisible'])
 
 const btnMenuClasses = computed(() =>
   isVisible.value ? 'menu-btn menu-btn--closed' : 'menu-btn',
@@ -54,7 +53,6 @@ const getNavLinks = () => {
 
 function toggleMenu() {
   isVisible.value = !isVisible.value
-  emit('isVisible', isVisible.value)
   if (isVisible.value) {
     document.querySelector('body').style.overflow = 'hidden'
   } else {
@@ -138,8 +136,6 @@ onMounted(async () => {
   }
 
   &--closed {
-    align-self: flex-start;
-
     &::after {
       box-shadow: none;
       transform: rotate(-45deg);

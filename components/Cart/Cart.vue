@@ -26,9 +26,18 @@ watch(
 .link {
   cursor: pointer;
   display: flex;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   position: relative;
+
+  @media screen and (min-width: $desktop) {
+    width: 50px;
+    height: 50px;
+  }
+
+  img {
+    margin-top: -10px;
+  }
 
   .counter {
     background-color: $red;
