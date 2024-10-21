@@ -1,15 +1,13 @@
 <template>
   <div class="geo">
-    <a
-      href="https://maps.app.goo.gl/72eQCZUbxVCKh43PA"
-      class="geo-image"
-      :style="sizesImage"
-    >
-      <Geo />
+    <a href="https://maps.app.goo.gl/72eQCZUbxVCKh43PA" class="geo-image">
+      <div class="image" :style="sizesImage">
+        <Geo />
+      </div>
+      <address v-if="!link">
+        {{ address }}
+      </address>
     </a>
-    <address v-if="!link">
-      {{ address }}
-    </address>
   </div>
 </template>
 <script setup lang="ts">
@@ -51,7 +49,7 @@ onMounted(async () => {
 })
 </script>
 <style lang="scss">
-.geo {
+.geo-image {
   display: flex;
   align-items: center;
   gap: 10px;

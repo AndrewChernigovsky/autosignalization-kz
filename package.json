@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
+    "@morev/vue-transitions": "^3.0.2",
     "@nuxtjs/svg-sprite": "^1.0.2",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.5",

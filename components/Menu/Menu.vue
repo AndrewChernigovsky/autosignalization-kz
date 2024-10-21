@@ -3,29 +3,30 @@
     <button type="button" :class="btnMenuClasses" @click="toggleMenu">
       <span class="visually-hidden">Открыть меню</span>
     </button>
-    <div class="menu-wrapper" v-if="isVisible">
-      <div class="menu-btns">
-        <Search />
-      </div>
-      <nav class="nav">
-        <ul class="nav-list">
-          <li class="nav-item" v-for="link in navLinks" :key="link.path">
-            <nuxt-link
-              class="nav-link"
-              :to="link.path"
-              active-class="active"
-              exact-active-class="exact-active"
-            >
-              {{ link.name }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </nav>
-      <div class="contacts">
-        <Geo />
-        <Phone />
-      </div>
-    </div>
+    <transition-fade name="slide-fade">
+      <div class="menu-wrapper" v-if="isVisible">
+        <div class="menu-btns">
+          <Search />
+        </div>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item" v-for="link in navLinks" :key="link.path">
+              <nuxt-link
+                class="nav-link"
+                :to="link.path"
+                active-class="active"
+                exact-active-class="exact-active"
+              >
+                {{ link.name }}
+              </nuxt-link>
+            </li>
+          </ul>
+        </nav>
+        <div class="contacts">
+          <Geo :width="30" :height="30" />
+          <Phone />
+        </div></div
+    ></transition-fade>
   </div>
 </template>
 <script setup lang="ts">
@@ -34,7 +35,7 @@ import { useNavigationStore } from '@/stores/navigation'
 import type { NavigationLinksType } from '~/types/NavigationLinksType'
 import Geo from '@/components/Geo/Geo.vue'
 import Phone from '@/components/Phone/Phone.vue'
-
+import { TransitionFade } from '@morev/vue-transitions'
 const navLinks = ref<NavigationLinksType[]>([])
 const isVisible = ref<Boolean>(false)
 const emit = defineEmits(['isVisible'])
@@ -55,11 +56,6 @@ const getNavLinks = () => {
 function toggleMenu() {
   isVisible.value = !isVisible.value
   emit('isVisible', isVisible.value)
-  if (isVisible.value) {
-    document.querySelector('body').style.overflow = 'hidden'
-  } else {
-    document.querySelector('body').style.overflow = 'auto'
-  }
 }
 
 onMounted(async () => {
@@ -67,6 +63,25 @@ onMounted(async () => {
 })
 </script>
 <style lang="scss">
+.slide-fade-enter-active,
+.slide-fade-leave-active {
+  transition:
+    transform 0.8s ease,
+    opacity 0.8s ease;
+}
+
+.slide-fade-enter,
+.slide-fade-leave-to {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.slide-fade-enter-to,
+.slide-fade-leave {
+  transform: translateX(0);
+  opacity: 1;
+}
+
 .nav {
   padding-right: 10px;
   flex-grow: 1;
@@ -85,6 +100,11 @@ onMounted(async () => {
   color: $white;
   text-decoration: none;
   text-transform: uppercase;
+  padding-bottom: 5px;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    border-bottom: 1px solid $white;
+  }
 }
 
 .active {
@@ -92,25 +112,33 @@ onMounted(async () => {
 }
 
 .exact-active {
-  padding-bottom: 5px;
   border-bottom: 1px solid $white;
 }
 
 .menu {
   &--opened {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 200;
     min-height: 100vh;
     min-width: 100%;
     overflow-y: scroll;
+
+    .menu-wrapper {
+      padding: 10px;
+    }
+
+    .menu-btn {
+      margin-top: 25px;
+    }
   }
 }
 
 .menu-wrapper {
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .menu-btn {

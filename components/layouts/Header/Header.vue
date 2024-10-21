@@ -2,19 +2,22 @@
   <header class="header">
     <div class="container">
       <div class="header-head">
-        <Logo v-if="!isVisibleRef && isDesktop < 1024" />
+        <Logo v-if="isDesktop < 1024" :class="isVisibleClass" />
         <div class="menu">
           <Geo
             link
             :width="30"
             :height="30"
-            v-if="!isVisibleRef && isDesktop < 1024"
+            v-if="isDesktop < 1024"
+            :class="isVisibleClass"
           />
-          <Cart v-if="!isVisibleRef && isDesktop < 1024" />
+          <Cart v-if="isDesktop < 1024" :class="isVisibleClass" />
+
           <Menu
             @is-visible="(state) => isVisible(state)"
             v-if="isDesktop < 1024"
           />
+
           <MenuDesktop v-if="isDesktop >= 1024" />
         </div>
       </div>
@@ -22,7 +25,7 @@
   </header>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, computed } from 'vue'
 import { useContactsStore } from '@/stores/contacts'
 import type { ContactsType } from '~/types/ContactsType'
 import Cart from '@/components/Cart/Cart.vue'
@@ -35,6 +38,8 @@ const phones = ref<string[]>([])
 const isDesktop = ref<number>(window.innerWidth)
 const isVisibleRef = ref<boolean>(false)
 const contactsStore = useContactsStore()
+
+const isVisibleClass = computed(() => (isVisibleRef.value ? 'absolute' : ''))
 
 const getContacts = () => {
   return contactsStore.getContacts()
@@ -59,11 +64,17 @@ onBeforeUnmount(() => {
 })
 </script>
 <style lang="scss" scoped>
+.absolute {
+  z-index: -1;
+  position: absolute;
+}
+
 .menu {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 .header-head {
   display: flex;
   align-items: center;
