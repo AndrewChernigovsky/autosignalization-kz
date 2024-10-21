@@ -36,7 +36,7 @@
         </ul>
       </div>
       <div class="email-container">
-        <ul class="email-list list">
+        <ul class="email-list list-style-none">
           <li class="email-item">
             <a class="email-link link" href="email:autosecurity.kz@mail.ru">autosecurity.kz@mail.ru</a>
           </li>
@@ -126,6 +126,7 @@ onMounted(async () => {
   }
 
   .phone-container {
+    margin-bottom: 10px;
     grid-column: 3 / 5;
     justify-self: flex-end;
     font-family: 'Oswald', 'Arial', sans-serif;
@@ -157,5 +158,94 @@ onMounted(async () => {
       mask-size: 20px;
     }
   }
+
+  .email-container {
+    margin-bottom: 10px;
+    grid-column: 1 / -1;
+    font-family: 'Oswald', 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700; 
+  }
+
+  .email-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+
+  .email-link {
+    position: relative;
+
+      &::before {
+      content: '';
+      position: absolute;
+      right: calc(-20px - 17px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: #D10000;
+      mask-image: url('~/assets/icons/message-icon.svg');
+      mask-repeat: no-repeat;
+      mask-size: 20px;
+      }
+    }
+
+    .home-container {
+      grid-column: 1/ -1;
+      margin-bottom: 14px;
+      font-family: 'Oswald', 'Arial', sans-serif;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+
+      & .home-link {
+        position: relative;
+
+        &::before {
+        content: '';
+        position: absolute;
+        right: calc(-20px - 46px);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background-color: #D10000;
+        mask-image: url('~/assets/icons/home-icon.svg');
+        mask-repeat: no-repeat;
+        mask-size: 20px;
+        }
+      }
+    }
+
+    .geo-container {
+      grid-column: 1/ -1;
+      margin-bottom: 14px;
+      font-family: 'Oswald', 'Arial', sans-serif;
+      font-size: 16px;
+      line-height: 22px;
+      font-weight: 700;
+      justify-self: flex-end;
+      align-self: center;
+
+      & .geo-link {
+        position: relative;
+
+        &::before {
+        content: '';
+        position: absolute;
+        left: calc(-30px - 23px);
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        background-color: #D10000;
+        mask-image: url('~/assets/icons/geo.svg');
+        mask-repeat: no-repeat;
+        mask-size: 30px;
+        }
+      }
+    }
   
 </style>
