@@ -26,7 +26,7 @@
         </ul>
       </div>
       <div class="phone-container">
-        <ul class="phone-list list">
+        <ul class="phone-list list-style-none">
           <li class="phone-item">
             <a class="phone-link link" href="tel:77077478212">+7 707 747 8212</a>
           </li>
@@ -70,9 +70,21 @@ onMounted(async () => {
 </script>
 <style lang="scss">
   .footer {
+    display: flex;
+    justify-content: center;
     padding: 10px 0;
     color: #ffffff;
     background-image: linear-gradient(180deg, #121010 0, #0E0C0C 100%);
+
+    & .container {
+      padding: 0 10px;
+
+      @media screen and (min-width: 720px) {
+        padding: 0 20px;
+      }
+    }
+
+
   }
 
   .logo-container {
@@ -111,6 +123,39 @@ onMounted(async () => {
   
   .social-link {
     display: block;
+  }
+
+  .phone-container {
+    grid-column: 3 / 5;
+    justify-self: flex-end;
+    font-family: 'Oswald', 'Arial', sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+  }
+
+  .phone-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px; 
+  }
+
+  .phone-link {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(-20px - 19px);
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      background-color: #D10000;
+      mask-image: url('~/assets/icons/phone-no-border.svg');
+      mask-repeat: no-repeat;
+      mask-size: 20px;
+    }
   }
   
 </style>
