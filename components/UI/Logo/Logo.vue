@@ -24,6 +24,11 @@ import Logo from '@/assets/images/logo.png'
   img {
     width: 58px;
     height: 40px;
+
+    @media screen and (min-width: $desktop-min) {
+      width: 122px;
+      height: 84px;
+    }
   }
 }
 
