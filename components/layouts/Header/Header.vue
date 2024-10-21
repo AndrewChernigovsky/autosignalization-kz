@@ -3,7 +3,6 @@
     <div class="container">
       <Logo />
       <Menu />
-      <Search />
       <a href="https://maps.app.goo.gl/FwrjA4jjWrHHzazk8">
         <img src="" alt="" />
       </a>
@@ -22,16 +21,13 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import { useNavigationStore } from '@/stores/navigation'
 import { useContactsStore } from '@/stores/contacts'
-import type { NavigationLinksType } from '~/types/NavigationLinksType'
 import type { ContactsType } from '~/types/ContactsType'
 import Cart from '@/components/Cart/Cart.vue'
 import Menu from '@/components/Menu/Menu.vue'
 
 const contacts = ref<ContactsType[]>([])
 const phones = ref<String[]>([])
-const navigationStore = useNavigationStore()
 const contactsStore = useContactsStore()
 
 const getContacts = () => {
