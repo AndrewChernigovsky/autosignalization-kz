@@ -10,6 +10,10 @@
     <button @click="fetchUsers">Загрузить пользователей</button>
     <YButton :ytype="ButtonsEnum.secondary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.primary">sdfsdfsdf</YButton>
+    <CountButton
+      :quantity="5"
+      @get-quantity="(quantity) => console.log(quantity)"
+    />
     <!-- <Search test="TEST" /> -->
   </ClientOnly>
 </template>

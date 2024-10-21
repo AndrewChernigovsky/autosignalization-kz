@@ -24,6 +24,7 @@ const navigationStore = useNavigationStore()
 const getNavLinks = () => {
   return navigationStore.getNavigationLinks()
 }
+
 onMounted(async () => {
   console.log(getNavLinks())
   navLinks.value = getNavLinks()
