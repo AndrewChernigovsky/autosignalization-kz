@@ -5,6 +5,7 @@
     v-if="btn"
     :ytype="ytype"
     :disabled="states.disabled"
+    @click="handleClick"
   >
     <slot />
   </button>
@@ -34,7 +35,10 @@ const props = defineProps({
     type: Boolean,
   },
 })
-
+const emit = defineEmits()
+function handleClick(event: MouseEvent) {
+  emit('click', event)
+}
 const buttonClass = computed(() => {
   return ['base', props.ytype || '', { disabled: props.disabled }]
 })
@@ -55,7 +59,7 @@ const states = computed(() => {
   box-sizing: border-box;
   border: 1px solid $white-grey;
   border-radius: 5px;
-  background: linear-gradient(180.00deg, $black-btn-bg,$red-btn-bg);
+  background: linear-gradient(180deg, $black-btn-bg, $red-btn-bg);
   color: $white;
   font-family: DIN Pro;
   font-size: 36px;
@@ -67,7 +71,7 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180.00deg, $black-btn-hover,$red-btn-hover);
+    background: linear-gradient(180deg, $black-btn-hover, $red-btn-hover);
     border-color: none;
   }
 
@@ -75,22 +79,27 @@ const states = computed(() => {
     box-sizing: border-box;
     border-color: $white-grey;
     border-radius: 5px;
-    background: linear-gradient(180.00deg, $black-btn-hover,$red-btn-hover);
+    background: linear-gradient(180deg, $black-btn-hover, $red-btn-hover);
   }
 
   &:active {
-    background: linear-gradient(180.00deg, $red-btn-active,$black-btn-active);
+    background: linear-gradient(180deg, $red-btn-active, $black-btn-active);
   }
 
   &:disabled {
-    background: linear-gradient(180.00deg, $gray-btn-disabled,$black-btn-disabled);
-}}
+    background: linear-gradient(
+      180deg,
+      $gray-btn-disabled,
+      $black-btn-disabled
+    );
+  }
+}
 
 .secondary {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color:$gray-light;
+  background-color: $gray-light;
   max-width: 100%;
   border: 1px solid $white;
   border-radius: 5px;
@@ -104,23 +113,34 @@ const states = computed(() => {
   text-transform: uppercase;
   padding: 18px 60px;
   cursor: pointer;
-  
-  
+
   &:hover {
     border-radius: 5px;
-    background: linear-gradient(180.00deg, $black-link-hover-1,$black-link-hover-2);
+    background: linear-gradient(
+      180deg,
+      $black-link-hover-1,
+      $black-link-hover-2
+    );
   }
 
   &:focus {
     border: 1px solid $white;
     border-radius: 5px;
-    background: linear-gradient(180.00deg, $black-link-hover-1,$black-link-hover-2);
+    background: linear-gradient(
+      180deg,
+      $black-link-hover-1,
+      $black-link-hover-2
+    );
   }
 
   &:active {
     border: 1px solid $white;
     border-radius: 5px;
-    background: linear-gradient(180.00deg,$black-link-active-1,$black-link-active-2);
+    background: linear-gradient(
+      180deg,
+      $black-link-active-1,
+      $black-link-active-2
+    );
   }
 }
 
