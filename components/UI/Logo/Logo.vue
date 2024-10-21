@@ -19,7 +19,17 @@ import Logo from '@/assets/images/logo.png'
 .logo {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
+
+  img {
+    width: 58px;
+    height: 40px;
+
+    @media screen and (min-width: $desktop-min) {
+      width: 122px;
+      height: 84px;
+    }
+  }
 }
 
 p {
@@ -33,5 +43,12 @@ p {
 }
 .text-secondary {
   color: $red;
+}
+
+.text {
+  p {
+    margin: 0;
+    font-weight: 700;
+  }
 }
 </style>

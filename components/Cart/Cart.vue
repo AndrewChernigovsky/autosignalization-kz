@@ -1,10 +1,12 @@
 <template>
-  <nuxt-link class="link" to="/cart"
-    ><Cart />
-    <div class="counter" v-if="countItems > 0">
-      {{ countItems }}
-    </div>
-  </nuxt-link>
+  <div class="cart">
+    <nuxt-link class="link" to="/cart"
+      ><Cart />
+      <div class="counter" v-if="countItems > 0">
+        {{ countItems }}
+      </div>
+    </nuxt-link>
+  </div>
 </template>
 <script setup lang="ts">
 import { ref, watch } from 'vue'
@@ -23,12 +25,29 @@ watch(
 )
 </script>
 <style lang="scss" scoped>
+.cart {
+  display: flex;
+  align-items: center;
+}
 .link {
   cursor: pointer;
   display: flex;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   position: relative;
+
+  @media screen and (min-width: $desktop-min) {
+    width: 50px;
+    height: 50px;
+  }
+
+  img {
+    margin-top: -10px;
+
+    @media screen and (min-width: $desktop-min) {
+      margin-top: auto;
+    }
+  }
 
   .counter {
     background-color: $red;
@@ -36,11 +55,22 @@ watch(
     min-width: 20px;
     height: 20px;
     position: absolute;
-    color: white;
+    color: $white;
     right: -10px;
     top: -10px;
     text-align: center;
     padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (min-width: $desktop-min) {
+      min-width: 30px;
+      height: 30px;
+      font-size: 20px;
+      line-height: 28px;
+      font-family: $secondary-font;
+    }
   }
 }
 </style>

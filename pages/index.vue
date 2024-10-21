@@ -12,7 +12,7 @@
     <YButton :ytype="ButtonsEnum.primary">sdfsdfsdf</YButton>
     <CountButton
       :quantity="5"
-      @get-quantity="(quantity) => console.log(quantity)"
+      @get-quantity="(quantity: number) => console.log(quantity)"
     />
     <!-- <Search test="TEST" /> -->
   </ClientOnly>
