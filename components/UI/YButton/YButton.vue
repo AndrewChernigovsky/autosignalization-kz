@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="buttonClass"
+    :class="[buttonClass, customClass]"
     :type="typeButton ? typeButton : 'button'"
     v-if="btn"
     :ytype="ytype"
@@ -33,6 +33,10 @@ const props = defineProps({
   },
   disabled: {
     type: Boolean,
+  },
+  customClass: { // Добавьте этот prop
+    type: String,
+    default: ''
   },
 })
 const emit = defineEmits()
@@ -143,7 +147,37 @@ const states = computed(() => {
     );
   }
 }
+.count-button {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 100px;
+  min-height: 80px;
+  font-size: 82px;
+  color: white;
+  border-radius: 22px;
+  background: rgb(66, 64, 64);
+  border: none;
 
+  &::after {
+    content: '';
+    min-width: 80px;
+    min-height: 8px;
+    background-color: white;
+    z-index: 100;
+  }
+
+  &:last-child::before {
+    content: '';
+    position: absolute;
+    min-width: 8px;
+    min-height: 80px;
+    background-color: white;
+    z-index: 100;
+  }
+
+}
 .disabled {
   opacity: 0.5;
 }
