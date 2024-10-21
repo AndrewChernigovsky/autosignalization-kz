@@ -4,8 +4,17 @@
   box-sizing: border-box;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: 'DINPRO', 'Arial', sans-serif;
+  min-height: 100%;
+}
+
+main {
+  min-height: calc(100vh - 60px);
 }
 
 img {
@@ -43,7 +52,7 @@ img {
 
   @media screen and (min-width: 1440px) {
     grid-template-columns: repeat(12, minmax(80px, 1fr));
-    
+
   }
 }
 

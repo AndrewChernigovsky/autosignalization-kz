@@ -104,13 +104,13 @@ onMounted(async () => {
     z-index: 200;
     min-height: 100vh;
     min-width: 100%;
+    overflow-y: scroll;
   }
 }
 
 .menu-wrapper {
   display: flex;
   flex-direction: column;
-  // grid-template-rows: 80px;
 }
 
 .menu-btn {
