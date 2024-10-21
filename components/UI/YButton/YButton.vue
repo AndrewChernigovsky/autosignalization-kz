@@ -1,15 +1,11 @@
 <template>
-  <button
-    :class="[buttonClass, customClass]"
-    :type="typeButton ? typeButton : 'button'"
-    v-if="btn"
-    :ytype="ytype"
-    :disabled="states.disabled"
-    @click="handleClick"
-  >
+  <button :class="[buttonClass, customClass]" :type="typeButton ? typeButton : 'button'" v-if="btn" :ytype="ytype"
+    :disabled="states.disabled" @click="handleClick">
     <slot />
   </button>
-  <a :href="path" v-if="btn === false"><slot /></a>
+  <a :href="path" v-if="btn === false">
+    <slot />
+  </a>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -91,11 +87,9 @@ const states = computed(() => {
   }
 
   &:disabled {
-    background: linear-gradient(
-      180deg,
-      $gray-btn-disabled,
-      $black-btn-disabled
-    );
+    background: linear-gradient(180deg,
+        $gray-btn-disabled,
+        $black-btn-disabled );
   }
 }
 
@@ -120,33 +114,28 @@ const states = computed(() => {
 
   &:hover {
     border-radius: 5px;
-    background: linear-gradient(
-      180deg,
-      $black-link-hover-1,
-      $black-link-hover-2
-    );
+    background: linear-gradient(180deg,
+        $black-link-hover-1,
+        $black-link-hover-2 );
   }
 
   &:focus {
     border: 1px solid $white;
     border-radius: 5px;
-    background: linear-gradient(
-      180deg,
-      $black-link-hover-1,
-      $black-link-hover-2
-    );
+    background: linear-gradient(180deg,
+        $black-link-hover-1,
+        $black-link-hover-2 );
   }
 
   &:active {
     border: 1px solid $white;
     border-radius: 5px;
-    background: linear-gradient(
-      180deg,
-      $black-link-active-1,
-      $black-link-active-2
-    );
+    background: linear-gradient(180deg,
+        $black-link-active-1,
+        $black-link-active-2 );
   }
 }
+
 .count-button {
   padding: 0;
   display: flex;
@@ -178,6 +167,7 @@ const states = computed(() => {
   }
 
 }
+
 .disabled {
   opacity: 0.5;
 }
