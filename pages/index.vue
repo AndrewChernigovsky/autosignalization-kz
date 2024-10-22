@@ -9,11 +9,9 @@
     </ul>
     <button @click="fetchUsers">Загрузить пользователей</button>
     <YButton :ytype="ButtonsEnum.secondary">Подробнее</YButton>
-    <YButton :ytype="ButtonsEnum.primary">sdfsdfsdf</YButton>
-    <CountButton
-      :quantity="5"
-      @get-quantity="(quantity: number) => console.log(quantity)"
-    />
+    <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
+    <YButton :ytype="ButtonsEnum.tabButton">Подробнее</YButton>
+    <CountButton :quantity="5" @get-quantity="(quantity: number) => console.log(quantity)" />
     <!-- <Search test="TEST" /> -->
   </ClientOnly>
 </template>
