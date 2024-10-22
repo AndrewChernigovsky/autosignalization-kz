@@ -28,12 +28,12 @@ export default defineNuxtConfig({
   nitro: {
     esbuild: {
       options: {
-        drop: ['console'], // This will remove console logs in production
+        drop: ['console'],
       },
     },
   },
   features: {
-    devLogs: false, // Disable development logs
+    devLogs: false,
   },
   plugins: ['~/plugins/global-components.ts'],
   components: {

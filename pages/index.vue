@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
-    <h2>Index</h2>
+    <div class="container">
+     <h2>Index</h2>
     <h1>Пользователи</h1>
     <ul>
       <li v-for="user in userStore.users" :key="user.id">
@@ -12,7 +13,8 @@
     <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.tabButton">Подробнее</YButton>
     <CountButton :quantity="5" @get-quantity="(quantity: number) => console.log(quantity)" />
-    <!-- <Search test="TEST" /> -->
+    </div>
+
   </ClientOnly>
 </template>
 <script lang="ts" setup>

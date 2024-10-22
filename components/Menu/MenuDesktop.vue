@@ -78,6 +78,10 @@ onMounted(async () => {
   align-items: center;
   grid-column: 1/13;
   justify-content: center;
-  gap: 10%;
+  gap: 5%;
+
+  div:first-of-type {
+    min-width: 640px;
+  }
 }
 </style>

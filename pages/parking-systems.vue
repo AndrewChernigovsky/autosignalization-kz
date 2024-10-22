@@ -2,7 +2,7 @@
   <ClientOnly>
     <div class="container">
       <section>
-        <h2>О нас</h2>
+        <h2>Парковочные системы</h2>
       </section>
     </div>
   </ClientOnly>
