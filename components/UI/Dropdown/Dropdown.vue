@@ -1,8 +1,11 @@
 <template>
   <div class="dropdown">
-    <button class="drop-button" type="button" @click="toggleList">
+    <button class="drop-button" :class="{ 'active-down': isOpened }" type="button" @click="toggleList">
       <span class="visually-hidden">{{ text }}</span>
     </button>
+    <div class="bottom-line">
+      <span class="bottom-circle"></span>
+    </div>
     <ul class="list" :class="{ 'is-open': isOpened }" ref="dropdownList">
       <li v-for="item in items" :key="item">{{ item }}</li>
     </ul>
@@ -45,9 +48,28 @@ watch(isOpened, (newValue: string) => {
 })
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .dropdown {
   position: relative;
+}
+
+.bottom-line {
+  position: absolute;
+  width: 242px;
+  height: 4px;
+  background: $white;
+  top: 65px;
+  left: 4px;
+}
+
+.bottom-circle {
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  background-color: $white;
+  top: -5px;
+  left: -4px;
+  border-radius: 50%;
 }
 
 .list {
@@ -59,6 +81,7 @@ watch(isOpened, (newValue: string) => {
 .is-open {
   max-height: none;
 }
+
 
 .drop-button {
   width: 48px;
@@ -103,6 +126,67 @@ watch(isOpened, (newValue: string) => {
     &::before {
       min-width: 18px;
       left: 5px;
+    }
+  }
+
+  &:active {
+
+
+    &::after {
+      min-width: 18px;
+      right: 8px;
+      transform: rotate(45deg) translate(-2%, 0);
+    }
+
+    &::before {
+      min-width: 18px;
+      left: 8px;
+      transform: rotate(-45deg) translate(2%, 0);
+    }
+
+    &:focus {
+      border: 4px solid $white-c9c9c9;
+
+      &::after {
+        min-width: 18px;
+        right: 5px;
+      }
+
+      &::before {
+        min-width: 18px;
+        left: 5px;
+      }
+    }
+  }
+}
+
+.active-down {
+
+  &.drop-button {
+    &::after {
+      min-width: 18px;
+      right: 8px;
+      transform: rotate(45deg) translate(-2%, 0);
+    }
+
+    &::before {
+      min-width: 18px;
+      left: 8px;
+      transform: rotate(-45deg) translate(2%, 0);
+    }
+
+    &:focus {
+      border: 4px solid $white-c9c9c9;
+
+      &::after {
+        min-width: 18px;
+        right: 5px;
+      }
+
+      &::before {
+        min-width: 18px;
+        left: 5px;
+      }
     }
   }
 }
