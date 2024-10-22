@@ -1,7 +1,7 @@
 type FooterLinksType = {
-    title: string,
-    path: string,
-    subLinks?: FooterLinksType[]
+  link: string,
+  path: string,
+  subLinks?: FooterLinksType[]
 }
 
-  export type  { FooterLinksType }
+export type { FooterLinksType }
