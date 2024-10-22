@@ -57,6 +57,7 @@ watch(count, (newValue: Number) => {
   border-radius: 12px;
   background: $black-454040-100;
   border: none;
+  cursor: pointer;
 
   &::after {
     content: '';
