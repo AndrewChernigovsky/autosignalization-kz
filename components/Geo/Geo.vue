@@ -43,12 +43,17 @@ onMounted(async () => {
   contacts.value = getContacts()
   contacts.value.forEach((contact) => {
     if (contact.address) {
-      address.value = contact.address // Assuming you want the last address or a specific one
+      address.value = contact.address
     }
   })
 })
 </script>
 <style lang="scss">
+.geo {
+  display: flex;
+  align-items: center;
+}
+
 .geo-image {
   display: flex;
   align-items: center;
