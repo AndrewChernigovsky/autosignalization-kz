@@ -1,35 +1,83 @@
 <template>
-  <input type="search" placeholder="Поиск" name="Поиск" v-model="value" />
-  <ul class="result">
-    <li v-for="res in searchStore.getSearchRes()" :key="res.name">
-      {{ res.name }}
-    </li>
-  </ul>
+  <div class="search">
+    <input
+      type="search"
+      placeholder="Поиск..."
+      name="Поиск"
+      v-model="value"
+      @keydown.enter="handleSearch"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import { useSearchStore } from '~/stores/searchStore'
+
+const props = defineProps({
+  handleFunction: {
+    type: Function,
+  },
+})
 
 const searchStore = useSearchStore()
 const value = ref<string>('')
-
-// Синхронизируем значение input с searchString в хранилище
+function handleSearch() {
+  if (props.handleFunction) props.handleFunction()
+}
 watch(value, (newVal) => {
   searchStore.setSearch(newVal)
 })
-
-// Синхронизируем searchString с value (если это необходимо)
-watch(
-  () => searchStore.searchString,
-  (newVal) => {
-    value.value = newVal
-  },
-)
 </script>
 
 <style lang="scss" scoped>
-.result {
-  color: $white;
+.search {
+  position: relative;
+  min-height: 40px;
+  padding: 0 10px 0 30px;
+  background-color: $white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  min-width: inherit;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 6px;
+    z-index: 1;
+    background-position: center;
+    mask-image: url('@/assets/icons/search.svg');
+    background-color: $black;
+    background-repeat: no-repeat;
+    mask-size: cover;
+  }
+
+  input {
+    border-radius: 30px;
+    min-height: 32px;
+    background-color: $red-64001E;
+    display: flex;
+    color: $white;
+    min-width: 100%;
+    padding: 0 10px;
+    border: 1px solid $black;
+    font-family: $secondary-font;
+    transition: 0.3s ease-in-out;
+    font-size: 18px;
+
+    &:hover,
+    &:focus {
+      background-color: $red-B40036;
+    }
+
+    &:autofill {
+      background-color: $red-B40036;
+    }
+  }
 }
 </style>

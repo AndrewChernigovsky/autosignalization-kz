@@ -6,7 +6,7 @@
     <transition-fade name="slide-fade">
       <div class="menu-wrapper" v-if="isVisible">
         <div class="menu-btns">
-          <Search />
+          <Search :handleFunction="toggleMenu" />
         </div>
         <nav class="nav">
           <ul class="nav-list">
@@ -16,6 +16,7 @@
                 :to="link.path"
                 active-class="active"
                 exact-active-class="exact-active"
+                @click="toggleMenu"
               >
                 {{ link.name }}
               </nuxt-link>
@@ -25,8 +26,9 @@
         <div class="contacts">
           <Geo :width="30" :height="30" />
           <Phone />
-        </div></div
-    ></transition-fade>
+        </div>
+      </div>
+    </transition-fade>
   </div>
 </template>
 <script setup lang="ts">
@@ -102,8 +104,14 @@ onMounted(async () => {
   text-transform: uppercase;
   padding-bottom: 5px;
   transition: 0.3s ease-in-out;
+
   &:hover {
     border-bottom: 1px solid $white;
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
   }
 }
 
@@ -146,6 +154,7 @@ onMounted(async () => {
   height: 50px;
   background: transparent;
   border: none;
+  z-index: 2;
   cursor: pointer;
   position: relative;
   display: flex;
@@ -192,6 +201,10 @@ onMounted(async () => {
   justify-content: space-between;
   align-items: center;
   height: 80px;
+
+  div:first-of-type {
+    min-width: 240px;
+  }
 }
 
 .menu-wrapper {

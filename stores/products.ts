@@ -9,7 +9,7 @@ export const useProductStore = defineStore('product', () => {
       id: 1,
       name: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
       price: 8600,
-      totalInCart: 0,
+      quantity: 0,
       productType: 'Автосигнализации',
       productDescription:
         'Описание товара - Надежный автомобильный охранно-телематический',
@@ -41,7 +41,7 @@ export const useProductStore = defineStore('product', () => {
       id: 2,
       name: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
       price: 5600,
-      totalInCart: 0,
+      quantity: 0,
       productType: 'Парковочные системы',
       productDescription: 'Камера заднего вида с инфракрасной подсветкой',
       inStock: true,
@@ -60,7 +60,7 @@ export const useProductStore = defineStore('product', () => {
     products.value.push(newProducts)
   }
 
-  async function getProducts() {
+  function getProducts() {
     return products.value
   }
 
