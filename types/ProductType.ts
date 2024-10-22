@@ -9,7 +9,7 @@ type DescriptionType = {
 type ProductType = {
   id: number
   title?: string
-  name?: string
+  name: string
   price?: number
   totalInCart?: number
   productType?: string

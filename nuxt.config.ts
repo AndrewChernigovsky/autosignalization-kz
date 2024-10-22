@@ -4,7 +4,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   ssr: false,
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', '@nuxtjs/svg-sprite'],
+  modules: ['@pinia/nuxt', '@nuxtjs/svg-sprite', '@morev/vue-transitions/nuxt'],
+  vueTransitions: {
+    componentDefaultProps: {
+      TransitionExpand: {
+        duration: 500,
+      },
+    },
+  },
   pinia: {
     storesDirs: ['./stores/**'],
   },
@@ -28,7 +35,7 @@ export default defineNuxtConfig({
   features: {
     devLogs: false, // Disable development logs
   },
-  // plugins: ['~/plugins/global-components.ts'],
+  plugins: ['~/plugins/global-components.ts'],
   components: {
     global: true,
     dirs: ['~/components/UI'],

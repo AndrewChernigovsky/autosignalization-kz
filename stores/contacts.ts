@@ -6,6 +6,7 @@ export const useContactsStore = defineStore('contact', () => {
   const contacts = ref<ContactsType[]>([
     {
       tel: ['+7 707 747 8212', '+7 701 747 8212'],
+      address: 'Казахстан, г.Алматы, ул.Абая 145/г, бокс №15.',
     },
   ])
 
