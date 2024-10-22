@@ -61,13 +61,13 @@ const states = computed(() => {
   border-radius: 5px;
   background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
   color: $white;
-  font-family: 'DINPRO';
-  font-size: 36px;
+  font-family: $pimary-font;
+  font-size: 16px; //36px
   font-weight: 700;
-  line-height: 36px;
+  line-height: 14px; //36px
   letter-spacing: 0px;
   text-transform: uppercase;
-  padding: 18px 60px;
+  padding: 10px; //padding: 18px 60px;
   cursor: pointer;
 
   &:hover {
@@ -100,13 +100,13 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: 'DINPRO';
-  font-size: 36px;
+  font-family: $pimary-font;
+  font-size: 16px;
   font-weight: 700;
-  line-height: 36px;
+  line-height: 14px;
   letter-spacing: 0px;
   text-transform: uppercase;
-  padding: 18px 60px;
+  padding: 10px;
   cursor: pointer;
 
   &:hover {
@@ -128,6 +128,51 @@ const states = computed(() => {
         $black-161313-6,
         $black-454040-100);
   }
+}
+
+.tap-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180.00deg, $black-10172d, $blue-0035c6 100%);
+  max-width: 100%;
+  border: 1px solid $white;
+  border-radius: 5px;
+  color: $white;
+  font-family: $pimary-font;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(180.00deg, $black-070101-6, $blue-1a0579-99);
+  }
+
+  &:focus {
+    border: 1px solid $white;
+    background: linear-gradient(180.00deg, $black-070101-6, $blue-1a0579-99);
+  }
+
+  &:active {
+    border: 1px solid $white;
+    background: linear-gradient(180.00deg, $blue-1008fb-6, $black-000000-99);
+  }
+}
+
+@media screen and (min-width:$desktop-min) {
+
+  .primary,
+  .secondary,
+  .tap-button {
+    font-size: 36px;
+    line-height: 36px;
+    padding: 18px 60px;
+  }
+
 }
 
 .disabled {
