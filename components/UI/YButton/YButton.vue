@@ -163,11 +163,51 @@ const states = computed(() => {
   }
 }
 
+.simple {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  max-width: 100%;
+  border: 1px solid $white;
+  border-radius: 5px;
+  color: $white;
+  font-family: $pimary-font;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: linear-gradient(180deg,
+        $black-170f0f-6,
+        $black-2a2424-100);
+  }
+
+  &:focus {
+    border: 1px solid $white;
+    background: linear-gradient(180deg,
+        $black-170f0f-6,
+        $black-2a2424-100);
+  }
+
+  &:active {
+    border: 1px solid $white;
+    background: linear-gradient(180deg,
+        $black-161313-6,
+        $black-454040-100);
+  }
+}
+
 @media screen and (min-width:$desktop-min) {
 
   .primary,
   .secondary,
-  .tap-button {
+  .tap-button,
+  .simple {
     font-size: 36px;
     line-height: 36px;
     padding: 18px 60px;
