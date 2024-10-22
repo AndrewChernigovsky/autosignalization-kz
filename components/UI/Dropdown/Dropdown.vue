@@ -36,7 +36,7 @@ onMounted(() => {
   })
 })
 
-watch(isOpened, (newValue) => {
+watch(isOpened, (newValue: string) => {
   if (dropdownList.value) {
     dropdownList.value.style.maxHeight = newValue
       ? `${dropdownList.value.scrollHeight}px`
@@ -48,6 +48,7 @@ watch(isOpened, (newValue) => {
 <style lang="scss">
 .dropdown {
   position: relative;
+  max-width: 100px;
 }
 
 .list {
