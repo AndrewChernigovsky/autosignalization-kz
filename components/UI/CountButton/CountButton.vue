@@ -53,17 +53,16 @@ watch(count, (newValue: Number) => {
   align-items: center;
   max-width: 100px;
   min-height: 80px;
-  color: white;
+  color: $white;
   border-radius: 22px;
-  background: rgb(66, 64, 64);
+  background: $black-454040-100;
   border: none;
 
   &::after {
     content: '';
     min-width: 70px;
     min-height: 8px;
-    background-color: white;
-    z-index: 100;
+    background-color: $white;
   }
 
   &:last-child::before {
@@ -71,11 +70,8 @@ watch(count, (newValue: Number) => {
     position: absolute;
     min-width: 8px;
     min-height: 70px;
-    background-color: white;
-    z-index: 100;
+    background-color: $white;
   }
-
-
 }
 
 
@@ -88,48 +84,44 @@ watch(count, (newValue: Number) => {
   justify-content: center;
   gap: 30px;
   border-radius: 130px;
-  background: rgb(66, 64, 64);
+  background: $black-454040-100;
 
   &:hover {
-    background: linear-gradient(180.00deg, rgb(69, 11, 11), rgb(33, 0, 0) 100%);
+    background: linear-gradient(180.00deg, $red-450b0b, $black-210000);
 
     .counter {
-      border: 1px solid white;
-      background: linear-gradient(180.00deg, rgba(40, 0, 0, 0.3) 18.235%, rgba(245, 0, 0, 0.3) 100%);
+      border: 1px solid $white;
+      background: linear-gradient(180.00deg, $black-2800004d-19, $red-f500004d-100);
     }
 
     .button-custom {
-      background: linear-gradient(rgb(83, 25, 25), rgb(83, 25, 25), rgb(38, 32, 32));
+      background: linear-gradient($red-531919, $red-531919, $black-262020);
     }
-
-
   }
 
   &:focus {
-    background: linear-gradient(180.00deg, rgb(27, 24, 24) 100%);
+    background: linear-gradient(180.00deg, $black-1b1818-100);
 
     .counter {
-      border: 1px solid white;
-      background: linear-gradient(180.00deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3) 100%, rgba(245, 0, 0, 0.3) 100%);
+      border: 1px solid $white;
+      background: linear-gradient(180.00deg, $black-0000004d, $black-0000004d , $red-f500004d-100);
     }
 
     .button-custom {
-      background: linear-gradient(rgb(38, 32, 32), rgb(38, 32, 32));
+      background: linear-gradient($black-262020, $black-262020);
     }
 
 
   }
-
 
   &:active {
 
     .counter {
-      border: 1px solid white;
-
+      border: 1px solid $white;
     }
 
     .button-custom:active {
-      background: rgb(47, 0, 0);
+      background: $black-2f0000;
     }
   }
 }
@@ -140,8 +132,8 @@ watch(count, (newValue: Number) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(255, 255, 255);
-  border: 1px solid white;
+  color: $white;
+  border: 1px solid $white;
   font-family: 'DINPRO';
   font-size: 48px;
   font-weight: 700;
@@ -152,6 +144,6 @@ watch(count, (newValue: Number) => {
   min-width: 100px;
   min-height: 100px;
   border-radius: 79px;
-  background: linear-gradient(180.00deg, rgba(40, 0, 0, 0.3) 18.235%, rgba(245, 0, 0, 0.3) 100%);
+  background: linear-gradient(180.00deg, $black-2800004d-19, $red-f500004d-100);
 }
 </style>

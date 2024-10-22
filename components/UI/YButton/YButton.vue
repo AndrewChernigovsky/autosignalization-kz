@@ -57,11 +57,11 @@ const states = computed(() => {
   justify-content: center;
   max-width: 100%;
   box-sizing: border-box;
-  border: 1px solid $white-grey;
+  border: 1px solid $white-c9c9c9;
   border-radius: 5px;
-  background: linear-gradient(180deg, $black-btn-bg, $red-btn-bg);
+  background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
   color: $white;
-  font-family: DIN Pro;
+  font-family: 'DINPRO';
   font-size: 36px;
   font-weight: 700;
   line-height: 36px;
@@ -71,25 +71,23 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-btn-hover, $red-btn-hover);
+    background: linear-gradient(180deg, $black-070101-6, $red-790505-99);
     border-color: none;
   }
 
   &:focus {
-    box-sizing: border-box;
-    border-color: $white-grey;
-    border-radius: 5px;
-    background: linear-gradient(180deg, $black-btn-hover, $red-btn-hover);
+    border-color: $white-c9c9c9;
+    background: linear-gradient(180deg, $black-070101-6, $red-790505-99);
   }
 
   &:active {
-    background: linear-gradient(180deg, $red-btn-active, $black-btn-active);
+    background: linear-gradient(180deg, $red-ff0909-6, $black-000000-99);
   }
 
   &:disabled {
     background: linear-gradient(180deg,
-        $gray-btn-disabled,
-        $black-btn-disabled );
+        $black-ff090900-6,
+        $black-000000-99);
   }
 }
 
@@ -97,13 +95,12 @@ const states = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $gray-light;
+  background-color: $black-2f2f2f;
   max-width: 100%;
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  background-color: $black-link-bg;
-  font-family: DIN Pro;
+  font-family: 'DINPRO';
   font-size: 36px;
   font-weight: 700;
   line-height: 36px;
@@ -113,59 +110,24 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    border-radius: 5px;
     background: linear-gradient(180deg,
-        $black-link-hover-1,
-        $black-link-hover-2 );
+        $black-170f0f-6,
+        $black-2a2424-100);
   }
 
   &:focus {
     border: 1px solid $white;
-    border-radius: 5px;
     background: linear-gradient(180deg,
-        $black-link-hover-1,
-        $black-link-hover-2 );
+        $black-170f0f-6,
+        $black-2a2424-100);
   }
 
   &:active {
     border: 1px solid $white;
-    border-radius: 5px;
     background: linear-gradient(180deg,
-        $black-link-active-1,
-        $black-link-active-2 );
+        $black-161313-6,
+        $black-454040-100);
   }
-}
-
-.count-button {
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100px;
-  min-height: 80px;
-  font-size: 82px;
-  color: white;
-  border-radius: 22px;
-  background: rgb(66, 64, 64);
-  border: none;
-
-  &::after {
-    content: '';
-    min-width: 80px;
-    min-height: 8px;
-    background-color: white;
-    z-index: 100;
-  }
-
-  &:last-child::before {
-    content: '';
-    position: absolute;
-    min-width: 8px;
-    min-height: 80px;
-    background-color: white;
-    z-index: 100;
-  }
-
 }
 
 .disabled {
