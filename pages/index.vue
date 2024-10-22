@@ -12,10 +12,8 @@
     <YButton :ytype="ButtonsEnum.secondary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.tabButton">Подробнее</YButton>
-    <CountButton
-      :quantity="5"
-      @get-quantity="(quantity: number) => console.log(quantity)"
-    />
+    <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
+    <CountButton :quantity="5" @get-quantity="(quantity: number) => console.log(quantity)" />
     <Dropdown />
   </ClientOnly>
 </template>
