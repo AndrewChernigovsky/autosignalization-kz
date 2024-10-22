@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown">
-    <button type="button" @click="toggleList">
+    <button class="drop-button" type="button" @click="toggleList">
       <span class="visually-hidden">{{ text }}</span>
     </button>
     <ul class="list" :class="{ 'is-open': isOpened }" ref="dropdownList">
@@ -48,7 +48,6 @@ watch(isOpened, (newValue: string) => {
 <style lang="scss">
 .dropdown {
   position: relative;
-  max-width: 100px;
 }
 
 .list {
@@ -59,5 +58,52 @@ watch(isOpened, (newValue: string) => {
 
 .is-open {
   max-height: none;
+}
+
+.drop-button {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  border: 1px solid $white-c9c9c9;
+  border-radius: 5px;
+  background: linear-gradient(180.00deg, $black-280000-6, $red-ff0000-99);
+
+  &::after {
+    content: '';
+    position: absolute;
+    min-width: 18px;
+    min-height: 2px;
+    background-color: $white;
+    right: 8px;
+    transform: rotate(-45deg) translate(-2%, 0);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    min-width: 18px;
+    min-height: 2px;
+    background-color: $white;
+    left: 8px;
+    transform: rotate(45deg) translate(2%, 0);
+  }
+
+  &:hover {
+    background: linear-gradient(180deg, $black-070101-6, $red)
+  }
+
+  &:focus {
+    border: 4px solid $white-c9c9c9;
+
+    &::after {
+      min-width: 18px;
+      right: 5px;
+    }
+
+    &::before {
+      min-width: 18px;
+      left: 5px;
+    }
+  }
 }
 </style>
