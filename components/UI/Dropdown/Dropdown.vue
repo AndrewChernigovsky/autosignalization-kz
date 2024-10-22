@@ -1,10 +1,13 @@
 <template>
   <div class="dropdown">
-    <button class="drop-button" :class="{ 'active-down': isOpened }" type="button" @click="toggleList">
-      <span class="visually-hidden">{{ text }}</span>
-    </button>
-    <div class="bottom-line">
-      <span class="bottom-circle"></span>
+    <div class="drop-block">
+      <button class="drop-button" :class="{ 'active-down': isOpened }" type="button" @click="toggleList">
+        <span class="visually-hidden">{{ text }}</span>
+      </button>
+      <span class="title-display" v-if="props.title">{{ title }}</span>
+      <div class="bottom-line">
+        <span class="bottom-circle"></span>
+      </div>
     </div>
     <ul class="list" :class="{ 'is-open': isOpened }" ref="dropdownList">
       <li v-for="item in items" :key="item">{{ item }}</li>
@@ -17,6 +20,12 @@ import { computed, ref, onMounted, nextTick } from 'vue'
 
 const isOpened = ref<boolean>(false)
 const items = ref<number[]>([1, 1, 2, 2])
+
+const props = defineProps({
+  title: {
+    type: String,
+  }
+})
 
 const text = computed(() => {
   return isOpened.value ? 'Закрыть список' : 'Раскрыть список'
@@ -52,6 +61,26 @@ watch(isOpened, (newValue: string) => {
 .dropdown {
   position: relative;
 }
+
+.drop-block {
+  position: relative;
+}
+
+.title-display {
+  position: absolute;
+  display: inline-block;
+  top: 10px;
+  left: 60px;
+  color: $white;
+  font-family: $pimary-font;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: 0px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
 
 .bottom-line {
   position: absolute;
