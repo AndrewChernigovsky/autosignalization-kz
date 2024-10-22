@@ -38,7 +38,7 @@ img {
   column-gap: 40px;
 
   @media screen and (min-width: 768px) {
-    grid-template-columns: repeat(8, minmax(56px, 115px));
+    grid-template-columns: repeat(8, minmax(56px, 75px));
   }
 
   @media screen and (min-width: 1440px) {
