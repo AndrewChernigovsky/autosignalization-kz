@@ -48,7 +48,7 @@ onMounted(() => {
   })
 })
 
-watch(isOpened, (newValue: string) => {
+watch(isOpened, (newValue: boolean) => {
   if (dropdownList.value) {
     dropdownList.value.style.maxHeight = newValue
       ? `${dropdownList.value.scrollHeight}px`
