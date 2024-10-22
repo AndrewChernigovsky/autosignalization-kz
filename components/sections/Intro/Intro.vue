@@ -105,7 +105,7 @@ function onSlideChange(swiper: any) {
     top: 0;
     left: 0;
     z-index: -1;
-    background: linear-gradient(black, $black-170f0f-6);
+    background: linear-gradient(black, #170f0f52);
     box-shadow: inset 60px -120px 100px black;
   }
 
