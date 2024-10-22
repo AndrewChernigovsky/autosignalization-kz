@@ -3,4 +3,5 @@ export enum ButtonsEnum {
   secondary = 'secondary',
   countButton = 'count-button',
   tabButton = 'tap-button',
+  simple = 'simple',
 }
