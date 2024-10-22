@@ -22,6 +22,7 @@
             <li>УСТАНОВКА</li>
             <li>РЕМОНТ</li>
           </ul>
+          <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
         </SwiperSlide>
         <SwiperSlide>
           <h2>
@@ -34,6 +35,7 @@
             <li>УСТАНОВКА</li>
             <li>РЕМОНТ</li>
           </ul>
+          <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
         </SwiperSlide>
       </Swiper>
     </div>
@@ -41,6 +43,13 @@
 </template>
 <script setup lang="ts">
 import { Autoplay } from 'swiper/modules'
+import { ButtonsEnum } from '~/enums/ButtonsEnum'
 const modules = [Autoplay]
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+h1,
+h2,
+li {
+  color: $white;
+}
+</style>
