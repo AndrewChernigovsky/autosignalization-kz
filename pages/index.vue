@@ -12,9 +12,14 @@
     <YButton :ytype="ButtonsEnum.secondary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.tabButton">Подробнее</YButton>
-    <CountButton :quantity="5" @get-quantity="(quantity: number) => console.log(quantity)" />
+    <CountButton
+      :quantity="5"
+      @get-quantity="(quantity: number) => console.log(quantity)"
+    />
     <Dropdown
-      :title="'Магазин sdfsdfsdfsd dfsssssssssssss sssssssssssssss sssssssssssssssssssss sssssssssssssssssssssssssss'" />
+      :title="'Магазин sdfsdfsdfsd dfsssssssssssss sssssssssssssss sssssssssssssssssssss sssssssssssssssssssssssssss'"
+    />
+    <Checkbox />
   </ClientOnly>
 </template>
 <script lang="ts" setup>
