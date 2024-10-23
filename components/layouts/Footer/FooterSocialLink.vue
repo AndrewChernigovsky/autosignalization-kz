@@ -23,5 +23,11 @@ const props = defineProps({
   mask-size: 20px;
   mask-position: center;
   background-color: #ff0000;
+
+  @media screen and (min-width: 1440px) {
+    width: 50px;
+    height: 50px;
+    mask-size: 50px;
+  }
 }
 </style>

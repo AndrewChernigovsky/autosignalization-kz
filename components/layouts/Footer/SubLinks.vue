@@ -5,7 +5,7 @@
       <SubLinks
         class="sub-link"
         :links="link.subLinks"
-        v-if="isSubLink"
+        v-if="isSubLink && link.subLinks"
         :class="{ 'sub-link-active': isSubLink }"
       />
     </li>
@@ -39,11 +39,12 @@ const props = defineProps({
   }
 
   &::after {
-    width: 26px;
-    height: 4px;
-    top: 0;
+    width: 14px;
+    height: 14px;
+    top: -5px;
     left: -29px;
     background-color: #ffffff;
+    border-radius: 50%;
   }
 
   &::before {

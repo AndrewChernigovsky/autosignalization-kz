@@ -20,6 +20,18 @@
 .logo-container {
   grid-column: 1/ -1;
   justify-self: center;
+
+  @media screen and (min-width: 768px) {
+    grid-column: 1 / 5;
+    justify-self: stretch;
+    grid-row: 1 / 2;
+  }
+
+  @media screen and (min-width: 1440px) {
+    justify-self: center;
+    grid-column: 1 / 4;
+    padding-top: 20px;
+  }
 }
 
 .logo-link {

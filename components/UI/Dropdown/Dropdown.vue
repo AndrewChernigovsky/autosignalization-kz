@@ -105,7 +105,8 @@ watch(isOpened, (newValue: boolean) => {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-in-out;
-  background-color: red;
+  background-color: transparent;
+  color: $white;
 }
 
 .is-open {
@@ -114,12 +115,13 @@ watch(isOpened, (newValue: boolean) => {
 
 
 .drop-button {
-  min-width: 48px;
+  width: 48px;
   height: 48px;
   position: relative;
   border: 1px solid $white-c9c9c9;
   border-radius: 5px;
   background: linear-gradient(180.00deg, $black-280000-6, $red-ff0000-99);
+  flex-shrink: 0;
 
   &::after {
     content: '';
