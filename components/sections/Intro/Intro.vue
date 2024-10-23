@@ -1,8 +1,22 @@
 <template>
   <section class="intro">
-    <video :src="videoRef" autoplay loop muted>
-      Your browser does not support the video tag.
+    <video
+      preload="none"
+      autoplay
+      loop
+      muted
+      ref="videoRef"
+      :poster="currentVideo.poster"
+    >
+      <source
+        :src="src"
+        :type="currentVideo.type[index]"
+        v-for="(src, index) in currentVideo.src"
+        :key="index"
+      />
+      Ваш браузер не поддерживает тег video.
     </video>
+
     <div class="container">
       <Swiper
         :modules="modules"
@@ -10,7 +24,7 @@
         :loop="true"
         :effect="'creative'"
         :autoplay="{
-          delay: 221000,
+          delay: 6000,
           disableOnInteraction: true,
         }"
         @slideChange="onSlideChange"
@@ -74,22 +88,58 @@
   </section>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 import { Autoplay } from 'swiper/modules'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import type { Swiper } from 'swiper/types'
+import {
+  video1,
+  video2,
+  video3,
+  video4,
+  video1Webm,
+  video2Webm,
+  video3Webm,
+  video4Webm,
+  video1Poster,
+  video2Poster,
+  video3Poster,
+  video4Poster,
+} from './videos'
 
-import video1 from '@/assets/videos/video-1.mp4'
-import video2 from '@/assets/videos/video-2.mp4'
-import video3 from '@/assets/videos/video-3.mp4'
+import type { VideosType } from '~/types/VideosType'
 
 const modules = [Autoplay]
-const videos = ref<string[]>([video1, video2, video3])
-const videoRef = ref<string>(video1)
+const videoRef = ref<HTMLVideoElement | null>(null)
+const videos = ref<VideosType>([
+  {
+    src: [video1Webm, video1],
+    poster: video1Poster,
+    type: ['video/webm', 'video/mp4'],
+  },
+  {
+    src: [video2Webm, video2],
+    poster: video2Poster,
+    type: ['video/webm', 'video/mp4'],
+  },
+  {
+    src: [video3Webm, video3],
+    poster: video3Poster,
+    type: ['video/webm', 'video/mp4'],
+  },
+  {
+    src: [video4Webm, video4],
+    poster: video4Poster,
+    type: ['video/webm', 'video/mp4'],
+  },
+])
 
+const currentSlideIndex = ref(0)
+
+const currentVideo = computed(() => videos.value[currentSlideIndex.value])
 function onSlideChange(swiper: any) {
-  videoRef.value = videos.value[swiper.realIndex]
-  console.log('Slide changed:', swiper.realIndex)
+  currentSlideIndex.value = swiper.realIndex
+  if (videoRef.value != null) videoRef.value.load()
 }
 </script>
 <style lang="scss" scoped>
