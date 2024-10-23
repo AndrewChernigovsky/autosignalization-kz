@@ -124,9 +124,14 @@ const videos = ref<VideosType>([
 const currentSlideIndex = ref(0)
 
 const currentVideo = computed(() => videos.value[currentSlideIndex.value])
+
 function onSlideChange(swiper: any) {
   currentSlideIndex.value = swiper.realIndex
-  if (videoRef.value != null) videoRef.value.load()
+  const newSrc = videos.value[currentSlideIndex.value].src[0]
+  if (videoRef.value != null && videoRef.value.src !== newSrc) {
+    videoRef.value.src = newSrc
+    videoRef.value.play()
+  }
 }
 </script>
 <style lang="scss" scoped>
