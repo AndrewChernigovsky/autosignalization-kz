@@ -1,13 +1,13 @@
 <template>
   <div class="dropdown">
-    <div class="drop-block">
+    <div class="down-block">
       <button class="drop-button" :class="{ 'active-down': isOpened }" type="button" @click="toggleList">
         <span class="visually-hidden">{{ text }}</span>
       </button>
       <span class="title-display" v-if="props.title">{{ title }}</span>
-      <div class="bottom-line">
-        <span class="bottom-circle"></span>
-      </div>
+    </div>
+    <div class="bottom-line">
+      <span class="bottom-circle"></span>
     </div>
     <ul class="list" :class="{ 'is-open': isOpened }" ref="dropdownList">
       <li v-for="item in items" :key="item">{{ item }}</li>
@@ -62,15 +62,16 @@ watch(isOpened, (newValue: boolean) => {
   position: relative;
 }
 
-.drop-block {
-  position: relative;
+.down-block {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 17px;
+  padding-left: 10px;
 }
 
 .title-display {
-  position: absolute;
-  display: inline-block;
-  top: 10px;
-  left: 60px;
+  display: flex;
+  align-items: center;
   color: $white;
   font-family: $pimary-font;
   font-size: 24px;
@@ -83,12 +84,11 @@ watch(isOpened, (newValue: boolean) => {
 
 
 .bottom-line {
-  position: absolute;
+  position: relative;
   width: 242px;
   height: 4px;
+  margin-left: 10px;
   background: $white;
-  top: 65px;
-  left: 4px;
 }
 
 .bottom-circle {
@@ -97,7 +97,7 @@ watch(isOpened, (newValue: boolean) => {
   position: absolute;
   background-color: $white;
   top: -5px;
-  left: -4px;
+  left: 0;
   border-radius: 50%;
 }
 
@@ -105,6 +105,7 @@ watch(isOpened, (newValue: boolean) => {
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-in-out;
+  background-color: red;
 }
 
 .is-open {
@@ -113,7 +114,7 @@ watch(isOpened, (newValue: boolean) => {
 
 
 .drop-button {
-  width: 48px;
+  min-width: 48px;
   height: 48px;
   position: relative;
   border: 1px solid $white-c9c9c9;
