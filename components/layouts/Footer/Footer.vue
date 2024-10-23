@@ -57,8 +57,21 @@ onMounted(async () => {
   font-weight: 700;
 
   @media screen and (min-width: 1440px) {
+    padding-top: 150px;
     font-size: 34px;
     line-height: 46px;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 100vw;
+      height: 4px;
+      position: absolute;
+      background-color: #ffffff;
+      bottom: 86px;
+      right: 50%;
+      transform: translateX(50%);
+    }
   }
 }
 </style>

@@ -17,7 +17,7 @@ const links = getLinks()
 .list {
   display: flex;
   flex-direction: column;
-  row-gap: 10px;
+  row-gap: 34px;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
