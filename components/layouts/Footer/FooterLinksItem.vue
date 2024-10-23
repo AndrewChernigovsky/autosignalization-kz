@@ -43,6 +43,10 @@ const toggleActive = (index) => {
   line-height: 30px;
   margin-left: -30px + 8px;
   grid-column: 2/ -1;
+
+  @media screen and (min-width: 768px) {
+    grid-column: 2 / 4;
+  }
 }
 
 .btn {
@@ -81,5 +85,9 @@ const toggleActive = (index) => {
   display: flex;
   flex-direction: column;
   grid-column: 1 / -1;
+
+  @media screen and (min-width: 768px) {
+    grid-column: 1 / 4;
+  }
 }
 </style>

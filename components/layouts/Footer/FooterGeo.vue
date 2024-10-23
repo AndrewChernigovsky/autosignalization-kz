@@ -17,6 +17,17 @@ const geoLocations = getGeo()
 <style scoped lang="scss">
 .geo-container {
   grid-column: 1 / -1;
+
+  @media screen and (min-width: 768px) {
+    grid-column: 4 / 7;
+    align-self: center;
+  }
+
+  @media screen and (min-width: 1440px) {
+    grid-column: 5 / 9;
+    grid-row: 2 / 3;
+    align-self: center;
+  }
 }
 
 .geo-list {
@@ -29,8 +40,8 @@ const geoLocations = getGeo()
   justify-content: space-between;
   align-items: center;
 
-  &::before {
-    content: '';
+  &::before,
+  &::after {
     display: block;
     mask-image: url('@/assets/icons/geo.svg');
     width: 30px;
@@ -39,6 +50,23 @@ const geoLocations = getGeo()
     mask-size: 30px;
     mask-position: center;
     background-color: #ff0000;
+  }
+
+  &::before {
+    content: '';
+  }
+
+  @media screen and (min-width: 1440px) {
+    &::after {
+      content: '';
+      width: 40px;
+      height: 40px;
+      mask-size: 40px;
+    }
+
+    &::before {
+      content: none;
+    }
   }
 }
 </style>

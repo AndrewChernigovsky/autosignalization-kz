@@ -14,10 +14,18 @@ import SocialList from './FooterSocialList.vue'
   row-gap: 10px;
   grid-column: 1 / 3;
   grid-row: 2 /3;
-}
 
-.social-title {
-  font-size: 16px;
-  line-height: 22px;
+  @media screen and (min-width: 768px) {
+    grid-column: 4 / 7;
+    grid-row: 1 / 2;
+    justify-self: center;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-top: 20px;
+    grid-column: 5 / 9;
+    padding-bottom: 20px;
+  }
 }
 </style>

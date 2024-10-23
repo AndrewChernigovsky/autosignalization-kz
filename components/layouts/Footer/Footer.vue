@@ -3,6 +3,7 @@
     <div class="container grid-template-col footer-wrapper">
       <FooterContacts />
       <FooterLinks />
+      <div class="copyright">© 2024 Auto Security. Все права защищены</div>
     </div>
   </footer>
 </template>
@@ -36,9 +37,22 @@ onMounted(async () => {
   line-height: 22px;
   color: #ffffff;
   justify-content: center;
+  justify-self: center;
 
   @media screen and (min-width: 768px) {
     padding: 60px 20px 20px;
   }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 24px;
+    line-height: 33px;
+    row-gap: 0;
+  }
+}
+
+.copyright {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding-top: 29px;
 }
 </style>

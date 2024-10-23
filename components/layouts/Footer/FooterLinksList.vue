@@ -18,6 +18,11 @@ const links = getLinks()
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .footer-links {
