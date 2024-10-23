@@ -22,6 +22,8 @@ const links = getLinks()
   @media screen and (min-width: 768px) {
     flex-direction: row;
     flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 150px;
   }
 }
 

@@ -36,6 +36,15 @@ const toggleActive = (index) => {
   font-family: 'DINPRO', 'Arial', sans-serif;
   font-size: 16px;
   line-height: 20px;
+
+  @media screen and (min-width: 768px) {
+    display: block;
+  }
+
+  @media screen and (min-width: 1440px) {
+    font-size: 24px;
+    line-height: 30px;
+  }
 }
 
 .item-title {
@@ -46,6 +55,8 @@ const toggleActive = (index) => {
 
   @media screen and (min-width: 768px) {
     grid-column: 2 / 4;
+    margin: 0;
+    margin-bottom: 20px;
   }
 }
 
@@ -78,6 +89,10 @@ const toggleActive = (index) => {
 
   &.active::before {
     transform: rotate(180deg);
+  }
+
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 }
 

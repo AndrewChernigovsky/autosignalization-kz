@@ -54,5 +54,11 @@ onMounted(async () => {
   grid-column: 1 / -1;
   text-align: center;
   padding-top: 29px;
+  font-weight: 700;
+
+  @media screen and (min-width: 1440px) {
+    font-size: 34px;
+    line-height: 46px;
+  }
 }
 </style>
