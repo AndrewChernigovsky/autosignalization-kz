@@ -1,17 +1,20 @@
 <template>
   <div class="checkbox-block">
-    <span class="box">
-      <input class="checkbox" type="checkbox" :name="props.item.name" :id="props.item.id"
-        :disabled="props.item.disabled" />
-      <label :for="props.item.id" class="label">{{ props.item.text }}</label>
-    </span>
-
+    <input
+      class="checkbox"
+      type="checkbox"
+      :name="props.item.name"
+      :id="props.item.id"
+      :disabled="props.item.disabled"
+    />
+    <div class="box">
+      <div class="box--checked"></div>
+    </div>
+    <label :for="props.item.id" class="label">{{ props.item.text }}</label>
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { CheckboxType } from '~/types/CheckboxType'
-
 
 const props = defineProps({
   item: {
@@ -21,25 +24,58 @@ const props = defineProps({
       id: 'checkbox',
       name: 'checkbox',
       disabled: false,
-    }
-  }
+    },
+  },
 })
-// 1 написать тип для объекта item  @/types/
-// 2 написать пропс для объекта item @/components/UI/YButton для примера можешь взять
-// 3 пропс для состояния disabled
 </script>
 <style lang="scss" scoped>
 .checkbox-block {
   display: flex;
   align-items: center;
   min-height: 44px;
-
+  position: relative;
 }
 
 .box {
-  position: relative;
-  margin-left: 20px;
+  position: absolute;
+  left: 10px;
+  width: 30px;
+  height: 30px;
 
+  &--checked {
+    width: inherit;
+    height: inherit;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0px;
+      width: 30px;
+      height: 30px;
+      border: 1px solid $white;
+      background-color: $white;
+    }
+
+    &::after {
+      content: '';
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: 30px;
+      transform: translate(-50%, -50%);
+      background-color: $white;
+      clip-path: polygon(
+        8% 92%,
+        3% 75%,
+        0 77%,
+        6% 100%,
+        6% 100%,
+        98% 6%,
+        96% 2%
+      );
+      display: none;
+    }
+  }
 }
 
 .checkbox {
@@ -48,31 +84,27 @@ const props = defineProps({
   z-index: -1;
   opacity: 0;
 
-  &:not(:checked):hover+.label {
+  &:not(:checked):hover + .label {
     color: $red-7e2222;
   }
 
-  &:not(:checked):focus+.label {
+  &:not(:checked):focus + .label {
     color: $white;
 
-    &.label::before {
+    &.box .box--checked::before {
       background-color: transparent;
     }
   }
 
-
-
-  &:focus+.label::before {
+  &:focus + .box .box--checked::before {
     background-color: $red-8b1b1b;
   }
 
-
-
-  &:focus+.label {
+  &:focus + .box .box--checked {
     color: $red-b20606;
   }
 
-  &:checked:focus+.label {
+  &:checked:focus + .box .box--checked {
     color: $white;
   }
 
@@ -80,29 +112,23 @@ const props = defineProps({
     color: $white;
   }
 
-  &:checked+.label::before {
+  &:checked + .box .box--checked::before {
     background-color: transparent;
   }
 
-  &:checked+.label::after {
+  &:checked + .box .box--checked::after {
     display: block;
     color: $white;
   }
 
-
-
-  &:disabled+.label::before {
+  &:disabled + .box .box--checked::before {
     opacity: 0.11;
-    ;
   }
 
-
-  &:not(:checked):disabled+.label {
+  &:not(:checked):disabled + .label {
     color: $white;
     opacity: 0.11;
   }
-
-
 }
 
 .label {
@@ -114,31 +140,8 @@ const props = defineProps({
   margin: 0;
   min-height: 30px;
   align-items: center;
-  padding-left: 47px;
+  padding-left: 60px;
   color: $white;
   text-transform: uppercase;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid $white;
-    background-color: $white;
-  }
-
-  &::after {
-    content: "";
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    left: 40px;
-    transform: translate(-50%, -50%);
-    background-color: $white;
-    clip-path: polygon(8% 92%, 3% 75%, 0 77%, 6% 100%, 6% 100%, 98% 6%, 96% 2%);
-    display: none;
-  }
-
 }
 </style>
