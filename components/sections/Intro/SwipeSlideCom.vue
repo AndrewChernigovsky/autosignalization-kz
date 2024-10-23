@@ -17,12 +17,15 @@
       Ваш браузер не поддерживает тег video.
     </video>
     <div class="container content">
-      <h1 v-if="isVisible">
+      <h1 v-if="isVisible && props.content">
         {{ props.content[videoIndex].title }}
       </h1>
       <br />
       <TransitionScale :scale="0.8" origin="top right" name="slide-scale">
-        <ul class="list-slide list-style-none" v-if="isVisible">
+        <ul
+          class="list-slide list-style-none"
+          v-if="isVisible && props.content"
+        >
           <li
             v-for="(item, index) of props.content[videoIndex].list"
             :key="item + index"
@@ -31,7 +34,9 @@
           </li>
         </ul>
       </TransitionScale>
-      <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
+      <div v-for="btn of 3">
+        <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +61,9 @@ const props = defineProps({
     type: Number,
     required: true,
   },
+  activeSlideIndex: {
+    type: Number,
+  },
 })
 
 const isVisible = ref(false)
@@ -65,20 +73,25 @@ onMounted(() => {
   if (videoPlayer.value) {
     isVisible.value = !isVisible.value
     videoPlayer.value.play()
-    emits('updateVisibility', update)
   }
 })
 
 onUnmounted(() => {
   if (videoPlayer.value) {
     videoPlayer.value.pause()
-    emits('updateVisibility', update)
   }
 })
 
+watch(
+  () => props.activeSlideIndex,
+  (newIndex) => {
+    if (newIndex === props.videoIndex) {
+      update()
+    }
+  },
+)
 function update() {
   isVisible.value = !isVisible.value
-  console.log('change')
 }
 </script>
 

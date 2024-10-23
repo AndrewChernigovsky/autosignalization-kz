@@ -5,7 +5,7 @@
       :slides-per-view="1"
       :loop="true"
       :effect="'creative'"
-      @slide-change="onSlideChange"
+      @slideChange="onSlideChange"
       :autoplay="{
         delay: 6000,
         disableOnInteraction: true,
@@ -16,7 +16,7 @@
           :video="video"
           :content="slideContent"
           :videoIndex="index"
-          @updateVisibility="handleUpdateVisibility"
+          :activeSlideIndex="slideChangeRef"
         />
       </SwiperSlide>
     </Swiper>
@@ -57,14 +57,9 @@ const slideContent = ref<SlideType[]>([
     ],
   },
 ])
+
 function onSlideChange(swiper: Swiper) {
   slideChangeRef.value = swiper.realIndex
-  handleUpdateVisibility()
-}
-
-function handleUpdateVisibility(updateFunction: () => void) {
-  // Trigger the update function from the child component
-  updateFunction()
 }
 
 const videos = ref<VideosType>([
