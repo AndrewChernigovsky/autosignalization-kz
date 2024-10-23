@@ -14,6 +14,18 @@
 .email-container {
   grid-column: 1/ 4;
   padding-right: 16px;
+
+  @media screen and (min-width: 768px) {
+    grid-column: 1 / 4;
+    grid-row: 2 / 3;
+    padding-right: 0;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding-top: 20px;
+    padding-left: 26px;
+    padding-bottom: 20px;
+  }
 }
 
 .email-list {
@@ -36,6 +48,14 @@
     mask-size: 20px;
     mask-position: center;
     background-color: #ff0000;
+  }
+
+  @media screen and (min-width: 1440px) {
+    &::after {
+      width: 30px;
+      height: 30px;
+      mask-size: 30px;
+    }
   }
 }
 </style>
