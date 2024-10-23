@@ -10,11 +10,11 @@ export const useFooterNavigationStore = defineStore('footerNavigation', () => {
       links: [
         {
           link: 'Автосигнализации',
-          path: '',
+          path: 'autosygnales',
           subLinks: [
             {
               link: 'Автосигнализации с автозапуском',
-              path: '',
+              path: `auto-inner`,
             },
             {
               link: 'Автосигнализации с GSM',
