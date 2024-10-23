@@ -11,7 +11,7 @@ import video2Poster from '@/assets/videos/video-2.webp'
 import video3Poster from '@/assets/videos/video-3.webp'
 import video4Poster from '@/assets/videos/video-4.webp'
 
-export default {
+export const allvideos = {
   video1,
   video2,
   video3,

@@ -92,20 +92,7 @@ import { ref, computed } from 'vue'
 import { Autoplay } from 'swiper/modules'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import type { Swiper } from 'swiper/types'
-import {
-  video1,
-  video2,
-  video3,
-  video4,
-  video1Webm,
-  video2Webm,
-  video3Webm,
-  video4Webm,
-  video1Poster,
-  video2Poster,
-  video3Poster,
-  video4Poster,
-} from './videos'
+import { allvideos } from './videos'
 
 import type { VideosType } from '~/types/VideosType'
 
@@ -113,23 +100,23 @@ const modules = [Autoplay]
 const videoRef = ref<HTMLVideoElement | null>(null)
 const videos = ref<VideosType>([
   {
-    src: [video1Webm, video1],
-    poster: video1Poster,
+    src: [allvideos.video1Webm, allvideos.video1],
+    poster: allvideos.video1Poster,
     type: ['video/webm', 'video/mp4'],
   },
   {
-    src: [video2Webm, video2],
-    poster: video2Poster,
+    src: [allvideos.video2Webm, allvideos.video2],
+    poster: allvideos.video2Poster,
     type: ['video/webm', 'video/mp4'],
   },
   {
-    src: [video3Webm, video3],
-    poster: video3Poster,
+    src: [allvideos.video3Webm, allvideos.video3],
+    poster: allvideos.video3Poster,
     type: ['video/webm', 'video/mp4'],
   },
   {
-    src: [video4Webm, video4],
-    poster: video4Poster,
+    src: [allvideos.video4Webm, allvideos.video4],
+    poster: allvideos.video4Poster,
     type: ['video/webm', 'video/mp4'],
   },
 ])
