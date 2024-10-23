@@ -17,11 +17,11 @@
       Ваш браузер не поддерживает тег video.
     </video>
     <div class="container content">
-      <h1 v-if="isVisible && props.content">
-        {{ props.content[videoIndex].title }}
-      </h1>
-      <br />
-      <TransitionScale :scale="0.8" origin="top right" name="slide-scale">
+      <TransitionScale :scale="0.8" name="slide-scale">
+        <h1 v-if="isVisible && props.content">
+          {{ props.content[videoIndex].title }}
+        </h1>
+        <br />
         <ul
           class="list-slide list-style-none"
           v-if="isVisible && props.content"
@@ -34,15 +34,13 @@
           </li>
         </ul>
       </TransitionScale>
-      <div v-for="btn of 3">
-        <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
-      </div>
+      <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import type { SlideType } from '~/types/SlideType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { TransitionScale } from '@morev/vue-transitions'
@@ -86,7 +84,11 @@ watch(
   () => props.activeSlideIndex,
   (newIndex) => {
     if (newIndex === props.videoIndex) {
-      update()
+      nextTick(() => {
+        update()
+      })
+    } else {
+      isVisible.value = false // Hide when this slide is not active
     }
   },
 )
@@ -99,12 +101,19 @@ function update() {
 .slide-scale-enter-active,
 .slide-scale-leave-active {
   transition: all 2.5s ease;
+  opacity: 1;
 }
 
 .slide-scale-enter,
 .slide-scale-leave-to {
   transform: translateY(-20px);
   opacity: 0;
+}
+
+.slide-scale-enter-to,
+.slide-scale-leave {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .content {

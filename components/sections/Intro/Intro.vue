@@ -7,7 +7,7 @@
       :effect="'creative'"
       @slideChange="onSlideChange"
       :autoplay="{
-        delay: 6000,
+        delay: 2000,
         disableOnInteraction: true,
       }"
     >
