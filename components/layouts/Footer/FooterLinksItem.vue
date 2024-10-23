@@ -4,12 +4,17 @@
       class="btn"
       type="button"
       @click="toggleActive(index)"
-      :class="{ active: activeStates[index] }"
+      :class="{ active: activeStates[index].isActive }"
     >
       <span class="visually-hidden">Открыть меню</span>
     </button>
     <h2 class="item-title m-0">{{ link.title }}</h2>
-    <SubLinks class="sub-link" :links="link.links" isSubLink />
+    <SubLinks
+      v-if="activeStates[index].isActive"
+      class="sub-link"
+      :links="link.links"
+      isSubLink
+    />
   </li>
 </template>
 <script setup>
@@ -23,10 +28,10 @@ const props = defineProps({
   },
 })
 
-const activeStates = ref(Array(props.links.length).fill(false))
+const activeStates = ref(props.links.map(() => ({ isActive: false })))
 
 const toggleActive = (index) => {
-  activeStates.value[index] = !activeStates.value[index]
+  activeStates.value[index].isActive = !activeStates.value[index].isActive
 }
 </script>
 <style scoped lang="scss">
@@ -104,5 +109,14 @@ const toggleActive = (index) => {
   @media screen and (min-width: 768px) {
     grid-column: 1 / 4;
   }
+}
+
+/* Анимация */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease; /* Плавный переход */
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active в <2.1.8 */ {
+  opacity: 0; /* Начальное состояние */
 }
 </style>
