@@ -9,9 +9,10 @@
     <div class="bottom-line">
       <span class="bottom-circle"></span>
     </div>
-    <ul class="list" :class="{ 'is-open': isOpened }" ref="dropdownList">
+    <!-- <ul class="list" :class="{ 'is-open': isOpened }" ref="dropdownList">
       <li v-for="item in items" :key="item">{{ item }}</li>
-    </ul>
+    </ul> -->
+    <slot class="list" :class="{ 'is-open': isOpened }" ref="dropdownList" />
   </div>
 </template>
 
@@ -102,6 +103,9 @@ watch(isOpened, (newValue: boolean) => {
 }
 
 .list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   max-height: 0;
   transition: max-height 0.3s ease-in-out;
