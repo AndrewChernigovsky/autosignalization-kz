@@ -1,7 +1,12 @@
 <template>
   <div class="checkbox-block">
-    <input class="checkbox" type="checkbox" :name="props.item.name" :id="props.item.id"
-      :disabled="props.item.disabled" />
+    <input
+      class="checkbox"
+      type="checkbox"
+      :name="props.item.name"
+      :id="props.item.id"
+      :disabled="props.item.disabled"
+    />
     <div class="box">
       <div class="box--checked"></div>
     </div>
@@ -60,13 +65,15 @@ const props = defineProps({
       left: 30px;
       transform: translate(-50%, -50%);
       background-color: $white;
-      clip-path: polygon(8% 92%,
-          3% 75%,
-          0 77%,
-          6% 100%,
-          6% 100%,
-          98% 6%,
-          96% 2%);
+      clip-path: polygon(
+        8% 92%,
+        3% 75%,
+        0 77%,
+        6% 100%,
+        6% 100%,
+        98% 6%,
+        96% 2%
+      );
       display: none;
     }
   }
@@ -86,60 +93,60 @@ const props = defineProps({
   text-transform: uppercase;
 }
 
-
-
 .checkbox {
   appearance: none;
   position: absolute;
   z-index: -1;
   opacity: 0;
 
-  &:not(:checked):hover+.box+.label {
-    color: $red-b20606;
+  &:not(:checked):hover + .box + .label {
+    opacity: 0.8;
   }
 
-  &:not(:checked):focus+.box .box--checked::before {
-    background-color: $red-8b1b1b;
+  &:checked:hover + .box + .label {
+    opacity: 0.8;
   }
 
-  &:not(:checked):focus+.box+.label {
-    color: $red-8b1b1b;
-  }
-
-  &:checked+.box .box--checked::before {
+  &:checked + .box .box--checked::before {
     background-color: $black-2f2f2f;
   }
 
-  &:checked+.box .box--checked::after {
+  &:checked + .box .box--checked::after {
     display: block;
   }
 
-  &:active+.box .box--checked::after {
+  &:active + .box .box--checked::after {
     display: block;
   }
 
-  &:active:focus+.box .box--checked::before {
+  &:active:focus + .box .box--checked::before {
     background-color: $black-2f2f2f;
   }
 
-  &:active:focus+.box+.label {
-    color: $white ;
+  &:focus-visible + .box .box--checked::before {
+    background-color: $red-B40036;
   }
 
-  &:disabled+.box .box--checked::after {
+  &:active:focus + .box .box--checked::before {
+    background-color: transparent;
+  }
+
+  &:disabled + .box .box--checked::after {
     display: none;
   }
 
-  &:disabled+.box .box--checked::before {
+  &:disabled + .box .box--checked::before {
     opacity: 0.11;
   }
 
-  &:disabled+.box+.label {
+  &:disabled + .box + .label {
     opacity: 0.11;
   }
 
-  &:disabled:hover+.box+.label {
-    color: $white;
+  &:disabled:hover + .box + .label {
+    // color: $white;
+    // color: #000;
+    opacity: 0.11;
   }
 }
 </style>
