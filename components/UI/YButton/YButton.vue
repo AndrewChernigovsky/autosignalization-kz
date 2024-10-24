@@ -12,7 +12,7 @@
   <a
     :href="path"
     v-if="btn === false"
-    :ytype="ytype"
+    :ytype="props.ytype"
     :class="[buttonClass, customClass]"
   >
     <slot />

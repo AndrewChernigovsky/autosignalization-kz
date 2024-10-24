@@ -3,9 +3,12 @@
     <Phone />
     <ul>
       <li v-for="(phone, index) in phones" :key="phone[0] + index">
-        <YButton :btn="false" :path="'tel:' + phone.replace(/\s+/g, '')">{{
-          phone
-        }}</YButton>
+        <YButton
+          :ytype="false"
+          :btn="false"
+          :path="'tel:' + phone.replace(/\s+/g, '')"
+          >{{ phone }}</YButton
+        >
       </li>
     </ul>
   </div>
