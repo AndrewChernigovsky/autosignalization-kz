@@ -14,33 +14,33 @@ export const useFooterNavigationStore = defineStore('footerNavigation', () => {
           subLinks: [
             {
               link: 'Автосигнализации с автозапуском',
-              path: `auto-inner`,
+              path: `autosygnales/auto-start`,
             },
             {
               link: 'Автосигнализации с GSM',
-              path: '',
+              path: 'autosygnales/auto-gsm',
             },
             {
               link: 'Автосигнализации без автозапуска',
-              path: '',
+              path: 'autosygnales/no-auto-start',
             },
             {
               link: 'Каталог автосигнализаций Starline',
-              path: '',
+              path: 'autosygnales/catalog-starline',
             },
             {
               link: 'Пульты и аксессуары',
-              path: '',
+              path: 'autosygnales/accessories',
             },
           ],
         },
         {
           link: 'Парковочные системы',
-          path: '',
+          path: 'park-system',
         },
         {
           link: 'Прайс на материал и установку',
-          path: '',
+          path: 'autosygnales-price',
         },
       ],
     },
@@ -49,35 +49,35 @@ export const useFooterNavigationStore = defineStore('footerNavigation', () => {
       links: [
         {
           link: 'Установка и ремонт сигнализаций',
-          path: '',
+          path: 'deploy-autosingals',
         },
         {
           link: 'Ремонт центрозамков',
-          path: '',
+          path: 'fix-locks',
         },
         {
           link: 'Установка систем паркинга',
-          path: '',
+          path: 'deploy-parksystem',
         },
         {
           link: 'Услуги автоэлектрика',
-          path: '',
+          path: 'service-electric',
         },
         {
           link: 'Русификация авто и чиптюнинг',
-          path: '',
+          path: 'russification-auto',
         },
         {
           link: 'Отключение сигнализации',
-          path: '',
+          path: 'shutdown-signals',
         },
         {
           link: 'Установка видеорегистраторови антирадаров',
-          path: '',
+          path: 'deploy-video-registration',
         },
         {
           link: 'Прайс на услуги',
-          path: '',
+          path: 'service-price',
         },
       ],
     },
@@ -86,23 +86,23 @@ export const useFooterNavigationStore = defineStore('footerNavigation', () => {
       links: [
         {
           link: 'Специальные предложения',
-          path: '',
+          path: 'special',
         },
         {
           link: 'Корзина заказа',
-          path: '',
+          path: 'cart',
         },
         {
           link: 'Оставить отзыв',
-          path: '',
+          path: 'feedback',
         },
         {
           link: 'Галерея выполненных работ',
-          path: '',
+          path: 'gallery',
         },
         {
           link: 'Как к нам добраться',
-          path: '',
+          path: 'location',
         },
       ],
     },
