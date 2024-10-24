@@ -1,12 +1,7 @@
 <template>
   <div class="checkbox-block">
-    <input
-      class="checkbox"
-      type="checkbox"
-      :name="props.item.name"
-      :id="props.item.id"
-      :disabled="props.item.disabled"
-    />
+    <input class="checkbox" type="checkbox" :name="props.item.name" :id="props.item.id"
+      :disabled="props.item.disabled" />
     <div class="box">
       <div class="box--checked"></div>
     </div>
@@ -32,7 +27,7 @@ const props = defineProps({
 .checkbox-block {
   display: flex;
   align-items: center;
-  min-height: 44px;
+  gap: 10px;
   position: relative;
 }
 
@@ -46,6 +41,7 @@ const props = defineProps({
     width: inherit;
     height: inherit;
     position: relative;
+
     &::before {
       content: '';
       position: absolute;
@@ -53,7 +49,7 @@ const props = defineProps({
       width: 30px;
       height: 30px;
       border: 1px solid $white;
-      background-color: $white;
+      background-color: $black-2f2f2f;
     }
 
     &::after {
@@ -64,70 +60,15 @@ const props = defineProps({
       left: 30px;
       transform: translate(-50%, -50%);
       background-color: $white;
-      clip-path: polygon(
-        8% 92%,
-        3% 75%,
-        0 77%,
-        6% 100%,
-        6% 100%,
-        98% 6%,
-        96% 2%
-      );
+      clip-path: polygon(8% 92%,
+          3% 75%,
+          0 77%,
+          6% 100%,
+          6% 100%,
+          98% 6%,
+          96% 2%);
       display: none;
     }
-  }
-}
-
-.checkbox {
-  appearance: none;
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-
-  &:not(:checked):hover + .label {
-    color: $red-7e2222;
-  }
-
-  &:not(:checked):focus + .label {
-    color: $white;
-
-    &.box .box--checked::before {
-      background-color: transparent;
-    }
-  }
-
-  &:focus + .box .box--checked::before {
-    background-color: $red-8b1b1b;
-  }
-
-  &:focus + .box .box--checked {
-    color: $red-b20606;
-  }
-
-  &:checked:focus + .box .box--checked {
-    color: $white;
-  }
-
-  &:focus:checked {
-    color: $white;
-  }
-
-  &:checked + .box .box--checked::before {
-    background-color: transparent;
-  }
-
-  &:checked + .box .box--checked::after {
-    display: block;
-    color: $white;
-  }
-
-  &:disabled + .box .box--checked::before {
-    opacity: 0.11;
-  }
-
-  &:not(:checked):disabled + .label {
-    color: $white;
-    opacity: 0.11;
   }
 }
 
@@ -143,5 +84,62 @@ const props = defineProps({
   padding-left: 60px;
   color: $white;
   text-transform: uppercase;
+}
+
+
+
+.checkbox {
+  appearance: none;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  &:not(:checked):hover+.box+.label {
+    color: $red-b20606;
+  }
+
+  &:not(:checked):focus+.box .box--checked::before {
+    background-color: $red-8b1b1b;
+  }
+
+  &:not(:checked):focus+.box+.label {
+    color: $red-8b1b1b;
+  }
+
+  &:checked+.box .box--checked::before {
+    background-color: $black-2f2f2f;
+  }
+
+  &:checked+.box .box--checked::after {
+    display: block;
+  }
+
+  &:active+.box .box--checked::after {
+    display: block;
+  }
+
+  &:active:focus+.box .box--checked::before {
+    background-color: $black-2f2f2f;
+  }
+
+  &:active:focus+.box+.label {
+    color: $white ;
+  }
+
+  &:disabled+.box .box--checked::after {
+    display: none;
+  }
+
+  &:disabled+.box .box--checked::before {
+    opacity: 0.11;
+  }
+
+  &:disabled+.box+.label {
+    opacity: 0.11;
+  }
+
+  &:disabled:hover+.box+.label {
+    color: $white;
+  }
 }
 </style>
