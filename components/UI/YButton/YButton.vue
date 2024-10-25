@@ -17,6 +17,14 @@
   >
     <slot />
   </a>
+  <NuxtLink
+    :to="path"
+    v-if="link && btn === false"
+    :ytype="props.ytype"
+    :class="[buttonClass, customClass]"
+  >
+    <slot />
+  </NuxtLink>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -44,6 +52,10 @@ const props = defineProps({
   customClass: {
     type: String,
     default: '',
+  },
+  link: {
+    type: Boolean,
+    default: false,
   },
 })
 const emit = defineEmits()
