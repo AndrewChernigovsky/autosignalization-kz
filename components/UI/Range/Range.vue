@@ -1,23 +1,39 @@
 <template>
   <div class="range-container">
     <p class="range-name">стоимость</p>
-    <input class="range-input" type="range" id="myRange" min="100" max="900000" v-model="value" />
+    <input
+      class="range-input"
+      type="range"
+      id="myRange"
+      min="19999"
+      max="999999"
+      v-model="value"
+    />
     <div class="range-value">
-      <input class="range-min-value" type="number" id="minValue" value="19999" min="0" max="999999">
-      <input class="range-max-value" type="number" id="maxValue" value="999999" min="0" max="999999">
-      <!-- <span>{{ value }}</span>
-      <span>90000</span> -->
+      <input
+        class="range-min-value"
+        type="number"
+        id="minValue"
+        value="19999"
+        min="19999"
+        max="999999"
+      />
+      <input
+        class="range-max-value"
+        type="number"
+        id="maxValue"
+        :value="value"
+        min="19999"
+        max="999999"
+      />
     </div>
   </div>
 </template>
 
-
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const value = ref<number>(100)
-
-console.log(value.value)
+const value = ref<number>(999999)
 
 // const rangeInput = document.getElementById('myRange');
 //     const minValueInput = document.getElementById('minValue');
@@ -84,17 +100,14 @@ console.log(value.value)
   }
 
   &:hover {
-
     .range-min-value,
     .range-max-value {
       background-color: $black-5a5a5a;
     }
   }
 
-  &:hover~.range-input {
-
+  &:hover ~ .range-input {
     background-color: aqua;
-
   }
 }
 
@@ -109,47 +122,31 @@ console.log(value.value)
     appearance: none;
     background-color: $white;
     border-radius: 50%;
-    width: 4px;
-    height: 4px;
-    transition: width .2s, height .2s;
+    width: 11px;
+    height: 11px;
+    transition:
+      width 0.2s,
+      height 0.2s;
   }
 
   &:hover {
     outline: none;
-
-    &::-webkit-slider-thumb {
-      width: 8px;
-      height: 8px;
-    }
   }
 
-  &:hover+.range-value {
-
+  &:hover + .range-value {
     .range-min-value,
     .range-max-value {
       background-color: $black-5a5a5a;
     }
-
   }
-
 
   &:focus {
     outline: none;
-
-    &::-webkit-slider-thumb {
-      width: 8px;
-      height: 8px;
-    }
   }
 
   &:active {
     outline: none;
     box-shadow: 0 0 5px $white-c9c9c9;
-
-    &::-webkit-slider-thumb {
-      width: 9px;
-      height: 9px;
-    }
   }
 }
 </style>
