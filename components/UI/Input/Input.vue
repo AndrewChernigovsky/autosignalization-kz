@@ -35,7 +35,7 @@ const props = defineProps({
 })
 
 const labels = {
-  [InputEnums.login]: 'Ваш логин',
+  [InputEnums.login]: 'Ваш логин1',
   [InputEnums.password]: 'Ваш пароль',
   [InputEnums.email]: 'Ваш  email',
   [InputEnums.phone]: 'Ваш телефон',
