@@ -38,6 +38,7 @@
     />
 
     <Range />
+    <Input :ytype="InputEnums.email" placeholder="Введите ваш адрес" />
   </ClientOnly>
 </template>
 <script lang="ts" setup>
@@ -46,6 +47,7 @@ import { useUserStore } from '@/stores/user'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import Intro from '~/components/sections/Intro/Intro.vue'
 import Services from '~/components/sections/Services/Services.vue'
+import { InputEnums } from '~/enums/InputEnums'
 
 const userStore = useUserStore()
 
