@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     'nuxt-swiper',
   ],
   swiper: {
-    modules: ['autoplay'],
+    modules: ['autoplay', 'effect-fade'],
   },
   vueTransitions: {
     componentDefaultProps: {
