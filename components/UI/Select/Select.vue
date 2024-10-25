@@ -1,32 +1,34 @@
 <template>
     <div class="select" :data-state="isActive ? 'active' : ''">
-        <div class="select__title" @click="toggleMenu"><span>{{ selectedLabel }}</span>
-            <div class="select__menu" v-if="isActive">
-                <div class="select__label" v-for="(label, index) in labels" :key="index" @click="selectLabel(label)">
-                    {{ label }}
-                </div>
+        <div class="select__title" :style="{ borderRadius: isActive ? '20px 20px 0 0' : '20px' }" @click="toggleMenu">
+            {{ selectedLabel }}
+        </div>
+        <div class="select__menu" v-if="isActive">
+            <div class="select__label" v-for="(label, index) in labels" :key="index" @click="selectLabel(label)">
+                {{ label }}
             </div>
         </div>
-
-
     </div>
 </template>
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref } from 'vue';
 
 const isActive = ref(false);
 const selectedLabel = ref('Выберите опцию');
 const labels = ref(['Главная', 'Услуги', 'Контакты']);
+const emit = defineEmits(['option'])
 
-// Функция для переключения состояния меню
-const toggleMenu = () => {
+
+const toggleMenu = (evt: any) => {
+    // console.log(evt.target.textContent)
     isActive.value = !isActive.value;
 };
 
-// Функция для выбора опции
+
 const selectLabel = (label: string) => {
     selectedLabel.value = label;
-    isActive.value = false; // Закрываем меню после выбора
+    isActive.value = false;
+    emit('option', label)
 };
 
 </script>
@@ -50,8 +52,9 @@ const selectLabel = (label: string) => {
     font-size: 18px;
     font-weight: 400;
     line-height: 22px;
-    letter-spacing: 0px;
     text-align: center;
+
+
     border-radius: 20px;
 
     &:hover {
@@ -60,33 +63,30 @@ const selectLabel = (label: string) => {
     }
 
     &:focus {
-        border: 1px solid rgb(255, 255, 255);
+        border: 1px solid $white;
         background-color: $black-1f1a1a-05;
         font-weight: 700;
     }
-
 }
 
 .select__menu {
-    width: inherit;
-    left: 0;
+    width: 203px;
     position: absolute;
     background-color: $white-c4c4c4-05;
     color: $white;
     border-radius: 0 0 20px 20px;
     cursor: pointer;
-    font-weight: 700;
 }
 
 .select__label {
     padding: 10px;
-}
 
-.select__label:hover {
-    background-color: rgb(77, 75, 75);
+    &:hover {
+        background-color: $black-4d4b4b;
 
-    &:last-child {
-        border-radius: 0 0 20px 20px;
+        &:last-child {
+            border-radius: 0 0 20px 20px;
+        }
     }
 }
 </style>

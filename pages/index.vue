@@ -32,7 +32,7 @@
 
     <Range />
     <Input :ytype="InputEnums.email" placeholder="Введите ваш адрес" />
-    <Select />
+    <Select @click="select" />
   </ClientOnly>
 </template>
 <script lang="ts" setup>
@@ -44,6 +44,8 @@ import Services from '~/components/sections/Services/Services.vue'
 import { InputEnums } from '~/enums/InputEnums'
 
 const userStore = useUserStore()
+const select = (evt: any) => console.log(evt.target.textContent);
+
 
 const fetchUsers = () => {
   userStore.fetchUsers()
@@ -52,5 +54,6 @@ const fetchUsers = () => {
 onMounted(async () => {
   fetchUsers()
 })
+
 </script>
 <style lang="scss" scoped></style>
