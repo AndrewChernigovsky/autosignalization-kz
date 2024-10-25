@@ -1,12 +1,6 @@
 <template>
-  <button
-    :class="[buttonClass, customClass]"
-    :type="typeButton ? typeButton : 'button'"
-    v-if="btn"
-    :ytype="ytype"
-    :disabled="states.disabled"
-    @click="handleClick"
-  >
+  <button :class="[buttonClass, customClass]" :type="typeButton ? typeButton : 'button'" v-if="btn" :ytype="ytype"
+    :disabled="states.disabled" @click="handleClick">
     <slot />
   </button>
   <a :href="path" v-if="btn === false">
@@ -68,7 +62,7 @@ const states = computed(() => {
   border-radius: 5px;
   background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px; //36px
   font-weight: 700;
   line-height: 14px; //36px
@@ -105,7 +99,7 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
@@ -138,7 +132,7 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
@@ -197,6 +191,7 @@ const states = computed(() => {
 }
 
 @media screen and (min-width: $desktop-min) {
+
   .primary,
   .secondary,
   .tap-button,
