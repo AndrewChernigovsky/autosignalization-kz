@@ -1,11 +1,16 @@
 <template>
-  <div>
-    <input type="range" id="myRange" min="100" max="900000" v-model="value" />
-    <span>100</span>
-    <span>{{ value }}</span>
-    <span>90000</span>
+  <div class="range-container">
+    <p class="range-name">стоимость</p>
+    <input class="range-input" type="range" id="myRange" min="100" max="900000" v-model="value" />
+    <div class="range-value">
+      <input class="range-min-value" type="number" id="minValue" value="19999" min="0" max="999999">
+      <input class="range-max-value" type="number" id="maxValue" value="999999" min="0" max="999999">
+      <!-- <span>{{ value }}</span>
+      <span>90000</span> -->
+    </div>
   </div>
 </template>
+
 
 <script setup lang="ts">
 import { ref } from 'vue'
@@ -13,5 +18,138 @@ import { ref } from 'vue'
 const value = ref<number>(100)
 
 console.log(value.value)
+
+// const rangeInput = document.getElementById('myRange');
+//     const minValueInput = document.getElementById('minValue');
+//     const maxValueInput = document.getElementById('maxValue');
+
+//     // Обновление значений при изменении ползунка
+//     rangeInput.addEventListener('input', () => {
+//         const value = rangeInput.value;
+//         minValueInput.value = Math.max(0, value - 10); // Пример для минимального значения
+//         maxValueInput.value = Math.min(100, parseInt(value) + 10); // Пример для максимального значения
+//     });
+
+//     // Обновление ползунка при изменении полей
+//     minValueInput.addEventListener('input', () => {
+//         rangeInput.value = Math.max(minValueInput.value, 0);
+//     });
+
+//     maxValueInput.addEventListener('input', () => {
+//         rangeInput.value = Math.min(maxValueInput.value, 100);
+//     });
 </script>
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.range-container {
+  display: flex;
+  max-width: 300px;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 10px;
+}
+
+.range-name {
+  color: $white;
+  margin: 0;
+  font-family: $secondary-font;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+  letter-spacing: 0px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.range-value {
+  display: flex;
+  gap: 20px;
+
+  .range-min-value,
+  .range-max-value {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex: 1;
+    min-height: 34px;
+    padding: 0;
+    padding-left: 8px;
+    color: $white;
+    background-color: $black-2f2f2f;
+    border: 1px solid $white;
+    font-family: $pimary-font;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: 0%;
+  }
+
+  &:hover {
+
+    .range-min-value,
+    .range-max-value {
+      background-color: $black-5a5a5a;
+    }
+  }
+
+  &:hover~.range-input {
+
+    background-color: aqua;
+
+  }
+}
+
+.range-input {
+  margin: 0;
+  appearance: none;
+  height: 2px;
+  background-color: $white-c4c4c4;
+  accent-color: $white;
+
+  &::-webkit-slider-thumb {
+    appearance: none;
+    background-color: $white;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    transition: width .2s, height .2s;
+  }
+
+  &:hover {
+    outline: none;
+
+    &::-webkit-slider-thumb {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  &:hover+.range-value {
+
+    .range-min-value,
+    .range-max-value {
+      background-color: $black-5a5a5a;
+    }
+
+  }
+
+
+  &:focus {
+    outline: none;
+
+    &::-webkit-slider-thumb {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  &:active {
+    outline: none;
+    box-shadow: 0 0 5px $white-c9c9c9;
+
+    &::-webkit-slider-thumb {
+      width: 9px;
+      height: 9px;
+    }
+  }
+}
+</style>
