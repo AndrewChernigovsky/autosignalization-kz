@@ -37,7 +37,7 @@ const value = ref<number>(999999)
 <style lang="scss" scoped>
 .range-container {
   display: flex;
-  max-width: 300px;
+  width: 300px;
   flex-direction: column;
   gap: 12px;
   padding-left: 10px;
