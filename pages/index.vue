@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <Intro />
+    <Services />
     <h2>Index</h2>
     <h1>Пользователи</h1>
     <ul>
@@ -37,6 +38,7 @@
     />
 
     <Range />
+    <Input :ytype="InputEnums.email" placeholder="Введите ваш адрес" />
   </ClientOnly>
 </template>
 <script lang="ts" setup>
@@ -44,6 +46,8 @@ import { onMounted } from 'vue'
 import { useUserStore } from '@/stores/user'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import Intro from '~/components/sections/Intro/Intro.vue'
+import Services from '~/components/sections/Services/Services.vue'
+import { InputEnums } from '~/enums/InputEnums'
 
 const userStore = useUserStore()
 

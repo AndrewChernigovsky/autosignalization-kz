@@ -7,7 +7,7 @@
       :effect="'fade'"
       @slideChange="onSlideChange"
       :autoplay="{
-        delay: 400000,
+        delay: 4000,
         disableOnInteraction: true,
       }"
     >

@@ -98,7 +98,6 @@ onMounted(() => {
   }
   updateViewportWidth()
   window.addEventListener('resize', updateViewportWidth)
-  console.log(viewportWidth, 'viewport')
 })
 
 onUnmounted(() => {
