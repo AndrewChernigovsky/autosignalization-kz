@@ -7,7 +7,7 @@
       :effect="'fade'"
       @slideChange="onSlideChange"
       :autoplay="{
-        delay: 4000,
+        delay: 400000,
         disableOnInteraction: true,
       }"
     >
@@ -64,21 +64,25 @@ function onSlideChange(swiper: Swiper) {
 
 const videos = ref<VideosType>([
   {
+    srcMob: allvideos.videoMob1Webm,
     src: [allvideos.video1Webm, allvideos.video1],
     poster: allvideos.video1Poster,
     type: ['video/webm', 'video/mp4'],
   },
   {
+    srcMob: allvideos.videoMob2Webm,
     src: [allvideos.video2Webm, allvideos.video2],
     poster: allvideos.video2Poster,
     type: ['video/webm', 'video/mp4'],
   },
   {
+    srcMob: allvideos.videoMob3Webm,
     src: [allvideos.video3Webm, allvideos.video3],
     poster: allvideos.video3Poster,
     type: ['video/webm', 'video/mp4'],
   },
   {
+    srcMob: allvideos.videoMob4Webm,
     src: [allvideos.video4Webm, allvideos.video4],
     poster: allvideos.video4Poster,
     type: ['video/webm', 'video/mp4'],

@@ -8,12 +8,18 @@
       :poster="video.poster"
       ref="videoPlayer"
     >
-      <source
-        v-for="(source, index) in video.src"
-        :key="index"
-        :src="source"
-        :type="video.type[index]"
-      />
+      <template v-if="viewportWidth < 768">
+        <source :src="video.srcMob" :type="video.type[0]" />
+      </template>
+      <template v-else>
+        <source
+          v-for="(source, index) in video.src"
+          :key="index"
+          :src="source"
+          :type="video.type[index]"
+        />
+      </template>
+
       Ваш браузер не поддерживает тег video.
     </video>
     <div class="container content">
@@ -30,7 +36,6 @@
           {{ props.content[videoIndex].title }}
         </h2>
       </TransitionScale>
-      <br />
       <ul class="list-slide list-style-none" v-if="props.content">
         <li v-for="(item, index) in props.content[videoIndex].list">
           <TransitionScale
@@ -48,14 +53,16 @@
         </li>
       </ul>
       <div class="button">
-        <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
+        <YButton :ytype="ButtonsEnum.simple" :btn="false" :path="'#'"
+          >Подробнее</YButton
+        >
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
+import { ref, watch, onMounted, onUnmounted } from 'vue'
 import type { SlideType } from '~/types/SlideType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { TransitionScale } from '@morev/vue-transitions'
@@ -79,44 +86,39 @@ const props = defineProps({
 
 const isVisible = ref(false)
 const videoPlayer = ref<HTMLVideoElement | null>(null)
+const viewportWidth = ref(0)
+const updateViewportWidth = () => {
+  viewportWidth.value = window.innerWidth
+}
 
 onMounted(() => {
   if (videoPlayer.value) {
     isVisible.value = !isVisible.value
     videoPlayer.value.play()
   }
+  updateViewportWidth()
+  window.addEventListener('resize', updateViewportWidth)
+  console.log(viewportWidth, 'viewport')
 })
 
 onUnmounted(() => {
   if (videoPlayer.value) {
+    isVisible.value = true
     videoPlayer.value.pause()
   }
+  window.removeEventListener('resize', updateViewportWidth)
 })
 
 watch(
   () => props.activeSlideIndex,
   (newIndex) => {
     if (newIndex === props.videoIndex) {
-      nextTick(() => {
-        update(true)
-        console.log(333)
-        if (videoPlayer.value) {
-          videoPlayer.value.play() // Запускаем воспроизведение видео
-        }
-      })
+      isVisible.value = true
     } else {
-      update(false)
-      console.log(41133)
-      if (videoPlayer.value) {
-        videoPlayer.value.pause() // Останавливаем воспроизведение видео }
-      }
+      isVisible.value = false // Hide when this slide is not active
     }
   },
 )
-
-function update(visible: boolean) {
-  isVisible.value = visible
-}
 </script>
 
 <style lang="scss" scoped>
@@ -151,7 +153,10 @@ function update(visible: boolean) {
 }
 
 .button {
-  justify-self: flex-end;
+  position: absolute;
+  bottom: 100px;
+  z-index: 1;
+  pointer-events: auto;
 }
 
 .content {
@@ -166,8 +171,12 @@ function update(visible: boolean) {
 
   @media screen and (min-width: $desktop-min) {
     justify-content: center;
-    margin-top: 0;
-    gap: 50px;
+    margin-top: -50px;
+    gap: 20px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: -100px;
   }
 }
 
@@ -185,6 +194,7 @@ function update(visible: boolean) {
 }
 
 .swiper-slide video {
+  // filter: blur(5px);
   top: 0;
   left: 0;
   position: absolute;
@@ -205,10 +215,18 @@ li {
   display: grid;
   align-content: center;
   justify-items: flex-start;
+
+  @media screen and (min-width: $desktop-min) {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
 h2 {
   font-size: 24px;
+  margin: 0;
 
   @media screen and (min-width: $desktop-min) {
     font-size: 64px;
