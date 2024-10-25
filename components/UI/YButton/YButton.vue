@@ -3,7 +3,12 @@
     :disabled="states.disabled" @click="handleClick">
     <slot />
   </button>
-  <a :href="path" v-if="btn === false">
+  <a
+    :href="path"
+    v-if="btn === false"
+    :ytype="props.ytype"
+    :class="[buttonClass, customClass]"
+  >
     <slot />
   </a>
 </template>
