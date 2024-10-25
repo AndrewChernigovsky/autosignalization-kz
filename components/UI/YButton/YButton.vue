@@ -42,7 +42,6 @@ const props = defineProps({
     type: Boolean,
   },
   customClass: {
-    // Добавьте этот prop
     type: String,
     default: '',
   },
@@ -62,7 +61,10 @@ const states = computed(() => {
 })
 </script>
 <style lang="scss" scoped>
-// ТЫ РАБОТАЕШЬ ТУТ
+.base {
+  pointer-events: auto;
+}
+
 .primary {
   display: flex;
   align-items: center;
@@ -74,12 +76,12 @@ const states = computed(() => {
   background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
   color: $white;
   font-family: $pimary-font;
-  font-size: 16px; //36px
+  font-size: 16px;
   font-weight: 700;
-  line-height: 14px; //36px
+  line-height: 14px;
   letter-spacing: 0px;
   text-transform: uppercase;
-  padding: 10px; //padding: 18px 60px;
+  padding: 10px;
   cursor: pointer;
 
   &:hover {
