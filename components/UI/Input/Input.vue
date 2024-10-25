@@ -1,13 +1,10 @@
 <template>
   <div class="input">
-    <label>
-      <span>{{ text || label }}</span>
-      <input
-        :type="textType || 'text'"
-        :ytype="InputEnums.login"
-        :required="required"
-        :placeholder="placeholder"
-      />
+    <label class="input-label">
+      <span class="input-title">{{ text || label }}</span>
+      <input class="input-login" :class="validation ? 'valid' : 'invalid'" :type="textType || 'text'"
+        :ytype="InputEnums.login" :required="required" :placeholder="placeholder" />
+      <div class="input-checkbox"></div>
     </label>
   </div>
 </template>
@@ -34,6 +31,8 @@ const props = defineProps({
   },
 })
 
+const validation = ref<boolean>(false);
+
 const labels = {
   [InputEnums.login]: 'Ваш логин1',
   [InputEnums.password]: 'Ваш пароль',
@@ -57,4 +56,64 @@ const textType = computed(() => {
   return inputType[props.ytype] || 'Ваш логин'
 })
 </script>
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.input-label {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-left: 78px;
+  position: relative;
+}
+
+.input-title {
+  color: $white;
+  font-family: $pimary-font;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.input-checkbox {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 47px;
+  left: 11px;
+  border-radius: 3px;
+}
+
+.input-login:valid+.input-checkbox {
+  mask-image: url('@/assets/icons/aprove.svg');
+  background-color: $green-3eff00;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.input-login:invalid+.input-checkbox {
+  mask-image: url('@/assets/icons/aprove.svg');
+  background-color: $red-ff0000-99;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+
+.input-login {
+  max-width: 300px;
+  min-height: 33px;
+  background-color: $black-2f2f2f;
+  border: none;
+  outline: none;
+  border: 6px solid $black;
+  border-radius: 5px;
+  font-family: $pimary-font;
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0px;
+  text-align: left;
+  padding: 0;
+  padding-left: 8px;
+  color: $white-05;
+}
+</style>

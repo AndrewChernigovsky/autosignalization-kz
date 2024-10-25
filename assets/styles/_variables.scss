@@ -4,14 +4,15 @@ $gray: gray;
 $desktop-min: 1024px;
 $desktop: 1440px;
 $pimary-font: "DINPRO",
-"Arial",
-sans-serif;
+    "Arial",
+    sans-serif;
 $secondary-font: "Oswald",
-"Arial",
-sans-serif;
+    "Arial",
+    sans-serif;
 
 $black: #000000;
 $white: rgba(255, 255, 255, 1); // #ffffff
+$white-05: rgba(255, 255, 255, 0.5);
 $white-c9c9c9: rgba(201, 201, 201, 1); // #c9c9c9
 $white-c4c4c4: rgb(196, 196, 196, 1); //#c4c4c4
 $red-64001E: #64001E;
@@ -46,3 +47,4 @@ $black-5a5a5a: rgba(90, 90, 90, 1);
 $blue-0035c6: rgba(0, 53, 198, 1); // #0035c6
 $blue-1a0579-99: rgba(26, 5, 121, 0.98575); // #1a0579 
 $blue-1008fb-6: rgba(16, 8, 251, 0.05644); // #1008fb 
+$green-3eff00: rgba(62, 255, 0, 1); //#3eff00
