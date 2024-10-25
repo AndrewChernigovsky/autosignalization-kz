@@ -4,10 +4,10 @@
       :modules="modules"
       :slides-per-view="1"
       :loop="true"
-      :effect="'creative'"
+      :effect="'fade'"
       @slideChange="onSlideChange"
       :autoplay="{
-        delay: 2000,
+        delay: 4000,
         disableOnInteraction: true,
       }"
     >
@@ -24,7 +24,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
-import { Autoplay } from 'swiper/modules'
+import { Autoplay, EffectFade } from 'swiper/modules'
 import type { Swiper } from 'swiper/types'
 import { allvideos } from './videos'
 import SwipeSlideCom from './SwipeSlideCom.vue'
@@ -32,8 +32,8 @@ import SwipeSlideCom from './SwipeSlideCom.vue'
 import type { VideosType } from '~/types/VideosType'
 import type { SlideType } from '~/types/SlideType'
 
-const modules = [Autoplay]
-const slideChangeRef = ref(0)
+const modules = [Autoplay, EffectFade]
+const slideChangeRef = ref<number>(0)
 
 const slideContent = ref<SlideType[]>([
   {
@@ -88,6 +88,7 @@ const videos = ref<VideosType>([
 <style lang="scss" scoped>
 .intro {
   position: relative;
+  box-shadow: 0px 90px 100px rgba(47, 47, 47, 1);
 }
 
 .list-slide {

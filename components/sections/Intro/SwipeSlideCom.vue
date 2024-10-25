@@ -17,24 +17,39 @@
       Ваш браузер не поддерживает тег video.
     </video>
     <div class="container content">
-      <TransitionScale :scale="0.8" name="slide-scale">
-        <h1 v-if="isVisible && props.content">
+      <TransitionScale
+        :scale="0.8"
+        name="slide-scale"
+        :duration="1500"
+        :easing="{
+          enter: 'cubic-bezier(0.6, 0, 0.4, 2)',
+          leave: 'ease-out',
+        }"
+      >
+        <h2 v-if="isVisible && props.content">
           {{ props.content[videoIndex].title }}
-        </h1>
-        <br />
-        <ul
-          class="list-slide list-style-none"
-          v-if="isVisible && props.content"
-        >
-          <li
-            v-for="(item, index) of props.content[videoIndex].list"
-            :key="item + index"
-          >
-            {{ item }}
-          </li>
-        </ul>
+        </h2>
       </TransitionScale>
-      <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
+      <br />
+      <ul class="list-slide list-style-none" v-if="props.content">
+        <li v-for="(item, index) in props.content[videoIndex].list">
+          <TransitionScale
+            :scale="0.8"
+            :duration="1000 * index"
+            :easing="{
+              enter: 'cubic-bezier(0.6, 0, 0.4, 2)',
+              leave: 'ease-out',
+            }"
+            name="left-to-right"
+            mode="out-in"
+          >
+            <span class="advantages-text" v-if="isVisible">{{ item }}</span>
+          </TransitionScale>
+        </li>
+      </ul>
+      <div class="button">
+        <YButton :ytype="ButtonsEnum.simple">Подробнее</YButton>
+      </div>
     </div>
   </div>
 </template>
@@ -44,8 +59,6 @@ import { ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import type { SlideType } from '~/types/SlideType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { TransitionScale } from '@morev/vue-transitions'
-
-const emits = defineEmits(['updateVisibility'])
 
 const props = defineProps({
   video: {
@@ -85,35 +98,60 @@ watch(
   (newIndex) => {
     if (newIndex === props.videoIndex) {
       nextTick(() => {
-        update()
+        update(true)
+        console.log(333)
+        if (videoPlayer.value) {
+          videoPlayer.value.play() // Запускаем воспроизведение видео
+        }
       })
     } else {
-      isVisible.value = false // Hide when this slide is not active
+      update(false)
+      console.log(41133)
+      if (videoPlayer.value) {
+        videoPlayer.value.pause() // Останавливаем воспроизведение видео }
+      }
     }
   },
 )
-function update() {
-  isVisible.value = !isVisible.value
+
+function update(visible: boolean) {
+  isVisible.value = visible
 }
 </script>
 
 <style lang="scss" scoped>
-.slide-scale-enter-active,
-.slide-scale-leave-active {
-  transition: all 2.5s ease;
-  opacity: 1;
+.advantages-text {
+  font-size: 24px;
+  font-weight: 700;
+  position: relative;
+  padding-left: 50px;
+
+  @media screen and (min-width: $desktop-min) {
+    font-size: 48px;
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-image: url('@/assets/icons/aprove.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    @media screen and (min-width: $desktop-min) {
+      width: 40px;
+      height: 40px;
+    }
+  }
 }
 
-.slide-scale-enter,
-.slide-scale-leave-to {
-  transform: translateY(-20px);
-  opacity: 0;
-}
-
-.slide-scale-enter-to,
-.slide-scale-leave {
-  transform: translateY(0);
-  opacity: 1;
+.button {
+  justify-self: flex-end;
 }
 
 .content {
@@ -121,9 +159,16 @@ function update() {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  margin-top: 100px;
   width: inherit;
   gap: 10px;
+
+  @media screen and (min-width: $desktop-min) {
+    justify-content: center;
+    margin-top: 0;
+    gap: 50px;
+  }
 }
 
 .swiper-slide::after {
@@ -136,7 +181,7 @@ function update() {
   left: 0;
   z-index: -1;
   background: linear-gradient(black, #170f0f52);
-  box-shadow: inset 60px -120px 100px black;
+  box-shadow: inset 60px -120px 100px rgba(47, 47, 47, 1);
 }
 
 .swiper-slide video {
@@ -153,5 +198,20 @@ h1,
 h2,
 li {
   color: $white;
+}
+
+.list-slide {
+  min-height: 150px;
+  display: grid;
+  align-content: center;
+  justify-items: flex-start;
+}
+
+h2 {
+  font-size: 24px;
+
+  @media screen and (min-width: $desktop-min) {
+    font-size: 64px;
+  }
 }
 </style>
