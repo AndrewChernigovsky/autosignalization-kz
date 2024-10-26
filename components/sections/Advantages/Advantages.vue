@@ -34,7 +34,7 @@
   &:before,
   &:after {
     content: '';
-    display: block;
+    display: block1;
     width: 100%;
     height: 2px;
     background-color: $white;
