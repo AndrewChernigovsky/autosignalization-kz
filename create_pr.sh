@@ -13,5 +13,14 @@ read -p "Введите заголовок для Pull Request: " PR_TITLE
 # Запрашиваем описание для Pull Request
 read -p "Введите описание для Pull Request: " PR_BODY
 
+# Добавляем все изменения в индекс
+git add .
+
+# Запрашиваем сообщение коммита
+read -p "Введите сообщение коммита: " COMMIT_MESSAGE
+
+# Создаем коммит с введенным сообщением
+git commit -m "$COMMIT_MESSAGE"
+
 # Создаем Pull Request с использованием GitHub CLI
 gh pr create --base main --head "$BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
