@@ -40,9 +40,6 @@ const brandsImages = images
   max-height: 300px;
 
   @media screen and (min-width: 768px) {
-    min-width: 300px;
-    min-height: 300px;
-
     & .image {
       width: 240px;
       height: 240px;

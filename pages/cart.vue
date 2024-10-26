@@ -1,5 +1,4 @@
 <template>
-  <CarsBrand />
   <ClientOnly>
     <div class="container">
       <section>
@@ -34,7 +33,6 @@
 import { onMounted, ref, watch } from 'vue'
 import { useCartStore } from '@/stores/useCartStore'
 import type { ProductType } from '@/types/ProductType'
-import CarsBrand from '~/components/sections/CarsBrand/CarsBrand.vue'
 
 const cartStore = useCartStore()
 const products = ref<ProductType[]>([])
