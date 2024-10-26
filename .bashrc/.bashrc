@@ -16,6 +16,7 @@ function createCommit() {
 
   git add .
   git commit -m "$1"
+  git push  origin HEAD
 }
 
 function pullData() {
@@ -33,5 +34,5 @@ function create_pr() {
 
 alias s='gsw'
 alias b='gcb'
-alias c='createCommit'
+alias cp='createCommit'
 alias pull='pullData'
