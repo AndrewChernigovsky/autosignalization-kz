@@ -1,7 +1,7 @@
 <template>
-  <section class="section">
+  <section class="popularProduct">
+    <h2>Популярные товары</h2>
     <div class="container">
-      <h2>Сертификаты</h2>
       <Fancybox
         :options="{
           Carousel: {
@@ -17,19 +17,10 @@
         >
           <SwiperSlide
             class="slide"
-            v-for="(image, index) in images"
+            v-for="(product, index) in products"
             :key="index"
           >
-            <a :href="image.image.imageBigWebp" data-fancybox="gallery">
-              <picture>
-                <source
-                  v-for="src in [image.image.imageWebp, image.image.image]"
-                  :srcset="src"
-                  :type="src.endsWith('.webp') ? 'image/webp' : 'image/jpeg'"
-                />
-                <img :src="image.image.image" alt="сертификаты STARLINE" />
-              </picture>
-            </a>
+            <PopularProduct :product="product" />
           </SwiperSlide>
         </Swiper>
       </Fancybox>
@@ -37,15 +28,30 @@
   </section>
 </template>
 <script setup lang="ts">
-import { images } from './sertificates'
+import { usePopularProduct } from '~/stores/popularProducts'
+import PopularProduct from '@/components/sections/PopularProducts/PopularProduct.vue'
 import Fancybox from '~/libs/Fancybox.vue'
+import type { PopularProductsType } from '@/types/PopularProductsType'
+
+const popularStore = usePopularProduct()
+const products = ref<PopularProductsType[]>([])
+
+onMounted((products.value = popularStore.getProducts()))
 </script>
 <style lang="scss">
+.popularProduct {
+  position: relative;
+  z-index: 2;
+}
 h2 {
   text-transform: uppercase;
   text-align: center;
   font-family: $secondary-font;
   font-style: italic;
   color: $white;
+  font-size: 24px;
+  @media screen and (min-width: $desktop-min) {
+    font-size: 64px;
+  }
 }
 </style>

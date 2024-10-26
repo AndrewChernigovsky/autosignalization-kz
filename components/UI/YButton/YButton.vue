@@ -1,12 +1,6 @@
 <template>
-  <button
-    :class="[buttonClass, customClass]"
-    :type="typeButton ? typeButton : 'button'"
-    v-if="btn"
-    :ytype="ytype"
-    :disabled="states.disabled"
-    @click="handleClick"
-  >
+  <button :class="[buttonClass, customClass]" :type="typeButton ? typeButton : 'button'" v-if="btn" :ytype="ytype"
+    :disabled="states.disabled" @click="handleClick">
     <slot />
   </button>
   <a
@@ -17,6 +11,14 @@
   >
     <slot />
   </a>
+  <NuxtLink
+    :to="path"
+    v-if="link && btn === false"
+    :ytype="props.ytype"
+    :class="[buttonClass, customClass]"
+  >
+    <slot />
+  </NuxtLink>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -44,6 +46,10 @@ const props = defineProps({
   customClass: {
     type: String,
     default: '',
+  },
+  link: {
+    type: Boolean,
+    default: false,
   },
 })
 const emit = defineEmits()
@@ -73,9 +79,9 @@ const states = computed(() => {
   box-sizing: border-box;
   border: 1px solid $white-c9c9c9;
   border-radius: 5px;
-  background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
+  background: linear-gradient(180deg, $black-280000-1, $red-ff0000-99);
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
@@ -85,17 +91,17 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-070101-6, $red-790505-99);
+    background: linear-gradient(180deg, $black-2f2f2f, $red-790505-99);
     border-color: none;
   }
 
   &:focus {
     border-color: $white-c9c9c9;
-    background: linear-gradient(180deg, $black-070101-6, $red-790505-99);
+    background: linear-gradient(180deg, $black-2f2f2f, $red-790505-99);
   }
 
   &:active {
-    background: linear-gradient(180deg, $red-ff0909-6, $black-000000-99);
+    background: linear-gradient(180deg, $red-ff0909-1, $black-000000-99);
   }
 
   &:disabled {
@@ -112,7 +118,7 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
@@ -122,17 +128,28 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-170f0f-6, $black-2a2424-100);
+
+    background: linear-gradient(180deg,
+        $black-170f0f,
+        $black-2a2424-100);
   }
 
   &:focus {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $black-170f0f-6, $black-2a2424-100);
+
+    background: linear-gradient(180deg,
+        $black-170f0f,
+        $black-2a2424-100);
+
   }
 
   &:active {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $black-161313-6, $black-454040-100);
+
+    background: linear-gradient(180deg,
+        $black-161313-1,
+        $black-454040-100);
+
   }
 }
 
@@ -145,7 +162,7 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
@@ -155,17 +172,22 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-070101-6, $blue-1a0579-99);
+
+    background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
+
   }
 
   &:focus {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $black-070101-6, $blue-1a0579-99);
+
+    background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
+
   }
 
   &:active {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $blue-1008fb-6, $black-000000-99);
+    background: linear-gradient(180.00deg, $blue-1008fb, $black-000000-99);
+
   }
 }
 
@@ -204,6 +226,7 @@ const states = computed(() => {
 }
 
 @media screen and (min-width: $desktop-min) {
+
   .primary,
   .secondary,
   .tap-button,

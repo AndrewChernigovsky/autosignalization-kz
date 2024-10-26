@@ -27,12 +27,21 @@ function pullData() {
   fi
 }
 
-
 function create_pr() {
   bash "$SCRIPT_DIR/create_pr.sh"
+}
+
+function runDev() {
+  pnpm run dev
+}
+
+function buildStatic() {
+  pnpm run generate
 }
 
 alias s='gsw'
 alias b='gcb'
 alias cp='createCommit'
 alias pull='pullData'
+alias dev='runDev'
+alias gen='buildStatic'
