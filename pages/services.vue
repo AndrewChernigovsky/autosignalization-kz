@@ -1,16 +1,10 @@
 <template>
   <ClientOnly>
-    <div class="container">
-      <section>
-        <h2>Наши услуги</h2>
-      </section>
-    </div>
+    <Services />
   </ClientOnly>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Services from '~/components/sections/Services/Services.vue'
+</script>
 
-<style lang="scss" scoped>
-h2 {
-  color: red;
-}
-</style>
+<style lang="scss" scoped></style>

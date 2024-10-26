@@ -148,7 +148,7 @@ watch(count, (newValue: Number) => {
   align-items: center;
   color: $white;
   border: 1px solid $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 24px; //24px
   font-weight: 700;
   line-height: 32px; //18px

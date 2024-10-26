@@ -73,7 +73,7 @@ watch(isOpened, (newValue: boolean) => {
   display: flex;
   align-items: center;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 24px;
   font-weight: 700;
   line-height: 30px;
