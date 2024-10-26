@@ -13,34 +13,9 @@
   </section>
 </template>
 <script setup lang="ts">
-import CarsBrandItem from '@/components/CarsBrand/CarsBrandItem.vue'
-import audi from '@/assets/images/'
+import { images } from '@/components/sections/CarsBrand/carsBrand'
 
-const brandsImages = [
-  {
-    src: '@/assets/images/cars-brand/audi.png',
-    title: 'Audi',
-  },
-  {
-    src: '@/assets/images/cars-brand/genesis.png',
-    title: 'Genesis',
-  },
-  {
-    src: '@/assets/images/cars-brand/KIA.png',
-    title: 'KIA',
-  },
-  {
-    src: '@/assets/images/cars-brand/lexus.png',
-    title: 'lexus',
-  },
-  {
-    src: '@/assets/images/cars-brand/toyota.png',
-    title: 'Toyota',
-  },
-  {
-    src: '@/assets/images/cars-brand/wv.png',
-    title: 'VW',
-  },
-]
+const brandsImages = images
+console.log(brandsImages, '321321')
 </script>
 <style lang="scss"></style>

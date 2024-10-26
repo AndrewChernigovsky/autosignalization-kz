@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <Intro />
+    <CarsBrand />
     <Services />
     <PresentVideo />
     <Advantages />
@@ -21,20 +22,24 @@
       @get-quantity="(quantity: number) => console.log(quantity)"
     />
     <Dropdown :title="'Магазин'" />
-    <Checkbox :item="{
-      type: 'checkbox',
-      name: 'checkbox',
-      id: 'checkbox',
-      disabled: false,
-      text: 'управление с телефона',
-    }" />
-    <Checkbox :item="{
-      type: 'checkbox',
-      name: 'checkbox1',
-      id: 'checkbox1',
-      disabled: true,
-      text: 'управление с телефона',
-    }" />
+    <Checkbox
+      :item="{
+        type: 'checkbox',
+        name: 'checkbox',
+        id: 'checkbox',
+        disabled: false,
+        text: 'управление с телефона',
+      }"
+    />
+    <Checkbox
+      :item="{
+        type: 'checkbox',
+        name: 'checkbox1',
+        id: 'checkbox1',
+        disabled: true,
+        text: 'управление с телефона',
+      }"
+    />
 
     <Range />
     <Input :ytype="InputEnums.email" placeholder="Введите ваш адрес" />
@@ -51,10 +56,10 @@ import Services from '~/components/sections/Services/Services.vue'
 import Sertificates from '~/components/sections/Sertificates/Sertificates.vue'
 import PresentVideo from '~/components/sections/PresentVideo/PresentVideo.vue'
 import { InputEnums } from '~/enums/InputEnums'
+import CarsBrand from '~/components/CarsBrand/CarsBrandItem.vue'
 
 const userStore = useUserStore()
-const select = (evt: any) => console.log(evt.target.textContent);
-
+const select = (evt: any) => console.log(evt.target.textContent)
 
 const fetchUsers = () => {
   userStore.fetchUsers()
@@ -63,6 +68,5 @@ const fetchUsers = () => {
 onMounted(async () => {
   fetchUsers()
 })
-
 </script>
 <style lang="scss" scoped></style>

@@ -1,5 +1,5 @@
 <template>
-  <img :src="image.src" :alt="image.title ? image.title : ''" />
+  <img src="#" />
 </template>
 <script setup lang="ts">
 const props = defineProps({
@@ -9,5 +9,7 @@ const props = defineProps({
     default: () => {},
   },
 })
+
+console.log(props.image)
 </script>
 <style scoped lang="scss"></style>
