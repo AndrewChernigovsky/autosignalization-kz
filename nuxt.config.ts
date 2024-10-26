@@ -8,7 +8,6 @@ export default defineNuxtConfig({
     '@nuxtjs/svg-sprite',
     '@morev/vue-transitions/nuxt',
     'nuxt-swiper',
-    '@nuxtjs/seo',
   ],
   swiper: {
     modules: ['autoplay', 'effect-fade', 'navigation', 'pagination'],
