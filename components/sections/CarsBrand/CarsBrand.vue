@@ -5,8 +5,8 @@
         <CarsBrandItem
           class="image"
           :image="image"
-          :width="240"
-          :height="240"
+          :width="140"
+          :height="140"
         />
       </li>
     </ul>
@@ -31,10 +31,22 @@ const brandsImages = images
 }
 
 .item {
-  min-width: 300px;
-  min-height: 300px;
   background-color: white;
   padding: 30px;
   border-radius: 30px;
+  min-width: 200px;
+  min-height: 200px;
+  max-width: 300px;
+  max-height: 300px;
+
+  @media screen and (min-width: 768px) {
+    min-width: 300px;
+    min-height: 300px;
+
+    & .image {
+      width: 240px;
+      height: 240px;
+    }
+  }
 }
 </style>
