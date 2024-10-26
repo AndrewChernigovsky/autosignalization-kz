@@ -28,8 +28,7 @@ EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --state open --json number --jq '
 if [ -n "$EXISTING_PR" ]; then
   echo "Pull Request для ветки '$BRANCH_NAME' уже существует."
   echo "Ссылка на существующий PR: https://github.com/$(git config --get remote.origin.url | sed -E 's/.*\/(.*).git/\1/')/pull/$EXISTING_PR"
-  exit 1
+else
+  # Создаем Pull Request с использованием GitHub CLI
+  gh pr create --base main --head "$BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
 fi
-
-# Создаем Pull Request с использованием GitHub CLI
-gh pr create --base main --head "$BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
