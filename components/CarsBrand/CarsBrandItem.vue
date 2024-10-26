@@ -1,5 +1,6 @@
 <template>
-  <img src="#" />
+  <img v-if="image.imageWeb" :src="image.imageWeb" alt="" />
+  <img v-else :src="image.image" alt="" />
 </template>
 <script setup lang="ts">
 const props = defineProps({
@@ -9,7 +10,9 @@ const props = defineProps({
     default: () => {},
   },
 })
-
-console.log(props.image)
 </script>
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+img {
+  display: block;
+}
+</style>

@@ -100,7 +100,7 @@ import Services from '~/components/sections/Services/Services.vue'
 import Sertificates from '~/components/sections/Sertificates/Sertificates.vue'
 import PresentVideo from '~/components/sections/PresentVideo/PresentVideo.vue'
 import { InputEnums } from '~/enums/InputEnums'
-// import CarsBrand from '~/components/CarsBrand/CarsBrandItem.vue'
+import CarsBrand from '~/components/sections/CarsBrand/CarsBrand.vue'
 
 const userStore = useUserStore()
 const select = (evt: any) => console.log(evt.target.textContent)
