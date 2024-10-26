@@ -28,6 +28,7 @@
   </section>
 </template>
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { usePopularProduct } from '~/stores/popularProducts'
 import PopularProduct from '@/components/sections/PopularProducts/PopularProduct.vue'
 import Fancybox from '~/libs/Fancybox.vue'
@@ -36,7 +37,7 @@ import type { PopularProductsType } from '@/types/PopularProductsType'
 const popularStore = usePopularProduct()
 const products = ref<PopularProductsType[]>([])
 
-onMounted((products.value = popularStore.getProducts()))
+onMounted(() => (products.value = popularStore.getProducts()))
 </script>
 <style lang="scss">
 .popularProduct {
