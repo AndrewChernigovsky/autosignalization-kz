@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "create-pr": "bash create_pr.sh",
     "lint": "npx eslint ./",
     "format": "prettier --write .",
     "prepare": "husky"
