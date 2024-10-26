@@ -1,7 +1,12 @@
 <template>
   <div class="dropdown">
     <div class="down-block">
-      <button class="drop-button" :class="{ 'active-down': isOpened }" type="button" @click="toggleList">
+      <button
+        class="drop-button"
+        :class="{ 'active-down': isOpened }"
+        type="button"
+        @click="toggleList"
+      >
         <span class="visually-hidden">{{ text }}</span>
       </button>
       <span class="title-display" v-if="props.title">{{ title }}</span>
@@ -24,7 +29,7 @@ const items = ref<number[]>([1, 1, 2, 2])
 const props = defineProps({
   title: {
     type: String,
-  }
+  },
 })
 
 const text = computed(() => {
@@ -82,7 +87,6 @@ watch(isOpened, (newValue: boolean) => {
   text-transform: uppercase;
 }
 
-
 .bottom-line {
   position: relative;
   width: 242px;
@@ -113,14 +117,13 @@ watch(isOpened, (newValue: boolean) => {
   max-height: none;
 }
 
-
 .drop-button {
   width: 48px;
   height: 48px;
   position: relative;
   border: 1px solid $white-c9c9c9;
   border-radius: 5px;
-  background: linear-gradient(180.00deg, $black-280000-6, $red-ff0000-99);
+  background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
   flex-shrink: 0;
 
   &::after {
@@ -144,7 +147,7 @@ watch(isOpened, (newValue: boolean) => {
   }
 
   &:hover {
-    background: linear-gradient(180deg, $black-070101-6, $red)
+    background: linear-gradient(180deg, $black-070101-6, $red);
   }
 
   &:focus {
@@ -162,8 +165,6 @@ watch(isOpened, (newValue: boolean) => {
   }
 
   &:active {
-
-
     &::after {
       min-width: 18px;
       right: 8px;
@@ -193,7 +194,6 @@ watch(isOpened, (newValue: boolean) => {
 }
 
 .active-down {
-
   &.drop-button {
     &::after {
       min-width: 18px;

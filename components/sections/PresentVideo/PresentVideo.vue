@@ -50,7 +50,7 @@ import videoWebm from '@/assets/videos/present-video.webm'
     color: $white;
     position: relative;
     padding-left: 60px;
-    font-family: $pimary-font;
+    font-family: $primary-font;
     font-weight: 400;
 
     @media screen and (min-width: $desktop-min) {

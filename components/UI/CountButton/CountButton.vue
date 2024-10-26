@@ -1,19 +1,26 @@
 <template>
   <div class="button">
-    <button type="button" class="button-custom" @click="minusCount" :disabled="isMinusDisabled"><span
-        class="visually-hidden">Отнять</span></button>
+    <button
+      type="button"
+      class="button-custom"
+      @click="minusCount"
+      :disabled="isMinusDisabled"
+    >
+      <span class="visually-hidden">Отнять</span>
+    </button>
     <div class="counter">
       <span>{{ count }}</span>
     </div>
-    <button type="button" class="button-custom" @click="plusCount"><span
-        class="visually-hidden">Прибавить</span></button>
+    <button type="button" class="button-custom" @click="plusCount">
+      <span class="visually-hidden">Прибавить</span>
+    </button>
   </div>
 </template>
 <script setup lang="ts">
-import { CountButton } from '#build/components';
-import { ref, computed, watch } from 'vue';
-import { ButtonsEnum } from '~/enums/ButtonsEnum';
-import YButton from '../YButton/YButton.vue';
+import { CountButton } from '#build/components'
+import { ref, computed, watch } from 'vue'
+import { ButtonsEnum } from '~/enums/ButtonsEnum'
+import YButton from '../YButton/YButton.vue'
 
 const emit = defineEmits(['getQuantity'])
 const props = defineProps({
@@ -82,7 +89,6 @@ watch(count, (newValue: Number) => {
   }
 }
 
-
 .button {
   padding: 0 36px;
   max-width: 200px; //440px
@@ -95,11 +101,15 @@ watch(count, (newValue: Number) => {
   background: $black-454040-100;
 
   &:hover {
-    background: linear-gradient(180.00deg, $red-450b0b, $black-210000);
+    background: linear-gradient(180deg, $red-450b0b, $black-210000);
 
     .counter {
       border: 1px solid $white;
-      background: linear-gradient(180.00deg, $black-2800004d-19, $red-f500004d-100);
+      background: linear-gradient(
+        180deg,
+        $black-2800004d-19,
+        $red-f500004d-100
+      );
     }
 
     .button-custom {
@@ -112,22 +122,24 @@ watch(count, (newValue: Number) => {
   }
 
   &:focus {
-    background: linear-gradient(180.00deg, $black-1b1818-100);
+    background: linear-gradient(180deg, $black-1b1818-100);
 
     .counter {
       border: 1px solid $white;
-      background: linear-gradient(180.00deg, $black-0000004d, $black-0000004d , $red-f500004d-100);
+      background: linear-gradient(
+        180deg,
+        $black-0000004d,
+        $black-0000004d,
+        $red-f500004d-100
+      );
     }
 
     .button-custom {
       background: linear-gradient($black-262020, $black-262020);
     }
-
-
   }
 
   &:active {
-
     .counter {
       border: 1px solid $white;
     }
@@ -135,12 +147,8 @@ watch(count, (newValue: Number) => {
     .button-custom:active {
       background: $black-2f0000;
     }
-
-
   }
 }
-
-
 
 .counter {
   display: flex;
@@ -158,10 +166,10 @@ watch(count, (newValue: Number) => {
   min-width: 50px; //50px
   min-height: 50px; //50px
   border-radius: 79px;
-  background: linear-gradient(180.00deg, $black-2800004d-19, $red-f500004d-100);
+  background: linear-gradient(180deg, $black-2800004d-19, $red-f500004d-100);
 }
 
-@media screen and (min-width:$desktop-min) {
+@media screen and (min-width: $desktop-min) {
   .button-custom {
     padding: 8px;
     border-radius: 22px;
@@ -177,14 +185,11 @@ watch(count, (newValue: Number) => {
       min-width: 8px;
       min-height: 75px;
     }
-
   }
-
 
   .button {
     max-width: 440px;
     min-height: 100px;
-
   }
 
   .counter {
