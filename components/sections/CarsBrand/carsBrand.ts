@@ -12,46 +12,43 @@ import vw from '@/assets/images/cars-brand/vw.png'
 import vwWeb from '@/assets/images/cars-brand/vwWeb.webp'
 
 export const images: {
+  id: string
   image: string
   imageWeb: string
   title?: string
 }[] = [
   {
+    id: genesis,
     image: genesis,
     imageWeb: genesisWeb,
     title: 'genesis',
   },
   {
+    id: audi,
     image: audi,
     imageWeb: audiWeb,
     title: 'audi',
   },
   {
-    image: audi,
-    imageWeb: audiWeb,
-    title: 'audi',
-  },
-  {
-    image: audi,
-    imageWeb: audiWeb,
-    title: 'audi',
-  },
-  {
+    id: KIA,
     image: KIA,
     imageWeb: KIAWeb,
     title: 'KIA',
   },
   {
+    id: lexus,
     image: lexus,
     imageWeb: lexusWeb,
     title: 'lexus',
   },
   {
+    id: toyota,
     image: toyota,
     imageWeb: toyotaWeb,
     title: 'toyota',
   },
   {
+    id: vw,
     image: vw,
     imageWeb: vwWeb,
     title: 'vw',
