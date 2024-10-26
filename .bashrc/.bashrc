@@ -27,7 +27,6 @@ function pullData() {
   fi
 }
 
-
 function create_pr() {
   bash "$SCRIPT_DIR/create_pr.sh"
 }

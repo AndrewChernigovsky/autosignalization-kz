@@ -1,7 +1,7 @@
 <template>
-  <section class="section">
+  <section class="popularProduct">
+    <h2>Популярные товары</h2>
     <div class="container">
-      <h2>Сертификаты</h2>
       <Fancybox
         :options="{
           Carousel: {
@@ -17,19 +17,10 @@
         >
           <SwiperSlide
             class="slide"
-            v-for="(image, index) in images"
+            v-for="(product, index) in products"
             :key="index"
           >
-            <a :href="image.image.imageBigWebp" data-fancybox="gallery">
-              <picture>
-                <source
-                  v-for="src in [image.image.imageWebp, image.image.image]"
-                  :srcset="src"
-                  :type="src.endsWith('.webp') ? 'image/webp' : 'image/jpeg'"
-                />
-                <img :src="image.image.image" alt="сертификаты STARLINE" />
-              </picture>
-            </a>
+            <ProductProduct :product="product" />
           </SwiperSlide>
         </Swiper>
       </Fancybox>
@@ -37,8 +28,13 @@
   </section>
 </template>
 <script setup lang="ts">
-import { images } from './sertificates'
+import { usePopularProduct } from '~/stores/popularProducts'
 import Fancybox from '~/libs/Fancybox.vue'
+
+const popularStore = usePopularProduct()
+const products = ref<{}[]>([])
+
+onMounted((products.value = popularStore.getProducts()))
 </script>
 <style lang="scss">
 h2 {
