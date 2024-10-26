@@ -13,4 +13,14 @@ const props = defineProps({
   },
 })
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+h3 {
+  font-size: 24px;
+  text-align: center;
+  color: $white;
+
+  @media screen and (min-width: $desktop-min) {
+    font-size: 48px;
+  }
+}
+</style>
