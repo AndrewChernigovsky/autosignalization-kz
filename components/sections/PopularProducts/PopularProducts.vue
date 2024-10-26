@@ -43,6 +43,7 @@ onMounted(() => (products.value = popularStore.getProducts()))
 .popularProducts {
   position: relative;
   z-index: 2;
+  padding: 60px 0;
   background-color: $white;
 }
 
@@ -53,6 +54,8 @@ h2 {
   font-style: italic;
   color: $black-424040;
   font-size: 24px;
+  margin-top: 0;
+
   @media screen and (min-width: $desktop-min) {
     font-size: 64px;
   }
