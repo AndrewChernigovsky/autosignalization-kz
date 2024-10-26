@@ -7,6 +7,7 @@
     <PresentVideo />
     <Advantages />
     <Sertificates />
+    <FeedbackForm />
     <h2>Index</h2>
     <h1>Пользователи</h1>
     <ul>
@@ -22,7 +23,6 @@
       :quantity="5"
       @get-quantity="(quantity: number) => console.log(quantity)"
     />
-    <Dropdown :title="'Магазин'" />
     <Checkbox
       :item="{
         type: 'checkbox',
@@ -40,53 +40,9 @@
         disabled: true,
         text: 'управление с телефона',
       }"
-    />
-    <Dropdown
-      :title="'Магазин sdfsdfsdfsd dfsssssssssssss sssssssssssssss sssssssssssssssssssss sssssssssssssssssssssssssss'"
-    />
-    <CountButton
-      :quantity="5"
-      @get-quantity="(quantity: number) => console.log(quantity)"
     />
     <Dropdown :title="'Магазин'" />
-    <Checkbox
-      :item="{
-        type: 'checkbox',
-        name: 'checkbox',
-        id: 'checkbox',
-        disabled: false,
-        text: 'управление с телефона',
-      }"
-    />
-    <Checkbox
-      :item="{
-        type: 'checkbox',
-        name: 'checkbox1',
-        id: 'checkbox1',
-        disabled: true,
-        text: 'управление с телефона',
-      }"
-    />
-    <Checkbox
-      :item="{
-        type: 'checkbox',
-        name: 'checkbox',
-        id: 'checkbox',
-        disabled: false,
-        text: 'управление с телефона',
-      }"
-    />
-    <Checkbox
-      :item="{
-        type: 'checkbox',
-        name: 'checkbox1',
-        id: 'checkbox1',
-        disabled: true,
-        text: 'управление с телефона',
-      }"
-    />
     <Range />
-    <Input :ytype="InputEnums.email" placeholder="Введите ваш адрес" />
     <Select @click="select" />
   </ClientOnly>
 </template>
@@ -102,7 +58,8 @@ import Sertificates from '~/components/sections/Sertificates/Sertificates.vue'
 import PopularProducts from '~/components/sections/PopularProducts/PopularProducts.vue'
 import PresentVideo from '~/components/sections/PresentVideo/PresentVideo.vue'
 import { InputEnums } from '~/enums/InputEnums'
-// import CarsBrand from '~/components/CarsBrand/CarsBrandItem.vue'
+import CarsBrand from '~/components/sections/CarsBrand/CarsBrand.vue'
+import FeedbackForm from '~/components/sections/FeedbackForm/FeedbackForm.vue'
 
 const userStore = useUserStore()
 const select = (evt: any) => console.log(evt.target.textContent)

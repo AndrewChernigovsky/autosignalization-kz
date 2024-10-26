@@ -6,7 +6,7 @@ import type { NavigationLinksType } from '@/types/NavigationLinksType'
 export const useNavigationStore = defineStore('product', () => {
   const navigationLinks = ref<NavigationLinksType[]>([
     { name: 'Главная', path: '/' },
-    { name: 'Наши услуги', path: '/services' },
+    { name: 'Наши услуги', path: '/services-page' },
     { name: 'О нас', path: '/about' },
     { name: 'Парковочные системы', path: '/parking-systems' },
     { name: 'Автосигнализации', path: '/autosygnales' },

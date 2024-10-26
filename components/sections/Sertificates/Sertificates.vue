@@ -40,7 +40,7 @@
 import { images } from './sertificates'
 import Fancybox from '~/libs/Fancybox.vue'
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 h2 {
   text-transform: uppercase;
   text-align: center;
