@@ -41,7 +41,7 @@ const props = defineProps({
   },
 })
 
-const validation = ref<boolean>(false)
+const validation = ref<boolean>(false);
 
 const labels = {
   [InputEnums.login]: 'Ваш логин1',
@@ -76,7 +76,7 @@ const textType = computed(() => {
 
 .input-title {
   color: $white;
-  font-family: $primary-font;
+  font-family: $pimary-font;
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -124,7 +124,7 @@ const textType = computed(() => {
   outline: none;
   border: 6px solid $black;
   border-radius: 5px;
-  font-family: $primary-font;
+  font-family: $pimary-font;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0px;
