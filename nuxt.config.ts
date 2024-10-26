@@ -42,7 +42,7 @@ export default defineNuxtConfig({
   features: {
     devLogs: false,
   },
-  plugins: ['~/plugins/global-components.ts'],
+  plugins: ['~/plugins/useFancybox.ts'],
   components: {
     global: true,
     dirs: ['~/components/UI'],
