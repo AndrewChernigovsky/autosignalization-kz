@@ -14,7 +14,7 @@
     </a>
   </div>
 </template>
-<script scoped setup></script>
+<script setup></script>
 
 <style lang="scss">
 .logo-container {

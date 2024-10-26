@@ -1,6 +1,9 @@
 type PopularProductsType = {
-    title: string,
-    price: number
+  title: string
+  images?: {
+    image: string[]
+  }[]
+  price: number
 }
 
 export type { PopularProductsType }
