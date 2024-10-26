@@ -92,7 +92,7 @@ const value = ref<number>(999999)
     color: $white;
     background-color: $black-2f2f2f;
     border: 1px solid $white;
-    font-family: $pimary-font;
+    font-family: $primary-font;
     font-size: 18px;
     font-weight: 700;
     line-height: 18px;

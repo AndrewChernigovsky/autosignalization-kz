@@ -75,7 +75,7 @@ const states = computed(() => {
   border-radius: 5px;
   background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
@@ -112,7 +112,7 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
@@ -145,7 +145,7 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 16px;
   font-weight: 700;
   line-height: 14px;
