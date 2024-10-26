@@ -22,13 +22,14 @@ read -p "Введите сообщение коммита: " COMMIT_MESSAGE
 # Создаем коммит с введенным сообщением
 git commit -m "$COMMIT_MESSAGE"
 
-# Проверяем, существует ли уже Pull Request с таким заголовком
-EXISTING_PR=$(gh pr list --state open --base main --json title --jq '.[] | select(.title == "'"$PR_TITLE"'")')
+# Проверяем, существует ли уже Pull Request для текущей ветки
+EXISTING_PR=$(gh pr list --head "$BRANCH_NAME" --state open --json number --jq '.[0].number')
 
 if [ -n "$EXISTING_PR" ]; then
-  echo "Pull Request с заголовком '$PR_TITLE' уже существует."
-  echo "Ссылка на существующий PR: $(gh pr list --state open --base main --json url --jq '.[] | select(.title == "'"$PR_TITLE"'") | .url')"
-else
-  # Создаем Pull Request с использованием GitHub CLI
-  gh pr create --base main --head "$BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
+  echo "Pull Request для ветки '$BRANCH_NAME' уже существует."
+  echo "Ссылка на существующий PR: https://github.com/$(git config --get remote.origin.url | sed -E 's/.*\/(.*).git/\1/')/pull/$EXISTING_PR"
+  exit 1
 fi
+
+# Создаем Pull Request с использованием GitHub CLI
+gh pr create --base main --head "$BRANCH_NAME" --title "$PR_TITLE" --body "$PR_BODY"
