@@ -2,12 +2,7 @@
   <div class="input">
     <label>
       <span>{{ text || label }}</span>
-      <input
-        :type="textType || 'text'"
-        :ytype="InputEnums.login"
-        :required="required"
-        :placeholder="placeholder"
-      />
+      <input :type="textType || 'text'" :ytype="InputEnums.login" :required="required" :placeholder="placeholder" />
     </label>
   </div>
 </template>

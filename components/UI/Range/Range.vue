@@ -83,13 +83,22 @@ const value = ref<number>(999999)
   .range-min-value::-webkit-inner-spin-button,
   .range-max-value::-webkit-outer-spin-button,
   .range-max-value::-webkit-inner-spin-button {
-    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
+
+  .range-min-value::-webkit-outer-spin-button:hover,
+  .range-min-value::-webkit-inner-spin-button:hover,
+  .range-max-value::-webkit-outer-spin-button:hover,
+  .range-max-value::-webkit-inner-spin-button:hover {
+    appearance: none;
     margin: 0;
   }
 
   .range-min-value:focus,
   .range-max-value:focus {
     background-color: $black-5a5a5a;
+    appearance: none;
     outline: none;
   }
 
