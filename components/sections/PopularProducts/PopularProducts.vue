@@ -20,7 +20,7 @@
             v-for="(product, index) in products"
             :key="index"
           >
-            <ProductProduct :product="product" />
+            <PopularProduct :product="product" />
           </SwiperSlide>
         </Swiper>
       </Fancybox>
@@ -29,19 +29,29 @@
 </template>
 <script setup lang="ts">
 import { usePopularProduct } from '~/stores/popularProducts'
+import PopularProduct from '@/components/sections/PopularProducts/PopularProduct.vue'
 import Fancybox from '~/libs/Fancybox.vue'
+import type { PopularProductsType } from '@/types/PopularProductsType'
 
 const popularStore = usePopularProduct()
-const products = ref<{}[]>([])
+const products = ref<PopularProductsType[]>([])
 
 onMounted((products.value = popularStore.getProducts()))
 </script>
 <style lang="scss">
+.popularProduct {
+  position: relative;
+  z-index: 2;
+}
 h2 {
   text-transform: uppercase;
   text-align: center;
   font-family: $secondary-font;
   font-style: italic;
   color: $white;
+  font-size: 24px;
+  @media screen and (min-width: $desktop-min) {
+    font-size: 64px;
+  }
 }
 </style>
