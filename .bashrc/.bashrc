@@ -1,9 +1,9 @@
-# Function to switch branches
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 function gsw() {
     git switch "$1"
 }
 
-# Function to create and switch to a new branch
 function gcb() {
     git checkout -b "$1"
 }
@@ -17,7 +17,21 @@ function createCommit() {
   git add .
   git commit -m "$1"
 }
-# Aliases for easier usage
+
+function pullData() {
+  if [ -z "$1" ]; then
+    git pull
+  else
+    git pull origin "$1"
+  fi
+}
+
+
+function create_pr() {
+  bash "$SCRIPT_DIR/create_pr.sh"
+}
+
 alias s='gsw'
 alias b='gcb'
 alias c='createCommit'
+alias pull='pullData'
