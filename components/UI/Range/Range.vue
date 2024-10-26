@@ -1,31 +1,10 @@
 <template>
   <div class="range-container">
     <p class="range-name">стоимость</p>
-    <input
-      class="range-input"
-      type="range"
-      id="myRange"
-      min="19999"
-      max="999999"
-      v-model="value"
-    />
+    <input class="range-input" type="range" id="myRange" min="19999" max="999999" v-model="value" />
     <div class="range-value">
-      <input
-        class="range-min-value"
-        type="number"
-        id="minValue"
-        value="19999"
-        min="19999"
-        max="999999"
-      />
-      <input
-        class="range-max-value"
-        type="number"
-        id="maxValue"
-        :value="value"
-        min="19999"
-        max="999999"
-      />
+      <input class="range-min-value" type="number" id="minValue" value="19999" min="19999" max="999999" />
+      <input class="range-max-value" type="number" id="maxValue" :value="value" min="19999" max="999999" />
     </div>
   </div>
 </template>
@@ -58,7 +37,7 @@ const value = ref<number>(999999)
 <style lang="scss" scoped>
 .range-container {
   display: flex;
-  max-width: 300px;
+  width: 300px;
   flex-direction: column;
   gap: 12px;
   padding-left: 10px;
@@ -92,23 +71,43 @@ const value = ref<number>(999999)
     color: $white;
     background-color: $black-2f2f2f;
     border: 1px solid $white;
-    font-family: $pimary-font;
+    font-family: $primary-font;
     font-size: 18px;
     font-weight: 700;
     line-height: 18px;
     letter-spacing: 0%;
+    border-radius: 0;
   }
 
-  &:hover {
-    .range-min-value,
-    .range-max-value {
-      background-color: $black-5a5a5a;
-    }
+  .range-min-value::-webkit-outer-spin-button,
+  .range-min-value::-webkit-inner-spin-button,
+  .range-max-value::-webkit-outer-spin-button,
+  .range-max-value::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
   }
 
-  &:hover ~ .range-input {
-    background-color: aqua;
+  .range-min-value::-webkit-outer-spin-button:hover,
+  .range-min-value::-webkit-inner-spin-button:hover,
+  .range-max-value::-webkit-outer-spin-button:hover,
+  .range-max-value::-webkit-inner-spin-button:hover {
+    appearance: none;
+    margin: 0;
   }
+
+  .range-min-value:focus,
+  .range-max-value:focus {
+    background-color: $black-5a5a5a;
+    appearance: none;
+    outline: none;
+  }
+
+
+  .range-min-value:hover,
+  .range-max-value:hover {
+    background-color: $black-5a5a5a;
+  }
+
 }
 
 .range-input {
@@ -133,12 +132,6 @@ const value = ref<number>(999999)
     outline: none;
   }
 
-  &:hover + .range-value {
-    .range-min-value,
-    .range-max-value {
-      background-color: $black-5a5a5a;
-    }
-  }
 
   &:focus {
     outline: none;

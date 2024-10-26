@@ -17,24 +17,7 @@
               :key="service.id"
             >
               <li class="list-item">
-                <h3>{{ service.title }}</h3>
-                <div
-                  class="content"
-                  :style="{
-                    backgroundImage: service.imageUrl
-                      ? `url(${service.imageUrl[0].url})`
-                      : 'none',
-                  }"
-                >
-                  <div class="buttons">
-                    <YButton btn="false" :ytype="ButtonsEnum.simple"
-                      >Подробнее</YButton
-                    >
-                    <YButton :ytype="ButtonsEnum.primary"
-                      ><span class="primary-btn">Заказать</span></YButton
-                    >
-                  </div>
-                </div>
+                <Service :service="service" :card="false" />
               </li>
             </SwiperSlide>
           </Swiper>
@@ -58,7 +41,11 @@
               }"
             >
               <div class="buttons">
-                <YButton btn="false" :ytype="ButtonsEnum.simple"
+                <YButton
+                  link
+                  :btn="false"
+                  :ytype="ButtonsEnum.simple"
+                  :path="`/services/${service.id}`"
                   >Подробнее</YButton
                 >
                 <YButton :ytype="ButtonsEnum.primary"
@@ -69,14 +56,15 @@
           </li>
         </ul>
       </div>
-    </section></template
-  >
+    </section>
+  </template>
 </template>
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useServiceStore } from '@/stores/service'
 import type { ServiceType } from '@/types/ServiceType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
+import Service from './Service.vue'
 import '@/assets/styles/_service-swiper.scss'
 
 const services = ref<ServiceType[]>([])
