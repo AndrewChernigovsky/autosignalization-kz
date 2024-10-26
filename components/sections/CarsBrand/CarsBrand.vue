@@ -17,14 +17,12 @@ import { images } from '@/components/sections/CarsBrand/carsBrand'
 import CarsBrandItem from '@/components/CarsBrand/CarsBrandItem.vue'
 
 const brandsImages = images
-console.log(brandsImages, '321321')
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .cars-brand {
   padding: 30px;
   padding-top: 60px;
   background-image: linear-gradient(90deg, #121010 0%, #0e0c0c 100%);
-  overflow: hidden;
 }
 
 .list {

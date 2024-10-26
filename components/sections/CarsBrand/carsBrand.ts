@@ -14,29 +14,46 @@ import vwWeb from '@/assets/images/cars-brand/vwWeb.webp'
 export const images: {
   image: string
   imageWeb: string
+  title?: string
 }[] = [
   {
     image: genesis,
     imageWeb: genesisWeb,
+    title: 'genesis',
   },
   {
     image: audi,
     imageWeb: audiWeb,
+    title: 'audi',
+  },
+  {
+    image: audi,
+    imageWeb: audiWeb,
+    title: 'audi',
+  },
+  {
+    image: audi,
+    imageWeb: audiWeb,
+    title: 'audi',
   },
   {
     image: KIA,
     imageWeb: KIAWeb,
+    title: 'KIA',
   },
   {
     image: lexus,
     imageWeb: lexusWeb,
+    title: 'lexus',
   },
   {
     image: toyota,
     imageWeb: toyotaWeb,
+    title: 'toyota',
   },
   {
     image: vw,
     imageWeb: vwWeb,
+    title: 'vw',
   },
 ]

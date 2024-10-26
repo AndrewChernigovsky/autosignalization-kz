@@ -6,6 +6,7 @@
     <PresentVideo />
     <Advantages />
     <Sertificates />
+    <FeedbackForm />
     <h2>Index</h2>
     <h1>Пользователи</h1>
     <ul>
@@ -101,6 +102,7 @@ import Sertificates from '~/components/sections/Sertificates/Sertificates.vue'
 import PresentVideo from '~/components/sections/PresentVideo/PresentVideo.vue'
 import { InputEnums } from '~/enums/InputEnums'
 import CarsBrand from '~/components/sections/CarsBrand/CarsBrand.vue'
+import FeedbackForm from '~/components/sections/FeedbackForm/FeedbackForm.vue'
 
 const userStore = useUserStore()
 const select = (evt: any) => console.log(evt.target.textContent)

@@ -1,6 +1,10 @@
 <template>
-  <img v-if="image.imageWeb" :src="image.imageWeb" alt="" />
-  <img v-else :src="image.image" alt="" />
+  <img
+    v-if="image.imageWeb"
+    :src="image.imageWeb"
+    :alt="image.title ? image.title : ''"
+  />
+  <img v-else :src="image.image" :alt="image.title ? image.title : ''" />
 </template>
 <script setup lang="ts">
 const props = defineProps({
