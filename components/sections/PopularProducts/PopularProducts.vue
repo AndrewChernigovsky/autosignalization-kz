@@ -1,5 +1,5 @@
 <template>
-  <section class="popularProduct">
+  <section class="popularProducts">
     <h2>Популярные товары</h2>
     <div class="container">
       <Fancybox
@@ -40,16 +40,18 @@ const products = ref<PopularProductsType[]>([])
 onMounted(() => (products.value = popularStore.getProducts()))
 </script>
 <style lang="scss" scoped>
-.popularProduct {
+.popularProducts {
   position: relative;
   z-index: 2;
+  background-color: $white;
 }
+
 h2 {
   text-transform: uppercase;
   text-align: center;
   font-family: $secondary-font;
   font-style: italic;
-  color: $white;
+  color: $black-424040;
   font-size: 24px;
   @media screen and (min-width: $desktop-min) {
     font-size: 64px;
