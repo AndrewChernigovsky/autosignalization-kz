@@ -158,7 +158,7 @@ const height = computed(() => {
   height: 30px;
   background-color: $black-2f2f2f;
   border: none;
-  outline: 6px solid $black;
+  outline: 6px solid $white;
   border-radius: 1px;
   font-family: $primary-font;
   font-size: 24px;
