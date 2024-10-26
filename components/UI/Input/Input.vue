@@ -76,7 +76,7 @@ const textType = computed(() => {
 
 .input-title {
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -124,7 +124,7 @@ const textType = computed(() => {
   outline: none;
   border: 6px solid $black;
   border-radius: 5px;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0px;

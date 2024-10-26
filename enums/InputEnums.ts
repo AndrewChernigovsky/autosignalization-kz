@@ -6,7 +6,7 @@ export enum InputEnums {
   phone = 'phone',
 }
 
-export enum WidthTypes {
+export enum SizeTypes {
   px = 'px',
   em = 'em',
   rem = 'rem',
@@ -16,16 +16,7 @@ export enum WidthTypes {
   auto = 'auto',
 }
 
-export enum HeightTypes {
-  px = 'px',
-  em = 'em',
-  rem = 'rem',
-  percent = '%',
-  vw = 'vw',
-  vh = 'vh',
-  auto = 'auto',
-}
 
-export type WidthEnumKeys = keyof typeof WidthTypes;
-export type HeightEnumKeys = keyof typeof HeightTypes;
+
+export type SizeEnumKeys = keyof typeof SizeTypes;
 export type InputEnumKeys = keyof typeof InputEnums
