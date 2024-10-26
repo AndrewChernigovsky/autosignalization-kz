@@ -10,13 +10,12 @@ export enum SizeTypes {
   px = 'px',
   em = 'em',
   rem = 'rem',
-  percent = '%',
+  '%' = '%',
   vw = 'vw',
   vh = 'vh',
   auto = 'auto',
+  inherit = 'inherit',
 }
 
-
-
-export type SizeEnumKeys = keyof typeof SizeTypes;
+export type SizeEnumKeys = keyof typeof SizeTypes
 export type InputEnumKeys = keyof typeof InputEnums
