@@ -36,7 +36,6 @@ const props = defineProps({
     type: Boolean,
   },
   customClass: {
-    // Добавьте этот prop
     type: String,
     default: '',
   },
@@ -56,7 +55,10 @@ const states = computed(() => {
 })
 </script>
 <style lang="scss" scoped>
-// ТЫ РАБОТАЕШЬ ТУТ
+.base {
+  pointer-events: auto;
+}
+
 .primary {
   display: flex;
   align-items: center;
@@ -65,29 +67,29 @@ const states = computed(() => {
   box-sizing: border-box;
   border: 1px solid $white-c9c9c9;
   border-radius: 5px;
-  background: linear-gradient(180deg, $black-280000-6, $red-ff0000-99);
+  background: linear-gradient(180deg, $black-280000-1, $red-ff0000-99);
   color: $white;
   font-family: $primary-font;
   font-size: 16px; //36px
   font-weight: 700;
-  line-height: 14px; //36px
+  line-height: 14px;
   letter-spacing: 0px;
   text-transform: uppercase;
-  padding: 10px; //padding: 18px 60px;
+  padding: 10px;
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-070101-6, $red-790505-99);
+    background: linear-gradient(180deg, $black-2f2f2f, $red-790505-99);
     border-color: none;
   }
 
   &:focus {
     border-color: $white-c9c9c9;
-    background: linear-gradient(180deg, $black-070101-6, $red-790505-99);
+    background: linear-gradient(180deg, $black-2f2f2f, $red-790505-99);
   }
 
   &:active {
-    background: linear-gradient(180deg, $red-ff0909-6, $black-000000-99);
+    background: linear-gradient(180deg, $red-ff0909-1, $black-000000-99);
   }
 
   &:disabled {
@@ -114,17 +116,28 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-170f0f-6, $black-2a2424-100);
+
+    background: linear-gradient(180deg,
+        $black-170f0f,
+        $black-2a2424-100);
   }
 
   &:focus {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $black-170f0f-6, $black-2a2424-100);
+
+    background: linear-gradient(180deg,
+        $black-170f0f,
+        $black-2a2424-100);
+
   }
 
   &:active {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $black-161313-6, $black-454040-100);
+
+    background: linear-gradient(180deg,
+        $black-161313-1,
+        $black-454040-100);
+
   }
 }
 
@@ -147,17 +160,22 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-070101-6, $blue-1a0579-99);
+
+    background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
+
   }
 
   &:focus {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $black-070101-6, $blue-1a0579-99);
+
+    background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
+
   }
 
   &:active {
     border: 1px solid $white;
-    background: linear-gradient(180deg, $blue-1008fb-6, $black-000000-99);
+    background: linear-gradient(180.00deg, $blue-1008fb, $black-000000-99);
+
   }
 }
 
