@@ -39,7 +39,7 @@ const products = ref<PopularProductsType[]>([])
 
 onMounted(() => (products.value = popularStore.getProducts()))
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .popularProduct {
   position: relative;
   z-index: 2;
