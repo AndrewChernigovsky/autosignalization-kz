@@ -1,10 +1,12 @@
 <template>
-  <div class="input">
+  <div class="input" :style="{ width: props.width, height: props.height }">
     <label class="input-label">
       <span class="input-title">{{ text || label }}</span>
-      <input class="input-login" :class="validation ? 'valid' : 'invalid'" :type="textType || 'text'"
-        :ytype="InputEnums.login" :required="required" :placeholder="placeholder" />
-      <div class="input-checkbox"></div>
+      <div class="input-container">
+        <input class="input-login" :class="validation ? 'valid' : 'invalid'" :type="textType || 'text'"
+          :ytype="InputEnums.login" :required="required" :placeholder="placeholder" />
+        <div class="input-checkbox"></div>
+      </div>
     </label>
   </div>
 </template>
@@ -28,6 +30,14 @@ const props = defineProps({
   },
   placeholder: {
     type: String,
+  },
+  width: {
+    type: String,
+    default: '100%',
+  },
+  height: {
+    type: String,
+    default: 'auto',
   },
 })
 
@@ -61,7 +71,7 @@ const textType = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  position: relative;
+  width: inherit;
 }
 
 .input-title {
@@ -71,14 +81,21 @@ const textType = computed(() => {
   font-weight: 700;
   letter-spacing: 0px;
   text-align: left;
+  width: inherit;
+}
+
+.input-container {
+  position: relative;
+  width: inherit;
 }
 
 .input-checkbox {
   position: absolute;
   width: 20px;
   height: 20px;
-  bottom: 7px;
-  right: 7px;
+  top: 50%;
+  right: 0px;
+  transform: translate(-50%, -50%);
   border-radius: 3px;
 }
 
@@ -100,8 +117,8 @@ const textType = computed(() => {
 }
 
 .input-login {
-  max-width: 100%;
-  min-height: 33px;
+  width: inherit;
+  height: 33px;
   background-color: $black-2f2f2f;
   border: none;
   outline: none;

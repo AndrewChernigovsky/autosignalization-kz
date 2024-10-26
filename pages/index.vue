@@ -13,29 +13,22 @@
     <YButton :ytype="ButtonsEnum.secondary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.primary">Подробнее</YButton>
     <YButton :ytype="ButtonsEnum.tabButton">Подробнее</YButton>
-    <CountButton
-      :quantity="5"
-      @get-quantity="(quantity: number) => console.log(quantity)"
-    />
+    <CountButton :quantity="5" @get-quantity="(quantity: number) => console.log(quantity)" />
     <Dropdown :title="'Магазин'" />
-    <Checkbox
-      :item="{
-        type: 'checkbox',
-        name: 'checkbox',
-        id: 'checkbox',
-        disabled: false,
-        text: 'управление с телефона',
-      }"
-    />
-    <Checkbox
-      :item="{
-        type: 'checkbox',
-        name: 'checkbox1',
-        id: 'checkbox1',
-        disabled: true,
-        text: 'управление с телефона',
-      }"
-    />
+    <Checkbox :item="{
+      type: 'checkbox',
+      name: 'checkbox',
+      id: 'checkbox',
+      disabled: false,
+      text: 'управление с телефона',
+    }" />
+    <Checkbox :item="{
+      type: 'checkbox',
+      name: 'checkbox1',
+      id: 'checkbox1',
+      disabled: true,
+      text: 'управление с телефона',
+    }" />
 
     <Range />
     <Input :ytype="InputEnums.email" placeholder="Введите ваш адрес" />
