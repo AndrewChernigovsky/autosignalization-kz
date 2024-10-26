@@ -67,7 +67,6 @@ const textType = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  padding-left: 78px;
   position: relative;
 }
 
@@ -82,10 +81,10 @@ const textType = computed(() => {
 
 .input-checkbox {
   position: absolute;
-  width: 40px;
-  height: 40px;
-  top: 47px;
-  left: 11px;
+  width: 20px;
+  height: 20px;
+  bottom: 7px;
+  right: 7px;
   border-radius: 3px;
 }
 
@@ -103,10 +102,11 @@ const textType = computed(() => {
   mask-position: center;
   mask-repeat: no-repeat;
   mask-size: cover;
+
 }
 
 .input-login {
-  max-width: 300px;
+  max-width: 100%;
   min-height: 33px;
   background-color: $black-2f2f2f;
   border: none;
@@ -120,6 +120,18 @@ const textType = computed(() => {
   text-align: left;
   padding: 0;
   padding-left: 8px;
+  padding-right: 27px;
   color: $white-05;
+
+
+  &:valid {
+    box-shadow: 0 0 4px $green-3eff00;
+    border: 2px solid $black;
+  }
+
+  &:invalid {
+    box-shadow: 0 0 4px $red-ff0000-99;
+    border: 2px solid $black;
+  }
 }
 </style>

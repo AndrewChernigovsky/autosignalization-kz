@@ -1,7 +1,7 @@
 <template>
   <ul class="list list-style-none">
     <li class="item" v-for="link in links">
-      <NuxtLink class="link" to="link.path">{{ link.link }}</NuxtLink>
+      <NuxtLink class="link" :to="link.path">{{ link.link }}</NuxtLink>
       <SubLinks
         class="sub-link"
         :links="link.subLinks"
