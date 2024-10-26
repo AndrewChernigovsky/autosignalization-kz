@@ -1,0 +1,22 @@
+.service-slider {
+
+  .swiper-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    background-color: #413E3E;
+    border-radius: 50%;
+    margin: 0 5px;
+
+    &.swiper-pagination-bullet-active {
+      background-color: #959090;
+      transform: scale(1.2);
+      transition: transform 0.3s ease;
+    }
+  }
+}

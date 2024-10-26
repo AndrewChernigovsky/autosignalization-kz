@@ -1,9 +1,20 @@
 <template>
-  <button :class="[buttonClass, customClass]" :type="typeButton ? typeButton : 'button'" v-if="btn" :ytype="ytype"
-    :disabled="states.disabled" @click="handleClick">
+  <button
+    :class="[buttonClass, customClass]"
+    :type="typeButton ? typeButton : 'button'"
+    v-if="btn"
+    :ytype="ytype"
+    :disabled="states.disabled"
+    @click="handleClick"
+  >
     <slot />
   </button>
-  <a :href="path" v-if="btn === false">
+  <a
+    :href="path"
+    v-if="btn === false"
+    :ytype="props.ytype"
+    :class="[buttonClass, customClass]"
+  >
     <slot />
   </a>
 </template>
@@ -30,9 +41,9 @@ const props = defineProps({
   disabled: {
     type: Boolean,
   },
-  customClass: { // Добавьте этот prop
+  customClass: {
     type: String,
-    default: ''
+    default: '',
   },
 })
 const emit = defineEmits()
@@ -50,7 +61,10 @@ const states = computed(() => {
 })
 </script>
 <style lang="scss" scoped>
-// ТЫ РАБОТАЕШЬ ТУТ
+.base {
+  pointer-events: auto;
+}
+
 .primary {
   display: flex;
   align-items: center;
@@ -62,12 +76,12 @@ const states = computed(() => {
   background: linear-gradient(180deg, $black-280000-1, $red-ff0000-99);
   color: $white;
   font-family: $pimary-font;
-  font-size: 16px; //36px
+  font-size: 16px;
   font-weight: 700;
-  line-height: 14px; //36px
+  line-height: 14px;
   letter-spacing: 0px;
   text-transform: uppercase;
-  padding: 10px; //padding: 18px 60px;
+  padding: 10px;
   cursor: pointer;
 
   &:hover {
@@ -85,9 +99,7 @@ const states = computed(() => {
   }
 
   &:disabled {
-    background: linear-gradient(180deg,
-        $black-ff090900-6,
-        $black-000000-99);
+    background: linear-gradient(180deg, $black-ff090900-6, $black-000000-99);
   }
 }
 
@@ -110,6 +122,7 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
+
     background: linear-gradient(180deg,
         $black-170f0f,
         $black-2a2424-100);
@@ -117,16 +130,20 @@ const states = computed(() => {
 
   &:focus {
     border: 1px solid $white;
+
     background: linear-gradient(180deg,
         $black-170f0f,
         $black-2a2424-100);
+
   }
 
   &:active {
     border: 1px solid $white;
+
     background: linear-gradient(180deg,
         $black-161313-1,
         $black-454040-100);
+
   }
 }
 
@@ -134,7 +151,7 @@ const states = computed(() => {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180.00deg, $black-10172d, $blue-0035c6 100%);
+  background: linear-gradient(180deg, $black-10172d, $blue-0035c6 100%);
   max-width: 100%;
   border: 1px solid $white;
   border-radius: 5px;
@@ -149,17 +166,22 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
+
     background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
+
   }
 
   &:focus {
     border: 1px solid $white;
+
     background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
+
   }
 
   &:active {
     border: 1px solid $white;
     background: linear-gradient(180.00deg, $blue-1008fb, $black-000000-99);
+
   }
 }
 
@@ -172,9 +194,10 @@ const states = computed(() => {
   border: 1px solid $white;
   border-radius: 5px;
   color: $white;
-  font-family: $pimary-font;
+  font-family: $secondary-font;
   font-size: 16px;
   font-weight: 700;
+  font-style: italic;
   line-height: 14px;
   letter-spacing: 0px;
   text-transform: uppercase;
@@ -182,28 +205,21 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg,
-        $black-170f0f-6,
-        $black-2a2424-100);
+    background: linear-gradient(180deg, $black-170f0f-6, $black-2a2424-100);
   }
 
   &:focus {
     border: 1px solid $white;
-    background: linear-gradient(180deg,
-        $black-170f0f-6,
-        $black-2a2424-100);
+    background: linear-gradient(180deg, $black-170f0f-6, $black-2a2424-100);
   }
 
   &:active {
     border: 1px solid $white;
-    background: linear-gradient(180deg,
-        $black-161313-6,
-        $black-454040-100);
+    background: linear-gradient(180deg, $black-161313-6, $black-454040-100);
   }
 }
 
-@media screen and (min-width:$desktop-min) {
-
+@media screen and (min-width: $desktop-min) {
   .primary,
   .secondary,
   .tap-button,
@@ -212,7 +228,6 @@ const states = computed(() => {
     line-height: 36px;
     padding: 18px 60px;
   }
-
 }
 
 .disabled {
