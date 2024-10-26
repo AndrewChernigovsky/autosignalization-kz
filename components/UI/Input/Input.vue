@@ -12,7 +12,7 @@
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
-import { InputEnums, type InputEnumKeys } from '~/enums/InputEnums'
+import { InputEnums, type InputEnumKeys, SizeTypes, type SizeEnumKeys } from '~/enums/InputEnums'
 
 const props = defineProps({
   required: {
