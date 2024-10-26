@@ -2,6 +2,7 @@
   <ClientOnly>
     <Intro />
     <Services />
+    <PresentVideo />
     <Advantages />
     <h2>Index</h2>
     <h1>Пользователи</h1>
@@ -49,6 +50,7 @@ import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import Intro from '~/components/sections/Intro/Intro.vue'
 import Advantages from '~/components/sections/Advantages/Advantages.vue'
 import Services from '~/components/sections/Services/Services.vue'
+import PresentVideo from '~/components/sections/PresentVideo/PresentVideo.vue'
 import { InputEnums } from '~/enums/InputEnums'
 
 const userStore = useUserStore()
