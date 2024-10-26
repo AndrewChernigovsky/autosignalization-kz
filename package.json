@@ -8,6 +8,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
+    "create-pr": "bash create_pr.sh",
     "lint": "npx eslint ./",
     "format": "prettier --write .",
     "prepare": "husky"
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
+    "@fancyapps/ui": "^5.0.36",
     "@morev/vue-transitions": "^3.0.2",
     "@nuxtjs/svg-sprite": "^1.0.2",
     "@types/express": "^5.0.0",
