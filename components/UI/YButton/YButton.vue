@@ -70,7 +70,7 @@ const states = computed(() => {
   background: linear-gradient(180deg, $black-280000-1, $red-ff0000-99);
   color: $white;
   font-family: $primary-font;
-  font-size: 16px; //36px
+  font-size: 16px;
   font-weight: 700;
   line-height: 14px;
   letter-spacing: 0px;

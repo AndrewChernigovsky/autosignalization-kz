@@ -2,8 +2,14 @@
   <div class="input">
     <label class="input-label">
       <span class="input-title">{{ text || label }}</span>
-      <input class="input-login" :class="validation ? 'valid' : 'invalid'" :type="textType || 'text'"
-        :ytype="InputEnums.login" :required="required" :placeholder="placeholder" />
+      <input
+        class="input-login"
+        :class="validation ? 'valid' : 'invalid'"
+        :type="textType || 'text'"
+        :ytype="InputEnums.login"
+        :required="required"
+        :placeholder="placeholder"
+      />
       <div class="input-checkbox"></div>
     </label>
   </div>
@@ -31,7 +37,7 @@ const props = defineProps({
   },
 })
 
-const validation = ref<boolean>(false);
+const validation = ref<boolean>(false)
 
 const labels = {
   [InputEnums.login]: 'Ваш логин1',
@@ -66,7 +72,7 @@ const textType = computed(() => {
 
 .input-title {
   color: $white;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 24px;
   font-weight: 700;
   letter-spacing: 0px;
@@ -82,7 +88,7 @@ const textType = computed(() => {
   border-radius: 3px;
 }
 
-.input-login:valid+.input-checkbox {
+.input-login:valid + .input-checkbox {
   mask-image: url('@/assets/icons/aprove.svg');
   background-color: $green-3eff00;
   mask-position: center;
@@ -90,7 +96,7 @@ const textType = computed(() => {
   mask-size: cover;
 }
 
-.input-login:invalid+.input-checkbox {
+.input-login:invalid + .input-checkbox {
   mask-image: url('@/assets/icons/aprove.svg');
   background-color: $red-ff0000-99;
   mask-position: center;
@@ -107,7 +113,7 @@ const textType = computed(() => {
   outline: none;
   border: 6px solid $black;
   border-radius: 5px;
-  font-family: $pimary-font;
+  font-family: $primary-font;
   font-size: 24px;
   font-weight: 400;
   letter-spacing: 0px;

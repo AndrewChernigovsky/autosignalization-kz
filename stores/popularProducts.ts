@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 import type { PopularProductsType } from '@/types/PopularProductsType'
 import { ref } from 'vue'
 
-export const useParkSystemProductsStore = defineStore('parkSystem', () => {
+export const usePopularProduct = defineStore('popular-products', () => {
   const products = ref<PopularProductsType[]>([
     {
       title: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
