@@ -3,14 +3,8 @@
     <label class="input-label">
       <span class="input-title">{{ text || label }}</span>
       <div class="input-container">
-        <input
-          class="input-login"
-          :class="validation ? 'valid' : 'invalid'"
-          :type="textType || 'text'"
-          :ytype="InputEnums.login"
-          :required="required"
-          :placeholder="placeholder"
-        />
+        <input class="input-login" :class="validation ? 'valid' : 'invalid'" :type="textType || 'text'"
+          :ytype="InputEnums.login" :required="required" :placeholder="placeholder" />
         <div class="input-checkbox"></div>
       </div>
     </label>
@@ -140,12 +134,12 @@ const height = computed(() => {
   font-weight: 700;
   letter-spacing: 0px;
   text-align: left;
-  width: inherit;
+  width: max-content;
 }
 
 .input-container {
   position: relative;
-  width: inherit;
+  width: max-content;
 }
 
 .input-checkbox {
@@ -158,30 +152,14 @@ const height = computed(() => {
   border-radius: 3px;
 }
 
-.input-login:valid + .input-checkbox {
-  mask-image: url('@/assets/icons/aprove.svg');
-  background-color: $green-3eff00;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: cover;
-}
-
-.input-login:invalid + .input-checkbox {
-  mask-image: url('@/assets/icons/aprove.svg');
-  background-color: $red-ff0000-99;
-  mask-position: center;
-  mask-repeat: no-repeat;
-  mask-size: cover;
-}
 
 .input-login {
-  width: min-content;
-  height: 33px;
+  width: inherit;
+  height: 30px;
   background-color: $black-2f2f2f;
   border: none;
-  outline: none;
-  border: 6px solid $black;
-  border-radius: 5px;
+  outline: 6px solid $black;
+  border-radius: 1px;
   font-family: $primary-font;
   font-size: 24px;
   font-weight: 400;
@@ -192,14 +170,39 @@ const height = computed(() => {
   padding-right: 40px;
   color: $white-05;
 
+
   &:valid {
-    box-shadow: 0 0 4px $green-3eff00;
-    border: 2px solid $black;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      outline: none;
+      box-shadow: 0 0 8px $green-3eff00;
+
+      &+.input-checkbox {
+        mask-image: url('@/assets/icons/aprove.svg');
+        background-color: $green-3eff00;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: cover;
+      }
+    }
   }
 
   &:invalid {
-    box-shadow: 0 0 4px $red-ff0000-99;
-    border: 2px solid $black;
+
+    &:focus,
+    &:not(:placeholder-shown) {
+      outline: none;
+      box-shadow: 0 0 8px $red-ff0000-99;
+
+      &+.input-checkbox {
+        mask-image: url('@/assets/icons/aprove.svg');
+        background-color: $red-ff0000-99;
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: cover;
+      }
+    }
   }
 }
 </style>
