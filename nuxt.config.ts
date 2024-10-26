@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxtjs/seo',
   ],
   swiper: {
-    modules: ['autoplay'],
+    modules: ['autoplay', 'effect-fade', 'navigation', 'pagination'],
   },
   vueTransitions: {
     componentDefaultProps: {
@@ -43,7 +43,7 @@ export default defineNuxtConfig({
   features: {
     devLogs: false,
   },
-  plugins: ['~/plugins/global-components.ts'],
+  plugins: ['~/plugins/useFancybox.ts'],
   components: {
     global: true,
     dirs: ['~/components/UI'],
