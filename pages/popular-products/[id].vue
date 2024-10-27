@@ -26,12 +26,18 @@
 <script setup lang="ts">
 import type { PopularProductsType } from '@/types/PopularProductsType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
-import PopularProductGallery from './PopularProductGallery.vue'
+import PopularProductGallery from '@/components/sections/PopularProducts/PopularProductGallery.vue'
+import { onMounted } from 'vue'
+import { usePopularProduct } from '~/stores/popularProducts'
+const popularStore = usePopularProduct()
+const product = ref<PopularProductsType>()
+const route = useRoute()
 
-const props = defineProps({
-  product: {
-    type: Object as () => PopularProductsType,
-  },
+onMounted(() => {
+  const foundProduct = popularStore
+    .getProducts()
+    .find((p) => p.id === +route.params.id)
+  product.value = foundProduct || null
 })
 </script>
 <style lang="scss" scoped>
@@ -40,6 +46,9 @@ const props = defineProps({
   padding-left: 20px;
   display: grid;
   gap: 30px;
+  min-width: 300px;
+  max-width: 500px;
+  justify-self: center;
 
   .wrapper {
     background-position: 0px;

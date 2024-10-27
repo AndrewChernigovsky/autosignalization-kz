@@ -2,28 +2,21 @@
   <section class="popularProducts">
     <h2>Популярные товары</h2>
     <div class="container">
-      <Fancybox
-        :options="{
-          Carousel: {
-            infinite: false,
-          },
-        }"
+      <Swiper
+        :modules="[SwiperPagination]"
+        :slides-per-view="3"
+        :space-between="30"
+        :pagination="{ clickable: true }"
+        class="popular-gallery"
       >
-        <Swiper
-          :modules="[SwiperPagination]"
-          :slides-per-view="3"
-          :space-between="30"
-          :pagination="{ clickable: true }"
+        <SwiperSlide
+          class="slide"
+          v-for="(product, index) in products"
+          :key="index"
         >
-          <SwiperSlide
-            class="slide"
-            v-for="(product, index) in products"
-            :key="index"
-          >
-            <PopularProduct :product="product" />
-          </SwiperSlide>
-        </Swiper>
-      </Fancybox>
+          <PopularProduct :product="product" />
+        </SwiperSlide>
+      </Swiper>
     </div>
   </section>
 </template>
@@ -31,7 +24,7 @@
 import { onMounted } from 'vue'
 import { usePopularProduct } from '~/stores/popularProducts'
 import PopularProduct from '@/components/sections/PopularProducts/PopularProduct.vue'
-import Fancybox from '~/libs/Fancybox.vue'
+
 import type { PopularProductsType } from '@/types/PopularProductsType'
 
 const popularStore = usePopularProduct()
