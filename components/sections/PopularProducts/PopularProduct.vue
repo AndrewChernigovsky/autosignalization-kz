@@ -1,23 +1,25 @@
 <template>
   <div class="popularProduct" v-if="product">
-    <div class="images">
-      <picture v-if="product.images && product.images.length">
-        <template v-for="(imageGroup, index) in product.images" :key="index">
-          <source
-            v-for="(image, imgIndex) in imageGroup.image"
-            :key="imgIndex"
-            :src="image"
-          />
-        </template>
+    <div class="wrapper">
+      <div class="images">
+        <picture v-if="product.images && product.images.length">
+          <template v-for="(imageGroup, index) in product.images" :key="index">
+            <source
+              v-for="(image, imgIndex) in imageGroup.image"
+              :key="imgIndex"
+              :src="image"
+            />
+          </template>
 
-        <img :src="product.images[0].image[0]" alt="" />
-      </picture>
+          <img :src="product.images[0].image[0]" alt="" />
+        </picture>
+      </div>
+
+      <h3>{{ product.title }}</h3>
+      <p>{{ product.price }}</p>
+      <YButton>Заказать</YButton>
+      <YButton>Подробнее</YButton>
     </div>
-
-    <h3>{{ product.title }}</h3>
-    <p>{{ product.price }}</p>
-    <YButton>Заказать</YButton>
-    <YButton>Подробнее</YButton>
   </div>
 </template>
 
@@ -32,30 +34,26 @@ const props = defineProps({
 </script>
 <style lang="scss" scoped>
 .popularProduct {
-  background-color: $black-424040;
-  position: relative;
-
-  &::before {
-    content: '';
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    clip-path: polygon(
-      100% 0%,
-      8% 0%,
-      0% 91%,
-      1% 93%,
-      2% 95%,
-      3% 97%,
-      4% 98%,
-      5% 99%,
-      7% 100%,
-      8% 100%,
-      100% 90%
-    );
+  padding-bottom: 30px;
+  padding-left: 20px;
+  .wrapper {
     background-color: $black-424040;
+    position: relative;
+    padding: 10px;
+    border-radius: 20px;
+
+    &::before {
+      content: '';
+      left: 0;
+      bottom: -20px;
+      width: 100%;
+      height: 30px;
+      position: absolute;
+      background-image: url('@/assets/icons/popular-border-bottom.svg');
+      background-position: left bottom;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
   }
 
   .images {
