@@ -35,6 +35,7 @@
   </div>
 </template>
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import type { ServiceType } from '@/types/ServiceType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { useServiceStore } from '@/stores/service'

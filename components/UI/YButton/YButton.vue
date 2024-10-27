@@ -1,11 +1,17 @@
 <template>
-  <button :class="[buttonClass, customClass]" :type="typeButton ? typeButton : 'button'" v-if="btn" :ytype="ytype"
-    :disabled="states.disabled" @click="handleClick">
+  <button
+    :class="[buttonClass, customClass]"
+    :type="typeButton ? typeButton : 'button'"
+    v-if="btn"
+    :ytype="ytype"
+    :disabled="states.disabled"
+    @click="handleClick"
+  >
     <slot />
   </button>
   <a
     :href="path"
-    v-if="btn === false"
+    v-if="btn === false && link === false"
     :ytype="props.ytype"
     :class="[buttonClass, customClass]"
   >
@@ -128,28 +134,19 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-
-    background: linear-gradient(180deg,
-        $black-170f0f,
-        $black-2a2424-100);
+    background: linear-gradient(180deg, $black-170f0f, $black-2a2424-100);
   }
 
   &:focus {
     border: 1px solid $white;
 
-    background: linear-gradient(180deg,
-        $black-170f0f,
-        $black-2a2424-100);
-
+    background: linear-gradient(180deg, $black-170f0f, $black-2a2424-100);
   }
 
   &:active {
     border: 1px solid $white;
 
-    background: linear-gradient(180deg,
-        $black-161313-1,
-        $black-454040-100);
-
+    background: linear-gradient(180deg, $black-161313-1, $black-454040-100);
   }
 }
 
@@ -172,22 +169,18 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-
-    background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
-
+    background: linear-gradient(180deg, $black-070101-1, $blue-1a0579-99);
   }
 
   &:focus {
     border: 1px solid $white;
 
-    background: linear-gradient(180.00deg, $black-070101-1, $blue-1a0579-99);
-
+    background: linear-gradient(180deg, $black-070101-1, $blue-1a0579-99);
   }
 
   &:active {
     border: 1px solid $white;
-    background: linear-gradient(180.00deg, $blue-1008fb, $black-000000-99);
-
+    background: linear-gradient(180deg, $blue-1008fb, $black-000000-99);
   }
 }
 
@@ -225,10 +218,49 @@ const states = computed(() => {
   }
 }
 
-@media screen and (min-width: $desktop-min) {
+.dark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $black;
+  max-width: 100%;
+  border: 1px solid $white;
+  border-radius: 5px;
+  color: $white;
+  font-family: $secondary-font;
+  font-size: 16px;
+  font-weight: 700;
+  font-style: italic;
+  line-height: 14px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  padding: 10px;
+  cursor: pointer;
 
+  &:hover {
+    background: $white;
+    color: $black;
+    border: 1px solid $black;
+  }
+
+  &:focus {
+    background: $white;
+    color: $black;
+    border: 1px solid $black;
+  }
+
+  &:active {
+    background: $white;
+    color: $black;
+    border: 1px solid $black;
+    opacity: 0.8;
+  }
+}
+
+@media screen and (min-width: $desktop-min) {
   .primary,
   .secondary,
+  .dark,
   .tap-button,
   .simple {
     font-size: 36px;
