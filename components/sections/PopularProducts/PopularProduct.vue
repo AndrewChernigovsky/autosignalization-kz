@@ -55,7 +55,7 @@ const props = defineProps({
     background-color: $white;
     border-radius: 20px;
     width: 100%;
-    height: 260px;
+    height: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,6 +86,9 @@ h3 {
   display: flex;
   gap: 20px;
   margin: 0;
+  display: flex;
+  align-items: center;
+
   @media screen and (min-width: $desktop-min) {
     font-size: 48px;
   }
@@ -101,9 +104,15 @@ h3 {
 
 .buttons {
   display: grid;
-  justify-content: center;
+  justify-content: stretch;
   margin: 0 auto;
   gap: 10px;
   max-width: calc(100% - 100px);
+  width: 100%;
+
+  @media screen and (min-width: $desktop-min) {
+    display: grid;
+    justify-content: center;
+  }
 }
 </style>

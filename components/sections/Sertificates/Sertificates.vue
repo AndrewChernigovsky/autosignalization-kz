@@ -11,7 +11,7 @@
       >
         <Swiper
           :modules="[SwiperPagination]"
-          :slides-per-view="3"
+          :slides-per-view="SlidesPreview"
           :space-between="30"
           :pagination="{ clickable: true }"
         >
@@ -20,7 +20,11 @@
             v-for="(image, index) in images"
             :key="index"
           >
-            <a :href="image.image.imageBigWebp" data-fancybox="gallery">
+            <a
+              :href="image.image.imageBigWebp"
+              data-fancybox="gallery"
+              class="link"
+            >
               <picture>
                 <source
                   v-for="src in [image.image.imageWebp, image.image.image]"
@@ -39,6 +43,19 @@
 <script setup lang="ts">
 import { images } from './sertificates'
 import Fancybox from '~/libs/Fancybox.vue'
+import { ref, computed, onMounted } from 'vue'
+
+const viewportWidth = ref<number>(window.innerWidth)
+
+const SlidesPreview = computed(() => {
+  return viewportWidth.value < 768 ? 1 : 3
+})
+
+onMounted(() => {
+  window.addEventListener('resize', () => {
+    viewportWidth.value = window.innerWidth
+  })
+})
 </script>
 <style lang="scss" scoped>
 h2 {
@@ -47,5 +64,10 @@ h2 {
   font-family: $secondary-font;
   font-style: italic;
   color: $white;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
 }
 </style>
