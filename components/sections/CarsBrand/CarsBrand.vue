@@ -28,6 +28,7 @@ const brandsImages = images
 .list {
   display: flex;
   gap: 30px;
+  overflow: hidden;
 }
 
 .item {

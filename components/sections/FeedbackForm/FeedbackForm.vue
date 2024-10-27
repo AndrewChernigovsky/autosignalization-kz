@@ -22,7 +22,7 @@
         </div>
         <div class="inputs-container">
           <ul class="list list-style-none">
-            <li class="inupt-item" v-for="input in inputs">
+            <li class="input-item" v-for="input in inputs">
               <label class="item-label" :for="input.id">{{
                 input.title
               }}</label>
@@ -185,7 +185,7 @@ const inputs = [
   }
 }
 
-.inupt-item {
+.input-item {
   display: flex;
   flex-direction: column;
 
@@ -227,7 +227,7 @@ const inputs = [
   border-radius: 20px;
   color: #ffffff;
 
-  @media screen and (min-width: 102px) {
+  @media screen and (min-width: 1024px) {
     font-size: 36px;
     line-height: 45px;
   }
