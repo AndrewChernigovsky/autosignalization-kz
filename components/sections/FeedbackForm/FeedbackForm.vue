@@ -38,12 +38,12 @@
           </ul>
         </div>
         <div class="text-area-container">
-          <label class="item-label" for="form-text-aria">
+          <label class="item-label label-message" for="form-text-aria">
             Ваша сообщение:
           </label>
           <textarea class="form-text-aria" id="form-text-aria">
-Вы купили автомобиль и желаете защитить его, установив сигнализацию?  Вы любите комфорт и хотите установить автозапуск на Ваше авто?  Вам необходимо отслеживать Ваш транспорт по GPS?  Обращайтесь к нам, и мы поможем Вам решить эти задачи!
-          </textarea>
+Вы купили автомобиль и желаете защитить его, установив сигнализацию?  Вы любите комфорт и хотите установить автозапуск на Ваше авто?  Вам необходимо отслеживать Ваш транспорт по GPS?  Обращайтесь к нам, и мы поможем Вам решить эти задачи!</textarea
+          >
         </div>
         <button class="form-btn" type="submit">Отправить заявку</button>
       </form>
@@ -92,6 +92,11 @@ const inputs = [
   font-size: 24px;
   line-height: 34px;
   margin-bottom: 20px;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 68px;
+    line-height: 88px;
+  }
 }
 
 .form {
@@ -104,12 +109,18 @@ const inputs = [
   font-size: 24px;
   line-height: 30px;
   margin-bottom: 10px;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 48px;
+    line-height: 60px;
+  }
 }
 
 .brand-list {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  margin-bottom: 30px;
 }
 
 .brand-item {
@@ -123,8 +134,16 @@ const inputs = [
   max-height: 50px;
   background-color: #ffffff;
   border-radius: 5px;
-  cursor: pointer;
   position: relative;
+
+  @media screen and (min-width: 1024px) {
+    min-width: 150px;
+    min-height: 150px;
+    padding: 30px;
+    border-radius: 20px;
+    max-width: 150px;
+    max-height: 150px;
+  }
 }
 
 .brand-input {
@@ -132,9 +151,10 @@ const inputs = [
   position: absolute;
   width: 100%;
   height: 100%;
+  cursor: pointer;
 
   & + .brand-label {
-    opacity: 0.7;
+    opacity: 0.5;
     transition: opacity 0.3s ease;
   }
 
@@ -147,23 +167,43 @@ const inputs = [
 .brand-image {
   width: 40px;
   height: 40px;
+
+  @media screen and (min-width: 1024px) {
+    width: 90px;
+    height: 90px;
+  }
 }
 
 .list {
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .inupt-item {
   display: flex;
   flex-direction: column;
+
+  @media screen and (min-width: 1024px) {
+    min-width: 680px;
+  }
 }
 
 .item-label {
   font-size: 24px;
   line-height: 30px;
+  font-weight: 700;
   margin-bottom: 10px;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 48px;
+    line-height: 60px;
+  }
 }
 
 .input-wrapper {
@@ -171,6 +211,10 @@ const inputs = [
   width: 100%;
   background-color: #141212;
   border-radius: 20px;
+
+  @media screen and (min-width: 1024px) {
+    padding: 20px;
+  }
 }
 
 .input-form {
@@ -182,6 +226,11 @@ const inputs = [
   background-color: #363535;
   border-radius: 20px;
   color: #ffffff;
+
+  @media screen and (min-width: 102px) {
+    font-size: 36px;
+    line-height: 45px;
+  }
 }
 
 .form-btn {
@@ -196,6 +245,21 @@ const inputs = [
   padding: 0;
   text-align: center;
   color: #fff;
+
+  @media screen and (min-width: 102px) {
+    margin-top: 40px;
+    font-size: 36px;
+    line-height: 46px;
+    min-height: 71px;
+  }
+}
+
+.label-message {
+  @media screen and (min-width: 1024px) {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 .form-text-aria {
@@ -208,5 +272,11 @@ const inputs = [
   border-radius: 5px;
   color: #fff;
   background-color: #424242;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 42px;
+    line-height: 46px;
+    border-radius: 20px;
+  }
 }
 </style>
