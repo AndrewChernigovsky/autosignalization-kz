@@ -4,4 +4,5 @@ export enum ButtonsEnum {
   countButton = 'count-button',
   tabButton = 'tap-button',
   simple = 'simple',
+  dark = 'dark',
 }

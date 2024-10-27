@@ -1,47 +1,56 @@
 <template>
-  <section class="popularProduct">
+  <section class="popularProducts">
     <h2>Популярные товары</h2>
     <div class="container">
-      <Fancybox
-        :options="{
-          Carousel: {
-            infinite: false,
-          },
-        }"
+      <Swiper
+        :modules="[SwiperPagination]"
+        :slides-per-view="3"
+        :space-between="30"
+        :pagination="{ clickable: true }"
+        class="popular-gallery"
       >
-        <Swiper
-          :modules="[SwiperPagination]"
-          :slides-per-view="3"
-          :space-between="30"
-          :pagination="{ clickable: true }"
+        <SwiperSlide
+          class="slide"
+          v-for="(product, index) in products"
+          :key="index"
         >
-          <SwiperSlide
-            class="slide"
-            v-for="(product, index) in products"
-            :key="index"
-          >
-            <ProductProduct :product="product" />
-          </SwiperSlide>
-        </Swiper>
-      </Fancybox>
+          <PopularProduct :product="product" />
+        </SwiperSlide>
+      </Swiper>
     </div>
   </section>
 </template>
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { usePopularProduct } from '~/stores/popularProducts'
-import Fancybox from '~/libs/Fancybox.vue'
+import PopularProduct from '@/components/sections/PopularProducts/PopularProduct.vue'
+
+import type { PopularProductsType } from '@/types/PopularProductsType'
 
 const popularStore = usePopularProduct()
-const products = ref<{}[]>([])
+const products = ref<PopularProductsType[]>([])
 
-onMounted((products.value = popularStore.getProducts()))
+onMounted(() => (products.value = popularStore.getProducts()))
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
+.popularProducts {
+  position: relative;
+  z-index: 2;
+  padding: 60px 0;
+  background-color: $white;
+}
+
 h2 {
   text-transform: uppercase;
   text-align: center;
   font-family: $secondary-font;
   font-style: italic;
-  color: $white;
+  color: $black-424040;
+  font-size: 24px;
+  margin-top: 0;
+
+  @media screen and (min-width: $desktop-min) {
+    font-size: 64px;
+  }
 }
 </style>
