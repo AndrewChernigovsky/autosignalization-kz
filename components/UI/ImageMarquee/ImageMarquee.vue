@@ -49,7 +49,6 @@ const props = defineProps({
 .list {
   display: flex;
   gap: 30px;
-  overflow: hidden;
 }
 
 .item {
@@ -70,6 +69,7 @@ const props = defineProps({
     }
   }
 }
+
 .marquee {
   overflow: hidden;
   white-space: nowrap;
@@ -88,7 +88,7 @@ const props = defineProps({
 
 @keyframes marquee {
   from {
-    transform: translateX(100%);
+    transform: translateX(0%);
   }
   to {
     transform: translateX(-100%);

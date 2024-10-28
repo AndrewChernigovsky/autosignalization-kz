@@ -13,7 +13,7 @@
     :href="path"
     v-if="btn === false && link === false"
     :ytype="props.ytype"
-    :class="[buttonClass, customClass]"
+    :class="[buttonClass, customClass, 'link']"
   >
     <slot />
   </a>
@@ -21,7 +21,7 @@
     :to="path"
     v-if="link && btn === false"
     :ytype="props.ytype"
-    :class="[buttonClass, customClass]"
+    :class="[buttonClass, customClass, 'link']"
   >
     <slot />
   </NuxtLink>
@@ -57,11 +57,14 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
-})
+}),
+
 const emit = defineEmits()
+
 function handleClick(event: MouseEvent) {
   emit('click', event)
 }
+
 const buttonClass = computed(() => {
   return ['base', props.ytype || '', { disabled: props.disabled }]
 })
@@ -75,6 +78,10 @@ const states = computed(() => {
 <style lang="scss" scoped>
 .base {
   pointer-events: auto;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .primary {

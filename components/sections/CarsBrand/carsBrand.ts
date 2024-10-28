@@ -15,7 +15,7 @@ export const images: {
   id: string
   image: string
   imageWeb: string
-  title?: string
+  title: string
 }[] = [
   {
     id: genesis,
