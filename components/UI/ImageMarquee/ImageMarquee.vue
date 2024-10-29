@@ -6,26 +6,18 @@
         v-for="(image, index) in images"
         :key="index"
       >
-        <img
-          class="image"
-          :src="image.image"
-          :alt="image.title"
-          width="140"
-          height="140"
-        />
+        <div class="flex">
+          <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" />
+        </div>
       </li>
       <li
         class="image-container item"
         v-for="(image, index) in images"
         :key="'duplicate-' + index"
       >
-        <img
-          class="image"
-          :src="image.image"
-          :alt="image.title"
-          width="140"
-          height="140"
-        />
+        <div class="flex">
+          <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" />
+        </div>
       </li>
     </ul>
   </div>
@@ -37,7 +29,6 @@ const props = defineProps({
     type: Array as () => {
       id: string
       image: string
-      imageWeb: string
       title: string
     }[],
     required: true,
@@ -49,6 +40,7 @@ const props = defineProps({
 .list {
   display: flex;
   gap: 30px;
+  overflow: hidden;
 }
 
 .item {
@@ -69,7 +61,6 @@ const props = defineProps({
     }
   }
 }
-
 .marquee {
   overflow: hidden;
   white-space: nowrap;
@@ -88,7 +79,7 @@ const props = defineProps({
 
 @keyframes marquee {
   from {
-    transform: translateX(0%);
+    transform: translateX(100%);
   }
   to {
     transform: translateX(-100%);
