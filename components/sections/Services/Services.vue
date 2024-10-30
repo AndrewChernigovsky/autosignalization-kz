@@ -42,7 +42,6 @@
 import { ref } from 'vue'
 import { useServiceStore } from '@/stores/service'
 import type { ServiceType } from '@/types/ServiceType'
-import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import Service from './Service.vue'
 import '@/assets/styles/_service-swiper.scss'
 
