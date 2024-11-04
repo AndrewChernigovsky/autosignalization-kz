@@ -52,7 +52,16 @@
             class="form-text-aria"
             id="form-text-aria"
             :placeholder="textareaPlaceholder"
+            maxlength="200"
           ></textarea>
+          <div class="names">
+            <label class="name">
+              <input type="text" class="name-input">
+            </label>
+            <label class="name">
+              <input type="text" class="name-input">
+            </label>
+          </div>
         </div>
         <button class="form-btn" type="submit">Отправить заявку</button>
       </form>
