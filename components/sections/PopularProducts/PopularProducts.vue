@@ -4,7 +4,7 @@
     <div class="container">
       <Swiper
         :modules="[SwiperPagination]"
-        :slides-per-view="3"
+        :slides-per-view="slidesPerView"
         :space-between="30"
         :pagination="{ clickable: true }"
         class="popular-gallery"
@@ -29,8 +29,23 @@ import type { PopularProductsType } from '@/types/PopularProductsType'
 
 const popularStore = usePopularProduct()
 const products = ref<PopularProductsType[]>([])
+const viewportWidth = ref(0)
+const slidesPerView = computed(() => {
+  return viewportWidth.value < 768 ? 1 : 3
+})
+const updateViewportWidth = () => {
+  viewportWidth.value = window.innerWidth
+}
 
-onMounted(() => (products.value = popularStore.getProducts()))
+onMounted(() => {
+  products.value = popularStore.getProducts()
+  updateViewportWidth()
+  window.addEventListener('resize', updateViewportWidth)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateViewportWidth)
+})
 </script>
 <style lang="scss" scoped>
 .popularProducts {

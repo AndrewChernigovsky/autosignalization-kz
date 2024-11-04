@@ -1,5 +1,5 @@
 <template>
-  <div class="service-item" v-if="service && card === false">
+  <template v-if="service && card === false">
     <h3>{{ service.title }}</h3>
     <div
       class="content"
@@ -22,39 +22,7 @@
         >
       </div>
     </div>
-  </div>
-  <!-- <div class="service-item" v-if="service && card">
-    <img
-      v-for="image of service.imageUrl"
-      :src="image.url"
-      :alt="image.description"
-    />
-    <h1>{{ service.title }}</h1>
-    <div class="content">
-      <div class="description">
-        {{ service.description }}
-      </div>
-      <div class="about">
-        <p class="text">Мы предлагаем:</p>
-        <ul class="list-service-disc">
-          <li v-for="item of service.serviceDesciption">{{ item }}</li>
-        </ul>
-      </div>
-      <p>Стоимость услуг необходимо уточнять у мастера</p>
-      <p>
-        Насладитесь комфортом с прекрасно установленным и настроенным нами
-        оборудованием!
-      </p>
-      <Share />
-      <p>
-        <span>ЦЕНА: </span><span>{{ service.price }}</span>
-      </p>
-
-      <YButton :ytype="ButtonsEnum.primary"
-        ><span class="primary-btn">Заказать</span></YButton
-      >
-    </div>
-  </div> -->
+  </template>
 </template>
 <script setup lang="ts">
 import type { ServiceType } from '@/types/ServiceType'
@@ -69,4 +37,52 @@ const props = defineProps({
   },
 })
 </script>
-<style lang="scss"></style>
+<style lang="scss" scoped>
+.content {
+  height: 300px;
+  display: grid;
+  align-content: flex-end;
+  padding: 20px;
+  padding-bottom: 20px;
+  border-radius: 25px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  @media screen and (min-width: $desktop-min) {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 60px;
+    height: auto;
+    min-height: 640px;
+  }
+}
+
+.buttons {
+  display: grid;
+  gap: 10px;
+  min-height: 105px;
+
+  @media screen and (min-width: $desktop-min) {
+    display: flex;
+    gap: 20px;
+    min-height: auto;
+  }
+}
+
+.primary-btn {
+  font-family: $secondary-font;
+  font-style: italic;
+}
+
+h3 {
+  font-size: 24px;
+  text-align: center;
+
+  @media screen and (min-width: $desktop-min) {
+    font-size: 48px;
+  }
+}
+</style>

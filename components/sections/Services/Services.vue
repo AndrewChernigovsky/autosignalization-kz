@@ -31,28 +31,7 @@
         <h2>Наши услуги</h2>
         <ul class="list-service list-style-none">
           <li class="list-item" v-for="service in services" :key="service.id">
-            <h3>{{ service.title }}</h3>
-            <div
-              class="content"
-              :style="{
-                backgroundImage: service.imageUrl
-                  ? `url(${service.imageUrl[0].url})`
-                  : 'none',
-              }"
-            >
-              <div class="buttons">
-                <YButton
-                  link
-                  :btn="false"
-                  :ytype="ButtonsEnum.simple"
-                  :path="`/services/${service.id}`"
-                  >Подробнее</YButton
-                >
-                <YButton :ytype="ButtonsEnum.primary"
-                  ><span class="primary-btn">Заказать</span></YButton
-                >
-              </div>
-            </div>
+            <Service :service="service" :card="false" />
           </li>
         </ul>
       </div>
@@ -63,7 +42,6 @@
 import { ref } from 'vue'
 import { useServiceStore } from '@/stores/service'
 import type { ServiceType } from '@/types/ServiceType'
-import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import Service from './Service.vue'
 import '@/assets/styles/_service-swiper.scss'
 
@@ -95,53 +73,12 @@ onUnmounted(() => {
 .slide {
   min-height: 330px;
 }
-
-.content {
-  height: 300px;
-  display: grid;
-  align-content: flex-end;
-  padding: 20px;
-  padding-bottom: 20px;
-  border-radius: 25px;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  @media screen and (min-width: $desktop-min) {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: flex-end;
-    padding-bottom: 60px;
-    height: auto;
-    min-height: 640px;
-  }
-}
-
-.buttons {
-  display: grid;
-  gap: 10px;
-  min-height: 105px;
-
-  @media screen and (min-width: $desktop-min) {
-    display: flex;
-    gap: 20px;
-    min-height: auto;
-  }
-}
-
-.primary-btn {
-  font-family: $secondary-font;
-  font-style: italic;
-}
-
 h2,
 li {
   font-family: $secondary-font;
   color: $white;
   text-transform: uppercase;
 }
-
 h2 {
   font-size: 24px;
   text-align: center;
@@ -150,16 +87,6 @@ h2 {
     font-size: 64px;
   }
 }
-
-h3 {
-  font-size: 24px;
-  text-align: center;
-
-  @media screen and (min-width: $desktop-min) {
-    font-size: 48px;
-  }
-}
-
 .list-service {
   display: grid;
   gap: 20px;

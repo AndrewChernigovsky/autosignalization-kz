@@ -1,6 +1,10 @@
 <template>
   <div class="present-video">
-    <video muted loop autoplay>
+    <video muted loop autoplay class="first">
+      <source :src="videoWebm" type="video/webm" />
+      <source :src="video" type="video/mp4" />
+    </video>
+    <video muted loop autoplay class="second">
       <source :src="videoWebm" type="video/webm" />
       <source :src="video" type="video/mp4" />
     </video>
@@ -30,6 +34,21 @@ import videoWebm from '@/assets/videos/present-video.webm'
     @media screen and (min-width: $desktop-min) {
       width: 60%;
     }
+  }
+
+  .first {
+    position: relative;
+    z-index: 1;
+  }
+
+  .second {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(10px);
   }
 }
 .text {
