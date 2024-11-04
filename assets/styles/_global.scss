@@ -54,7 +54,6 @@ img {
 
   @media screen and (min-width: 1440px) {
     grid-template-columns: repeat(12, minmax(80px, 1fr));
-
   }
 }
 
@@ -64,4 +63,36 @@ img {
 
 .swiper-lazy-preloader {
   z-index: -2;
+}
+
+.btn {
+  color: var(--btn-color);
+  border-radius: var(--btn-radius);
+  box-shadow: var(--btn-shadow);
+  font-size: var(--btn-txt-size);
+  line-height: var(--btn-txt-height);
+  font-weight: var(--btn-weight);
+  padding: var(--btn-padding);
+  cursor: pointer;
+  border: 0;
+
+  &[data-btn='base'] {
+    background-color: var(--btn-bg-1);
+  }
+
+  &[data-btn='primory'] {
+    background-image: linear-gradient(
+      180deg,
+      var(--btn-bg-1) 0,
+      var(--btn-bg-2) 100%
+    );
+  }
+
+  &[data-btn='secondary'] {
+    background-image: linear-gradient(
+      180deg,
+      var(--btn-bg-1) 0,
+      var(--btn-bg-2) 100%
+    );
+  }
 }
