@@ -8,6 +8,7 @@
     <Advantages />
     <Sertificates />
     <FeedbackForm />
+    <Ybutton></Ybutton>
   </ClientOnly>
 </template>
 <script lang="ts" setup>
