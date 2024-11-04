@@ -10,7 +10,7 @@ $secondary-font: 'Oswald', 'Arial', sans-serif;
 $black: #000000;
 $white: rgba(255, 255, 255, 1); // #ffffff
 $white-05: rgba(255, 255, 255, 0.5);
-$white-c9c9c9: rgba(201, 201, 201, 1); // #c9c9c9
+$white-c9c9c9: rgba(201, 201, 201, 1); // #c9c9c9 //DONE
 $white-c4c4c4: rgba(196, 196, 196, 1); //#c4c4c4
 $white-c4c4c4-05: rgba(196, 196, 196, 0.5); //#c4c4c4
 $white-6b6767-05: rgba(107, 103, 103, 0.5); //#6b6767
@@ -19,14 +19,14 @@ $red-b20606: rgba(178, 6, 6, 1); //#b20606
 $red-8b1b1b: rgba(139, 27, 27, 1); //#8b1b1b
 $red-B40036: rgba(180, 0, 54, 1); //#B40036
 $red-7e2222: rgba(126, 34, 34, 1); //#7e2222
-$red-ff0000-99: rgba(255, 0, 0, 0.98575); // #ff0000
-$red-790505-99: rgba(121, 5, 5, 0.98575); // #790505
+$red-ff0000-99: rgba(255, 0, 0, 0.98575); // #ff0000 //DONE
+$red-790505-99: rgba(121, 5, 5, 0.98575); // #790505 //DONE
 $red-ff0909-6: rgba(255, 9, 9, 0.05644); // #ff0909
 $red-450b0b: rgba(69, 11, 11, 1); // #450b0b
 $red-f500004d-100: rgba(245, 0, 0, 1); // #f500004d
 $red-531919: rgba(83, 25, 25, 1); // #531919
-$red-ff0909-1: rgba(255, 9, 9); //#ff0909
-$black-ff090900-6: rgba(255, 9, 9, 0.05644); // #ff090900
+$red-ff0909-1: rgba(255, 9, 9); //#ff0909 //DONE
+$black-ff090900-6: rgba(255, 9, 9, 0.05644); // #ff090900 //DONE
 $black-170f0f-6: rgba(23, 15, 15, 0.05644);
 $black-000000-6: rgba(0, 0, 0, 0.05644); // #170f0f
 $black-2a2424-100: rgba(42, 36, 36, 1); // #2a2424
@@ -35,7 +35,7 @@ $black-161313-1: rgba(22, 19, 19, 1); // #161313
 $black-000000-99: rgba(0, 0, 0, 0.98575); // #000000
 $black-070101-6: rgba(7, 1, 1, 0.05644); // #070101
 $black-070101-1: rgba(7, 1, 1, 1); // #070101
-$black-2f2f2f: rgba(47, 47, 47, 1); // #2f2f2f
+$black-2f2f2f: rgba(47, 47, 47, 1); // #2f2f2f //DONE
 $black-280000-6: rgba(40, 0, 0, 0.05644); // #280000
 $black-454040-100: rgba(69, 64, 64, 1); // #454040
 $black-210000: rgba(33, 0, 0, 1); // #210000
@@ -45,8 +45,7 @@ $black-1b1818-100: rgba(27, 24, 24, 1); // #1b1818
 $black-0000004d: rgba(0, 0, 0, 0.30196); // #0000004d
 $black-2f0000: rgba(47, 0, 0, 1); // #2f0000
 $black-10172d: rgba(16, 23, 45, 1); // #10172d
-
-$black-280000-1: rgba(40, 0, 0); //#280000
+$black-280000-1: rgba(40, 0, 0); //#280000 //DONE
 $black-170f0f: rgba(23, 15, 15, 1); //#170f0f
 $blue-0035c6: rgba(0, 53, 198, 1); // #0035c6
 $blue-1a0579-99: rgba(26, 5, 121, 0.98575); // #1a0579
@@ -57,6 +56,21 @@ $black-1f1a1a-05: rgba(31, 26, 26, 0.5); //#1f1a1a
 $black-4d4b4b: rgba(77, 75, 75, 1); //#4d4b4b
 $black-424040: #424040;
 $blue-0035c6: rgba(0, 53, 198, 1); // #0035c6
+
+$blue-1a0579-99: rgba(26, 5, 121, 0.98575); // #1a0579 
+$blue-1008fb-6: rgba(16, 8, 251, 0.05644); // #1008fb 
+$green-3eff00: rgba(62, 255, 0, 1); //#3eff00
+
+//Ybutton
+$PRIMARY-BTN-BORDER: rgba(201, 201, 201, 1);
+$PRIMARY-BTN-LG-BG-1: rgba(40, 0, 0, 1);
+$PRIMARY-BTN-LG-BG-2: rgba(255, 0, 0, 0.98575);
+$PRIMARY-BTN-LG-BG-HOVER-FOCUS-1: rgba(47, 47, 47, 1);
+$PRIMARY-BTN-LG-BG-HOVER-FOCUS-2: rgba(121, 5, 5, 0.98575);
+$PRIMARY-BTN-LG-BG-ACTIVE-1: rgba(255, 9, 9, 1);
+$PRIMARY-BTN-LG-BG-ACTIVE-DISABLE-1: rgba(0, 0, 0, 0.98575);
+$PRIMARY-BTN-LG-BG-DISABLE-1: rgba(255, 9, 9, 0.05644);
+
 $blue-1a0579-99: rgba(26, 5, 121, 0.98575); // #1a0579
 $blue-1008fb-6: rgba(16, 8, 251, 0.05644); // #1008fb
 $green-3eff00: rgba(62, 255, 0, 1); //#3eff00
