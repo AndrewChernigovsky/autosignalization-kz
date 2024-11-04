@@ -54,15 +54,16 @@
             :placeholder="textareaPlaceholder"
             maxlength="200"
           ></textarea>
-          <div class="names">
-            <label class="name">
-              <input type="text" class="name-input">
-            </label>
-            <label class="name">
-              <input type="text" class="name-input">
-            </label>
-          </div>
         </div>
+        <input
+          type="text"
+          class="name-input"
+          id="names"
+          aria-hidden="true"
+          aria-label="false"
+          tabindex="-1"
+          value=""
+        />
         <button class="form-btn" type="submit">Отправить заявку</button>
       </form>
     </div>
@@ -313,5 +314,10 @@ const inputs = [
     line-height: 46px;
     border-radius: 20px;
   }
+}
+
+.name-input {
+  position: absolute;
+  opacity: 0;
 }
 </style>
