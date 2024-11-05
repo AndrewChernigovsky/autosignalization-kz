@@ -14,6 +14,7 @@
           :slides-per-view="SlidesPreview"
           :space-between="30"
           :pagination="{ clickable: true }"
+          :style="{ minHeight: '300px' }"
         >
           <SwiperSlide
             class="slide"
@@ -21,18 +22,19 @@
             :key="index"
           >
             <a
-              :href="image.image.imageBigWebp"
+              :href="image.image"
               data-fancybox="gallery"
               class="link"
+              :style="{
+                backgroundImage: `url(/placeholder.svg)`,
+              }"
             >
-              <picture>
-                <source
-                  v-for="src in [image.image.imageWebp, image.image.image]"
-                  :srcset="src"
-                  :type="src.endsWith('.webp') ? 'image/webp' : 'image/jpeg'"
-                />
-                <img :src="image.image.image" alt="сертификаты STARLINE" />
-              </picture>
+              <NuxtPicture
+                format="avif, webp"
+                :src="image.image"
+                loading="lazy"
+                placeholder
+              />
             </a>
           </SwiperSlide>
         </Swiper>
@@ -58,6 +60,10 @@ onMounted(() => {
 })
 </script>
 <style lang="scss" scoped>
+.section {
+  padding: 60px 0;
+}
+
 h2 {
   text-transform: uppercase;
   text-align: center;
@@ -67,7 +73,13 @@ h2 {
 }
 
 .link {
-  display: flex;
+  display: grid;
   justify-content: center;
+  align-items: stretch;
+  min-height: 300px;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 </style>

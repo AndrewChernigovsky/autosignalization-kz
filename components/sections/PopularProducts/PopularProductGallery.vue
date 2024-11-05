@@ -13,14 +13,12 @@
     >
       <SwiperSlide v-for="(imageGroup, index) in product.images" :key="index">
         <a :href="imageGroup[2]" data-fancybox="gallery" class="image">
-          <picture>
-            <source
-              v-for="(image, imgIndex) in imageGroup"
-              :key="imgIndex"
-              :srcset="image"
-            />
-            <img :src="imageGroup[0]" alt="" />
-          </picture>
+          <NuxtPicture
+            format="avif, webp"
+            src="/images/popular-products/product-1.png"
+            loading="lazy"
+            placeholder
+          />
         </a>
       </SwiperSlide>
       <div class="swiper-button-prev"></div>

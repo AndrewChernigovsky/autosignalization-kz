@@ -6,26 +6,14 @@
         v-for="(image, index) in images"
         :key="index"
       >
-        <img
-          class="image"
-          :src="image.image"
-          :alt="image.title"
-          width="140"
-          height="140"
-        />
-      </li>
       <li
         class="image-container item"
         v-for="(image, index) in images"
         :key="'duplicate-' + index"
       >
-        <img
-          class="image"
-          :src="image.image"
-          :alt="image.title"
-          width="140"
-          height="140"
-        />
+        <div class="flex">
+          <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" />
+        </div>
       </li>
     </ul>
   </div>
@@ -37,7 +25,6 @@ const props = defineProps({
     type: Array as () => {
       id: string
       image: string
-      imageWeb: string
       title: string
     }[],
     required: true,

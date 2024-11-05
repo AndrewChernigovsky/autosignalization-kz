@@ -1,14 +1,13 @@
 <template>
   <template v-if="service && card === false">
     <h3>{{ service.title }}</h3>
-    <div
-      class="content"
-      :style="{
-        backgroundImage: service.imageUrl
-          ? `url(${service.imageUrl[0].url})`
-          : 'none',
-      }"
-    >
+    <div class="content">
+      <NuxtPicture
+        format="avif, webp"
+        :src="service.imageUrl[0].url"
+        loading="lazy"
+        placeholder
+      />
       <div class="buttons">
         <YButton
           link
@@ -57,6 +56,16 @@ const props = defineProps({
     padding-bottom: 60px;
     height: auto;
     min-height: 640px;
+  }
+
+  picture {
+    height: 300px;
+    width: 100%;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 

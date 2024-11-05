@@ -3,12 +3,20 @@
     :disabled="states.disabled" @click="handleClick">
     <slot />
   </button>
-  <a :href="path" v-if="btn === false && link === false" :ytype="props.ytype" :class="[buttonClass, customClass]">
+  <a
+    :href="path"
+    v-if="btn === false && link === false"
+    :ytype="props.ytype"
+    :class="[buttonClass, customClass, 'link']"
+  >
     <slot />
   </a>
-  <NuxtLink :to="path" v-if="link && btn === false" :ytype="props.ytype" :class="[buttonClass, customClass]">
-    <slot />
-  </NuxtLink>
+  <NuxtLink
+    :to="path"
+    v-if="link && btn === false"
+    :ytype="props.ytype"
+    :class="[buttonClass, customClass, 'link']"
+  >
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -42,10 +50,13 @@ const props = defineProps({
     default: false,
   },
 })
+
 const emit = defineEmits()
+
 function handleClick(event: MouseEvent) {
   emit('click', event)
 }
+
 const buttonClass = computed(() => {
   return ['base', props.ytype || '', { disabled: props.disabled }]
 })
@@ -59,6 +70,10 @@ const states = computed(() => {
 <style lang="scss" scoped>
 .base {
   pointer-events: auto;
+}
+
+.link {
+  text-decoration: none;
 }
 
 .primary {
