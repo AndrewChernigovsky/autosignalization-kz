@@ -3,6 +3,13 @@
     <div class="container">
       <h2 class="section-title m-0">Форма обратной связи</h2>
       <form class="form" action="#" method="POST">
+        <input
+          class="label-input"
+          type="text"
+          id="label-id"
+          aria-hidden="true"
+          tabindex="-10"
+        />
         <div class="brands">
           <h3 class="title m-0">Марка:</h3>
           <ul class="brand-list list-style-none">
@@ -41,9 +48,11 @@
           <label class="item-label label-message" for="form-text-aria">
             Ваша сообщение:
           </label>
-          <textarea class="form-text-aria" id="form-text-aria">
-Вы купили автомобиль и желаете защитить его, установив сигнализацию?  Вы любите комфорт и хотите установить автозапуск на Ваше авто?  Вам необходимо отслеживать Ваш транспорт по GPS?  Обращайтесь к нам, и мы поможем Вам решить эти задачи!</textarea
-          >
+          <textarea
+            class="form-text-aria"
+            id="form-text-aria"
+            :placeholder="textareaPlaceholder"
+          ></textarea>
         </div>
         <button class="form-btn" type="submit">Отправить заявку</button>
       </form>
@@ -55,6 +64,9 @@ import CarsBrandItem from '@/components/CarsBrand/CarsBrandItem.vue'
 import { images } from '@/components/sections/CarsBrand/carsBrand'
 
 const brandsImages = images
+
+const textareaPlaceholder =
+  'Вы купили автомобиль и желаете защитить его, установив сигнализацию?  Вы любите комфорт и хотите установить автозапуск на Ваше авто?  Вам необходимо отслеживать Ваш транспорт по GPS?  Обращайтесь к нам, и мы поможем Вам решить эти задачи!'
 
 const inputs = [
   {
@@ -103,6 +115,15 @@ const inputs = [
   display: flex;
   flex-direction: column;
   row-gap: 10px;
+  position: relative;
+}
+
+.label-input {
+  cursor: default;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
 .title {
@@ -245,6 +266,7 @@ const inputs = [
   padding: 0;
   text-align: center;
   color: #fff;
+  cursor: pointer;
 
   @media screen and (min-width: 102px) {
     margin-top: 40px;
@@ -272,6 +294,10 @@ const inputs = [
   border-radius: 5px;
   color: #fff;
   background-color: #424242;
+
+  &::placeholder {
+    color: #fff;
+  }
 
   @media screen and (min-width: 1024px) {
     font-size: 42px;

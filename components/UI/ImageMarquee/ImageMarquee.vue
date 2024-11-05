@@ -6,10 +6,6 @@
         v-for="(image, index) in images"
         :key="index"
       >
-        <div class="flex">
-          <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" />
-        </div>
-      </li>
       <li
         class="image-container item"
         v-for="(image, index) in images"
