@@ -8,6 +8,7 @@
     <Advantages />
     <Sertificates />
     <FeedbackForm />
+    <YButton :ytype="ButtonsEnum.simple">КНОПКА</YButton>
   </ClientOnly>
 </template>
 <script lang="ts" setup>
