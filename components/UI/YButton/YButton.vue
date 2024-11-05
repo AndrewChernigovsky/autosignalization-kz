@@ -1,6 +1,12 @@
 <template>
-  <button :class="[buttonClass, customClass]" :type="typeButton ? typeButton : 'button'" v-if="btn" :ytype="ytype"
-    :disabled="states.disabled" @click="handleClick">
+  <button
+    :class="[buttonClass, customClass]"
+    :type="typeButton ? typeButton : 'button'"
+    v-if="btn"
+    :ytype="ytype"
+    :disabled="states.disabled"
+    @click="handleClick"
+  >
     <slot />
   </button>
   <a
@@ -16,7 +22,7 @@
     v-if="link && btn === false"
     :ytype="props.ytype"
     :class="[buttonClass, customClass, 'link']"
-  >
+  />
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -84,7 +90,11 @@ const states = computed(() => {
   box-sizing: border-box;
   border: 1px solid $PRIMARY-BTN-BORDER;
   border-radius: 5px;
-  background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-1, $PRIMARY-BTN-LG-BG-2);
+  background: linear-gradient(
+    180deg,
+    $PRIMARY-BTN-LG-BG-1,
+    $PRIMARY-BTN-LG-BG-2
+  );
   color: $white;
   font-family: $primary-font;
   font-size: 16px;
@@ -96,21 +106,37 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-1, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-2);
+    background: linear-gradient(
+      180deg,
+      $PRIMARY-BTN-LG-BG-HOVER-FOCUS-1,
+      $PRIMARY-BTN-LG-BG-HOVER-FOCUS-2
+    );
     border-color: none;
   }
 
   &:focus {
     border-color: $PRIMARY-BTN-BORDER;
-    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-1, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-2);
+    background: linear-gradient(
+      180deg,
+      $PRIMARY-BTN-LG-BG-HOVER-FOCUS-1,
+      $PRIMARY-BTN-LG-BG-HOVER-FOCUS-2
+    );
   }
 
   &:active {
-    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-ACTIVE-1, $PRIMARY-BTN-LG-BG-ACTIVE-DISABLE-1);
+    background: linear-gradient(
+      180deg,
+      $PRIMARY-BTN-LG-BG-ACTIVE-1,
+      $PRIMARY-BTN-LG-BG-ACTIVE-DISABLE-1
+    );
   }
 
   &:disabled {
-    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-DISABLE-1, $PRIMARY-BTN-LG-BG-ACTIVE-DISABLE-1);
+    background: linear-gradient(
+      180deg,
+      $PRIMARY-BTN-LG-BG-DISABLE-1,
+      $PRIMARY-BTN-LG-BG-ACTIVE-DISABLE-1
+    );
   }
 }
 
@@ -257,7 +283,6 @@ const states = computed(() => {
 }
 
 @media screen and (min-width: $desktop-min) {
-
   .primary,
   .secondary,
   .dark,
