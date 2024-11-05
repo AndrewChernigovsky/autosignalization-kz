@@ -15,45 +15,65 @@ import imageBigWebp4 from '@/assets/images/sertificates/image-4-big.webp'
 import imageBigWebp5 from '@/assets/images/sertificates/image-5-big.webp'
 
 export const images: {
-  image: {
-    imageWebp: string
-    imageBigWebp: string
-    image: string
-  }
+  image: string
 }[] = [
   {
-    image: {
-      imageWebp: imageWebp1,
-      imageBigWebp: imageBigWebp1,
-      image: image1,
-    },
+    image: '/images/sertificates/image-1.jpg',
   },
   {
-    image: {
-      imageWebp: imageWebp2,
-      imageBigWebp: imageBigWebp2,
-      image: image2,
-    },
+    image: '/images/sertificates/image-2.jpg',
   },
   {
-    image: {
-      imageWebp: imageWebp3,
-      imageBigWebp: imageBigWebp3,
-      image: image3,
-    },
+    image: '/images/sertificates/image-3.jpg',
   },
   {
-    image: {
-      imageWebp: imageWebp4,
-      imageBigWebp: imageBigWebp4,
-      image: image4,
-    },
+    image: '/images/sertificates/image-4.jpg',
   },
   {
-    image: {
-      imageWebp: imageWebp5,
-      imageBigWebp: imageBigWebp5,
-      image: image5,
-    },
+    image: '/images/sertificates/image-5.jpg',
   },
 ]
+
+// export const images: {
+//   image: {
+//     imageWebp: string
+//     imageBigWebp: string
+//     image: string
+//   }
+// }[] = [
+//   {
+//     image: {
+//       imageWebp: imageWebp1,
+//       imageBigWebp: imageBigWebp1,
+//       image: image1,
+//     },
+//   },
+//   {
+//     image: {
+//       imageWebp: imageWebp2,
+//       imageBigWebp: imageBigWebp2,
+//       image: image2,
+//     },
+//   },
+//   {
+//     image: {
+//       imageWebp: imageWebp3,
+//       imageBigWebp: imageBigWebp3,
+//       image: image3,
+//     },
+//   },
+//   {
+//     image: {
+//       imageWebp: imageWebp4,
+//       imageBigWebp: imageBigWebp4,
+//       image: image4,
+//     },
+//   },
+//   {
+//     image: {
+//       imageWebp: imageWebp5,
+//       imageBigWebp: imageBigWebp5,
+//       image: image5,
+//     },
+//   },
+// ]

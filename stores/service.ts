@@ -21,7 +21,7 @@ export const useServiceStore = defineStore('service', () => {
       price: 6000,
       imageUrl: [
         {
-          url: serviceImage1,
+          url: '/images/services/service-1.png',
           description: 'УСТАНОВКА И РЕМОНТ АВТОСИГНАЛИЗАЦИЙ',
         },
       ],
@@ -38,7 +38,12 @@ export const useServiceStore = defineStore('service', () => {
       id: 2,
       title: 'РЕМОНТ ЦЕНТРОЗАМКОВ',
       price: 6000,
-      imageUrl: [{ url: serviceImage2, description: 'РЕМОНТ ЦЕНТРОЗАМКОВ' }],
+      imageUrl: [
+        {
+          url: '/images/services/service-2.png',
+          description: 'РЕМОНТ ЦЕНТРОЗАМКОВ',
+        },
+      ],
       description:
         'Вы купили автомобиль и желаете защитить его, установив сигнализацию? Вы любите комфорт и хотите установить автозапуск на Ваше авто? Вам необходимо отслеживать Ваш транспорт по GPS?Обращайтесь к нам, и мы поможем Вам решить эти задачи!',
       serviceDesciption: [
@@ -54,7 +59,7 @@ export const useServiceStore = defineStore('service', () => {
       price: 6000,
       imageUrl: [
         {
-          url: serviceImage3,
+          url: '/images/services/service-3.png',
           description: 'УСТАНОВКА АВТОЗВУКА И МУЛЬТИМЕДИА ',
         },
       ],
@@ -72,7 +77,10 @@ export const useServiceStore = defineStore('service', () => {
       title: 'УСТАНОВКА СИСТЕМ ПАРКИНГА ',
       price: 6000,
       imageUrl: [
-        { url: serviceImage4, description: 'УСТАНОВКА СИСТЕМ ПАРКИНГА ' },
+        {
+          url: '/images/services/service-4.png',
+          description: 'УСТАНОВКА СИСТЕМ ПАРКИНГА ',
+        },
       ],
       description:
         'Вы купили автомобиль и желаете защитить его, установив сигнализацию? Вы любите комфорт и хотите установить автозапуск на Ваше авто? Вам необходимо отслеживать Ваш транспорт по GPS?Обращайтесь к нам, и мы поможем Вам решить эти задачи!',
@@ -87,7 +95,12 @@ export const useServiceStore = defineStore('service', () => {
       id: 5,
       title: 'УСЛУГИ АВТОЭЛЕКТРИКА ',
       price: 6000,
-      imageUrl: [{ url: serviceImage5, description: 'УСЛУГИ АВТОЭЛЕКТРИКА ' }],
+      imageUrl: [
+        {
+          url: '/images/services/service-5.png',
+          description: 'УСЛУГИ АВТОЭЛЕКТРИКА ',
+        },
+      ],
       description:
         'Вы купили автомобиль и желаете защитить его, установив сигнализацию? Вы любите комфорт и хотите установить автозапуск на Ваше авто? Вам необходимо отслеживать Ваш транспорт по GPS?Обращайтесь к нам, и мы поможем Вам решить эти задачи!',
       serviceDesciption: [
@@ -102,7 +115,10 @@ export const useServiceStore = defineStore('service', () => {
       title: 'РУСИФИКАЦИЯ АВТО И ЧИПТЮНИНГ  ',
       price: 6000,
       imageUrl: [
-        { url: serviceImage6, description: 'РУСИФИКАЦИЯ АВТО И ЧИПТЮНИНГ  ' },
+        {
+          url: '/images/services/service-6.png',
+          description: 'РУСИФИКАЦИЯ АВТО И ЧИПТЮНИНГ  ',
+        },
       ],
       description:
         'Вы купили автомобиль и желаете защитить его, установив сигнализацию? Вы любите комфорт и хотите установить автозапуск на Ваше авто? Вам необходимо отслеживать Ваш транспорт по GPS?Обращайтесь к нам, и мы поможем Вам решить эти задачи!',
@@ -118,7 +134,10 @@ export const useServiceStore = defineStore('service', () => {
       title: 'КОМПЬЮТЕРНАЯ ДИАГНОСТИКА',
       price: 6000,
       imageUrl: [
-        { url: serviceImage7, description: 'КОМПЬЮТЕРНАЯ ДИАГНОСТИКА' },
+        {
+          url: '/images/services/service-7.png',
+          description: 'КОМПЬЮТЕРНАЯ ДИАГНОСТИКА',
+        },
       ],
       description:
         'Вы купили автомобиль и желаете защитить его, установив сигнализацию? Вы любите комфорт и хотите установить автозапуск на Ваше авто? Вам необходимо отслеживать Ваш транспорт по GPS?Обращайтесь к нам, и мы поможем Вам решить эти задачи!',
@@ -134,7 +153,10 @@ export const useServiceStore = defineStore('service', () => {
       title: 'ОТКЛЮЧЕНИЕ СИГНАЛИЗАЦИИ',
       price: 6000,
       imageUrl: [
-        { url: serviceImage8, description: 'ОТКЛЮЧЕНИЕ СИГНАЛИЗАЦИИ' },
+        {
+          url: '/images/services/service-8.png',
+          description: 'ОТКЛЮЧЕНИЕ СИГНАЛИЗАЦИИ',
+        },
       ],
       description:
         'Вы купили автомобиль и желаете защитить его, установив сигнализацию? Вы любите комфорт и хотите установить автозапуск на Ваше авто? Вам необходимо отслеживать Ваш транспорт по GPS?Обращайтесь к нам, и мы поможем Вам решить эти задачи!',
@@ -151,7 +173,7 @@ export const useServiceStore = defineStore('service', () => {
       price: 6000,
       imageUrl: [
         {
-          url: serviceImage9,
+          url: '/images/services/service-9.png',
           description: 'УСТАНОВКА ВИДЕОРЕГИСТРАТОРОВ И АНТИРАДАРОВ',
         },
       ],
