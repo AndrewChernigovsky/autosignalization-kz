@@ -38,6 +38,8 @@ onMounted(() => {
     .getProducts()
     .find((p) => p.id === +route.params.id)
   product.value = foundProduct || null
+
+  console.log(product, 'product')
 })
 </script>
 <style lang="scss" scoped>
