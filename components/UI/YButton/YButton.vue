@@ -1,12 +1,6 @@
 <template>
-  <button
-    :class="[buttonClass, customClass]"
-    :type="typeButton ? typeButton : 'button'"
-    v-if="btn"
-    :ytype="ytype"
-    :disabled="states.disabled"
-    @click="handleClick"
-  >
+  <button :class="[buttonClass, customClass]" :type="typeButton ? typeButton : 'button'" v-if="btn" :ytype="ytype"
+    :disabled="states.disabled" @click="handleClick">
     <slot />
   </button>
   <a
@@ -23,8 +17,6 @@
     :ytype="props.ytype"
     :class="[buttonClass, customClass, 'link']"
   >
-    <slot />
-  </NuxtLink>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
@@ -90,9 +82,9 @@ const states = computed(() => {
   justify-content: center;
   max-width: 100%;
   box-sizing: border-box;
-  border: 1px solid $white-c9c9c9;
+  border: 1px solid $PRIMARY-BTN-BORDER;
   border-radius: 5px;
-  background: linear-gradient(180deg, $black-280000-1, $red-ff0000-99);
+  background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-1, $PRIMARY-BTN-LG-BG-2);
   color: $white;
   font-family: $primary-font;
   font-size: 16px;
@@ -104,21 +96,21 @@ const states = computed(() => {
   cursor: pointer;
 
   &:hover {
-    background: linear-gradient(180deg, $black-2f2f2f, $red-790505-99);
+    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-1, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-2);
     border-color: none;
   }
 
   &:focus {
-    border-color: $white-c9c9c9;
-    background: linear-gradient(180deg, $black-2f2f2f, $red-790505-99);
+    border-color: $PRIMARY-BTN-BORDER;
+    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-1, $PRIMARY-BTN-LG-BG-HOVER-FOCUS-2);
   }
 
   &:active {
-    background: linear-gradient(180deg, $red-ff0909-1, $black-000000-99);
+    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-ACTIVE-1, $PRIMARY-BTN-LG-BG-ACTIVE-DISABLE-1);
   }
 
   &:disabled {
-    background: linear-gradient(180deg, $black-ff090900-6, $black-000000-99);
+    background: linear-gradient(180deg, $PRIMARY-BTN-LG-BG-DISABLE-1, $PRIMARY-BTN-LG-BG-ACTIVE-DISABLE-1);
   }
 }
 
@@ -265,6 +257,7 @@ const states = computed(() => {
 }
 
 @media screen and (min-width: $desktop-min) {
+
   .primary,
   .secondary,
   .dark,
