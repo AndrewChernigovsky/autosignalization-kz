@@ -1,11 +1,6 @@
-// stores/products.ts
 import { defineStore } from 'pinia'
 import type { PopularProductsType } from '@/types/PopularProductsType'
 import { ref } from 'vue'
-
-import productImage from '@/assets/images/popular-products/product-1.png'
-import productImageWebp from '@/assets/images/popular-products/product-1.webp'
-import productImageBigWebp from '@/assets/images/popular-products/product-big-1.webp'
 
 export const usePopularProduct = defineStore('popular-products', () => {
   const products = ref<PopularProductsType[]>([
@@ -13,33 +8,43 @@ export const usePopularProduct = defineStore('popular-products', () => {
       id: 1,
       title: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
       images: [
-        [productImage, productImageWebp, productImageBigWebp],
-        [productImage, productImageWebp, productImageBigWebp],
-        [productImage, productImageWebp, productImageBigWebp],
+        'images/keychains/starline-e96/product-1.png',
+        'images/keychains/starline-e96/product-2.png',
+        'images/keychains/starline-e96/product-3.png',
       ],
       price: 86000,
       currency: '₸',
     },
     {
       id: 2,
-      title: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+      title: 'StarLine S96 V2 BT 2CAN2LIN GSM',
       images: [
-        [productImage, productImageWebp, productImageBigWebp],
-        [productImage, productImageWebp, productImageBigWebp],
-        [productImage, productImageWebp, productImageBigWebp],
+        'images/keychains/starline-s96/product-1.png',
+        'images/keychains/starline-s96/product-2.png',
       ],
-      price: 86000,
+      price: 98300,
       currency: '₸',
     },
     {
       id: 3,
-      title: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+      title: 'Starline E96 V2 BT GSM',
       images: [
-        [productImage, productImageWebp, productImageBigWebp],
-        [productImage, productImageWebp, productImageBigWebp],
-        [productImage, productImageWebp, productImageBigWebp],
+        'images/keychains/starline-e96/product-1.png',
+        'images/keychains/starline-e96/product-2.png',
+        'images/keychains/starline-e96/product-3.png',
       ],
-      price: 86000,
+      price: 127300,
+      currency: '₸',
+    },
+    {
+      id: 4,
+      title: 'Starline A93 ECO V2',
+      images: [
+        'images/keychains/starline-a93/product-1.png',
+        'images/keychains/starline-a93/product-2.png',
+        'images/keychains/starline-a93/product-3.png',
+      ],
+      price: 56100,
       currency: '₸',
     },
   ])
