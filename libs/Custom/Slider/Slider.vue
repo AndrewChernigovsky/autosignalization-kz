@@ -19,7 +19,6 @@
               :src="imageGroup"
               loading="lazy"
               placeholder
-              :class="{ active: currentIndex === index }"
             />
           </a>
         </div>

@@ -2,12 +2,39 @@
   <div class="popularProduct" v-if="product">
     <div class="wrapper">
       <div class="images">
-        <PopularProductGallery :product="product" />
+        <Fancybox class="images-fancybox">
+          <Swiper
+            :modules="[Navigation, Pagination]"
+            :slides-per-view="1"
+            :navigation="true"
+            :pagination="{ clickable: true }"
+            class="my-swiper"
+            :slider-class="'swiper-class'"
+            style="width: 300px"
+          >
+            <SwiperSlide
+              class="slide"
+              v-for="(image, index) in product.images"
+              :key="index"
+            >
+              <a :href="image" data-fancybox="gallery">
+                <NuxtPicture
+                  format="avif, webp"
+                  :src="image"
+                  loading="lazy"
+                  placeholder
+                  class="image-slide"
+                  width="300"
+                />
+              </a>
+            </SwiperSlide>
+          </Swiper>
+        </Fancybox>
       </div>
       <h3>{{ product.title }}</h3>
       <p class="price">
-        <span>{{ product.price }}</span
-        ><span class="currency"> {{ product.currency }}</span>
+        <span>{{ product.price }}</span>
+        <span class="currency"> {{ product.currency }}</span>
       </p>
     </div>
     <div class="buttons">
@@ -26,17 +53,21 @@
 <script setup lang="ts">
 import type { PopularProductsType } from '@/types/PopularProductsType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
-import PopularProductGallery from '@/components/sections/PopularProducts/PopularProductGallery.vue'
 import { onMounted } from 'vue'
 import { usePopularProduct } from '~/stores/popularProducts'
+import Fancybox from '~/libs/Fancybox.vue'
+import { Navigation, Pagination } from 'swiper/modules'
+
 const popularStore = usePopularProduct()
 const product = ref<PopularProductsType>()
 const route = useRoute()
+// const modules = [Autoplay, EffectFade]
 
 onMounted(() => {
   const foundProduct = popularStore
     .getProducts()
     .find((p) => p.id === +route.params.id)
+
   product.value = foundProduct || null
 
   console.log(product, 'product')
@@ -75,6 +106,14 @@ onMounted(() => {
       height: 380px;
     }
   }
+}
+
+.my-swiper {
+  width: 300px;
+}
+
+.images-fancybox {
+  height: inherit;
 }
 
 h3 {
