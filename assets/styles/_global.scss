@@ -81,18 +81,25 @@ img {
   }
 
   &[data-btn='primory'] {
-    background-image: linear-gradient(
-      180deg,
-      var(--btn-bg-1) 0,
-      var(--btn-bg-2) 100%
-    );
+    background-image: linear-gradient(180deg,
+        var(--btn-bg-1) 0,
+        var(--btn-bg-2) 100%);
   }
 
   &[data-btn='secondary'] {
-    background-image: linear-gradient(
-      180deg,
-      var(--btn-bg-1) 0,
-      var(--btn-bg-2) 100%
-    );
+    background-image: linear-gradient(180deg,
+        var(--btn-bg-1) 0,
+        var(--btn-bg-2) 100%);
+  }
+}
+
+.my-swiper {
+  .swiper-slide.swiper-slide-active.slide {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    height: inherit;
   }
 }

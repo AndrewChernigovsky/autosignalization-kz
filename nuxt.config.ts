@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
   ],
   swiper: {
-    modules: ['autoplay', 'effect-fade', 'navigation', 'pagination'],
+    modules: ['autoplay', 'effect-fade', 'navigation', 'pagination', 'thumbs'],
   },
   vueTransitions: {
     componentDefaultProps: {

@@ -4,13 +4,16 @@
       <div class="images">
         <Fancybox class="images-fancybox">
           <Swiper
-            :modules="[Navigation, Pagination]"
-            :slides-per-view="1"
-            :navigation="true"
-            :pagination="{ clickable: true }"
+            :modules="[SwiperThumbs]"
             class="my-swiper"
             :slider-class="'swiper-class'"
-            style="width: 300px"
+            ref="mySwiper"
+            slidesPerView="auto"
+            :centeredSlides="true"
+            :centeredSlidesBounds="true"
+            :thumbs="{
+              swiper: '.gallery-thumbs',
+            }"
           >
             <SwiperSlide
               class="slide"
@@ -25,8 +28,37 @@
                   placeholder
                   class="image-slide"
                   width="300"
+                  style="height: 100%"
                 />
               </a>
+            </SwiperSlide>
+          </Swiper>
+          <Swiper
+            :modules="[SwiperThumbs]"
+            class="gallery-thumbs"
+            :slider-class="'gallery-swiper-class'"
+            :direction="'vertical'"
+            ref="thumbsSwiper"
+            :slidesPerView="3"
+            :centeredSlides="true"
+            :centeredSlidesBounds="true"
+            :grabCursor="true"
+            :touch-ratio="1"
+            :space-between="10"
+          >
+            <SwiperSlide
+              class="slide"
+              v-for="(image, index) in product.images"
+              :key="index"
+            >
+              <NuxtPicture
+                format="avif, webp"
+                :src="image"
+                loading="lazy"
+                placeholder
+                class="image-slide"
+                width="300"
+              />
             </SwiperSlide>
           </Swiper>
         </Fancybox>
@@ -63,6 +95,8 @@ const product = ref<PopularProductsType>()
 const route = useRoute()
 // const modules = [Autoplay, EffectFade]
 
+const mySwiper = ref(null)
+const thumbsSwiper = ref(null)
 onMounted(() => {
   const foundProduct = popularStore
     .getProducts()
@@ -110,10 +144,29 @@ onMounted(() => {
 
 .my-swiper {
   width: 300px;
+  background-color: $white;
+  border-radius: 25px;
+
+  a {
+    width: inherit;
+    display: flex;
+    height: inherit;
+
+    picture img {
+      height: 100%;
+    }
+  }
+
+  .image-slide {
+    height: 100%;
+  }
 }
 
 .images-fancybox {
   height: inherit;
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: $black-424040;
 }
 
 h3 {
@@ -155,5 +208,32 @@ h3 {
   margin: 0 auto;
   gap: 10px;
   max-width: calc(100% - 100px);
+}
+
+.gallery-thumbs {
+  height: auto;
+  width: 100px;
+  margin-right: 10px;
+  background-color: $black-424040;
+  border: none;
+
+  .swiper-slide {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    background-color: $white;
+    border-radius: 10px;
+    width: 100px;
+
+    .image-slide {
+      height: inherit;
+      display: flex;
+      justify-content: center;
+    }
+
+    a {
+      height: inherit;
+    }
+  }
 }
 </style>
