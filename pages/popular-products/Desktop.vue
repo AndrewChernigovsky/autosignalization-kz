@@ -28,7 +28,7 @@
                   v-for="(image, index) in product.images"
                   :key="index"
                 >
-                  <a :href="image" data-fancybox="gallery">
+                  <a :href="'../' + image" data-fancybox="gallery">
                     <NuxtPicture
                       format="avif, webp"
                       :src="image"
@@ -121,7 +121,7 @@ const onSwiperInit = (swiper: Swiper) => {
 const viewportWidth = ref<number>(window.innerWidth)
 
 const orientationThumbs = computed(() => {
-  return viewportWidth.value < 768 ? 'horizontal' : 'vertical'
+  return viewportWidth.value < 1024 ? 'horizontal' : 'vertical'
 })
 
 const handleResize = () => {

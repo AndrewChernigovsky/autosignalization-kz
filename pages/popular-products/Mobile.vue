@@ -112,7 +112,7 @@ const onSwiperInit = (swiper: Swiper) => {
 const viewportWidth = ref<number>(window.innerWidth)
 
 const orientationThumbs = computed(() => {
-  return viewportWidth.value < 768 ? 'horizontal' : 'vertical'
+  return viewportWidth.value < 1024 ? 'horizontal' : 'vertical'
 })
 
 const handleResize = () => {
