@@ -16,6 +16,7 @@
         :link="true"
         :btn="false"
         :path="`/popular-products/${product.id}`"
+        :classes="['active111']"
         >Подробнее</YButton
       >
       <YButton :ytype="ButtonsEnum.primary">Купить</YButton>
@@ -34,6 +35,12 @@ const props = defineProps({
   },
 })
 </script>
+<style>
+.active111 {
+  color: red;
+}
+</style>
+
 <style lang="scss" scoped>
 .popularProduct {
   padding-bottom: 30px;
