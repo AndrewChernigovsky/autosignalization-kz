@@ -5,14 +5,16 @@
         <Fancybox class="images-fancybox">
           <Swiper
             :modules="[SwiperThumbs]"
+            v-if="thumbsSwiper != null"
+            ref="mySwiperGallery"
             class="my-swiper"
             :slider-class="'swiper-class'"
-            ref="mySwiper"
             slidesPerView="auto"
             :centeredSlides="true"
             :centeredSlidesBounds="true"
             :thumbs="{
-              swiper: '.gallery-thumbs',
+              swiper: thumbsSwiper,
+              autoScrollOffset: 3,
             }"
           >
             <SwiperSlide
@@ -37,14 +39,15 @@
             :modules="[SwiperThumbs]"
             class="gallery-thumbs"
             :slider-class="'gallery-swiper-class'"
-            :direction="'vertical'"
-            ref="thumbsSwiper"
+            :direction="orientationThumbs"
             :slidesPerView="3"
             :centeredSlides="true"
             :centeredSlidesBounds="true"
             :grabCursor="true"
             :touch-ratio="1"
             :space-between="10"
+            ref="thumbsSwiper"
+            @init="onSwiperInit"
           >
             <SwiperSlide
               class="slide"
@@ -64,20 +67,20 @@
         </Fancybox>
       </div>
       <h3>{{ product.title }}</h3>
+      <!-- <p>ДОСТАВКА: О ДОСТАВКЕ И ОПЛАТЕ</p>
+      <p>НАЛИЧИЕ ТОВАРА УТОЧНЯЙТЕ У ПРОДАВЦА.</p>
+      <p>{{ product.description }}</p>
+      <p>ЦЕНА ЗА МАТЕРИАЛ УКАЗАНА БЕЗ УСТАНОВКИ.</p>
+      <p>КОЛИЧЕСТВО</p> -->
+      <CountButton />
       <p class="price">
+        <!-- <span>ИТОГОВАЯ СТОИМОСТЬ</span> -->
         <span>{{ product.price }}</span>
         <span class="currency"> {{ product.currency }}</span>
       </p>
     </div>
     <div class="buttons">
-      <YButton
-        :ytype="ButtonsEnum.dark"
-        :link="true"
-        :btn="false"
-        :path="`/popular-products/${product.id}`"
-        >Подробнее</YButton
-      >
-      <YButton :ytype="ButtonsEnum.primary">Купить</YButton>
+      <YButton :ytype="ButtonsEnum.primary">В корзину</YButton>
     </div>
   </div>
 </template>
@@ -88,23 +91,37 @@ import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { onMounted } from 'vue'
 import { usePopularProduct } from '~/stores/popularProducts'
 import Fancybox from '~/libs/Fancybox.vue'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Swiper } from 'swiper/vue'
 
 const popularStore = usePopularProduct()
 const product = ref<PopularProductsType>()
 const route = useRoute()
-// const modules = [Autoplay, EffectFade]
 
-const mySwiper = ref(null)
-const thumbsSwiper = ref(null)
+const mySwiperGallery = ref(null)
+const thumbsSwiper = ref<Swiper | null>(null)
+
+const onSwiperInit = (swiper: Swiper) => {
+  thumbsSwiper.value = swiper
+}
+
+const viewportWidth = ref<number>(window.innerWidth)
+
+const orientationThumbs = computed(() => {
+  return viewportWidth.value < 768 ? 'horizontal' : 'vertical'
+})
+
+onMounted(() => {
+  window.addEventListener('resize', () => {
+    viewportWidth.value = window.innerWidth
+  })
+})
+
 onMounted(() => {
   const foundProduct = popularStore
     .getProducts()
     .find((p) => p.id === +route.params.id)
 
-  product.value = foundProduct || null
-
-  console.log(product, 'product')
+  product.value = foundProduct
 })
 </script>
 <style lang="scss" scoped>
@@ -136,6 +153,11 @@ onMounted(() => {
     align-items: center;
     justify-content: center;
 
+    @media screen and (max-width: $tablet) {
+      background-color: transparent;
+      height: 100%;
+    }
+
     @media screen and (min-width: $desktop-min) {
       height: 380px;
     }
@@ -146,15 +168,17 @@ onMounted(() => {
   width: 300px;
   background-color: $white;
   border-radius: 25px;
+  height: inherit;
+
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+  }
 
   a {
     width: inherit;
     display: flex;
     height: inherit;
-
-    picture img {
-      height: 100%;
-    }
+    justify-content: center;
   }
 
   .image-slide {
@@ -165,8 +189,13 @@ onMounted(() => {
 .images-fancybox {
   height: inherit;
   display: flex;
-  flex-direction: row-reverse;
   background-color: $black-424040;
+
+  @media screen and (max-width: $tablet) {
+    display: grid;
+    gap: 10px;
+    width: 100%;
+  }
 }
 
 h3 {
@@ -213,9 +242,14 @@ h3 {
 .gallery-thumbs {
   height: auto;
   width: 100px;
-  margin-right: 10px;
+  margin-left: 10px;
   background-color: $black-424040;
   border: none;
+
+  @media screen and (max-width: $tablet) {
+    width: 100%;
+    height: 100px;
+  }
 
   .swiper-slide {
     height: 100px;
