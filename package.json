@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare",
     "lint": "npx eslint ./",
     "format": "prettier --write .",
-    "prepare": "husky"
+    "prepare": "husky",
+    "disabled-dev": "npx nuxi devtools disable",
+    "enabled-dev": "npx nuxi devtools enable"
   },
   "lint-staged": {
     "*.ts": [

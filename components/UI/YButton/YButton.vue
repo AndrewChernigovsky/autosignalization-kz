@@ -22,7 +22,9 @@
     v-if="link && btn === false"
     :ytype="props.ytype"
     :class="[buttonClass, customClass, 'link']"
-  />
+  >
+    <slot />
+  </NuxtLink>
 </template>
 <script setup lang="ts">
 import { computed } from 'vue'
