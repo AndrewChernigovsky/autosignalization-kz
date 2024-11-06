@@ -52,9 +52,25 @@
             class="form-text-aria"
             id="form-text-aria"
             :placeholder="textareaPlaceholder"
+            maxlength="200"
           ></textarea>
         </div>
-        <button class="form-btn" type="submit">Отправить заявку</button>
+        <input
+          type="text"
+          class="name-input"
+          id="names"
+          aria-hidden="true"
+          aria-label="false"
+          tabindex="-1"
+          value=""
+        />
+        <YButton :typeButton="'submit'">Отправить заявку</YButton>
+        <Input
+          :required="true"
+          :text="'name'"
+          :textType="'text'"
+          :placeholder="'Ваша сообщение:'"
+        />
       </form>
     </div>
   </section>
@@ -62,6 +78,8 @@
 <script setup lang="ts">
 import CarsBrandItem from '@/components/CarsBrand/CarsBrandItem.vue'
 import { images } from '@/components/sections/CarsBrand/carsBrand'
+
+const btnType = 'submit'
 
 const brandsImages = images
 
@@ -92,6 +110,15 @@ const inputs = [
 ]
 </script>
 <style scoped lang="scss">
+.test-input {
+  & label {
+    color: teal;
+  }
+  & .input-label {
+    color: teal;
+  }
+}
+
 .section {
   padding: 30px 0;
   background-color: #000000;
@@ -174,6 +201,11 @@ const inputs = [
   height: 100%;
   cursor: pointer;
 
+  &:checked {
+    box-shadow: inset 0 0 0 2px teal;
+    border-radius: 5px;
+  }
+
   & + .brand-label {
     opacity: 0.5;
     transition: opacity 0.3s ease;
@@ -182,6 +214,13 @@ const inputs = [
   &:checked + .brand-label {
     opacity: 1;
     transition: opacity 0.3s ease;
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:checked {
+      box-shadow: inset 0 0 10px 2px teal;
+      border-radius: 20px;
+    }
   }
 }
 
@@ -254,28 +293,6 @@ const inputs = [
   }
 }
 
-.form-btn {
-  min-height: 48px;
-  font-size: 20;
-  line-height: 26px;
-  font-weight: 700;
-  background-image: linear-gradient(180deg, #280000 0%, #ff0000 100%);
-  border: 0;
-  border: 1px solid #c9c9c9;
-  border-radius: 5px;
-  padding: 0;
-  text-align: center;
-  color: #fff;
-  cursor: pointer;
-
-  @media screen and (min-width: 102px) {
-    margin-top: 40px;
-    font-size: 36px;
-    line-height: 46px;
-    min-height: 71px;
-  }
-}
-
 .label-message {
   @media screen and (min-width: 1024px) {
     display: block;
@@ -304,5 +321,10 @@ const inputs = [
     line-height: 46px;
     border-radius: 20px;
   }
+}
+
+.name-input {
+  position: absolute;
+  opacity: 0;
 }
 </style>
