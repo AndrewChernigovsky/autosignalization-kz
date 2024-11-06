@@ -57,6 +57,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  classes: {
+    type: Array as () => string[],
+    default: () => [],
+  },
 })
 
 const emit = defineEmits()
@@ -66,7 +70,12 @@ function handleClick(event: MouseEvent) {
 }
 
 const buttonClass = computed(() => {
-  return ['base', props.ytype || '', { disabled: props.disabled }]
+  return [
+    'base',
+    props.ytype,
+    ...(props.classes || ''),
+    { disabled: props.disabled },
+  ]
 })
 
 const states = computed(() => {
@@ -300,3 +309,5 @@ const states = computed(() => {
   opacity: 0.5;
 }
 </style>
+
+<style lang="scss" scoped></style>

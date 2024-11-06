@@ -41,7 +41,7 @@
             class="gallery-thumbs"
             :slider-class="'gallery-swiper-class'"
             :direction="orientationThumbs"
-            :slidesPerView="3"
+            :slidesPerView="5"
             :centeredSlides="true"
             :centeredSlidesBounds="true"
             :grabCursor="true"
@@ -166,52 +166,43 @@ window.removeEventListener('resize', handleResize)
 
 .popularProduct {
   padding-bottom: 30px;
-  padding-left: 20px;
   display: grid;
   gap: 30px;
   min-width: 300px;
   max-width: 500px;
   justify-self: center;
+  margin-top: 30px;
 
   .wrapper {
     background-position: 0px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-color: $black-424040;
+    background-color: #2B2B2B;
     position: relative;
     padding: 10px;
     border-radius: 20px;
+    min-width: inherit;
+    max-width: inherit;
   }
 
   .images {
     border-radius: 20px;
-    width: 100%;
-    height: 260px;
+    min-width: inherit;
+    max-width: inherit;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    @media screen and (max-width: $tablet) {
-      background-color: transparent;
-      height: auto;
-    }
-
-    @media screen and (min-width: $desktop-min) {
-      height: 380px;
-    }
+    background-color: transparent;
+    height: auto;
   }
 }
 
 .my-swiper {
-  width: 300px;
   background-color: $white;
   border-radius: 25px;
-  height: inherit;
-
-  @media screen and (max-width: $tablet) {
-    width: 100%;
-    height: 250px;
-  }
+  min-width: inherit;
+  max-width: inherit;
+  height: 250px;
 
   a {
     width: inherit;
@@ -226,30 +217,24 @@ window.removeEventListener('resize', handleResize)
 }
 
 .images-fancybox {
-  height: inherit;
-  display: flex;
-  background-color: $black-424040;
-
-  @media screen and (max-width: $tablet) {
+    height: inherit;
     display: grid;
     gap: 10px;
-    width: 100%;
+    min-width: inherit;
+    max-width: inherit;
+    overflow: hidden;
     align-content: baseline;
-  }
+    border-radius: 20px 20px 0px 0px;
 }
 
 h3 {
   font-size: 24px;
   text-align: center;
   color: $white;
-
-  @media screen and (min-width: $desktop-min) {
-    font-size: 24px;
-  }
 }
 
 .price {
-  font-size: 48px;
+  font-size: 18px;
   text-align: center;
   color: $white;
   font-weight: 400;
@@ -258,10 +243,6 @@ h3 {
   margin: 0;
   display: grid;
   align-content: center;
-
-  @media screen and (max-width: $tablet) {
-    font-size: 18px;
-  }
 
   span {
     text-align: left;
@@ -280,13 +261,9 @@ h3 {
 
   &:not(:first-of-type) {
     font-family: $primary-font;
-    font-size: 64px;
+    font-size: 48px;
     font-style: normal;
     font-weight: 400;
-
-    @media screen and (max-width: $tablet) {
-      font-size: 48px;
-    }
   }
 }
 .buttons {
@@ -302,16 +279,10 @@ h3 {
 }
 
 .gallery-thumbs {
-  height: auto;
-  width: 100px;
-  margin-left: 10px;
-  background-color: $black-424040;
   border: none;
-
-  @media screen and (max-width: $tablet) {
-    width: 100%;
-    height: 100px;
-  }
+  min-width: inherit;
+  max-width: inherit;
+  height: 100px;
 
   .swiper-slide {
     height: 100px;
