@@ -17,10 +17,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { CountButton } from '#build/components'
 import { ref, computed, watch } from 'vue'
-import { ButtonsEnum } from '~/enums/ButtonsEnum'
-import YButton from '../YButton/YButton.vue'
 
 const emit = defineEmits(['getQuantity'])
 const props = defineProps({
