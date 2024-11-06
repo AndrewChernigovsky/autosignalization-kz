@@ -6,8 +6,8 @@
       </div>
       <h3>{{ product.title }}</h3>
       <p class="price">
-        <span>{{ product.price }}</span
-        ><span class="currency"> {{ product.currency }}</span>
+        <span>{{ product.price }}</span>
+        <span class="currency"> {{ product.currency }}</span>
       </p>
     </div>
     <div class="buttons">
@@ -16,7 +16,6 @@
         :link="true"
         :btn="false"
         :path="`/popular-products/${product.id}`"
-        :classes="['active111']"
         >Подробнее</YButton
       >
       <YButton :ytype="ButtonsEnum.primary">Купить</YButton>
@@ -35,11 +34,6 @@ const props = defineProps({
   },
 })
 </script>
-<style>
-.active111 {
-  color: red;
-}
-</style>
 
 <style lang="scss" scoped>
 .popularProduct {

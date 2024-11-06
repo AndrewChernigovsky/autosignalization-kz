@@ -1,6 +1,6 @@
 <template>
-  <Mobile v-if="viewportWidth < 768" />
-  <Desktop v-if="viewportWidth > 768" />
+  <Mobile v-if="viewportWidth < 1024" />
+  <Desktop v-if="viewportWidth > 1024" />
 </template>
 
 <script setup lang="ts">
