@@ -1,58 +1,102 @@
 <template>
-  <div class="popularProduct" v-if="product">
-    <div class="wrapper">
-      <div class="block-1">
-
-        <p class="base-text more"><span>ДОСТАВКА: О ДОСТАВКЕ И ОПЛАТЕ</span></p>
-        <p class="base-text">НАЛИЧИЕ ТОВАРА УТОЧНЯЙТЕ У ПРОДАВЦА.</p>
-        <div class="images">
-
-          <Fancybox class="images-fancybox">
-            <Swiper :modules="[SwiperThumbs]" v-if="thumbsSwiper != null" ref="mySwiperGallery" class="my-swiper"
-              :slider-class="'swiper-class'" slidesPerView="auto" :centeredSlides="true" :centeredSlidesBounds="true"
-              :thumbs="{
-                swiper: thumbsSwiper,
-                autoScrollOffset: 3,
-              }">
-              <SwiperSlide class="slide" v-for="(image, index) in product.images" :key="index">
-                <a :href="image" data-fancybox="gallery">
-                  <NuxtPicture format="avif, webp" :src="image" loading="lazy" placeholder class="image-slide"
-                    width="300" style="height: 100%" />
-                </a>
-              </SwiperSlide>
-            </Swiper>
-            <Swiper :modules="[SwiperThumbs]" class="gallery-thumbs" :slider-class="'gallery-swiper-class'"
-              :direction="orientationThumbs" :slidesPerView="3" :centeredSlides="true" :centeredSlidesBounds="true"
-              :grabCursor="true" :touch-ratio="1" :space-between="10" ref="thumbsSwiper" @init="onSwiperInit">
-              <SwiperSlide class="slide" v-for="(image, index) in product.images" :key="index">
-                <NuxtPicture format="avif, webp" :src="image" loading="lazy" placeholder class="image-slide"
-                  width="300" />
-              </SwiperSlide>
-            </Swiper>
-          </Fancybox>
+  <section class="popularProduct" v-if="product">
+    <div class="container">
+      <div class="wrapper">
+        <div class="block-1">
+          <p class="base-text more">
+            <span>ДОСТАВКА: О ДОСТАВКЕ И ОПЛАТЕ</span>
+          </p>
+          <p class="base-text">НАЛИЧИЕ ТОВАРА УТОЧНЯЙТЕ У ПРОДАВЦА.</p>
+          <div class="images">
+            <Fancybox class="images-fancybox">
+              <Swiper
+                :modules="[SwiperThumbs]"
+                v-if="thumbsSwiper != null"
+                ref="mySwiperGallery"
+                class="my-swiper"
+                :slider-class="'swiper-class'"
+                slidesPerView="auto"
+                :centeredSlides="true"
+                :centeredSlidesBounds="true"
+                :thumbs="{
+                  swiper: thumbsSwiper,
+                  autoScrollOffset: 3,
+                }"
+              >
+                <SwiperSlide
+                  class="slide"
+                  v-for="(image, index) in product.images"
+                  :key="index"
+                >
+                  <a :href="image" data-fancybox="gallery">
+                    <NuxtPicture
+                      format="avif, webp"
+                      :src="image"
+                      loading="lazy"
+                      placeholder
+                      class="image-slide"
+                      width="300"
+                      style="height: 100%"
+                    />
+                  </a>
+                </SwiperSlide>
+              </Swiper>
+              <Swiper
+                :modules="[SwiperThumbs]"
+                class="gallery-thumbs"
+                :slider-class="'gallery-swiper-class'"
+                :direction="orientationThumbs"
+                :slidesPerView="3"
+                :centeredSlides="true"
+                :centeredSlidesBounds="true"
+                :grabCursor="true"
+                :touch-ratio="1"
+                :space-between="10"
+                ref="thumbsSwiper"
+                @init="onSwiperInit"
+              >
+                <SwiperSlide
+                  class="slide"
+                  v-for="(image, index) in product.images"
+                  :key="index"
+                >
+                  <NuxtPicture
+                    format="avif, webp"
+                    :src="image"
+                    loading="lazy"
+                    placeholder
+                    class="image-slide"
+                    width="300"
+                  />
+                </SwiperSlide>
+              </Swiper>
+            </Fancybox>
+          </div>
         </div>
-
+        <div class="block-2">
+          <h3 class="title">{{ product.title }}</h3>
+          <p class="base-text description" v-if="product.description">
+            {{ product.description }}
+          </p>
+          <p class="base-text">ЦЕНА ЗА МАТЕРИАЛ УКАЗАНА БЕЗ УСТАНОВКИ.</p>
+          <div class="price">
+            <span class="result-cost">ИТОГОВАЯ СТОИМОСТЬ</span>
+            <p class="price-cost">
+              <span class="currency">{{ product.price }}</span>
+              <span class="currency"> {{ product.currency }}</span>
+            </p>
+          </div>
+        </div>
+        <div class="buttons">
+          <div class="count">
+            <p class="base-text">КОЛИЧЕСТВО</p>
+            <CountButton />
+          </div>
+          <YButton :ytype="ButtonsEnum.primary">В корзину</YButton>
+        </div>
       </div>
-      <h3>{{ product.title }}</h3>
-      <p class="base-text description" v-if="product.description">{{ product.description }}</p>
-      <p class="base-text">ЦЕНА ЗА МАТЕРИАЛ УКАЗАНА БЕЗ УСТАНОВКИ.</p>
     </div>
-
-  <p class="price">
-    <span>ИТОГОВАЯ СТОИМОСТЬ</span>
-  <p class="price-cost">
-    <span class="currency">{{ product.price }}</span>
-    <span class="currency"> {{ product.currency }}</span>
-  </p>
-  </p>
-  <div class="buttons">
-    <div class="count">
-      <p class="base-text">КОЛИЧЕСТВО</p>
-      <CountButton />
-    </div>
-    <YButton :ytype="ButtonsEnum.primary">В корзину</YButton>
-  </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">
@@ -81,23 +125,26 @@ const orientationThumbs = computed(() => {
 })
 
 const handleResize = () => {
-  viewportWidth.value = window.innerWidth;
-};
+  viewportWidth.value = window.innerWidth
+}
 
 onMounted(() => {
   window.addEventListener('resize', handleResize)
-
   const foundProduct = popularStore
     .getProducts()
     .find((p) => p.id === +route.params.id)
-
   product.value = foundProduct
 })
 
-onUnmounted(() =>
-  window.removeEventListener('resize', handleResize)) 
+onUnmounted(() => window.removeEventListener('resize', handleResize))
 </script>
 <style lang="scss" scoped>
+.title {
+  text-transform: uppercase;
+  font-style: italic;
+  font-size: 34px;
+}
+
 .base-text {
   color: $white;
 }
@@ -129,21 +176,24 @@ onUnmounted(() =>
 
 .popularProduct {
   padding-bottom: 30px;
+  margin-top: 60px;
   padding-left: 20px;
   display: grid;
   gap: 30px;
   min-width: 300px;
-  max-width: 500px;
   justify-self: center;
 
   .wrapper {
     background-position: 0px;
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-color: $black-424040;
+    background-color: #2b2b2b;
     position: relative;
     padding: 10px;
     border-radius: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr 1fr;
   }
 
   .images {
@@ -154,11 +204,6 @@ onUnmounted(() =>
     align-items: center;
     justify-content: flex-start;
 
-    @media screen and (max-width: $tablet) {
-      background-color: transparent;
-      height: auto;
-    }
-
     @media screen and (min-width: $desktop-min) {
       height: 380px;
     }
@@ -166,15 +211,10 @@ onUnmounted(() =>
 }
 
 .my-swiper {
-  width: 300px;
+  width: 335px;
   background-color: $white;
   border-radius: 25px;
   height: inherit;
-
-  @media screen and (max-width: $tablet) {
-    width: 100%;
-    height: 250px;
-  }
 
   a {
     width: inherit;
@@ -191,14 +231,7 @@ onUnmounted(() =>
 .images-fancybox {
   height: inherit;
   display: flex;
-  background-color: $black-424040;
-
-  @media screen and (max-width: $tablet) {
-    display: grid;
-    gap: 10px;
-    width: 100%;
-    align-content: baseline;
-  }
+  // background-color: $black-424040;
 }
 
 h3 {
@@ -211,54 +244,63 @@ h3 {
   }
 }
 
+.block-2 {
+  .base-text {
+    text-align: right;
+  }
+}
+
+.count {
+  .base-text {
+    text-align: left;
+  }
+}
+
 .price {
   font-size: 48px;
-  text-align: center;
+  text-align: right;
   color: $white;
   font-weight: 400;
   font-family: $primary-font;
   gap: 10px;
   margin: 0;
-  display: grid;
-  align-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: end;
 
-  @media screen and (max-width: $tablet) {
-    font-size: 18px;
-  }
-
-  span {
+  .result-cost {
     text-align: left;
+    font-size: 24px;
   }
 
   .price-cost {
     text-align: right;
     margin: 0;
+    display: flex;
+    gap: 5px;
   }
 }
 
 .currency {
-
   font-weight: 700;
-  font-size: 34px;
+  font-size: 28px;
 
   &:not(:first-of-type) {
     font-family: $primary-font;
-    font-size: 64px;
+    font-size: 28px;
     font-style: normal;
     font-weight: 400;
-
-    @media screen and (max-width: $tablet) {
-      font-size: 48px;
-    }
   }
 }
 
 .buttons {
-  display: grid;
-  justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin: 0 auto;
   gap: 10px;
-  max-width: calc(100% - 100px);
+  width: 100%;
+  grid-column: 1/-1;
 }
 
 .count {
@@ -269,13 +311,8 @@ h3 {
   height: auto;
   width: 100px;
   margin-left: 10px;
-  background-color: $black-424040;
+  // background-color: $black-424040;
   border: none;
-
-  @media screen and (max-width: $tablet) {
-    width: 100%;
-    height: 100px;
-  }
 
   .swiper-slide {
     height: 100px;
