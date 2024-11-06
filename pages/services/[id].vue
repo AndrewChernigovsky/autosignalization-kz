@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="service-item" v-if="service">
-      <img
+      <NuxtPicture
         v-for="image of service.imageUrl"
         :src="image.url"
         :alt="image.description"
@@ -35,7 +35,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted } from 'vue'
 import type { ServiceType } from '@/types/ServiceType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { useServiceStore } from '@/stores/service'

@@ -7,6 +7,9 @@
         :src="service.imageUrl[0].url"
         loading="lazy"
         placeholder
+        width="280"
+        height="300"
+        sizes="(min-width: 320px) 280px 300px, (min-width: 1024px) 640px 554px"
       />
       <div class="buttons">
         <YButton
@@ -56,15 +59,10 @@ const props = defineProps({
     padding-bottom: 60px;
     height: auto;
     min-height: 640px;
-  }
 
-  picture {
-    height: 300px;
-    width: 100%;
-
-    img {
-      height: 100%;
-      width: 100%;
+    picture {
+      min-width: 100%;
+      max-width: 640px;
     }
   }
 }
