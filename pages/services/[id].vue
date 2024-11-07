@@ -8,6 +8,8 @@
         :alt="image.description"
         :imgAttrs="{ class: 'service-id-img' }"
         sizes="(min-width: 1480px) 1440px 720px"
+        width="300"
+        height="300"
       />
       <h1 class="m-0 service-title">{{ service.title }}</h1>
       <div class="content">
