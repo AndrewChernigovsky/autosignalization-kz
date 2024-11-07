@@ -23,7 +23,7 @@
               v-for="(image, index) in product.images"
               :key="index"
             >
-              <a :href="image" data-fancybox="gallery">
+              <a :href="'../'+image" data-fancybox="gallery">
                 <NuxtPicture
                   format="avif, webp"
                   :src="image"
@@ -112,7 +112,7 @@ const onSwiperInit = (swiper: Swiper) => {
 const viewportWidth = ref<number>(window.innerWidth)
 
 const orientationThumbs = computed(() => {
-  return viewportWidth.value < 768 ? 'horizontal' : 'vertical'
+  return viewportWidth.value < 1024 ? 'horizontal' : 'vertical'
 })
 
 const handleResize = () => {
@@ -282,6 +282,8 @@ h3 {
   border: none;
   min-width: inherit;
   max-width: inherit;
+  margin-left: 0;
+  width: 100%;
   height: 100px;
 
   .swiper-slide {
