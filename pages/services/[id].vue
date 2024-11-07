@@ -6,7 +6,7 @@
         format="avif,webp"
         :src="image.url"
         :alt="image.description"
-        :imgAttrs="{ class: 'service-img' }"
+        :imgAttrs="{ class: 'service-id-img' }"
         sizes="(min-width: 1480px) 1440px 720px"
       />
       <h1 class="m-0 service-title">{{ service.title }}</h1>
@@ -43,6 +43,7 @@
         </div>
       </div>
     </div>
+    <Shop />
   </div>
 </template>
 <script setup lang="ts">
@@ -50,6 +51,7 @@ import { onMounted, ref } from 'vue'
 import type { ServiceType } from '@/types/ServiceType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { useServiceStore } from '@/stores/service'
+import Shop from '@/components/sections/Shop/Shop.vue'
 
 const route = useRoute()
 
@@ -62,7 +64,7 @@ onMounted(() => {
     .find((post) => post.id === +route.params.id)
 })
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .wrapper {
   padding: 0;
   background-image: linear-gradient(180deg, #121010 0, #0e0c0c 100%);
@@ -84,14 +86,6 @@ onMounted(() => {
   @media screen and (min-width: 1024px) {
     padding: 0;
   }
-}
-
-.service-img {
-  border-radius: 15px;
-  width: 100%;
-  max-width: 1440px;
-  max-height: 720px;
-  object-fit: cover;
 }
 
 .service-title {
@@ -234,6 +228,16 @@ onMounted(() => {
       }
     }
   }
+}
+</style>
+
+<style lang="scss">
+.service-id-img {
+  border-radius: 15px;
+  width: 100%;
+  max-width: 1440px;
+  max-height: 720px;
+  object-fit: cover;
 }
 
 .service-btn-container {
