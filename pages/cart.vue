@@ -2,29 +2,29 @@
   <ClientOnly>
     <div class="container">
       <section>
-        <h2>Корзина</h2>
-        <ul>
-          <li v-for="(item, index) in products" :key="item.name">
-            <h3>{{ item.name }}</h3>
-            <img
-              :src="item.imagesUrl?.[index].url"
-              :alt="item.name"
-              width="300"
-              height="200"
-            />
-            <p>Цена: {{ item.price }}</p>
-            <button type="button" @click="() => cartStore.addCartProduct(item)">
-              +
-            </button>
-            <button
-              type="button"
-              @click="() => cartStore.removeCartProduct(item)"
-            >
-              -
-            </button>
-            <span>Кол-во: {{ item.quantity }}</span>
-          </li>
-        </ul>
+        <h2>{{ products.length }} товар/ов в корзине</h2>
+        <template v-if="products">
+          <ul>
+            <li v-for="product in products" :key="product.name">
+              <p>{{ product.category }}</p>
+              <h3>{{ product.name }}</h3>
+              <NuxtPicture
+                :src="product.images[0]"
+                :alt="product.name"
+                width="300"
+                height="200"
+              />
+              <p>Цена: {{ product.price }}</p>
+              <CountButton :product="product" />
+              <span>Кол-во: {{ product.quantity }}</span>
+              <p>{{ product.price }}</p>
+            </li>
+          </ul>
+        </template>
+
+        <template v-else>
+          <p>Корзина пустая</p>
+        </template>
       </section>
     </div>
   </ClientOnly>
@@ -33,9 +33,10 @@
 import { onMounted, ref, watch } from 'vue'
 import { useCartStore } from '@/stores/useCartStore'
 import type { ProductType } from '@/types/ProductType'
+import type { PopularProductsType } from '~/types/PopularProductsType'
 
 const cartStore = useCartStore()
-const products = ref<ProductType[]>([])
+const products = ref<ProductType[] | PopularProductsType[]>([])
 
 onMounted(async () => {
   products.value = cartStore.getCartProducts()

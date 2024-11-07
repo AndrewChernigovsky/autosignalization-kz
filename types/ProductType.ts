@@ -8,9 +8,9 @@ type DescriptionType = {
 
 type ProductType = {
   id: number
-  title?: string
-  name: string
-  price?: number
+  title: string
+  price: number
+  category: string
   totalInCart?: number
   productType?: string
   inStock?: boolean

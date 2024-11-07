@@ -1,6 +1,7 @@
 type PopularProductsType = {
   id: number
   title: string
+  category: string
   images?: string[]
   price: number
   currency: string

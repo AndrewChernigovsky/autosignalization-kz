@@ -18,20 +18,24 @@
 </template>
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
+import { useCartStore } from '@/stores/useCartStore'
+import type { ProductType } from '@/types/ProductType'
+import type { PopularProductsType } from '~/types/PopularProductsType'
+
+const cartStore = useCartStore()
 
 const emit = defineEmits(['getQuantity'])
 const props = defineProps({
   disabled: {
     type: Boolean,
   },
-  quantity: {
-    type: Number,
-    default: 1,
-    requaried: true,
+  product: {
+    type: {} as () => PopularProductsType,
+    required: true,
   },
 })
 
-const count = ref(props.quantity)
+const count = ref(props.product.quantity)
 
 const isMinusDisabled = computed(() => {
   return count.value <= 1 || props.disabled
@@ -39,10 +43,12 @@ const isMinusDisabled = computed(() => {
 
 function minusCount() {
   count.value -= 1
+  cartStore.removeCartProduct(props.product)
 }
 
 function plusCount() {
   count.value += 1
+  cartStore.addCartProduct(props.product)
 }
 
 watch(count, (newValue: Number) => {

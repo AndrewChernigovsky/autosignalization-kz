@@ -7,6 +7,7 @@ export const usePopularProduct = defineStore('popular-products', () => {
     {
       id: 1,
       title: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+      category: 'Популярные товары',
       images: [
         'images/keychains/starline-e96/product-1.png',
         'images/keychains/starline-e96/product-2.png',
@@ -21,6 +22,7 @@ export const usePopularProduct = defineStore('popular-products', () => {
     {
       id: 2,
       title: 'StarLine S96 V2 BT 2CAN2LIN GSM',
+      category: 'Популярные товары',
       images: [
         'images/keychains/starline-s96/product-1.png',
         'images/keychains/starline-s96/product-2.png',
@@ -34,6 +36,7 @@ export const usePopularProduct = defineStore('popular-products', () => {
     {
       id: 3,
       title: 'Starline E96 V2 BT GSM',
+      category: 'Популярные товары',
       images: [
         'images/keychains/starline-e96/product-1.png',
         'images/keychains/starline-e96/product-2.png',
@@ -48,6 +51,7 @@ export const usePopularProduct = defineStore('popular-products', () => {
     {
       id: 4,
       title: 'Starline A93 ECO V2',
+      category: 'Популярные товары',
       images: [
         'images/keychains/starline-a93/product-1.png',
         'images/keychains/starline-a93/product-2.png',
