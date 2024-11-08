@@ -1,14 +1,16 @@
 <template>
   <div class="shop">
-    <NuxtPicture
-      :imgAttrs="{ class: 'shop-id-picture' }"
-      :src="src"
-      format="avif, webp"
-      loading="lazy"
-      width="300"
-      height="350"
-      sizes="(min-width: 320px) 300px 350px, (min-width: 1024px) 700px 554px"
-    />
+    <div class="shop-picture-container">
+      <NuxtPicture
+        :src="src"
+        format="avif, webp"
+        loading="lazy"
+        width="300"
+        height="350"
+        sizes="(min-width: 320px) 300px 350px, (min-width: 1024px) 700px 554px"
+        class="shop-id-picture"
+      />
+    </div>
     <div class="content">
       <h2 class="title m-0">{{ title }}</h2>
       <p class="description m-0">{{ description }}</p>
@@ -40,6 +42,19 @@ const props = defineProps({
 })
 </script>
 <style scoped lang="scss">
+.shop-id-picture :deep(img) {
+  min-width: 100%;
+  border-radius: 25px;
+  max-height: 554px;
+  object-fit: cover;
+
+  @media screen and (min-width: 1024px) {
+    min-width: 720px;
+    max-width: 720px;
+    min-height: 554px;
+  }
+}
+
 .shop {
   display: flex;
   padding: 10px;
@@ -82,7 +97,7 @@ const props = defineProps({
   }
 }
 </style>
-
+<!-- 
 <style lang="scss">
 .shop-id-picture {
   min-width: 100%;
@@ -96,4 +111,4 @@ const props = defineProps({
     min-height: 554px;
   }
 }
-</style>
+</style> -->
