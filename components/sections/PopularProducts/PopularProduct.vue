@@ -4,7 +4,7 @@
       <div class="images">
         <PopularProductGallery :product="product" />
       </div>
-      <h3>{{ product.title }}</h3>
+      <h3>{{ product.name }}</h3>
       <p class="price">
         <span>{{ product.price }}</span>
         <span class="currency"> {{ product.currency }}</span>
@@ -18,7 +18,22 @@
         :path="`/popular-products/${product.id}`"
         >Подробнее</YButton
       >
-      <YButton :ytype="ButtonsEnum.primary">Купить</YButton>
+      <YButton
+        v-if="statusCartButton"
+        :ytype="ButtonsEnum.primary"
+        @click="() => product && addProduct(product)"
+      >
+        Купить
+      </YButton>
+      <YButton
+        v-else
+        :ytype="ButtonsEnum.primary"
+        path="/cart"
+        :link="true"
+        :btn="false"
+      >
+        В корзину
+      </YButton>
     </div>
   </div>
 </template>
@@ -27,12 +42,23 @@
 import type { PopularProductsType } from '@/types/PopularProductsType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import PopularProductGallery from './PopularProductGallery.vue'
+import { useCartStore } from '@/stores/useCartStore'
+
+const cartStore = useCartStore()
 
 const props = defineProps({
   product: {
     type: Object as () => PopularProductsType,
+    required: true,
   },
 })
+
+const statusCartButton = ref<boolean>(true)
+
+function addProduct(product: PopularProductsType) {
+  cartStore.addCartProduct(product)
+  statusCartButton.value = false
+}
 </script>
 
 <style lang="scss" scoped>

@@ -14,11 +14,10 @@ import { useCartStore } from '~/stores/useCartStore'
 
 const cartStore = useCartStore()
 
-const countItems = ref(0)
+const countItems = ref(1)
 
 watchEffect(() => {
-  // const cartProducts = cartStore.getCartProducts()
-  countItems.value = cartStore.totalQuantity
+  countItems.value = cartStore.total
 })
 </script>
 <style lang="scss" scoped>

@@ -28,9 +28,10 @@ const emit = defineEmits(['getQuantity'])
 const props = defineProps({
   disabled: {
     type: Boolean,
+    default: true,
   },
   product: {
-    type: {} as () => PopularProductsType,
+    type: Object as PropType<PopularProductsType>,
     required: true,
   },
 })
@@ -38,7 +39,7 @@ const props = defineProps({
 const count = ref(props.product.quantity)
 
 const isMinusDisabled = computed(() => {
-  return count.value <= 1 || props.disabled
+  return count.value <= 1 && props.disabled
 })
 
 function minusCount() {
@@ -50,10 +51,13 @@ function plusCount() {
   count.value += 1
   cartStore.addCartProduct(props.product)
 }
-
-watch(count, (newValue: Number) => {
-  emit('getQuantity', newValue)
-})
+watch(
+  () => props.product.quantity,
+  (newQuantity) => {
+    count.value = newQuantity
+    emit('getQuantity', newQuantity)
+  },
+)
 </script>
 <style lang="scss" scoped>
 .button-custom {
