@@ -14,7 +14,10 @@ export const useProductStore = defineStore('productStore', () => {
       productDescription:
         'Описание товара - Надежный автомобильный охранно-телематический',
       imagesUrl: [
-        { url: '#', description: 'STARLINE E96 V2 BT ECO 2CAN+4LIN' },
+        {
+          url: 'images/popular-products/product-1.png',
+          description: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+        },
       ],
       autoType: ['Для внедорожника', 'Для легкового авто'],
       inStock: true,
@@ -46,7 +49,10 @@ export const useProductStore = defineStore('productStore', () => {
       productDescription: 'Камера заднего вида с инфракрасной подсветкой',
       inStock: true,
       imagesUrl: [
-        { url: '#', description: 'STARLINE E96 V2 BT ECO 2CAN+4LIN' },
+        {
+          url: 'images/popular-products/product-1.png',
+          description: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+        },
       ],
       features: [
         'Матрица Color CCD PC3030',
