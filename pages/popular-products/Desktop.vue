@@ -90,9 +90,11 @@
         <div class="buttons">
           <div class="count">
             <p class="base-text">КОЛИЧЕСТВО</p>
-            <CountButton />
+            <CountButton :product="product" />
           </div>
-          <YButton :ytype="ButtonsEnum.primary">В корзину</YButton>
+          <YButton :ytype="ButtonsEnum.primary" link :btn="false" path="/cart"
+            >В корзину</YButton
+          >
         </div>
       </div>
     </div>

@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   ssr: false,
-  devtools: { enabled: false },
   modules: [
     '@pinia/nuxt',
     '@nuxtjs/svg-sprite',

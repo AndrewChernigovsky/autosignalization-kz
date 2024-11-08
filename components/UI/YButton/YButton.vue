@@ -4,8 +4,8 @@
     :type="typeButton ? typeButton : 'button'"
     v-if="btn"
     :ytype="ytype"
-    :disabled="states.disabled"
     @click="handleClick"
+    :disabled="states.disabled"
   >
     <slot />
   </button>
@@ -85,6 +85,22 @@ const states = computed(() => {
 })
 </script>
 <style lang="scss" scoped>
+button {
+  position: relative;
+}
+
+.modal {
+  position: absolute;
+  top: -130px;
+  right: 0px;
+  width: 100%;
+  font-size: 20px;
+  background-color: $red-B40036;
+  padding: 10px;
+  color: $white;
+  font-family: $primary-font;
+}
+
 .base {
   pointer-events: auto;
 }

@@ -9,20 +9,16 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { ref } from 'vue'
 import { useCartStore } from '~/stores/useCartStore'
 
 const cartStore = useCartStore()
 
-const countItems = ref(0)
+const countItems = ref(1)
 
-watch(
-  () => cartStore.getCartProducts(),
-  (newProducts) => {
-    countItems.value = newProducts.length
-  },
-  { immediate: true },
-)
+watchEffect(() => {
+  countItems.value = cartStore.total
+})
 </script>
 <style lang="scss" scoped>
 .cart {
@@ -48,29 +44,28 @@ watch(
       margin-top: auto;
     }
   }
+}
+.counter {
+  background-color: $red;
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  position: absolute;
+  color: $white;
+  right: -10px;
+  top: -10px;
+  text-align: center;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .counter {
-    background-color: $red;
-    border-radius: 50%;
-    min-width: 20px;
-    height: 20px;
-    position: absolute;
-    color: $white;
-    right: -10px;
-    top: -10px;
-    text-align: center;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    @media screen and (min-width: $desktop-min) {
-      min-width: 30px;
-      height: 30px;
-      font-size: 20px;
-      line-height: 28px;
-      font-family: $secondary-font;
-    }
+  @media screen and (min-width: $desktop-min) {
+    min-width: 30px;
+    height: 30px;
+    font-size: 20px;
+    line-height: 28px;
+    font-family: $secondary-font;
   }
 }
 </style>
