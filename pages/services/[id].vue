@@ -1,51 +1,53 @@
 <template>
-  <div class="container wrapper">
-    <div class="service-item" v-if="service">
-      <NuxtPicture
-        v-for="image of service.imageUrl"
-        format="avif,webp"
-        :src="image.url"
-        :alt="image.description"
-        :imgAttrs="{ class: 'service-id-img' }"
-        sizes="(min-width: 1480px) 1440px 720px"
-        width="300"
-        height="300"
-      />
-      <h1 class="m-0 service-title">{{ service.title }}</h1>
-      <div class="content">
-        <div class="description">
-          {{ service.description }}
-        </div>
-        <div class="about">
-          <p class="text service-text m-0">Мы предлагаем:</p>
-          <ul class="list-service-disc list-style-none">
-            <li
-              class="service-disc-item"
-              v-for="item of service.serviceDesciption"
+  <div class="service-container">
+    <div class="container wrapper">
+      <div class="service-item" v-if="service">
+        <NuxtPicture
+          v-for="image of service.imageUrl"
+          format="avif,webp"
+          :src="image.url"
+          :alt="image.description"
+          :imgAttrs="{ class: 'service-id-img' }"
+          sizes="(min-width: 1480px) 1440px 720px"
+          width="300"
+          height="300"
+        />
+        <h1 class="m-0 service-title">{{ service.title }}</h1>
+        <div class="content">
+          <div class="description">
+            {{ service.description }}
+          </div>
+          <div class="about">
+            <p class="text service-text m-0">Мы предлагаем:</p>
+            <ul class="list-service-disc list-style-none">
+              <li
+                class="service-disc-item"
+                v-for="item of service.serviceDesciption"
+              >
+                {{ item }}
+              </li>
+            </ul>
+          </div>
+          <p class="serices-text m-0">
+            Стоимость услуг необходимо уточнять у мастера
+          </p>
+          <p class="serices-text m-0">
+            Насладитесь комфортом с прекрасно установленным и настроенным нами
+            оборудованием!
+          </p>
+          <Share />
+          <p class="price-container m-0">
+            <span>ЦЕНА:</span><span class="price">{{ service.price }}</span>
+          </p>
+          <div class="service-btn-container">
+            <YButton :ytype="ButtonsEnum.primary"
+              ><span class="primary-btn">Заказать</span></YButton
             >
-              {{ item }}
-            </li>
-          </ul>
-        </div>
-        <p class="serices-text m-0">
-          Стоимость услуг необходимо уточнять у мастера
-        </p>
-        <p class="serices-text m-0">
-          Насладитесь комфортом с прекрасно установленным и настроенным нами
-          оборудованием!
-        </p>
-        <Share />
-        <p class="price-container m-0">
-          <span>ЦЕНА:</span><span class="price">{{ service.price }}</span>
-        </p>
-        <div class="service-btn-container">
-          <YButton :ytype="ButtonsEnum.primary"
-            ><span class="primary-btn">Заказать</span></YButton
-          >
+          </div>
         </div>
       </div>
+      <Shop />
     </div>
-    <Shop />
   </div>
 </template>
 <script setup lang="ts">
@@ -67,9 +69,13 @@ onMounted(() => {
 })
 </script>
 <style scoped lang="scss">
+.service-container {
+  width: 100vw;
+  background-image: linear-gradient(#010308, #000208);
+}
+
 .wrapper {
   padding: 0;
-  background-image: linear-gradient(180deg, #121010 0, #0e0c0c 100%);
   color: #fff;
 
   @media screen and (min-width: 768px) {
@@ -240,6 +246,10 @@ onMounted(() => {
   max-width: 1440px;
   max-height: 720px;
   object-fit: cover;
+
+  @media screen and (min-width: 1480px) {
+    min-height: 720px;
+  }
 }
 
 .service-btn-container {

@@ -97,18 +97,3 @@ const props = defineProps({
   }
 }
 </style>
-<!-- 
-<style lang="scss">
-.shop-id-picture {
-  min-width: 100%;
-  border-radius: 25px;
-  max-height: 554px;
-  object-fit: cover;
-
-  @media screen and (min-width: 1024px) {
-    min-width: 720px;
-    max-width: 720px;
-    min-height: 554px;
-  }
-}
-</style> -->
