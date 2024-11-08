@@ -4,8 +4,10 @@
       <section class="catalog">
         <h1 class="title m-0">АВТОСИГНАЛИЗАЦИИ С АВТОЗАПУСКОМ</h1>
         <div class="catalog-wrapper">
-          <ul class="list">
-            <li class="item"></li>
+          <ul class="list" v-if="products">
+            <li class="item" v-for="product in products">
+              <CatalogCard :product="product" />
+            </li>
           </ul>
           <div class="filter-form">
             <form action="#" class="form"></form>
@@ -20,16 +22,15 @@
   </div>
 </template>
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { useProductStore } from '@/stores/products'
-import { ref, onMounted } from 'vue'
-import type { ProductType } from '@/types/ProductType'
+import CatalogCard from '@/components/CatalogCard/CatalogCard.vue'
 
-const productStore = useProductStore()
-
-const products = ref<ProductType>()
+const products = ref()
 
 onMounted(() => {
-  products.value = productStore.getProducts()
+  const { getProducts } = useProductStore()
+  products.value = getProducts()
 })
 </script>
 <style lang="scss">
