@@ -56,7 +56,7 @@ export const useCartStore = defineStore('cart', () => {
 
   function removeAllCartProducts(product: PopularProductsType) {
     products.value = products.value.filter((item) => {
-      if (item.id === product.id && item.quantity > 1) {
+      if (item.id === product.id) {
         return false
       }
       return true
