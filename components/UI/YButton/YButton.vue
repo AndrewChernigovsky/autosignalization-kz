@@ -321,6 +321,16 @@ button {
   }
 }
 
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
 .disabled {
   opacity: 0.5;
 }
