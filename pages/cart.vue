@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <div class="container">
+      <BreadCrumbs />
       <section>
         <h2 class="base-text">{{ cartStore.total }} товар/ов в корзине</h2>
         <template v-if="products && products.length > 0">
@@ -74,6 +75,10 @@ watch(
 )
 </script>
 <style lang="scss" scoped>
+.container {
+  padding-top: 20px;
+}
+
 li {
   position: relative;
 }

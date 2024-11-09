@@ -2,13 +2,13 @@
   <nav class="breadcrumbs">
     <ol class="list-style-none">
       <li>
-        <NuxtLink to="/"> Главная </NuxtLink>
+        <NuxtLink to="/"> Главная</NuxtLink>
       </li>
       <li v-for="(crumb, index) in breadcrumbs" :key="index">
-        <NuxtLink v-if="index < breadcrumbs.length" :to="crumb.path">
+        <NuxtLink v-if="index < breadcrumbs.length - 1" :to="path">
           {{ crumb.label }}
         </NuxtLink>
-        <span v-else>{{ crumb.label }}</span>
+        <span v-if="index === breadcrumbs.length - 1">{{ crumb.label }}</span>
       </li>
     </ol>
   </nav>
@@ -16,7 +16,6 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
-import Id from '~/pages/popular-products/[id].vue'
 
 const route = useRoute()
 
@@ -25,6 +24,8 @@ const props = defineProps({
     type: Number,
   },
 })
+
+const path = ref<string>('')
 
 const translations = {
   'popular-products': 'Популярные товары',
@@ -57,6 +58,8 @@ const breadcrumbs = computed(() => {
     }
   })
 })
+
+path.value = breadcrumbs[breadcrumbs.length - 2].path
 </script>
 <style lang="scss" scoped>
 .breadcrumbs ol {
@@ -68,25 +71,28 @@ const breadcrumbs = computed(() => {
   li {
     color: $white;
     position: relative;
-    padding-left: 20px;
 
-    &:not(:first-of-type)::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: -20px;
-      width: 20px;
-      height: 10px;
-      background-image: url('@/assets/arrow-slider-next.svg');
-      background-position: left center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
+    &:not(:first-of-type) {
+      padding-left: 20px;
 
-    a {
-      color: $white;
-      text-decoration: none;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -20px;
+        width: 20px;
+        height: 10px;
+        background-image: url('@/assets/arrow-slider-next.svg');
+        background-position: left center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      a {
+        color: $white;
+        text-decoration: none;
+      }
     }
   }
 }
