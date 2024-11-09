@@ -11,7 +11,7 @@
           :ytype="ButtonsEnum.dark"
           :link="true"
           :btn="false"
-          :path="`/popular-products/${product.id}`"
+          :path="`/catalog/${product.id}`"
           >Подробнее</YButton
         >
         <YButton :ytype="ButtonsEnum.primary"
@@ -27,7 +27,7 @@ import { ButtonsEnum } from '@/enums/ButtonsEnum'
 const props = defineProps({
   product: {
     type: Object,
-    default: () => '',
+    required: true,
   },
 })
 </script>
