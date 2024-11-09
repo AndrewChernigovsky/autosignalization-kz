@@ -23,7 +23,6 @@ export const useCartStore = defineStore('cart', () => {
   })
 
   function addCartProduct(product: PopularProductsType) {
-    console.log(product, 'PRODUCT')
     const index = products.value.findIndex((item) => item.id === product.id)
 
     if (index !== -1) {
@@ -54,17 +53,46 @@ export const useCartStore = defineStore('cart', () => {
       )
     }
   }
+
+  function removeAllCartProducts(product: PopularProductsType) {
+    products.value = products.value.filter((item) => {
+      if (item.id === product.id && item.quantity > 1) {
+        return false
+      }
+      return true
+    })
+
+    quantity.value = products.value.reduce(
+      (total, item) => total + item.quantity,
+      0,
+    )
+  }
+
   function getCartProducts() {
     return products.value
   }
+
+  function cleanCartProducts() {
+    products.value = []
+  }
+
+  const totalCost = computed(() => {
+    return products.value.reduce(
+      (total, product) => total + product.price * product.quantity,
+      0,
+    )
+  })
 
   return {
     products,
     getCartProducts,
     removeCartProduct,
+    removeAllCartProducts,
     addCartProduct,
     total,
     quantity,
     duplicateID,
+    cleanCartProducts,
+    totalCost,
   }
 })
