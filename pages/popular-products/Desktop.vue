@@ -1,6 +1,7 @@
 <template>
   <section class="popularProduct" v-if="product">
     <div class="container">
+      <BreadCrumbs :id="product.id" />
       <div class="wrapper">
         <div class="block-1">
           <p class="base-text more">
@@ -74,7 +75,7 @@
           </div>
         </div>
         <div class="block-2">
-          <h3 class="title">{{ product.title }}</h3>
+          <h3 class="title">{{ product.name }}</h3>
           <p class="base-text description" v-if="product.description">
             {{ product.description }}
           </p>

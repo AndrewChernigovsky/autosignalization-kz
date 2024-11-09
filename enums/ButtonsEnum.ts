@@ -5,4 +5,5 @@ export enum ButtonsEnum {
   tabButton = 'tap-button',
   simple = 'simple',
   dark = 'dark',
+  link = 'link',
 }
