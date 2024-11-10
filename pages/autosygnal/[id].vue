@@ -4,4 +4,8 @@
 <script setup lang="ts">
 const route = useRoute()
 </script>
-<style lang="scss"></style>
+<style scoped lang="scss">
+div {
+  color: red;
+}
+</style>

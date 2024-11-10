@@ -9,7 +9,7 @@ export const useNavigationStore = defineStore('product', () => {
     { name: 'Наши услуги', path: '/services-page' },
     { name: 'О нас', path: '/about' },
     { name: 'Парковочные системы', path: '/parking-systems' },
-    { name: 'Автосигнализации', path: '/autosygnales' },
+    { name: 'Автосигнализации', path: '/autosygnal' },
   ])
 
   function setNavigationLink(newLink: NavigationLinksType) {
