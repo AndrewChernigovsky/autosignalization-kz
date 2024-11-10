@@ -89,7 +89,7 @@ li {
   top: 0;
   width: 50px;
   height: 50px;
-  background-image: url('@/assets/images/');
+  background-image: url('@/assets/icons/home-icon.svg');
 }
 
 .image {
@@ -122,6 +122,7 @@ li {
 h2 {
   text-transform: uppercase;
 }
+
 h3 {
   text-transform: uppercase;
   font-size: 36px;
