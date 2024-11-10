@@ -1,6 +1,7 @@
 <template>
   <ClientOnly>
     <div class="container">
+      <BreadCrumbs />
       <section>
         <h2 class="base-text">{{ cartStore.total }} товар/ов в корзине</h2>
         <template v-if="products && products.length > 0">
@@ -74,6 +75,10 @@ watch(
 )
 </script>
 <style lang="scss" scoped>
+.container {
+  padding-top: 20px;
+}
+
 li {
   position: relative;
 }
@@ -84,7 +89,7 @@ li {
   top: 0;
   width: 50px;
   height: 50px;
-  background-image: url('@/assets/images/');
+  background-image: url('@/assets/icons/home-icon.svg');
 }
 
 .image {
@@ -117,6 +122,7 @@ li {
 h2 {
   text-transform: uppercase;
 }
+
 h3 {
   text-transform: uppercase;
   font-size: 36px;

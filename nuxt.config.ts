@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@morev/vue-transitions/nuxt',
     'nuxt-swiper',
     '@nuxt/image',
+    '@nuxt/image-edge',
   ],
   swiper: {
     modules: ['autoplay', 'effect-fade', 'navigation', 'pagination', 'thumbs'],
@@ -69,5 +70,8 @@ export default defineNuxtConfig({
     },
     formats: ['avif', 'webp'],
     lazy: true,
+    dir: 'public/images',
+    domains: ['andrey-andreevich.ru'],
+    provider: 'ipx',
   },
 })
