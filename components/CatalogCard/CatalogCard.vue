@@ -11,7 +11,7 @@
           :ytype="ButtonsEnum.dark"
           :link="true"
           :btn="false"
-          :path="`/catalog/${product.id}`"
+          :path="`/autosygnales/${product.id}`"
           >Подробнее</YButton
         >
         <YButton :ytype="ButtonsEnum.primary"
