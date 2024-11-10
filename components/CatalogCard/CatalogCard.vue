@@ -2,7 +2,10 @@
   <div class="card-item">
     <div class="content">
       <div class="picture-container">
-        <NuxtPicture v-if="product.imagesUrl" :src="product.imagesUrl[0].url" />
+        <!-- <NuxtPicture v-if="product.imagesUrl" :src="product.imagesUrl[0].url" /> -->
+         <picture v-if="product.imagesUrl">
+          <img :src="product.imagesUrl[0].url" alt="">
+         </picture>
       </div>
       <h1 class="title m-0">{{ product.name }}</h1>
       <p class="price" v-if="product.price">{{ product.price }}</p>

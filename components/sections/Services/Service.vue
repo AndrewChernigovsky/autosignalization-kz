@@ -3,7 +3,7 @@
     <div class="item-wrapper">
       <h3 class="m-0">{{ service.title }}</h3>
       <div class="content">
-        <NuxtPicture
+        <!-- <NuxtPicture
           format="avif, webp"
           :src="service.imageUrl[0].url"
           loading="lazy"
@@ -11,7 +11,10 @@
           width="280"
           height="300"
           sizes="(min-width: 320px) 280px 300px, (min-width: 1024px) 640px 554px"
-        />
+        /> -->
+        <picture>
+          <img :src="service.imageUrl[0].url" alt="" />
+        </picture>
         <div class="buttons">
           <YButton
             link

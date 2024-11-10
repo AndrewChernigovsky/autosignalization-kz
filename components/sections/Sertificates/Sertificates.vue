@@ -29,12 +29,15 @@
                 backgroundImage: `url(/placeholder.svg)`,
               }"
             >
-              <NuxtPicture
+              <!-- <NuxtPicture
                 format="avif, webp"
                 :src="image.image"
                 loading="lazy"
                 placeholder
-              />
+              /> -->
+              <picture>
+                <img :src="image.image" alt="">
+              </picture> 
             </a>
           </SwiperSlide>
         </Swiper>

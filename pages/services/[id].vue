@@ -2,7 +2,7 @@
   <div class="service-container">
     <div class="container wrapper">
       <div class="service-item" v-if="service">
-        <NuxtPicture
+        <!-- <NuxtPicture
           v-for="image of service.imageUrl"
           format="avif,webp"
           :src="image.url"
@@ -11,7 +11,12 @@
           sizes="(min-width: 1480px) 1440px 720px"
           width="300"
           height="300"
-        />
+        /> -->
+
+        <picture>
+          <img :src="image.url" alt="" />
+        </picture>
+
         <h1 class="m-0 service-title">{{ service.title }}</h1>
         <div class="content">
           <div class="description">
