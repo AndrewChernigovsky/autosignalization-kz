@@ -20,13 +20,9 @@
               loading="lazy"
               placeholder
             /> -->
-<<<<<<< HEAD
-            <img :src="image" :alt="product.name" />
-=======
             <picture>
-              <img :src="imageGroup" alt="" />
+              <img :src="image" alt="" />
             </picture>
->>>>>>> 8c14e16859f82c246ab76b9b5efce56b13ad9d7d
           </a>
         </div>
         <button @click="nextImage" class="nav-btn">
