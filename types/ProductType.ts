@@ -3,23 +3,24 @@ import type { ImagesType } from '@/types/ImagesType'
 type DescriptionType = {
   title?: string
   description: string
-  imageUrl: ImagesType[]
+  imageUrl?: string
 }
 
 type ProductType = {
   id: number
   title: string
   price: number
-  category: string
-  totalInCart?: number
-  productType?: string
-  inStock?: boolean
   quantity: number
+  productType?: string[]
+  category?: string[]
+  autoType?: string[]
+  totalInCart?: number
+  inStock?: boolean
+  imagesSrc?: string[]
   imagesUrl?: ImagesType[]
   productDescription?: string
-  autoType?: string[]
-  features?: string[]
   descriptions?: DescriptionType[]
+  features?: string[]
 }
 
 export type { ProductType }

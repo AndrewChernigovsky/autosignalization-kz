@@ -1,7 +1,7 @@
 <template>
   <div class="shop">
     <div class="shop-picture-container">
-      <NuxtPicture
+      <!-- <NuxtPicture
         :src="src"
         format="avif, webp"
         loading="lazy"
@@ -9,7 +9,10 @@
         height="350"
         sizes="(min-width: 320px) 300px 350px, (min-width: 1024px) 700px 554px"
         class="shop-id-picture"
-      />
+      /> -->
+      <picture>
+        <img :src="src" alt="" />
+      </picture>
     </div>
     <div class="content">
       <h2 class="title m-0">{{ title }}</h2>

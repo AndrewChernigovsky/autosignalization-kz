@@ -7,7 +7,17 @@ export const useProductStore = defineStore('productStore', () => {
   const products = ref<ProductType[]>([
     {
       id: 1,
-      name: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+      title: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+      category: [
+        'АВТОЗАПУСК',
+        'УПРАВЛЕНИЕ С ТЕЛЕФОНА',
+        'БЕСПЛАТНЫЙ МОНИТОРИНГ',
+        'УМНАЯ АВТОРИЗАЦИЯ ПО BLUETOOTH SMART',
+        'БЛОКИРОВКА ДВИГАТЕЛЯ ПО CAN',
+        'УПРАВЛЕНИЕ ПРЕДПУСКОВЫМ ПОДОГРЕВОМ',
+        'УМНАЯ АВТОДИАГНОСТИКА',
+        'ДАННЫЕ О ПРОБЕГЕ И УРОВНЕ ТОПЛИВА',
+      ],
       price: 8600,
       quantity: 0,
       productType: 'Автосигнализации',
@@ -42,7 +52,7 @@ export const useProductStore = defineStore('productStore', () => {
     },
     {
       id: 2,
-      name: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
+      title: 'STARLINE E96 V2 BT ECO 2CAN+4LIN',
       price: 5600,
       quantity: 0,
       productType: 'Парковочные системы',

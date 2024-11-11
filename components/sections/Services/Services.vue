@@ -2,7 +2,7 @@
   <template v-if="viewportWidth < 768">
     <section class="services">
       <div class="container">
-        <h2>Наши услуги</h2>
+        <h2 class="title m-0">Наши услуги</h2>
         <ul class="list-style-none">
           <Swiper
             class="service-slider"
@@ -70,6 +70,10 @@ onUnmounted(() => {
   padding: 60px 0;
 }
 
+.title {
+  margin-bottom: 20px;
+}
+
 .slide {
   min-height: 330px;
 }
@@ -100,7 +104,7 @@ h2 {
 .list-item {
   display: grid;
   align-content: space-between;
-  min-height: inherit;
+  min-height: 330px;
 
   @media screen and (min-width: $desktop-min) {
     min-height: 640px;

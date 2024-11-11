@@ -14,12 +14,15 @@
             :key="index"
             :class="{ active: currentIndex === index }"
           >
-            <NuxtPicture
+            <!-- <NuxtPicture
               format="avif, webp"
               :src="imageGroup"
               loading="lazy"
               placeholder
-            />
+            /> -->
+            <picture>
+              <img :src="imageGroup" alt="" />
+            </picture>
           </a>
         </div>
         <button @click="nextImage" class="nav-btn">
@@ -40,12 +43,15 @@
           :key="index"
           :class="{ active: currentIndex === index }"
         >
-          <NuxtPicture
+          <!-- <NuxtPicture
             format="avif, webp"
             :src="imageGroup"
             loading="lazy"
             placeholder
-          />
+          /> -->
+          <picture>
+            <img :src="imageGroup" alt="" />
+          </picture>
         </div>
       </div>
       <button @click="nextImage" class="nav-btn">
