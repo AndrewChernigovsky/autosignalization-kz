@@ -7,16 +7,16 @@
         :key="index"
       >
         <div class="flex">
-          <ClientOnly>
+          <!-- <ClientOnly>
             <NuxtPicture
               format="avif, webp"
               :src="image.image"
               loading="lazy"
             />
-          </ClientOnly>
-          <!-- <picture>
+          </ClientOnly> -->
+          <picture>
             <img :src="image.image" alt="" />
-          </picture> -->
+          </picture>
         </div>
       </li>
       <li
@@ -25,16 +25,16 @@
         :key="'duplicate-' + index"
       >
         <div class="flex">
-          <ClientOnly>
+          <!-- <ClientOnly>
             <NuxtPicture
               format="avif, webp"
               :src="image.image"
               loading="lazy"
             />
-          </ClientOnly>
-          <!-- <picture>
+          </ClientOnly> -->
+          <picture>
             <img :src="image.image" alt="" />
-          </picture> -->
+          </picture>
         </div>
       </li>
     </ul>
