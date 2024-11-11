@@ -7,19 +7,20 @@
         </button>
         <div class="slider-images">
           <a
-            :href="imageGroup"
+            :href="image"
             data-fancybox="gallery"
             class="image"
-            v-for="(imageGroup, index) in product.images"
+            v-for="(image, index) in product.images"
             :key="index"
             :class="{ active: currentIndex === index }"
           >
-            <NuxtPicture
+            <!-- <NuxtPicture
               format="avif, webp"
               :src="imageGroup"
               loading="lazy"
               placeholder
-            />
+            /> -->
+            <img :src="image" :alt="product.name" />
           </a>
         </div>
         <button @click="nextImage" class="nav-btn">

@@ -7,7 +7,8 @@
         :key="index"
       >
         <div class="flex">
-          <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" />
+          <!-- <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" /> -->
+          <img :src="image.image" alt="" />
         </div>
       </li>
       <li
@@ -16,7 +17,8 @@
         :key="'duplicate-' + index"
       >
         <div class="flex">
-          <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" />
+          <!-- <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" /> -->
+          <img :src="image.image" alt="" />
         </div>
       </li>
     </ul>

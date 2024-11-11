@@ -24,15 +24,16 @@
               :key="index"
             >
               <a :href="'../'+image" data-fancybox="gallery">
-                <NuxtPicture
-                  format="avif, webp"
-                  :src="image"
-                  loading="lazy"
-                  placeholder
-                  class="image-slide"
-                  width="300"
-                  style="height: 100%"
-                />
+       <!-- <NuxtPicture
+                      format="avif, webp"
+                      :src="image"
+                      loading="lazy"
+                      placeholder
+                      class="image-slide"
+                      width="300"
+                      style="height: 100%"
+                    /> -->
+                    <img :src="'../' + image" alt="" />
               </a>
             </SwiperSlide>
           </Swiper>
@@ -55,14 +56,16 @@
               v-for="(image, index) in product.images"
               :key="index"
             >
-              <NuxtPicture
-                format="avif, webp"
-                :src="image"
-                loading="lazy"
-                placeholder
-                class="image-slide"
-                width="300"
-              />
+                    <!-- <NuxtPicture
+                      format="avif, webp"
+                      :src="image"
+                      loading="lazy"
+                      placeholder
+                      class="image-slide"
+                      width="300"
+                      style="height: 100%"
+                    /> -->
+                    <img :src="'../' + image" alt="" />
             </SwiperSlide>
           </Swiper>
         </Fancybox>
