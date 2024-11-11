@@ -36,8 +36,8 @@
                 placeholder
               /> -->
               <picture>
-                <img :src="image.image" alt="">
-              </picture> 
+                <img :src="image.image" alt="" />
+              </picture>
             </a>
           </SwiperSlide>
         </Swiper>

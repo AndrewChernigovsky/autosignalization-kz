@@ -7,10 +7,10 @@
         </button>
         <div class="slider-images">
           <a
-            :href="imageGroup"
+            :href="image"
             data-fancybox="gallery"
             class="image"
-            v-for="(imageGroup, index) in product.images"
+            v-for="(image, index) in product.images"
             :key="index"
             :class="{ active: currentIndex === index }"
           >
@@ -21,7 +21,7 @@
               placeholder
             /> -->
             <picture>
-              <img :src="imageGroup" alt="" />
+              <img :src="image" alt="" />
             </picture>
           </a>
         </div>
