@@ -1,6 +1,7 @@
 <template>
   <div class="container">
     <h2>Страница не найдена</h2>
+    <img src="@/assets/images/max.jpg" alt="" />
     <nuxt-link to="/">Вернуться на главную</nuxt-link>
   </div>
 </template>

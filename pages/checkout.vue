@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container">
-      <BreadCrumbs />
+      <!-- <BreadCrumbs /> -->
       <template v-if="products && products.length > 0">
         <h2 class="base-text">Оформление заказа</h2>
         <h3 class="base-text">Товары в заказе:</h3>

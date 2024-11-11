@@ -1,7 +1,7 @@
 <template>
   <section class="popularProduct" v-if="product">
     <div class="container">
-      <BreadCrumbs :id="product.id" />
+      <!-- <BreadCrumbs :id="product.id" /> -->
       <div class="wrapper">
         <div class="block-1">
           <p class="base-text more">
