@@ -24,6 +24,7 @@
               :key="index"
             >
               <a :href="'../'+image" data-fancybox="gallery">
+<<<<<<< HEAD
        <!-- <NuxtPicture
                       format="avif, webp"
                       :src="image"
@@ -34,6 +35,20 @@
                       style="height: 100%"
                     /> -->
                     <img :src="'../' + image" alt="" />
+=======
+                <!-- <NuxtPicture
+                  format="avif, webp"
+                  :src="image"
+                  loading="lazy"
+                  placeholder
+                  class="image-slide"
+                  width="300"
+                  style="height: 100%"
+                /> -->
+                <picture>
+                  <img :src="image" alt="">
+                </picture>
+>>>>>>> 8c14e16859f82c246ab76b9b5efce56b13ad9d7d
               </a>
             </SwiperSlide>
           </Swiper>
@@ -56,6 +71,7 @@
               v-for="(image, index) in product.images"
               :key="index"
             >
+<<<<<<< HEAD
                     <!-- <NuxtPicture
                       format="avif, webp"
                       :src="image"
@@ -66,6 +82,21 @@
                       style="height: 100%"
                     /> -->
                     <img :src="'../' + image" alt="" />
+=======
+              <!-- <NuxtPicture
+                format="avif, webp"
+                :src="image"
+                loading="lazy"
+                placeholder
+                class="image-slide"
+                width="300"
+              /> -->
+
+          <picture>
+            <img :src="image" alt="">
+          </picture>
+
+>>>>>>> 8c14e16859f82c246ab76b9b5efce56b13ad9d7d
             </SwiperSlide>
           </Swiper>
         </Fancybox>

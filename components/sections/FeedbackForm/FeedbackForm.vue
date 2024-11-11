@@ -65,12 +65,6 @@
           value=""
         />
         <YButton :typeButton="'submit'">Отправить заявку</YButton>
-        <Input
-          :required="true"
-          :text="'name'"
-          :textType="'text'"
-          :placeholder="'Ваша сообщение:'"
-        />
       </form>
     </div>
   </section>

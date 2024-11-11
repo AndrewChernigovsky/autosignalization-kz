@@ -39,7 +39,9 @@
                       width="300"
                       style="height: 100%"
                     /> -->
-                    <img :src="'../' + image" alt="" />
+                    <picture>
+                      <img :src="image" alt="" />
+                    </picture>
                   </a>
                 </SwiperSlide>
               </Swiper>
@@ -63,15 +65,17 @@
                   :key="index"
                 >
                   <!-- <NuxtPicture
-                      format="avif, webp"
-                      :src="image"
-                      loading="lazy"
-                      placeholder
-                      class="image-slide"
-                      width="300"
-                      style="height: 100%"
-                    /> -->
-                  <img :src="'../' + image" alt="" />
+                    format="avif, webp"
+                    :src="image"
+                    loading="lazy"
+                    placeholder
+                    class="image-slide"
+                    width="300"
+                  /> -->
+
+                  <picture>
+                    <img :src="image" alt="" />
+                  </picture>
                 </SwiperSlide>
               </Swiper>
             </Fancybox>

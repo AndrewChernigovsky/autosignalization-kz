@@ -8,7 +8,9 @@
       >
         <div class="flex">
           <!-- <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" /> -->
-          <img :src="image.image" alt="" />
+          <picture>
+            <img :src="image.image" alt="" />
+          </picture>
         </div>
       </li>
       <li
@@ -18,7 +20,9 @@
       >
         <div class="flex">
           <!-- <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" /> -->
-          <img :src="image.image" alt="" />
+          <picture>
+            <img :src="image.image" alt="" />
+          </picture>
         </div>
       </li>
     </ul>
