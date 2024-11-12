@@ -19,7 +19,6 @@
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue'
 import { useCartStore } from '@/stores/useCartStore'
-import type { ProductType } from '@/types/ProductType'
 import type { PopularProductsType } from '~/types/PopularProductsType'
 
 const cartStore = useCartStore()

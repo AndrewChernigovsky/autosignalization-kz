@@ -11,7 +11,13 @@
               <h3 class="base-text">{{ product.name }}</h3>
               <div class="product">
                 <div class="image">
-                  <NuxtPicture
+                  <!-- <NuxtPicture
+                    v-if="product.images?.length"
+                    :src="product.images[0]"
+                    :alt="product.name"
+                    width="300"
+                  /> -->
+                  <img
                     v-if="product.images?.length"
                     :src="product.images[0]"
                     :alt="product.name"

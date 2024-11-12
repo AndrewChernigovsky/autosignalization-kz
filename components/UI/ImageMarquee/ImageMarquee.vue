@@ -7,9 +7,15 @@
         :key="index"
       >
         <div class="flex">
-          <!-- <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" /> -->
+          <!-- <ClientOnly>
+            <NuxtPicture
+              format="avif, webp"
+              :src="image.image"
+              loading="lazy"
+            />
+          </ClientOnly> -->
           <picture>
-            <img :src="image.image" alt="" />
+            <img :src="image.image" :alt="image.title" class="image" />
           </picture>
         </div>
       </li>
@@ -19,9 +25,15 @@
         :key="'duplicate-' + index"
       >
         <div class="flex">
-          <!-- <NuxtPicture format="avif, webp" :src="image.image" loading="lazy" /> -->
+          <!-- <ClientOnly>
+            <NuxtPicture
+              format="avif, webp"
+              :src="image.image"
+              loading="lazy"
+            />
+          </ClientOnly> -->
           <picture>
-            <img :src="image.image" alt="" />
+            <img :src="image.image" :alt="image.title" class="image" />
           </picture>
         </div>
       </li>
@@ -47,6 +59,7 @@ const props = defineProps({
   display: flex;
   gap: 30px;
   overflow: hidden;
+  height: 300px;
 }
 
 .item {
@@ -54,13 +67,17 @@ const props = defineProps({
   padding: 30px;
   border-radius: 30px;
   min-width: 200px;
-  min-height: 200px;
   max-width: 300px;
-  max-height: 300px;
+  height: 300px;
+
+  .image {
+    height: 300px;
+    width: 300px;
+  }
 
   @media screen and (min-width: 768px) {
     min-width: 300px;
-    min-height: 300px;
+    height: 300px;
     & .image {
       width: 240px;
       height: 240px;
@@ -75,7 +92,7 @@ const props = defineProps({
 
 .marquee-content {
   display: inline-block;
-  animation: marquee 120s linear infinite;
+  animation: marquee 150s linear infinite;
 }
 
 .image-container {
@@ -84,11 +101,17 @@ const props = defineProps({
 }
 
 @keyframes marquee {
-  from {
+  0% {
+    transform: translateX(0%);
+  }
+  40% {
+    transform: translateX(-100%);
+  }
+  80% {
     transform: translateX(100%);
   }
-  to {
-    transform: translateX(-100%);
+  100% {
+    transform: translateX(0%);
   }
 }
 </style>

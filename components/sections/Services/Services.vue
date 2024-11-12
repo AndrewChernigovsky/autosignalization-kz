@@ -95,6 +95,7 @@ h2 {
   display: grid;
   gap: 20px;
   max-width: 1000px;
+  margin: 0 auto;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
