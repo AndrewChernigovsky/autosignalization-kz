@@ -24,18 +24,6 @@
               :key="index"
             >
               <a :href="'../'+image" data-fancybox="gallery">
-<<<<<<< HEAD
-       <!-- <NuxtPicture
-                      format="avif, webp"
-                      :src="image"
-                      loading="lazy"
-                      placeholder
-                      class="image-slide"
-                      width="300"
-                      style="height: 100%"
-                    /> -->
-                    <img :src="'../' + image" alt="" />
-=======
                 <!-- <NuxtPicture
                   format="avif, webp"
                   :src="image"
@@ -46,9 +34,8 @@
                   style="height: 100%"
                 /> -->
                 <picture>
-                  <img :src="image" alt="">
+                  <img :src="'../'+image" alt="">
                 </picture>
->>>>>>> 8c14e16859f82c246ab76b9b5efce56b13ad9d7d
               </a>
             </SwiperSlide>
           </Swiper>
@@ -71,18 +58,6 @@
               v-for="(image, index) in product.images"
               :key="index"
             >
-<<<<<<< HEAD
-                    <!-- <NuxtPicture
-                      format="avif, webp"
-                      :src="image"
-                      loading="lazy"
-                      placeholder
-                      class="image-slide"
-                      width="300"
-                      style="height: 100%"
-                    /> -->
-                    <img :src="'../' + image" alt="" />
-=======
               <!-- <NuxtPicture
                 format="avif, webp"
                 :src="image"
@@ -93,15 +68,14 @@
               /> -->
 
           <picture>
-            <img :src="image" alt="">
+            <img :src="'../'+image" alt="">
           </picture>
 
->>>>>>> 8c14e16859f82c246ab76b9b5efce56b13ad9d7d
             </SwiperSlide>
           </Swiper>
         </Fancybox>
       </div>
-      <h3>{{ product.title }}</h3>
+      <h3>{{ product.name }}</h3>
       <p class="base-text more"><span>ДОСТАВКА: О ДОСТАВКЕ И ОПЛАТЕ</span></p>
       <p class="base-text">НАЛИЧИЕ ТОВАРА УТОЧНЯЙТЕ У ПРОДАВЦА.</p>
       <p class="price">
@@ -114,7 +88,7 @@
     <div class="buttons">
       <div class="count">
         <p class="base-text">КОЛИЧЕСТВО</p>
-        <CountButton />
+        <CountButton :product="product" />
       </div>
       <YButton :ytype="ButtonsEnum.primary">В корзину</YButton>
     </div>
@@ -242,7 +216,8 @@ window.removeEventListener('resize', handleResize)
     width: inherit;
     display: flex;
     height: inherit;
-    justify-content: center;
+    justify-content: center;   
+    align-items: center;
   }
 
   .image-slide {

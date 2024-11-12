@@ -82,7 +82,7 @@ function addProduct(product: PopularProductsType) {
     background-color: $white;
     border-radius: 20px;
     width: 100%;
-    height: inherit;
+    height: 300px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -136,6 +136,16 @@ h3 {
   gap: 10px;
   max-width: calc(100% - 100px);
   width: 100%;
+
+  @media screen and (max-width: $tablet) {
+    :deep(a),
+    :deep(button) {
+      height: 50px;
+      min-width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+  }
 
   @media screen and (min-width: $desktop-min) {
     display: grid;

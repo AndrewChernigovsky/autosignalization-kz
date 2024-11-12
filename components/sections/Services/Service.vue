@@ -12,7 +12,7 @@
           height="300"
           sizes="(min-width: 320px) 280px 300px, (min-width: 1024px) 640px 554px"
         /> -->
-        <picture>
+        <picture v-if="service.imageUrl?.length">
           <img :src="service.imageUrl[0].url" alt="" />
         </picture>
         <div class="buttons">
@@ -47,6 +47,10 @@ const props = defineProps({
 <style lang="scss" scoped>
 .item-wrapper {
   min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .content {
@@ -56,15 +60,25 @@ const props = defineProps({
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+  align-items: stretch;
+  overflow: hidden;
 
   @media screen and (min-width: $desktop-min) {
     display: flex;
     gap: 20px;
     justify-content: center;
     align-items: flex-end;
-    padding-bottom: 60px;
     height: auto;
-    min-height: 640px;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 110%;
+    height: 120px;
+    background: linear-gradient(to top, rgb(0, 27, 231), rgba(0, 0, 0, 0.1));
+    filter: blur(2px);
   }
 }
 
@@ -75,12 +89,22 @@ const props = defineProps({
   position: absolute;
   bottom: 20px;
   left: 50%;
+  width: 100%;
   transform: translateX(-50%);
 
   @media screen and (min-width: $desktop-min) {
     display: flex;
     gap: 20px;
     min-height: auto;
+    width: 60%;
+    justify-content: center;
+    bottom: 25px;
+
+    :deep(button),
+    :deep(a) {
+      width: inherit;
+      font-size: 24px;
+    }
   }
 }
 
