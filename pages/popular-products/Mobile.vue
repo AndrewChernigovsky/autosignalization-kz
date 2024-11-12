@@ -1,29 +1,65 @@
 <template>
-  <div class="popularProduct" v-if="product">
-    <div class="wrapper">
-      <div class="images">
-      
-        <Fancybox class="images-fancybox">
-          <Swiper
-            :modules="[SwiperThumbs]"
-            v-if="thumbsSwiper != null"
-            ref="mySwiperGallery"
-            class="my-swiper"
-            :slider-class="'swiper-class'"
-            slidesPerView="auto"
-            :centeredSlides="true"
-            :centeredSlidesBounds="true"
-            :thumbs="{
-              swiper: thumbsSwiper,
-              autoScrollOffset: 3,
-            }"
-          >
-            <SwiperSlide
-              class="slide"
-              v-for="(image, index) in product.images"
-              :key="index"
+  <section class="popularProduct" v-if="product">
+    <div class="container">
+      <BreadCrumbs />
+      <div class="wrapper">
+        <div class="images">
+        
+          <Fancybox class="images-fancybox">
+            <Swiper
+              :modules="[SwiperThumbs]"
+              v-if="thumbsSwiper != null"
+              ref="mySwiperGallery"
+              class="my-swiper"
+              :slider-class="'swiper-class'"
+              slidesPerView="auto"
+              :centeredSlides="true"
+              :centeredSlidesBounds="true"
+              :thumbs="{
+                swiper: thumbsSwiper,
+                autoScrollOffset: 3,
+              }"
             >
-              <a :href="'../'+image" data-fancybox="gallery">
+              <SwiperSlide
+                class="slide"
+                v-for="(image, index) in product.images"
+                :key="index"
+              >
+                <a :href="'../'+image" data-fancybox="gallery">
+                  <!-- <NuxtPicture
+                    format="avif, webp"
+                    :src="image"
+                    loading="lazy"
+                    placeholder
+                    class="image-slide"
+                    width="300"
+                    style="height: 100%"
+                  /> -->
+                  <picture>
+                    <img :src="'../'+image" alt="">
+                  </picture>
+                </a>
+              </SwiperSlide>
+            </Swiper>
+            <Swiper
+              :modules="[SwiperThumbs]"
+              class="gallery-thumbs"
+              :slider-class="'gallery-swiper-class'"
+              :direction="orientationThumbs"
+              :slidesPerView="3"
+              :centeredSlides="true"
+              :centeredSlidesBounds="true"
+              :grabCursor="true"
+              :touch-ratio="1"
+              :space-between="10"
+              ref="thumbsSwiper"
+              @init="onSwiperInit"
+            >
+              <SwiperSlide
+                class="slide"
+                v-for="(image, index) in product.images"
+                :key="index"
+              >
                 <!-- <NuxtPicture
                   format="avif, webp"
                   :src="image"
@@ -31,71 +67,38 @@
                   placeholder
                   class="image-slide"
                   width="300"
-                  style="height: 100%"
                 /> -->
-                <picture>
-                  <img :src="'../'+image" alt="">
-                </picture>
-              </a>
-            </SwiperSlide>
-          </Swiper>
-          <Swiper
-            :modules="[SwiperThumbs]"
-            class="gallery-thumbs"
-            :slider-class="'gallery-swiper-class'"
-            :direction="orientationThumbs"
-            :slidesPerView="5"
-            :centeredSlides="true"
-            :centeredSlidesBounds="true"
-            :grabCursor="true"
-            :touch-ratio="1"
-            :space-between="10"
-            ref="thumbsSwiper"
-            @init="onSwiperInit"
-          >
-            <SwiperSlide
-              class="slide"
-              v-for="(image, index) in product.images"
-              :key="index"
-            >
-              <!-- <NuxtPicture
-                format="avif, webp"
-                :src="image"
-                loading="lazy"
-                placeholder
-                class="image-slide"
-                width="300"
-              /> -->
 
-          <picture>
-            <img :src="'../'+image" alt="">
-          </picture>
+            <picture>
+              <img :src="'../'+image" alt="">
+            </picture>
 
-            </SwiperSlide>
-          </Swiper>
-        </Fancybox>
-      </div>
-      <h3>{{ product.name }}</h3>
-      <p class="base-text more"><span>ДОСТАВКА: О ДОСТАВКЕ И ОПЛАТЕ</span></p>
-      <p class="base-text">НАЛИЧИЕ ТОВАРА УТОЧНЯЙТЕ У ПРОДАВЦА.</p>
-      <p class="price">
-        <span>ИТОГОВАЯ СТОИМОСТЬ</span>
-        <p class="price-cost">
-          <span class="currency">{{ product.price }}</span>
-          <span class="currency"> {{ product.currency }}</span>
+              </SwiperSlide>
+            </Swiper>
+          </Fancybox>
+        </div>
+        <h3>{{ product.name }}</h3>
+        <p class="base-text more"><span>ДОСТАВКА: О ДОСТАВКЕ И ОПЛАТЕ</span></p>
+        <p class="base-text">НАЛИЧИЕ ТОВАРА УТОЧНЯЙТЕ У ПРОДАВЦА.</p>
+        <p class="price">
+          <span>ИТОГОВАЯ СТОИМОСТЬ</span>
+          <p class="price-cost">
+            <span class="currency">{{ product.price }}</span>
+            <span class="currency"> {{ product.currency }}</span>
+          </p>
         </p>
-      </p>
-    <div class="buttons">
-      <div class="count">
-        <p class="base-text">КОЛИЧЕСТВО</p>
-        <CountButton :product="product" />
+      <div class="buttons">
+        <div class="count">
+          <p class="base-text">КОЛИЧЕСТВО</p>
+          <CountButton :product="product" />
+        </div>
+        <YButton :ytype="ButtonsEnum.primary" :link="true" :btn="false" path="/cart">В корзину</YButton>
       </div>
-      <YButton :ytype="ButtonsEnum.primary">В корзину</YButton>
+        <p class="base-text">ЦЕНА ЗА МАТЕРИАЛ УКАЗАНА БЕЗ УСТАНОВКИ.</p>
+        <p class="base-text description" v-if="product.description">{{ product.description }}</p>
+      </div>
     </div>
-      <p class="base-text">ЦЕНА ЗА МАТЕРИАЛ УКАЗАНА БЕЗ УСТАНОВКИ.</p>
-      <p class="base-text description" v-if="product.description">{{ product.description }}</p>
-    </div>
-  </div>
+  </section>
 </template>
 
 <script setup lang="ts">

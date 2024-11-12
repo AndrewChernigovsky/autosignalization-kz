@@ -28,7 +28,6 @@ const getContacts = () => {
 
 onMounted(async () => {
   contacts.value = getContacts()
-  console.log(contacts.value)
   contacts.value.forEach((contact) => {
     if (contact.tel) {
       phones.value.push(...contact.tel)

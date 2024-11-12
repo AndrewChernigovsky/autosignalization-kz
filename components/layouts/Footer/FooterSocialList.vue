@@ -1,9 +1,7 @@
 <template>
   <ul class="social-list list-style-none">
     <li class="social-item" v-for="link in links">
-      <SocialLink :link="link" :style="link.imgUrl" :to="link.path">
-        <span class="visually-hidden">{{ link.title }}</span>
-      </SocialLink>
+      <SocialLink :link="link" :style="link.imgUrl"> </SocialLink>
     </li>
   </ul>
 </template>

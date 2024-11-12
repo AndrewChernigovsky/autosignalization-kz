@@ -1,6 +1,7 @@
 <template>
   <section class="popularProduct" v-if="product">
     <div class="container">
+      <BreadCrumbs />
       <!-- <BreadCrumbs :id="product.id" /> -->
       <div class="wrapper">
         <div class="block-1">
@@ -100,7 +101,11 @@
             <p class="base-text">КОЛИЧЕСТВО</p>
             <CountButton :product="product" />
           </div>
-          <YButton :ytype="ButtonsEnum.primary" link :btn="false" path="/cart"
+          <YButton
+            :ytype="ButtonsEnum.primary"
+            :link="true"
+            :btn="false"
+            path="/cart"
             >В корзину</YButton
           >
         </div>

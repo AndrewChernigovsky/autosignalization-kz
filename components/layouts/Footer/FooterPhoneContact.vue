@@ -2,11 +2,9 @@
   <div class="phone-container">
     <ul class="phone-list list-style-none">
       <li class="phone-item" v-for="phone in phones">
-        <NuxtLink
-          class="phone-link link"
-          :path="'tel:' + phone.replace(/\s+/g, '')"
-          >{{ phone }}</NuxtLink
-        >
+        <a class="phone-link link" :href="'tel:' + phone.replace(/\s+/g, '')">{{
+          phone
+        }}</a>
       </li>
     </ul>
   </div>

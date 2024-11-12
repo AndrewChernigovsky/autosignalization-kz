@@ -1,8 +1,8 @@
 <template>
   <ClientOnly>
-    <div class="container">
-      <BreadCrumbs />
-      <section>
+    <section class="cart">
+      <div class="container">
+        <BreadCrumbs />
         <h2 class="base-text">{{ cartStore.total }} товар/ов в корзине</h2>
         <template v-if="products && products.length > 0">
           <ul class="list-style-none">
@@ -51,8 +51,8 @@
         <template v-else>
           <p class="base-text">Корзина пустая</p>
         </template>
-      </section>
-    </div>
+      </div>
+    </section>
   </ClientOnly>
 </template>
 <script lang="ts" setup>
@@ -81,6 +81,10 @@ watch(
 )
 </script>
 <style lang="scss" scoped>
+.cart {
+  padding: 50px 0;
+}
+
 .container {
   padding-top: 20px;
 }
@@ -95,7 +99,12 @@ li {
   top: 0;
   width: 50px;
   height: 50px;
-  background-image: url('@/assets/icons/home-icon.svg');
+  background-color: $white;
+  mask-image: url('@/assets/icons/close.svg');
+}
+
+:deep(.base.primary) {
+  max-width: 300px;
 }
 
 .image {
@@ -105,6 +114,8 @@ li {
   border: none;
   outline: none;
   background-color: $white;
+  display: flex;
+  align-items: center;
 
   &:deep(picture img) {
     height: 100%;
