@@ -1,10 +1,16 @@
 <template>
-  <NuxtLink
+  <a
     class="social-link link"
-    to="link.path"
+    :href="link.path"
     :style="{ 'mask-image': `url(${link.imgUrl})` }"
-    ><slot></slot
-  ></NuxtLink>
+  >
+    <template v-if="link.title">
+      <span class="visually-hidden">{{ link.title }}</span>
+    </template>
+    <template v-else>
+      <slot />
+    </template>
+  </a>
 </template>
 <script setup lang="ts">
 const props = defineProps({

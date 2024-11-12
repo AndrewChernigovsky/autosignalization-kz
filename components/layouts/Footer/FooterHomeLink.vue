@@ -2,7 +2,7 @@
   <div class="home-container">
     <ul class="home-list list-style-none">
       <li class="home-item">
-        <NuxtLink class="home-link link" to="#">www.autosecurity.kz</NuxtLink>
+        <a class="home-link link" href="#">www.autosecurity.kz</a>
       </li>
     </ul>
   </div>
