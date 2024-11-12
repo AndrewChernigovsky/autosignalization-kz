@@ -17,6 +17,13 @@
           <PopularProduct :product="product" />
         </SwiperSlide>
       </Swiper>
+      <YButton
+        :link="true"
+        :btn="false"
+        :path="'/catalog'"
+        :customClass="['all-products']"
+        >Все товары</YButton
+      >
     </div>
   </section>
 </template>
@@ -31,7 +38,16 @@ const popularStore = usePopularProduct()
 const products = ref<PopularProductsType[]>([])
 const viewportWidth = ref(0)
 const slidesPerView = computed(() => {
-  return viewportWidth.value < 768 ? 1 : 3
+  if (viewportWidth.value < 768) {
+    return 1
+  }
+  if (viewportWidth.value > 768 && viewportWidth.value < 1024) {
+    return 2
+  }
+  if (viewportWidth.value >= 1024) {
+    return 3
+  }
+  // return viewportWidth.value < 768 ? 1 : 3
 })
 const updateViewportWidth = () => {
   viewportWidth.value = window.innerWidth
@@ -48,6 +64,14 @@ onUnmounted(() => {
 })
 </script>
 <style lang="scss" scoped>
+:deep(.all-products) {
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 70px;
+  font-size: 24px;
+}
+
 .popularProducts {
   position: relative;
   z-index: 2;

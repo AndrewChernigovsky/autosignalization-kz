@@ -40,7 +40,7 @@
                       style="height: 100%"
                     /> -->
                     <picture>
-                      <img :src="image" alt="" />
+                      <img :src="'../' + image" alt="" />
                     </picture>
                   </a>
                 </SwiperSlide>
@@ -74,7 +74,7 @@
                   /> -->
 
                   <picture>
-                    <img :src="image" alt="" />
+                    <img :src="'../' + image" alt="" />
                   </picture>
                 </SwiperSlide>
               </Swiper>
@@ -231,6 +231,7 @@ onUnmounted(() => window.removeEventListener('resize', handleResize))
     display: flex;
     height: inherit;
     justify-content: center;
+    align-items: center;
   }
 
   .image-slide {
