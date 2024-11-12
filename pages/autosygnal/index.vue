@@ -94,6 +94,10 @@ onMounted(async () => {
   align-items: center;
   padding: 10px 0;
   color: #fff;
+
+  @media screen and (min-width: 1024px) {
+    padding: 60px 0;
+  }
 }
 
 .main-title {
@@ -103,6 +107,12 @@ onMounted(async () => {
   font-size: 24px;
   line-height: 34px;
   font-family: 'Oswald', 'Arial', sans-serif;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 64px;
+    line-height: 88px;
+    margin-bottom: 30px;
+  }
 }
 
 .list {
@@ -146,6 +156,12 @@ onMounted(async () => {
   font-size: 24px;
   line-height: 34px;
   font-family: 'Oswald', 'Arial', sans-serif;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 48px;
+    line-height: 66px;
+    max-width: 530px;
+  }
 }
 
 .count {
