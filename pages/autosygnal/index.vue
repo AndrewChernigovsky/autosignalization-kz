@@ -5,7 +5,6 @@
         <h1 class="main-title m-0">Автосигнализации</h1>
         <ul class="list list-style-none" v-if="autosygnalsTypes">
           <li class="item" v-for="item in autosygnalsTypes">
-            <h2 class="item-title">{{ item.title }}</h2>
             <!-- <NuxtPicture
               format="avif, webp"
               :src="item.img"
@@ -18,6 +17,7 @@
               <source :srcset="`${item.img} 320w`" />
             </NuxtPicture> -->
             <div class="item-conatiner">
+              <h2 class="item-title m-0">{{ item.title }}</h2>
               <picture class="item-picture">
                 <source
                   source
@@ -36,11 +36,23 @@
                 />
               </picture>
 
-              <div class="item-btns">
-                <p class="count">{{ item.product.length }}</p>
+              <div class="item-wrapper">
+                <p class="count m-0">
+                  {{ item.product.length }}
+                  <span v-if="item.product.length === 1"> товар</span>
+                  <span
+                    v-else-if="
+                      item.product.length >= 2 && item.product.length <= 4
+                    "
+                  >
+                    товара</span
+                  >
+                  <span v-else-if="item.product.length > 4"> товаров</span>
+                </p>
                 <YButton
                   link
                   :ytype="ButtonsEnum.primary"
+                  :customClass="'btn-item'"
                   :btn="false"
                   :path="`/autosygnal/${item.id}`"
                   >В раздел</YButton
@@ -64,11 +76,123 @@ onMounted(async () => {
 })
 </script>
 <style scoped lang="scss">
+.page-container {
+  background-image: linear-gradient(180deg, #121010, #0e0c0c);
+}
+
 .wrapper {
   padding: 0 10px;
+
+  @media screen and (min-width: 768px) {
+    padding: 0 20px;
+  }
+}
+
+.autosygnals {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 0;
+  color: #fff;
+}
+
+.main-title {
+  text-align: center;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 34px;
+  font-family: 'Oswald', 'Arial', sans-serif;
+}
+
+.list {
+  @media screen and (min-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 10px;
+    max-width: 730px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    min-width: auto;
+    max-width: 500px * 2;
+    gap: 40px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    gap: 40px;
+    max-width: 1320px;
+  }
+}
+
+.item-conatiner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  max-width: 350px;
+
+  @media screen and (min-width: 1024px) {
+    max-width: none;
+    position: relative;
+  }
+}
+
+.item-title {
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 34px;
+  font-family: 'Oswald', 'Arial', sans-serif;
+}
+
+.count {
+  text-align: center;
+  padding: 10px;
+  background-image: linear-gradient(#010308, #000208);
+  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px rgb(201, 201, 201);
+  font-family: 'Oswald', 'Arial', sans-serif;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .item-img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 25px;
   object-fit: cover;
+
+  @media screen and (min-width: 1024px) {
+    min-width: 400px;
+    max-width: 485px;
+  }
+
+  @media screen and (min-width: 1400px) {
+    max-width: none;
+  }
+}
+
+.item-wrapper {
+  min-width: 240px;
+
+  @media screen and (min-width: 1024px) {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+:deep(.btn-item) {
+  font-size: 20px;
+  line-height: 28px;
+  padding: 10px;
+  font-family: 'Oswald', 'Arial', sans-serif;
 }
 </style>
