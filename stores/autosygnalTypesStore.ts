@@ -53,6 +53,36 @@ export const useAutosygnalType = defineStore('autosygnalType', () => {
         },
       ],
     },
+    {
+      id: 4,
+      title: 'КАТАЛОГ АВТОСИГНАЛИЗАЦИЙ STARLINE',
+      img: '/images/autosygnals/img3.jpeg',
+      product: [
+        {
+          id: 1,
+          title: 'StarLine E96 v2',
+        },
+        {
+          id: 2,
+          title: 'Starline S96 V2',
+        },
+      ],
+    },
+    {
+      id: 5,
+      title: 'ПУЛЬТЫ И АКСЕССУАРЫ',
+      img: '/images/autosygnals/img3.jpeg',
+      product: [
+        {
+          id: 1,
+          title: 'StarLine E96 v2',
+        },
+        {
+          id: 2,
+          title: 'Starline S96 V2',
+        },
+      ],
+    },
   ])
 
   function getData() {
