@@ -7,6 +7,7 @@ type PopularProductsType = {
   currency: string
   description?: string
   quantity: number
+  inStock: boolean
 }
 
 export type { PopularProductsType }

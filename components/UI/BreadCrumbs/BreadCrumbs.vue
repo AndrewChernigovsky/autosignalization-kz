@@ -2,10 +2,10 @@
   <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb">
     <ol class="list-style-none">
       <li>
-        <NuxtLink to="/" :aria-current="ariaCurrent(-1)">Home</NuxtLink>
+        <NuxtLink to="/">Главная</NuxtLink>
       </li>
-      <li v-for="(breadcrumb, index) in getBreadcrumbs()" :key="index">
-        <NuxtLink :to="breadcrumb.path" :aria-current="ariaCurrent(index)">
+      <li v-for="(breadcrumb, index) in breadcrumbs" :key="index">
+        <NuxtLink :to="breadcrumb.path">
           {{ breadcrumb.name }}
         </NuxtLink>
       </li>
@@ -13,36 +13,50 @@
   </nav>
 </template>
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import type { RouteRecordNormalized } from 'vue-router'
+import { useHead } from '@unhead/vue'
 
 const route = useRoute()
 const router = useRouter()
-const getBreadcrumbs = (): RouteRecordNormalized[] => {
+
+const breadcrumbs = ref([])
+
+const routes = router.getRoutes()
+
+const createBreadcrumbs = () => {
   const fullPath = route.path
-  const requestPath = fullPath.startsWith('/')
-    ? fullPath.substring(1)
-    : fullPath
-  console.log(requestPath, 'PATH')
-  const crumbs = requestPath.split('/')
-  const breadcrumbs: RouteRecordNormalized[] = []
-  let path = ''
-  crumbs.forEach((crumb) => {
-    if (crumb) {
-      path = `${path}/${crumb}`
-      const breadcrumb: RouteRecordNormalized | undefined = router
-        .getRoutes()
-        .find((r) => r.path === path)
-      if (breadcrumb) {
-        console.log(breadcrumb, 'breadcrumb')
-        breadcrumbs.push(breadcrumb)
-      }
+  const pathSegments = fullPath.split('/').filter((segment) => segment !== '')
+
+  breadcrumbs.value = pathSegments
+    .map((segment, index) => {
+      // Формируем путь до текущего сегмента
+      const path = '/' + pathSegments.slice(0, index).join('/')
+
+      // Находим маршрут по пути
+      const matchedRoute = routes.find((route) => route.path === path)
+
+      // Возвращаем объект с именем и путем
+      return matchedRoute
+        ? { name: matchedRoute.meta.title || segment, path }
+        : null
+    })
+    .filter(Boolean) // Удаляем null значения
+
+  // Устанавливаем заголовок страницы на основе мета-данных последнего маршрута
+  if (pathSegments.length > 0) {
+    const lastSegmentPath = '/' + pathSegments.join('/')
+    const lastMatchedRoute = routes.find(
+      (route) => route.path === lastSegmentPath,
+    )
+    if (lastMatchedRoute && lastMatchedRoute.meta.title) {
+      useHead({ title: lastMatchedRoute.meta.title })
     }
-  })
-  return breadcrumbs
+  }
 }
-const ariaCurrent = (index: number) =>
-  index === getBreadcrumbs().length - 1 ? 'page' : 'false'
+
+// Вызываем функцию для создания хлебных крошек
+createBreadcrumbs()
 </script>
 <style lang="scss" scoped>
 .breadcrumbs ol {
