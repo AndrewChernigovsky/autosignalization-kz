@@ -40,7 +40,7 @@ const props = defineProps({
   },
   src: {
     type: String,
-    default: () => 'images/shop/shop.jpeg',
+    default: () => '/images/shop/shop.jpeg',
   },
 })
 </script>

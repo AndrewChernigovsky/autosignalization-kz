@@ -1,7 +1,8 @@
 <template>
-  <div class="service-container">
+  <div class="loading" v-if="isLoading">loading...</div>
+  <div class="service-container" v-else-if="service">
     <div class="container wrapper">
-      <div class="service-item" v-if="service">
+      <div class="service-item">
         <!-- <NuxtPicture
           v-for="image of service.imageUrl"
           format="avif,webp"
@@ -12,16 +13,27 @@
           width="300"
           height="300"
         /> -->
-
-        <picture>
-          <img :src="image.url" alt="" />
-        </picture>
-
-        <h1 class="m-0 service-title">{{ service.title }}</h1>
-        <div class="content">
+        <div class="item-wrapper">
+          <picture class="img-container">
+            <source
+              type="image/png"
+              media="(min-width: 1024px)"
+              :srcset="service.imageUrl[0].url"
+            />
+            <img
+              class="img"
+              :src="service.imageUrl[0].url"
+              :alt="service.description"
+              width="300"
+              height="300"
+            />
+          </picture>
+          <h1 class="m-0 service-title">{{ service.title }}</h1>
           <div class="description">
             {{ service.description }}
           </div>
+        </div>
+        <div class="content">
           <div class="about">
             <p class="text service-text m-0">Мы предлагаем:</p>
             <ul class="list-service-disc list-style-none">
@@ -57,20 +69,23 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
-import type { ServiceType } from '@/types/ServiceType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { useServiceStore } from '@/stores/service'
 import Shop from '@/components/sections/Shop/Shop.vue'
 
 const route = useRoute()
 
+const isLoading = ref(true)
 const serviceStore = useServiceStore()
-const service = ref<ServiceType>()
+const service = ref()
 
-onMounted(() => {
-  service.value = serviceStore
+onMounted(async () => {
+  isLoading.value = true
+  service.value = await serviceStore
     .getService()
     .find((post) => post.id === +route.params.id)
+  isLoading.value = false
+  console.log(service.value)
 })
 </script>
 <style scoped lang="scss">
@@ -101,6 +116,14 @@ onMounted(() => {
   }
 }
 
+.item-wrapper {
+  @media screen and (min-width: 1024px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
+  }
+}
+
 .service-title {
   font-size: 24px;
   line-height: 34px;
@@ -110,6 +133,7 @@ onMounted(() => {
   @media screen and (min-width: 1024px) {
     font-size: 64px;
     line-height: 86px;
+    grid-column: 1 / -1;
   }
 }
 
@@ -132,6 +156,13 @@ onMounted(() => {
   @media screen and (min-width: 1024px) {
     font-size: 36px;
     line-height: 46px;
+    grid-column: 1 / -1;
+  }
+
+  @media screen and (min-width: 1400px) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    min-height: 100%;
   }
 }
 
@@ -151,7 +182,7 @@ onMounted(() => {
   flex-direction: column;
   row-gap: 10px;
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1400px) {
     display: grid;
     grid-template-columns: repeat(2, minmax(300px, 700px));
     column-gap: 20px;
@@ -269,6 +300,30 @@ onMounted(() => {
 
   @media screen and (min-width: 1024px) {
     margin-top: 20px;
+  }
+}
+
+.img-container {
+  display: flex;
+  justify-content: center;
+  min-width: 100%;
+  @media screen and (min-width: 1024px) {
+    grid-column: 1 / -1;
+  }
+
+  @media screen and (min-width: 1400px) {
+    grid-column: 1 / 2;
+  }
+}
+
+.img {
+  display: block;
+  object-fit: cover;
+  // min-width: 100%;
+
+  @media screen and (min-width: 1024px) {
+    min-width: 640px;
+    min-height: 554px;
   }
 }
 </style>

@@ -48,7 +48,7 @@ const dataType = ref()
 const dataProducts = ref()
 
 onMounted(async () => {
-  isLoading.value = false
+  isLoading.value = true
   dataType.value = await useAutosygnalType()
     .getData()
     .find((a) => <number>a.id === Number(route.params.id))
@@ -59,6 +59,7 @@ onMounted(async () => {
         (el2) => el.id === el2.id && el.title === el2.title,
       ),
     )
+  isLoading.value = false
 })
 </script>
 <style scoped lang="scss">
