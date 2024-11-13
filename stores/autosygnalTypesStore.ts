@@ -18,12 +18,20 @@ export const useAutosygnalType = defineStore('autosygnalType', () => {
       img: '/images/autosygnals/img1.jpeg',
       product: [
         {
-          id: 1,
-          title: 'StarLine E96 v2',
+          id: 11,
+          title: 'Starline A93 ECO V2',
         },
         {
-          id: 2,
-          title: 'Starline S96 V2',
+          id: 12,
+          title: 'StarLine E96 V2 BT ECO 2CAN+4LIN',
+        },
+        {
+          id: 13,
+          title: 'StarLine S96 V2 BT 2CAN2LIN GSM',
+        },
+        {
+          id: 14,
+          title: 'StarLine A93 V2',
         },
       ],
     },
@@ -33,8 +41,8 @@ export const useAutosygnalType = defineStore('autosygnalType', () => {
       img: '/images/autosygnals/img2.jpeg',
       product: [
         {
-          id: 1,
-          title: 'StarLine E96 v2',
+          id: 13,
+          title: 'StarLine S96 V2 BT 2CAN2LIN GSM',
         },
       ],
     },
@@ -44,42 +52,46 @@ export const useAutosygnalType = defineStore('autosygnalType', () => {
       img: '/images/autosygnals/img3.jpeg',
       product: [
         {
-          id: 1,
-          title: 'StarLine E96 v2',
-        },
-        {
-          id: 2,
-          title: 'Starline S96 V2',
+          id: 15,
+          title: 'Starline A60 Eco',
         },
       ],
     },
     {
       id: 4,
-      title: 'КАТАЛОГ АВТОСИГНАЛИЗАЦИЙ STARLINE',
-      img: '/images/autosygnals/img3.jpeg',
+      title: 'Каталог автосигнализаций Starline',
+      img: '/images/autosygnals/img4.jpeg',
       product: [
         {
-          id: 1,
-          title: 'StarLine E96 v2',
+          id: 11,
+          title: 'Starline A93 ECO V2',
         },
         {
-          id: 2,
-          title: 'Starline S96 V2',
+          id: 12,
+          title: 'StarLine E96 V2 BT ECO 2CAN+4LIN',
+        },
+        {
+          id: 13,
+          title: 'StarLine S96 V2 BT 2CAN2LIN GSM',
+        },
+        {
+          id: 14,
+          title: 'StarLine A93 V2',
+        },
+        {
+          id: 15,
+          title: 'Starline A60 Eco',
         },
       ],
     },
     {
       id: 5,
       title: 'ПУЛЬТЫ И АКСЕССУАРЫ',
-      img: '/images/autosygnals/img3.jpeg',
+      img: '/images/autosygnals/img5.jpeg',
       product: [
         {
-          id: 1,
-          title: 'StarLine E96 v2',
-        },
-        {
-          id: 2,
-          title: 'Starline S96 V2',
+          id: 16,
+          title: 'Пульт Starline A93/A63',
         },
       ],
     },
