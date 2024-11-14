@@ -1,6 +1,7 @@
 <template>
   <div class="service-container">
     <div class="container wrapper">
+      <BreadCrumbs />
       <div class="service-item" v-if="service">
         <!-- <NuxtPicture
           v-for="image of service.imageUrl"
@@ -14,7 +15,7 @@
         /> -->
 
         <picture>
-          <img :src="image.url" alt="" />
+          <!-- <img :src="image.url" alt="" /> -->
         </picture>
 
         <h1 class="m-0 service-title">{{ service.title }}</h1>

@@ -39,7 +39,8 @@ import { useRoute } from 'vue-router'
 const route = useRoute()
 
 useHead({
-  title: route.meta.title || 'Популярные товары',
+  title: route.meta.title || 'П',
+  // title: 'Популярные товары',
 })
 
 const popularStore = usePopularProduct()

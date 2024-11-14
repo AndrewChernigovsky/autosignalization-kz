@@ -1,62 +1,33 @@
 <template>
   <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb">
     <ol class="list-style-none">
-      <li>
+      <!-- <li>
         <NuxtLink to="/">Главная</NuxtLink>
-      </li>
+      </li> -->
       <li v-for="(breadcrumb, index) in breadcrumbs" :key="index">
         <NuxtLink :to="breadcrumb.path">
-          {{ breadcrumb.name }}
+          {{ breadcrumb.title }}
         </NuxtLink>
       </li>
     </ol>
   </nav>
 </template>
+
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
-import { useHead } from '@unhead/vue'
+import { ref, watch, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import routes from '~/routes'
 
-const route = useRoute()
 const router = useRouter()
+const route = useRoute()
+const getRoutes = router.getRoutes()
+const breadcrumbs = ref<{ title: string; path: string }[]>([])
 
-const breadcrumbs = ref([])
-
-const routes = router.getRoutes()
-
-const createBreadcrumbs = () => {
-  const fullPath = route.path
-  const pathSegments = fullPath.split('/').filter((segment) => segment !== '')
-
-  breadcrumbs.value = pathSegments
-    .map((segment, index) => {
-      // Формируем путь до текущего сегмента
-      const path = '/' + pathSegments.slice(0, index).join('/')
-
-      // Находим маршрут по пути
-      const matchedRoute = routes.find((route) => route.path === path)
-
-      // Возвращаем объект с именем и путем
-      return matchedRoute
-        ? { name: matchedRoute.meta.title || segment, path }
-        : null
-    })
-    .filter(Boolean) // Удаляем null значения
-
-  // Устанавливаем заголовок страницы на основе мета-данных последнего маршрута
-  if (pathSegments.length > 0) {
-    const lastSegmentPath = '/' + pathSegments.join('/')
-    const lastMatchedRoute = routes.find(
-      (route) => route.path === lastSegmentPath,
-    )
-    if (lastMatchedRoute && lastMatchedRoute.meta.title) {
-      useHead({ title: lastMatchedRoute.meta.title })
-    }
-  }
+function createBreadcrumbs() {
+  const currentPath = route.path
 }
-
-// Вызываем функцию для создания хлебных крошек
-createBreadcrumbs()
+watch(route, createBreadcrumbs)
+onMounted(() => createBreadcrumbs())
 </script>
 <style lang="scss" scoped>
 .breadcrumbs ol {

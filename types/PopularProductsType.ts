@@ -8,6 +8,23 @@ type PopularProductsType = {
   description?: string
   quantity: number
   inStock: boolean
+  tabs?: {
+    descriptions: [
+      {
+        img?: string
+        title: string
+        desc: string
+      },
+    ]
+    characters: [
+      {
+        functions: string
+        categories: string
+      },
+    ]
+    garanties: [{ text: string }]
+    similar: PopularProductsType[]
+  }
 }
 
 export type { PopularProductsType }

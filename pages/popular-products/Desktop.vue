@@ -121,6 +121,13 @@ import { onMounted } from 'vue'
 import { usePopularProduct } from '~/stores/popularProducts'
 import Fancybox from '~/libs/Fancybox.vue'
 import { Swiper } from 'swiper/vue'
+import { useHead } from '@unhead/vue'
+
+const title = ref<string>('')
+
+useHead({
+  title: title,
+})
 
 const popularStore = usePopularProduct()
 const product = ref<PopularProductsType>()
@@ -149,6 +156,7 @@ onMounted(() => {
     .getProducts()
     .find((p) => p.id === +route.params.id)
   product.value = foundProduct
+  title.value = foundProduct && foundProduct.name
 })
 
 onUnmounted(() => window.removeEventListener('resize', handleResize))
