@@ -110,6 +110,7 @@
           >
         </div>
       </div>
+      <Tabs v-if="product.tabs" :tabs="product.tabs" />
     </div>
   </section>
 </template>
