@@ -111,6 +111,43 @@
         </div>
       </div>
       <Tabs v-if="product.tabs" :tabs="product.tabs" />
+      <Swiper class="similar-slider" :space-between="10" :slidesPerView="3">
+        <SwiperSlide
+          v-for="product in popularStore.getProducts()"
+          :key="product.id"
+        >
+          {{ console.log(product, 'PRODUCT') }}
+          <div class="popularProduct" v-if="product">
+            <div class="wrapper">
+              <div class="images">
+                <PopularProductGallery :product="product" />
+              </div>
+              <h3>{{ product.name }}</h3>
+              <p class="price">
+                <span>{{ product.price }}</span>
+                <span class="currency"> {{ product.currency }}</span>
+              </p>
+            </div>
+            <div class="buttons-1">
+              <YButton
+                :ytype="ButtonsEnum.dark"
+                :link="true"
+                :btn="false"
+                :path="`/popular-products/${product.id}`"
+                >Подробнее</YButton
+              >
+              <YButton
+                v-if="statusCartButton"
+                :ytype="ButtonsEnum.primary"
+                @click="() => product && addProduct(product)"
+              >
+                Купить
+              </YButton>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+      <Shop />
     </div>
   </section>
 </template>
@@ -123,6 +160,8 @@ import { usePopularProduct } from '~/stores/popularProducts'
 import Fancybox from '~/libs/Fancybox.vue'
 import { Swiper } from 'swiper/vue'
 import { useHead } from '@unhead/vue'
+import { useCartStore } from '@/stores/useCartStore'
+import Shop from '~/components/sections/Shop/Shop.vue'
 
 const title = ref<string>('')
 
@@ -130,6 +169,7 @@ useHead({
   title: title,
 })
 
+const cartStore = useCartStore()
 const popularStore = usePopularProduct()
 const product = ref<PopularProductsType>()
 const route = useRoute()
@@ -151,18 +191,36 @@ const handleResize = () => {
   viewportWidth.value = window.innerWidth
 }
 
+const statusCartButton = ref<boolean>(true)
+
+function addProduct(product: PopularProductsType) {
+  cartStore.addCartProduct(product)
+  statusCartButton.value = false
+}
+
 onMounted(() => {
   window.addEventListener('resize', handleResize)
   const foundProduct = popularStore
     .getProducts()
     .find((p) => p.id === +route.params.id)
   product.value = foundProduct
-  title.value = foundProduct && foundProduct.name
+
+  if (foundProduct !== undefined) {
+    title.value = foundProduct && foundProduct.name
+  }
 })
 
 onUnmounted(() => window.removeEventListener('resize', handleResize))
 </script>
 <style lang="scss" scoped>
+:deep(.tabs-list) {
+  margin-bottom: 40px;
+}
+
+.wrapper {
+  margin-bottom: 40px;
+}
+
 .title {
   text-transform: uppercase;
   font-style: italic;

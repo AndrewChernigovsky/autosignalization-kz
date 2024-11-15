@@ -40,7 +40,7 @@ const props = defineProps({
   },
   src: {
     type: String,
-    default: () => 'images/shop/shop.jpeg',
+    default: () => '/images/shop/shop.jpeg',
   },
 })
 </script>
@@ -75,6 +75,7 @@ const props = defineProps({
   align-items: center;
   gap: 10px;
   max-width: 690px;
+  color: $white;
 
   .title {
     font-size: 24px;

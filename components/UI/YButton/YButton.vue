@@ -61,6 +61,10 @@ const props = defineProps({
     type: Array as () => string[],
     default: () => [],
   },
+  activeTab: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const emit = defineEmits()
@@ -73,6 +77,7 @@ const buttonClass = computed(() => {
   return [
     'base',
     props.ytype,
+    { active: props.activeTab },
     ...(props.classes || ''),
     { disabled: props.disabled },
   ]
@@ -206,7 +211,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, $black-10172d, $blue-0035c6 100%);
+  background: transparent;
   max-width: 100%;
   border: 1px solid $white;
   border-radius: 5px;
@@ -230,7 +235,8 @@ button {
     background: linear-gradient(180deg, $black-070101-1, $blue-1a0579-99);
   }
 
-  &:active {
+  &:active,
+  &.active {
     border: 1px solid $white;
     background: linear-gradient(180deg, $blue-1008fb, $black-000000-99);
   }

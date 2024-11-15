@@ -20,8 +20,9 @@
               loading="lazy"
               placeholder
             /> -->
+            {{ console.log(image, 'image') }}
             <picture>
-              <img :src="image" alt="" />
+              <img :src="'/' + image" alt="" />
             </picture>
           </a>
         </div>
@@ -39,18 +40,18 @@
       <div class="slider-images">
         <div
           class="slider-slide"
-          v-for="(imageGroup, index) in product.images"
+          v-for="(image, index) in product.images"
           :key="index"
           :class="{ active: currentIndex === index }"
         >
           <!-- <NuxtPicture
             format="avif, webp"
-            :src="imageGroup"
+            :src="image"
             loading="lazy"
             placeholder
           /> -->
           <picture>
-            <img :src="imageGroup" alt="" />
+            <img :src="'/' + image" alt="" />
           </picture>
         </div>
       </div>
@@ -61,7 +62,7 @@
   </template>
 </template>
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import Fancybox from '~/libs/Fancybox.vue'
 import type { PopularProductsType } from '~/types/PopularProductsType'
 
