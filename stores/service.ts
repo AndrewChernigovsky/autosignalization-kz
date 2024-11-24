@@ -19,7 +19,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 1,
       title: 'УСТАНОВКА И РЕМОНТ АВТОСИГНАЛИЗАЦИЙ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-1.png',
           description: 'УСТАНОВКА И РЕМОНТ АВТОСИГНАЛИЗАЦИЙ',
@@ -38,7 +38,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 2,
       title: 'РЕМОНТ ЦЕНТРОЗАМКОВ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-2.png',
           description: 'РЕМОНТ ЦЕНТРОЗАМКОВ',
@@ -57,7 +57,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 3,
       title: 'УСТАНОВКА АВТОЗВУКА И МУЛЬТИМЕДИА ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-3.png',
           description: 'УСТАНОВКА АВТОЗВУКА И МУЛЬТИМЕДИА ',
@@ -76,7 +76,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 4,
       title: 'УСТАНОВКА СИСТЕМ ПАРКИНГА ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-4.png',
           description: 'УСТАНОВКА СИСТЕМ ПАРКИНГА ',
@@ -95,7 +95,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 5,
       title: 'УСЛУГИ АВТОЭЛЕКТРИКА ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-5.png',
           description: 'УСЛУГИ АВТОЭЛЕКТРИКА ',
@@ -114,7 +114,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 6,
       title: 'РУСИФИКАЦИЯ АВТО И ЧИПТЮНИНГ  ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-6.png',
           description: 'РУСИФИКАЦИЯ АВТО И ЧИПТЮНИНГ  ',
@@ -133,7 +133,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 7,
       title: 'КОМПЬЮТЕРНАЯ ДИАГНОСТИКА',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-7.png',
           description: 'КОМПЬЮТЕРНАЯ ДИАГНОСТИКА',
@@ -152,7 +152,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 8,
       title: 'ОТКЛЮЧЕНИЕ СИГНАЛИЗАЦИИ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-8.png',
           description: 'ОТКЛЮЧЕНИЕ СИГНАЛИЗАЦИИ',
@@ -171,7 +171,7 @@ export const useServiceStore = defineStore('service', () => {
       id: 9,
       title: 'УСТАНОВКА ВИДЕОРЕГИСТРАТОРОВ И АНТИРАДАРОВ',
       price: 6000,
-      imageUrl: [
+      images: [
         {
           url: '/images/services/service-9.png',
           description: 'УСТАНОВКА ВИДЕОРЕГИСТРАТОРОВ И АНТИРАДАРОВ',
