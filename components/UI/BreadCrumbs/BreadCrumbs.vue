@@ -1,48 +1,33 @@
 <template>
   <nav class="breadcrumbs" id="breadcrumbs" aria-label="Breadcrumb">
     <ol class="list-style-none">
-      <li>
-        <NuxtLink to="/" :aria-current="ariaCurrent(-1)">Home</NuxtLink>
-      </li>
-      <li v-for="(breadcrumb, index) in getBreadcrumbs()" :key="index">
-        <NuxtLink :to="breadcrumb.path" :aria-current="ariaCurrent(index)">
-          {{ breadcrumb.name }}
+      <!-- <li>
+        <NuxtLink to="/">Главная</NuxtLink>
+      </li> -->
+      <li v-for="(breadcrumb, index) in breadcrumbs" :key="index">
+        <NuxtLink :to="breadcrumb.path">
+          {{ breadcrumb.title }}
         </NuxtLink>
       </li>
     </ol>
   </nav>
 </template>
-<script setup lang="ts">
-import { useRoute } from 'vue-router'
-import type { RouteRecordNormalized } from 'vue-router'
 
-const route = useRoute()
+<script setup lang="ts">
+import { ref, watch, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import routes from '~/routes'
+
 const router = useRouter()
-const getBreadcrumbs = (): RouteRecordNormalized[] => {
-  const fullPath = route.path
-  const requestPath = fullPath.startsWith('/')
-    ? fullPath.substring(1)
-    : fullPath
-  console.log(requestPath, 'PATH')
-  const crumbs = requestPath.split('/')
-  const breadcrumbs: RouteRecordNormalized[] = []
-  let path = ''
-  crumbs.forEach((crumb) => {
-    if (crumb) {
-      path = `${path}/${crumb}`
-      const breadcrumb: RouteRecordNormalized | undefined = router
-        .getRoutes()
-        .find((r) => r.path === path)
-      if (breadcrumb) {
-        console.log(breadcrumb, 'breadcrumb')
-        breadcrumbs.push(breadcrumb)
-      }
-    }
-  })
-  return breadcrumbs
+const route = useRoute()
+const getRoutes = router.getRoutes()
+const breadcrumbs = ref<{ title: string; path: string }[]>([])
+
+function createBreadcrumbs() {
+  const currentPath = route.path
 }
-const ariaCurrent = (index: number) =>
-  index === getBreadcrumbs().length - 1 ? 'page' : 'false'
+watch(route, createBreadcrumbs)
+onMounted(() => createBreadcrumbs())
 </script>
 <style lang="scss" scoped>
 .breadcrumbs ol {

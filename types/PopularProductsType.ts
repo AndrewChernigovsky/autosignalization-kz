@@ -1,3 +1,17 @@
+type TabsType = {
+  descriptions: {
+    img?: string
+    title: string
+    desc: string
+  }[]
+  characters?: {
+    functions: string[]
+    categories: string[]
+  }
+  garanties?: [{ text: string }]
+  similar?: PopularProductsType[]
+}
+
 type PopularProductsType = {
   id: number
   name: string
@@ -7,6 +21,8 @@ type PopularProductsType = {
   currency: string
   description?: string
   quantity: number
+  inStock: boolean
+  tabs?: TabsType
 }
 
-export type { PopularProductsType }
+export type { TabsType, PopularProductsType }

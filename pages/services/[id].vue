@@ -1,6 +1,7 @@
 <template>
   <div class="service-container">
     <div class="container wrapper">
+      <BreadCrumbs />
       <div class="service-item" v-if="service">
         <!-- <NuxtPicture
           v-for="image of service.imageUrl"
@@ -13,9 +14,13 @@
           height="300"
         /> -->
 
-        <picture>
-          <img :src="image.url" alt="" />
-        </picture>
+        <div class="service-image">
+          <template v-if="service.images">
+            <picture v-for="image in service.images">
+              <img :src="image.url" :alt="image.description" width="400" />
+            </picture>
+          </template>
+        </div>
 
         <h1 class="m-0 service-title">{{ service.title }}</h1>
         <div class="content">
@@ -45,15 +50,16 @@
             <span>ЦЕНА:</span><span class="price">{{ service.price }}</span>
           </p>
           <div class="service-btn-container">
-            <YButton :ytype="ButtonsEnum.primary"
-              ><span class="primary-btn">Заказать</span></YButton
-            >
+            <YButton :ytype="ButtonsEnum.primary" @click="openModal">
+              <span class="primary-btn">Заказать</span>
+            </YButton>
           </div>
         </div>
       </div>
       <Shop />
     </div>
   </div>
+  <Modal :show="show" />
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
@@ -61,11 +67,17 @@ import type { ServiceType } from '@/types/ServiceType'
 import { ButtonsEnum } from '~/enums/ButtonsEnum'
 import { useServiceStore } from '@/stores/service'
 import Shop from '@/components/sections/Shop/Shop.vue'
+import Modal from '@/components/Modal/Modal.vue'
 
 const route = useRoute()
 
 const serviceStore = useServiceStore()
 const service = ref<ServiceType>()
+const show = ref<Boolean>(false)
+
+function openModal() {
+  show.value = !show.value
+}
 
 onMounted(() => {
   service.value = serviceStore
@@ -74,6 +86,13 @@ onMounted(() => {
 })
 </script>
 <style scoped lang="scss">
+.service-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .service-container {
   width: 100vw;
   background-image: linear-gradient(#010308, #000208);
@@ -95,6 +114,7 @@ onMounted(() => {
   padding: 10px;
   background-color: #2b2b2b;
   border-radius: 20px;
+  margin-bottom: 60px;
 
   @media screen and (min-width: 1024px) {
     padding: 0;

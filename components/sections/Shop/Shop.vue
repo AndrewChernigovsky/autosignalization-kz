@@ -11,7 +11,7 @@
         class="shop-id-picture"
       /> -->
       <picture>
-        <img :src="src" alt="" />
+        <img :src="src" alt="" width="300" />
       </picture>
     </div>
     <div class="content">
@@ -40,13 +40,19 @@ const props = defineProps({
   },
   src: {
     type: String,
-    default: () => 'images/shop/shop.jpeg',
+    default: () => '/images/shop/shop.jpeg',
   },
 })
 </script>
 <style scoped lang="scss">
-.shop-id-picture :deep(img) {
-  min-width: 100%;
+.shop-picture-container {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.shop-picture-container :deep(img) {
+  width: 300px;
   border-radius: 25px;
   max-height: 554px;
   object-fit: cover;
@@ -63,6 +69,11 @@ const props = defineProps({
   padding: 10px;
   flex-direction: column;
   gap: 10px;
+
+  @media screen and (min-width: 768px) {
+    flex-direction: row;
+  }
+
   @media screen and (min-width: 1024px) {
     flex-direction: row-reverse;
   }
@@ -75,6 +86,7 @@ const props = defineProps({
   align-items: center;
   gap: 10px;
   max-width: 690px;
+  color: $white;
 
   .title {
     font-size: 24px;

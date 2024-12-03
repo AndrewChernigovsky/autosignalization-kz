@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <NuxtLink to="/" class="logo">
     <img
       :src="Logo"
       alt="Логотип компании Auto Security. Мы защитим вашу машину от угона."
@@ -10,7 +10,7 @@
       <p class="text-main">Auto</p>
       <p class="text-secondary">Security</p>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 <script setup lang="ts">
 import Logo from '@/assets/images/logo.png'
@@ -20,6 +20,7 @@ import Logo from '@/assets/images/logo.png'
   display: flex;
   align-items: center;
   gap: 10px;
+  text-decoration: none;
 
   img {
     width: 58px;
